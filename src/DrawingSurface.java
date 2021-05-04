@@ -37,7 +37,7 @@ public class DrawingSurface extends PApplet{
 				rect(r.x,r.y,r.width,r.height);
 			}
 		}
-		hero.draw(this);
+		//hero.draw(this);
 		popMatrix();
 		//world.draw(this);
 	}
