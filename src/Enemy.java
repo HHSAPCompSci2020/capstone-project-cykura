@@ -5,6 +5,9 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Enemy extends MovingImage{
+	
+	public static final int ENEMY_WIDTH = 40;
+	public static final int ENEMY_HEIGHT = 60;
 	public int health;
 	private int v;
 
@@ -15,16 +18,16 @@ public class Enemy extends MovingImage{
 	}
 	
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
-		 double x1 = hero.x;
-	     double y1 = hero.y;
-
-	     double diffX = x1 - x;
-	     double diffY = y1 - y;
-
-	     float angle = (float)Math.atan2(diffY, diffX);
-
-	     x += v * Math.cos(angle);
-	     y += v * Math.sin(angle);
+//		 double x1 = hero.x;
+//	     double y1 = hero.y;
+//
+//	     double diffX = x1 - x;
+//	     double diffY = y1 - y;
+//
+//	     float angle = (float)Math.atan2(diffY, diffX);
+//
+//	     x += v * Math.cos(angle);
+//	     y += v * Math.sin(angle);
 	}
 	
 	public void draw(PApplet g) {

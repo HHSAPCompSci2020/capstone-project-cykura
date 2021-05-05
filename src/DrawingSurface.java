@@ -16,28 +16,41 @@ public class DrawingSurface extends PApplet{
 	private ArrayList<Integer> keys;
 	//private World world;
 	
-	public void setup() {
-		spawnHero();
-		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2-200, 50);
-	}
+
 	
 	public DrawingSurface() {
 		super();
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		keys = new ArrayList<Integer>();
+		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		platforms = generatePlatforms();
+//		spawnHero();
+//		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2-200, 50);
 		//e1 = new Enemy(null, 0, 0, 0, 0);
 		//world = new World();
+	}
+	
+	private void spawnHero() {
+		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+	}
+	
+	private void spawnEnemy() {
+		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2, 50);
+	}
+	
+	public void setup() {
+		spawnHero();
+		spawnEnemy();
+//		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2-200, 50);
 	}
 	
 	public void draw() {
 		background(0,255,255);   
 		pushMatrix();
-		/*int width = getWidth();
-		int height = getHeight();
+		int width = this.width;
+		int height = this.height;
 		float ratioX = (float)width/DRAWING_WIDTH;
 		float ratioY = (float)height/DRAWING_HEIGHT;
-		scale(ratioX, ratioY);*/
+		scale(ratioX, ratioY);
 		fill(100);
 		for (Shape s : platforms) {
 			if (s instanceof Rectangle) {
@@ -63,8 +76,7 @@ public class DrawingSurface extends PApplet{
 		if (!screenRect.intersects(hero))
 			spawnHero();
 
-//		e1.act(hero, platforms);
-		//world.draw(this);
+		
 	}
 	
 	private ArrayList<Shape> generatePlatforms(){
@@ -90,7 +102,5 @@ public class DrawingSurface extends PApplet{
 		return keys.contains(code);
 	}
 	
-	private void spawnHero() {
-		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
-	}
+
 }
