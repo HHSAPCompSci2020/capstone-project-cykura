@@ -20,6 +20,12 @@ public class Hero extends MovingImage{
 	
 	public Hero(PImage img, int x, int y) {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);
+		vx = 0;
+		vy = 0;
+		onASurface = false;
+		gravity = 0.7;
+		friction = .85;
+		//jumpStrength = 15;
 	}
 	
 	public void walk(int direction) {
@@ -43,7 +49,7 @@ public class Hero extends MovingImage{
 
 				vy += gravity; // GRAVITY
 				double y2 = y + vy;
-
+				//System.out.println(vy);
 				Rectangle2D.Double strechY = new Rectangle2D.Double(x,Math.min(y,y2),width,height+Math.abs(vy));
 
 				onASurface = false;
@@ -116,7 +122,7 @@ public class Hero extends MovingImage{
 
 				if (Math.abs(vx) < .5)
 					vx = 0;
-
+				//System.out.println(x2+" "+y2);
 				moveToLocation(x2,y2);
 	}
 
