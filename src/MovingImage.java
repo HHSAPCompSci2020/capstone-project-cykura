@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class MovingImage extends Rectangle2D.Double{
-private PImage image;
+	private PImage image;
 	
 	public MovingImage(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
