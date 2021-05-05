@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
