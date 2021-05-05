@@ -18,7 +18,7 @@ public class DrawingSurface extends PApplet{
 	
 	public void setup() {
 		spawnHero();
-		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2-200, 50);
 	}
 	
 	public DrawingSurface() {
