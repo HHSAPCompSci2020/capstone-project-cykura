@@ -31,6 +31,7 @@ public class Hero extends MovingImage{
 	public void walk(int direction) {
 		if (vx <= 10 && vx >= -10)
 			vx += direction;
+		System.out.println(vx);
 	}
 	
 	public void jump() {
@@ -90,7 +91,7 @@ public class Hero extends MovingImage{
 				vx *= friction;
 
 				double x2 = x + vx;
-
+				System.out.println(vx);
 				Rectangle2D.Double strechX = new Rectangle2D.Double(Math.min(x,x2),y2,width+Math.abs(vx),height);
 
 				if (vx > 0) {
@@ -122,7 +123,7 @@ public class Hero extends MovingImage{
 
 				if (Math.abs(vx) < .5)
 					vx = 0;
-				//System.out.println(x2+" "+y2);
+				System.out.println(x2+" "+y2);
 				moveToLocation(x2,y2);
 	}
 
