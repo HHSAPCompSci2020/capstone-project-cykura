@@ -28,11 +28,11 @@ public class DrawingSurface extends PApplet{
 	public void draw() {
 		background(0,255,255);   
 		pushMatrix();
-		int width = getWidth();
+		/*int width = getWidth();
 		int height = getHeight();
 		float ratioX = (float)width/DRAWING_WIDTH;
 		float ratioY = (float)height/DRAWING_HEIGHT;
-		scale(ratioX, ratioY);
+		scale(ratioX, ratioY);*/
 		fill(100);
 		for (Shape s : platforms) {
 			if (s instanceof Rectangle) {
@@ -83,6 +83,6 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	private void spawnHero() {
-//		hero = new Hero(loadImage("StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+		hero = new Hero(loadImage("StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
 	}
 }
