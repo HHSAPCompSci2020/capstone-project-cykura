@@ -47,8 +47,9 @@ public class DrawingSurface extends PApplet{
 		hero.draw(this);
 		popMatrix();
 		
-		if (isPressed(KeyEvent.VK_LEFT))
+		if (isPressed(KeyEvent.VK_LEFT)) {
 			hero.walk(-1);
+		}
 		if (isPressed(KeyEvent.VK_RIGHT))
 			hero.walk(1);
 		if (isPressed(KeyEvent.VK_UP))
