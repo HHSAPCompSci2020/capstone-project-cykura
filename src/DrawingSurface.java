@@ -8,7 +8,7 @@ import processing.core.PImage;
 
 public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 600;
+	public static final int DRAWING_HEIGHT = 500;
 	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
