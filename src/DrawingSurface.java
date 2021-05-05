@@ -51,6 +51,7 @@ public class DrawingSurface extends PApplet{
 			hero.jump();
 		
 		hero.act(platforms);
+		e1.act(hero,platforms);
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();

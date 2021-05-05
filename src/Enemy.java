@@ -12,7 +12,7 @@ public class Enemy extends MovingImage{
 		v = 2;
 	}
 	
-	public void move(Hero hero, ArrayList<Shape> obstacles) {
+	public void act(Hero hero, ArrayList<Shape> obstacles) {
 		 double x1 = hero.x;
 	     double y1 = hero.y;
 
