@@ -5,6 +5,8 @@ import processing.core.PImage;
 
 public class MovingImage extends Rectangle2D.Double{
 	private PImage image;
+	protected double x, y;
+	protected double vx, vy;
 	
 	public MovingImage(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
@@ -12,8 +14,8 @@ public class MovingImage extends Rectangle2D.Double{
 	}
 	
 	public void moveToLocation(double x, double y) {
-		super.x = x;
-		super.y = y;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void moveByAmount(double x, double y) {
