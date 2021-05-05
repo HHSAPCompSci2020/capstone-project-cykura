@@ -1,21 +1,31 @@
-import java.awt.geom.Rectangle2D;
 
+import java.awt.geom.Rectangle2D;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class MovingImage extends Rectangle2D.Double{
-	private PImage image;
-	protected double x, y;
-	protected double vx, vy;
+/*
+ * Represents a moving image.
+ *
+ * Credit: Mr. Shelby
+ * on: 5/3/13
+ */
+ 
+public class MovingImage extends Rectangle2D.Double {
 	
+	// FIELDS
+	private PImage image;
+	
+	// CONSTRUCTORS
 	public MovingImage(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
 		image = img;
 	}
 	
+	
+	// METHODS	
 	public void moveToLocation(double x, double y) {
-		this.x = x;
-		this.y = y;
+		super.x = x;
+		super.y = y;
 	}
 	
 	public void moveByAmount(double x, double y) {
@@ -34,4 +44,16 @@ public class MovingImage extends Rectangle2D.Double{
 	public void draw(PApplet g) {
 		g.image(image,(int)x,(int)y,(int)width,(int)height);
 	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+

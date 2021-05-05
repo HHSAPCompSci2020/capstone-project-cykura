@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 
 public class DrawingSurface extends PApplet{
-	/*public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 600;
-	private Rectangle screenRect;*/
+//	public static final int DRAWING_WIDTH = 800;
+//	public static final int DRAWING_HEIGHT = 600;
+//	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private Enemy e1;
@@ -58,6 +58,6 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	private void spawnHero() {
-		hero = new Hero();
+//		hero = new Hero(loadImage("StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
 	}
 }
