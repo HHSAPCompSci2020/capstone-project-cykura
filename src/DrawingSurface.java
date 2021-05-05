@@ -17,7 +17,7 @@ public class DrawingSurface extends PApplet{
 	//private World world;
 	
 	public void setup() {
-		
+		spawnHero();
 	}
 	
 	public DrawingSurface() {
@@ -25,7 +25,6 @@ public class DrawingSurface extends PApplet{
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		keys = new ArrayList<Integer>();
 		platforms = generatePlatforms();
-		spawnHero();
 		e1 = new Enemy(null, 0, 0, 0, 0);
 		//world = new World();
 	}
@@ -89,6 +88,6 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	private void spawnHero() {
-		hero = new Hero(loadImage("sprites/StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
 	}
 }
