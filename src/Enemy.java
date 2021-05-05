@@ -14,11 +14,11 @@ public class Enemy extends MovingImage{
 	}
 	
 	public void move(Hero hero, ArrayList<Shape> obstacles) {
-		 int MoveToX = hero.getX();
-	     int MoveToY = hero.getY();
+		 double x1 = hero.x;
+	     double y1 = hero.y;
 
-	     int diffX = MoveToX - x;
-	     int diffY = MoveToY - y;
+	     double diffX = x1 - x;
+	     double diffY = y1 - y;
 
 	     float angle = (float)Math.atan2(diffY, diffX);
 
