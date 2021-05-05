@@ -10,6 +10,7 @@ public class DrawingSurface extends PApplet{
 	private Rectangle screenRect;*/
 	private Hero hero;
 	private ArrayList<Shape> platforms;
+	private Enemy e1;
 	private ArrayList<Integer> keys;
 	//private World world;
 	
@@ -19,6 +20,7 @@ public class DrawingSurface extends PApplet{
 		keys = new ArrayList<Integer>();
 		platforms = generatePlatforms();
 		spawnHero();
+		e1 = new Enemy(null, 0, 0, 0, 0);
 		//world = new World();
 	}
 	
@@ -37,8 +39,11 @@ public class DrawingSurface extends PApplet{
 				rect(r.x,r.y,r.width,r.height);
 			}
 		}
-		//hero.draw(this);
+		hero.draw(this);
 		popMatrix();
+		
+		hero.act(platforms);
+		e1.act(hero, platforms);
 		//world.draw(this);
 	}
 	
