@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
-import processing.core.PImage;
 
 public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
@@ -14,7 +13,6 @@ public class DrawingSurface extends PApplet{
 	private ArrayList<Shape> platforms;
 	private Enemy e1;
 	private ArrayList<Integer> keys;
-	//private World world;
 	
 
 	
@@ -23,10 +21,6 @@ public class DrawingSurface extends PApplet{
 		keys = new ArrayList<Integer>();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		platforms = generatePlatforms();
-//		spawnHero();
-//		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2-200, 50);
-		//e1 = new Enemy(null, 0, 0, 0, 0);
-		//world = new World();
 	}
 	
 	private void spawnHero() {
@@ -39,18 +33,22 @@ public class DrawingSurface extends PApplet{
 	
 	public void setup() {
 		spawnHero();
-		spawnEnemy();
-//		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2-200, 50);
+//		spawnEnemy();
 	}
 	
 	public void draw() {
 		background(0,255,255);   
+		
 		pushMatrix();
+		
 		int width = this.width;
 		int height = this.height;
+		
 		float ratioX = (float)width/DRAWING_WIDTH;
 		float ratioY = (float)height/DRAWING_HEIGHT;
+		
 		scale(ratioX, ratioY);
+		
 		fill(100);
 		for (Shape s : platforms) {
 			if (s instanceof Rectangle) {
@@ -58,20 +56,25 @@ public class DrawingSurface extends PApplet{
 				rect(r.x,r.y,r.width,r.height);
 			}
 		}
+		
 		hero.draw(this);
-		e1.draw(this);
+//		e1.draw(this);
+		
 		popMatrix();
 		
 		if (isPressed(KeyEvent.VK_LEFT)) {
+			System.out.println("l");
 			hero.walk(-1);
 		}
-		if (isPressed(KeyEvent.VK_RIGHT))
-			hero.walk(1);
-		if (isPressed(KeyEvent.VK_UP))
-			hero.jump();
+//		if (isPressed(KeyEvent.VK_RIGHT))
+//			System.out.println("r");
+//			hero.walk(1);
+//		if (isPressed(KeyEvent.VK_UP))
+//			System.out.println("up");
+//			hero.jump();
 		
 		hero.act(platforms);
-		e1.act(hero,platforms);
+//		e1.act(hero,platforms);
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();
