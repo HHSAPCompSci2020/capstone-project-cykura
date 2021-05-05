@@ -7,8 +7,8 @@ public class Enemy extends MovingImage{
 	public int health;
 	private int v;
 
-	public Enemy(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Enemy(PImage img, int x, int y) {
+		super(img, x, y, 40, 60);
 		v = 2;
 	}
 	

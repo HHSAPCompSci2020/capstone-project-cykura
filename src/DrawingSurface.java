@@ -18,6 +18,7 @@ public class DrawingSurface extends PApplet{
 	
 	public void setup() {
 		spawnHero();
+		e1 = new Enemy(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
 	}
 	
 	public DrawingSurface() {
@@ -25,7 +26,7 @@ public class DrawingSurface extends PApplet{
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		keys = new ArrayList<Integer>();
 		platforms = generatePlatforms();
-		e1 = new Enemy(null, 0, 0, 0, 0);
+		//e1 = new Enemy(null, 0, 0, 0, 0);
 		//world = new World();
 	}
 	
@@ -45,6 +46,7 @@ public class DrawingSurface extends PApplet{
 			}
 		}
 		hero.draw(this);
+		e1.draw(this);
 		popMatrix();
 		
 		if (isPressed(KeyEvent.VK_LEFT)) {
