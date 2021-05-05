@@ -18,7 +18,7 @@ public class Hero extends MovingImage{
 	private double friction;
 	private double gravity;
 	
-	public Hero(PImage img, int x, int y, int w, int h) {
+	public Hero(PImage img, int x, int y) {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);
 	}
 	
