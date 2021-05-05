@@ -1,6 +1,7 @@
 import java.awt.Shape;
 import java.util.ArrayList;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Enemy extends MovingImage{
@@ -10,6 +11,7 @@ public class Enemy extends MovingImage{
 	public Enemy(PImage img, int x, int y) {
 		super(img, x, y, 40, 60);
 		v = 2;
+		health = 100;
 	}
 	
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
@@ -24,5 +26,9 @@ public class Enemy extends MovingImage{
 	     x += v * Math.cos(angle);
 	     y += v * Math.sin(angle);
 	}
-
+	
+	public void draw(PApplet g) {
+		super.draw(g);
+		g.text("Health: "+health, (int)x+10, (int)y-20);
+	}
 }
