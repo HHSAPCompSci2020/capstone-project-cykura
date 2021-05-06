@@ -16,13 +16,17 @@ public class Projectile extends MovingImage{
 	 * @param y The Y value of the Projectile's top left corner.
 	 * @param w The width of the Projectile
 	 * @param h The height of the Projectile
+	 * @param vx The X component of the Projectile's velocity
+	 * @param vy The Y component of the Projectile's velocity
 	**/
 	public Projectile(PImage img, int x, int y, int w, int h, double vy, double vx) {
 		super(img, x, y, w, h);
 		this.vy=vy;
 		this.vx=vx;
 	}
+	
 	public void act() {
 		super.moveByAmount(vx,vy);
 	}
+	
 }

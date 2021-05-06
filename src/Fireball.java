@@ -16,6 +16,8 @@ public class Fireball extends Projectile {
 	 * @param y The Y value of the Fireball's top left corner.
 	 * @param w The width of the Fireball
 	 * @param h The height of the Fireball
+	 * @param vx The X component of the Projectile's velocity
+	 * @param vy The Y component of the Projectile's velocity
 	**/
 	public Fireball(PImage img, int x, int y, int w, int h,double vx, double vy) {
 		super(img, x, y, w, h, vx, vy);
