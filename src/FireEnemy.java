@@ -40,8 +40,8 @@ public class FireEnemy extends Enemy{
 	//	    	 System.out.println("Collided with hero");
 		   	     waitTime=45;
 		    }
-		    if(Math.random()>0.98) {
-		    	Fireball f = new Fireball(DrawingSurface.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)+1, v*Math.sin(angle)+1);
+		    if(Math.random()>0.985) {
+		    	Fireball f = new Fireball(DrawingSurface.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)+1.5, v*Math.sin(angle)+1.5);
 		    	fireballs.add(f);
 		    }
 		     if(waitTime<=0) {
