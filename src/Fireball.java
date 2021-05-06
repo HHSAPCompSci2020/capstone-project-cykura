@@ -3,6 +3,7 @@ import processing.core.PImage;
 /**
  * The Fireball class represents a fire ball which is one of the projectiles that the Hero can collect.
  * 
+ * @author alex_zheng
  * @version 5.6.21
  */
 public class Fireball extends Projectile {

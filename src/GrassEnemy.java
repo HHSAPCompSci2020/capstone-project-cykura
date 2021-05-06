@@ -3,6 +3,7 @@ import processing.core.PImage;
 /**
  * The GrassEnemy class represents an Enemy with the Leaf Dash move which the Player can defeat.
  * 
+ * @author alex_zheng
  * @version 5.6.21
  */
 public class GrassEnemy extends Enemy {

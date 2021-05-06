@@ -6,10 +6,12 @@ import processing.core.PImage;
 /**
  * The FireEnemy class represents an Enemy with the Fireball projectile which the Player can defeat.
  * 
+ * @author animan_patil
  * @version 5.6.21
  */
 public class FireEnemy extends Enemy{
 	private ArrayList<Fireball> fireballs;
+	
 	/**
 	 * Creates a new instance of a FireEnemy object having its left
 	 * corner at the inputed (x, y) coordinates.
