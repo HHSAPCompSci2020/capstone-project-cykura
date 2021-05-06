@@ -24,7 +24,28 @@ public class FireEnemy extends Enemy{
 	}
 	
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
-		
+		double x1 = hero.x;
+	    double y1 = hero.y;
+
+	    double diffX = x1 - x;
+	    double diffY = y1 - y;
+
+	    float angle = (float)Math.atan2(diffY, diffX);
+	    if(this.intersects(hero)) {
+//	    	 System.out.println("Collided with hero");
+	   	     waitTime=45;
+	    }
+	    if(Math.random()>0.94) {
+	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle),v*Math.sin(angle)));
+	    }
+	     if(waitTime<=0) {
+	    	 x += v * Math.cos(angle);
+	    	 y += v * Math.sin(angle);
+	    	 waitTime = 0;
+	     }
+	     else {
+	    	 waitTime--;
+	     }
 	}
 
 }
