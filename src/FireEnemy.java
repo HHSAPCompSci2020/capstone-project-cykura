@@ -45,8 +45,8 @@ public class FireEnemy extends Enemy{
 		    	fireballs.add(f);
 		    }
 		     if(waitTime<=0) {
-		    	 x += v * Math.cos(angle);
-		    	 y += v * Math.sin(angle);
+		    	x += v * Math.cos(angle);
+		    	y += v * Math.sin(angle);
 		    	 waitTime = 0;
 		     }
 		     else {
