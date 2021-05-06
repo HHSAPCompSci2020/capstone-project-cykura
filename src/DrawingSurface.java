@@ -91,7 +91,7 @@ public class DrawingSurface extends PApplet{
 		}
 		
 		if(isPressed(KeyEvent.VK_D)) {
-			hero.dash(1);
+			hero.dash();
 		}
 		
 		if(isPressed(KeyEvent.VK_SPACE)) {
