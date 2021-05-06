@@ -17,8 +17,8 @@ public class Fireball extends Projectile {
 	 * @param w The width of the Fireball
 	 * @param h The height of the Fireball
 	**/
-	public Fireball(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Fireball(PImage img, int x, int y, int w, int h,double vx, double vy) {
+		super(img, x, y, w, h, vx, vy);
 	}
 
 }

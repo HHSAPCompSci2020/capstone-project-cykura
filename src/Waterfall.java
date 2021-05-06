@@ -17,8 +17,8 @@ public class Waterfall extends Projectile {
 	 * @param w The width of the Waterfall
 	 * @param h The height of the Waterfall
 	**/
-	public Waterfall(PImage img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Waterfall(PImage img, int x, int y, int w, int h, double vx, double vy){
+		super(img, x, y, w, h, vx, vy);
 	}
 
 }
