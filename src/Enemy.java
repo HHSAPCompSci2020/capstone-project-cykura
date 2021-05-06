@@ -38,25 +38,31 @@ public class Enemy extends MovingImage{
 	 * @param obstacles the platforms
 	 */
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
-		 double x1 = hero.x;
-	     double y1 = hero.y;
-
-	     double diffX = x1 - x;
-	     double diffY = y1 - y;
-
-	     float angle = (float)Math.atan2(diffY, diffX);
-	     if(this.intersects(hero)) {
-//	    	 System.out.println("Collided with hero");
-	    	 waitTime=45;
-	     }
-	     if(waitTime<=0) {
-	    	 x += v * Math.cos(angle);
-	    	 y += v * Math.sin(angle);
-	    	 waitTime = 0;
-	     }
-	     else {
-	    	 waitTime--;
-	     }
+		if(health>0) {
+			 double x1 = hero.x;
+		     double y1 = hero.y;
+	
+		     double diffX = x1 - x;
+		     double diffY = y1 - y;
+	
+		     float angle = (float)Math.atan2(diffY, diffX);
+		     if(this.intersects(hero)) {
+	//	    	 System.out.println("Collided with hero");
+		    	 waitTime=45;
+		     }
+		     if(waitTime<=0) {
+		    	 x += v * Math.cos(angle);
+		    	 y += v * Math.sin(angle);
+		    	 waitTime = 0;
+		     }
+		     else {
+		    	 waitTime--;
+		     }
+		}
+		else {
+			x = -20;
+			y=-20;
+		}
 	}
 	/**
 	 * Makes enemy lose health
@@ -71,12 +77,15 @@ public class Enemy extends MovingImage{
 	 * @param g surface to be drawn on
 	 */
 	public void draw(PApplet g) {
-		super.draw(g);
-		g.rect((int)x-10, (int)y-20, 60, 5,3);
-		if(health<30) g.fill(255,0,0);
-		else if(health<60) g.fill(255,255,0);
-		else g.fill(0,255,0);
-		g.rect((int)x-10, (int)y-20, (int)(health*0.6), 5,3);
+		if(health>0) {
+			super.draw(g);
+			g.rect((int)x-10, (int)y-20, 60, 5,3);
+			if(health<30) g.fill(255,0,0);
+			else if(health<60) g.fill(255,255,0);
+			else g.fill(0,255,0);
+			g.rect((int)x-10, (int)y-20, (int)(health*0.6), 5,3);
+		}
 		//g.text("Health: "+health, (int)x-10, (int)y-20);
 	}
+	
 }
