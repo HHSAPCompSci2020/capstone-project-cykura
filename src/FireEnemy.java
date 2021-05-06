@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PImage;
 
 /**
@@ -6,7 +8,7 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class FireEnemy extends Enemy{
-	
+	private ArrayList<Fireball> fireballs;
 	/**
 	 * Creates a new instance of a FireEnemy object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -17,6 +19,7 @@ public class FireEnemy extends Enemy{
 	**/
 	public FireEnemy(PImage img, int x, int y) {
 		super(img, x, y);
+		fireballs = new ArrayList<Fireball>();
 	}
 
 }
