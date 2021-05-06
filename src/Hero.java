@@ -32,10 +32,11 @@ public class Hero extends MovingImage{
 	public void walk(int direction) {
 		if (vx <= 10 && vx >= -10)
 			vx += direction;
-		System.out.println(vx);
+		System.out.println("Walk is called");
 	}
 
 	public void jump() {
+		System.out.println("Jump is called");
 		if (onASurface) {
 			vy -= jumpStrength;
 		}
