@@ -24,8 +24,8 @@ public class Hero extends MovingImage{
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		gravity = 0.7;
-		friction = .85;
+		gravity = 0.9;
+		friction = 0.75;
 		jumpStrength = 15;
 	}
 
