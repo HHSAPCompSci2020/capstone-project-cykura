@@ -25,7 +25,9 @@ public class Enemy extends MovingImage{
 	     double diffY = y1 - y;
 
 	     float angle = (float)Math.atan2(diffY, diffX);
-
+	     if(this.intersects(hero)) {
+	    	 System.out.println("Collided with hero");
+	     }
 	     x += v * Math.cos(angle);
 	     y += v * Math.sin(angle);
 	}
