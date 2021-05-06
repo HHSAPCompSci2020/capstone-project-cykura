@@ -62,13 +62,13 @@ public class DrawingSurface extends PApplet{
 		
 		popMatrix();
 		
-//		if (isPressed(KeyEvent.VK_LEFT)) {
-//			System.out.println("l");
-//			hero.walk(-1);
-//		}
-		if (isPressed(KeyEvent.VK_RIGHT))
-			System.out.println("r");
-			hero.walk(1);
+		if (isPressed(KeyEvent.VK_LEFT)) {
+			System.out.println("l");
+			hero.walk(-1);
+		}
+//		if (isPressed(KeyEvent.VK_RIGHT))
+//			System.out.println("r");
+//			hero.walk(1);
 //		if (isPressed(KeyEvent.VK_UP))
 //			System.out.println("up");
 //			hero.jump();
@@ -93,12 +93,10 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	public void keyPressed() {
-		System.out.println("keyPressed");
 		keys.add(keyCode);
 	}
 
 	public void keyReleased() {
-		System.out.println("keyReleased");
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
