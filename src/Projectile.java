@@ -17,12 +17,18 @@ public class Projectile extends MovingImage{
 	 * @param w The width of the Projectile
 	 * @param h The height of the Projectile
 	**/
-	public Projectile(PImage img, int x, int y, int w, int h, double vy, double vx) {
+	public Projectile(PImage img, int x, int y, int w, int h, double vx, double vy) {
 		super(img, x, y, w, h);
 		this.vy=vy;
 		this.vx=vx;
 	}
 	public void act() {
 		super.moveByAmount(vx,vy);
+	}
+	public boolean checkCollision(Enemy e, Hero h) {
+		if (this.intersects(e)||this.intersects(h)) {
+			return true;
+		}
+		return false;
 	}
 }
