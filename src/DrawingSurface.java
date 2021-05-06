@@ -33,7 +33,7 @@ public class DrawingSurface extends PApplet{
 	
 	public void setup() {
 		spawnHero();
-//		spawnEnemy();
+		spawnEnemy();
 	}
 	
 	public void draw() {
@@ -58,7 +58,7 @@ public class DrawingSurface extends PApplet{
 		}
 		
 		hero.draw(this);
-//		e1.draw(this);
+		e1.draw(this);
 		
 		popMatrix();
 		
@@ -74,7 +74,7 @@ public class DrawingSurface extends PApplet{
 //			hero.jump();
 		
 		hero.act(platforms);
-//		e1.act(hero,platforms);
+		e1.act(hero,platforms);
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();
