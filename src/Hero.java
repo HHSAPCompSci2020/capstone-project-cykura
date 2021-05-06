@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Hero class represents the playable main character which can move and use special abilities.
+ * The Hero class represents the playable main character which can move and use special projectiles.
  * Base code credit: Mr. Shelby
  * 
  * @author vicram_vijayakumar
@@ -22,7 +22,7 @@ public class Hero extends MovingImage{
 	private double friction;
 	private double gravity;
 	private int hearts;
-	private ArrayList<Ability> collectedAbilities;
+	private ArrayList<Projectile> collectedProjectiles;
 	private boolean canDash;
 	private int facingDirection;
 	private int invincibilityTime;
@@ -44,16 +44,16 @@ public class Hero extends MovingImage{
 		friction = 0.75;
 		hearts = 5;
 		canDash = false;
-		collectedAbilities = new ArrayList<Ability>();
+		collectedProjectiles = new ArrayList<Projectile>();
 		facingDirection = 0;	// right direction
 	}
 	
 	/**
-	 * Adds an ability to the Hero's list of abilities.
-	 * @param a An ability to add to the Hero's list of abilities.
+	 * Adds a projectile to the Hero's list of projectiles.
+	 * @param a An projectile to add to the Hero's list of projectiles.
 	**/
-	public void addAbility(Ability a) {
-		collectedAbilities.add(a);
+	public void addAbility(Projectile a) {
+		collectedProjectiles.add(a);
 	}
 	
 	/**

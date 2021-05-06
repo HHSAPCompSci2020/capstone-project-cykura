@@ -1,7 +1,7 @@
 import processing.core.PImage;
 
 /**
- * The FireEnemy class represents an Enemy with the Fireball Ability which the Player can defeat.
+ * The FireEnemy class represents an Enemy with the Fireball projectile which the Player can defeat.
  * 
  * @version 5.6.21
  */
