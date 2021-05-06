@@ -36,7 +36,7 @@ public class FireEnemy extends Enemy{
 	   	     waitTime=45;
 	    }
 	    if(Math.random()>0.94) {
-	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle),v*Math.sin(angle)));
+	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
 	    }
 	     if(waitTime<=0) {
 	    	 x += v * Math.cos(angle);
@@ -47,7 +47,7 @@ public class FireEnemy extends Enemy{
 	    	 waitTime--;
 	     }
 	     for(Fireball f:fireballs) {
-	    	 //f.act();
+	    	 //f.act(obstacles);
 	     }
 	}
 
