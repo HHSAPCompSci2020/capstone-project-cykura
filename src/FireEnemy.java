@@ -6,10 +6,12 @@ import processing.core.PImage;
 /**
  * The FireEnemy class represents an Enemy with the Fireball projectile which the Player can defeat.
  * 
+ * @author animan_patil
  * @version 5.6.21
  */
 public class FireEnemy extends Enemy{
 	private ArrayList<Fireball> fireballs;
+	
 	/**
 	 * Creates a new instance of a FireEnemy object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -36,7 +38,7 @@ public class FireEnemy extends Enemy{
 	   	     waitTime=45;
 	    }
 	    if(Math.random()>0.94) {
-	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle),v*Math.sin(angle)));
+	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
 	    }
 	     if(waitTime<=0) {
 	    	 x += v * Math.cos(angle);
@@ -47,7 +49,9 @@ public class FireEnemy extends Enemy{
 	    	 waitTime--;
 	     }
 	     for(Fireball f:fireballs) {
-	    	 //f.act();
+	    	 if(f!=null) {
+	    	 //f.act(hero, this, obstacles);
+	    	 }
 	     }
 	}
 
