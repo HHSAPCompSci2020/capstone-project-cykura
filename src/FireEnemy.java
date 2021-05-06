@@ -48,7 +48,7 @@ public class FireEnemy extends Enemy{
 	     }
 	     for(Fireball f:fireballs) {
 	    	 if(f!=null) {
-	    	 //f.act(obstacles);
+	    	 //f.act(hero, this, obstacles);
 	    	 }
 	     }
 	}
