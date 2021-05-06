@@ -28,34 +28,40 @@ public class FireEnemy extends Enemy{
 	}
 	
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
-		double x1 = hero.x;
-	    double y1 = hero.y;
-
-	    double diffX = x1 - x;
-	    double diffY = y1 - y;
-
-	    float angle = (float)Math.atan2(diffY, diffX);
-	    if(this.intersects(hero)) {
-//	    	 System.out.println("Collided with hero");
-	   	     waitTime=45;
-	    }
-	    if(Math.random()>0.94) {
-//	    	Fireball f = new Fireball(loadImage("sprites//FullHeart.png"), x, y, v*Math.cos(angle) +x, v*Math.sin(angle +y));
-//	    	fireballs.add(new Fireball(,x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
-	    }
-	     if(waitTime<=0) {
-	    	 x += v * Math.cos(angle);
-	    	 y += v * Math.sin(angle);
-	    	 waitTime = 0;
-	     }
-	     else {
-	    	 waitTime--;
-	     }
-	     for(Fireball f:fireballs) {
-	    	 if(f!=null) {
-	    	 //f.act(hero, this, obstacles);
-	    	 }
-	     }
+		if(health>0) {
+			double x1 = hero.x;
+		    double y1 = hero.y;
+	
+		    double diffX = x1 - x;
+		    double diffY = y1 - y;
+	
+		    float angle = (float)Math.atan2(diffY, diffX);
+		    if(this.intersects(hero)) {
+	//	    	 System.out.println("Collided with hero");
+		   	     waitTime=45;
+		    }
+		    if(Math.random()>0.94) {
+	//	    	Fireball f = new Fireball(loadImage("sprites//FullHeart.png"), x, y, v*Math.cos(angle) +x, v*Math.sin(angle +y));
+	//	    	fireballs.add(new Fireball(,x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
+		    }
+		     if(waitTime<=0) {
+		    	 x += v * Math.cos(angle);
+		    	 y += v * Math.sin(angle);
+		    	 waitTime = 0;
+		     }
+		     else {
+		    	 waitTime--;
+		     }
+		     for(Fireball f:fireballs) {
+		    	 if(f!=null) {
+		    	 //f.act(hero, this, obstacles);
+		    	 }
+		     }
+		}
+		else {
+			x=-20;
+			y=-20;
+		}
 	}
 	
 	public ArrayList<Fireball> getFireballs() {

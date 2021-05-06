@@ -76,13 +76,9 @@ public class DrawingSurface extends PApplet{
 		}
 //		e1.draw(this);
 		
-		if (fe!= null) {
-			if (fe.getHealth() > 0) {
-				fe.draw(this);
-			} else {
-//				fe = null;
-			}
-		}
+		
+		fe.draw(this);
+			
 
 
 		
@@ -119,13 +115,7 @@ public class DrawingSurface extends PApplet{
 		}
 		
 //		e1.act(hero,platforms);
-		if (fe!= null) {
-			if (fe.getHealth() > 0) {
-				fe.act(hero, platforms);
-			} else {
-//				fe = null;
-			}
-		}
+		fe.act(hero, platforms);
 
 		
 		if (!screenRect.intersects(hero))
