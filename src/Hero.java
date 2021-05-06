@@ -32,8 +32,8 @@ public class Hero extends MovingImage{
 	 * corner at the inputed (x, y) coordinates.
 	 * 
 	 * @param img The PImage which the Hero will look like in the game (sprite).
-	 * @param x The X value of the Hero's left corner.
-	 * @param y They Y value of the Hero's left corner.
+	 * @param x The X value of the Hero's top left corner.
+	 * @param y The Y value of the Hero's top left corner.
 	**/
 	public Hero(PImage img, int x, int y) {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);

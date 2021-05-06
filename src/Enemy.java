@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * The Enemy class represents the enemy which can move and cause damage to the Hero.
+ * 
+ * @author animan_patil
+ * @version 5.6.21
+ */
 public class Enemy extends MovingImage{
 	
 	public static final int ENEMY_WIDTH = 40;
@@ -12,6 +18,14 @@ public class Enemy extends MovingImage{
 	private int v;
 	private int waitTime;
 	
+	/**
+	 * Creates a new instance of a Enemy object having its left
+	 * corner at the inputed (x, y) coordinates.
+	 * 
+	 * @param img The PImage which the Enemy will look like in the game (sprite).
+	 * @param x The X value of the Enemy's top left corner.
+	 * @param y The Y value of the Enemy's top left corner.
+	**/
 	public Enemy(PImage img, int x, int y) {
 		super(img, x, y, 40, 60);
 		v = 2;
