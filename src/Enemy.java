@@ -72,6 +72,10 @@ public class Enemy extends MovingImage{
 		health-=damage;
 	}
 	
+	public int getHealth() {
+		return health;
+	}
+	
 	/**
 	 * Draws enemy with healthbar
 	 * @param g surface to be drawn on

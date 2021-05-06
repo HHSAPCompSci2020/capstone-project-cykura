@@ -75,7 +75,10 @@ public class DrawingSurface extends PApplet{
 			hero.draw(this);
 		}
 //		e1.draw(this);
-		fe.draw(this);
+		
+		if (fe.getHealth() > 0) {
+			fe.draw(this);
+		}
 
 		
 		popMatrix();
@@ -112,8 +115,9 @@ public class DrawingSurface extends PApplet{
 		}
 		
 //		e1.act(hero,platforms);
-		fe.act(hero, platforms);
-
+		if (fe.getHealth() > 0) {
+			fe.act(hero, platforms);
+		}
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();
