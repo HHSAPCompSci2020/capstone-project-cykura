@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 /**
  * The surface that draws and runs the game
  * @author Animan
@@ -12,6 +13,7 @@ import processing.core.PApplet;
 public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
+	public static PImage fireball;
 	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
@@ -45,6 +47,7 @@ public class DrawingSurface extends PApplet{
 	public void setup() {
 		spawnHero();
 		spawnEnemy();
+		fireball = loadImage("sprites\\FireballSprite.png");
 	}
 	
 	/**

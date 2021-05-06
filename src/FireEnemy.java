@@ -41,8 +41,8 @@ public class FireEnemy extends Enemy{
 		   	     waitTime=45;
 		    }
 		    if(Math.random()>0.94) {
-	//	    	Fireball f = new Fireball(loadImage("sprites//FullHeart.png"), x, y, v*Math.cos(angle) +x, v*Math.sin(angle +y));
-	//	    	fireballs.add(new Fireball(,x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
+		    	Fireball f = new Fireball(DrawingSurface.fireball, (int)x, (int)y,20,20, v*Math.cos(angle) +x, v*Math.sin(angle +y));
+		    	fireballs.add(f);
 		    }
 		     if(waitTime<=0) {
 		    	 x += v * Math.cos(angle);
@@ -54,7 +54,7 @@ public class FireEnemy extends Enemy{
 		     }
 		     for(Fireball f:fireballs) {
 		    	 if(f!=null) {
-		    	 //f.act(hero, this, obstacles);
+		    		 f.act();
 		    	 }
 		     }
 		}
