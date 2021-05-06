@@ -46,6 +46,9 @@ public class FireEnemy extends Enemy{
 	     else {
 	    	 waitTime--;
 	     }
+	     for(Fireball f:fireballs) {
+	    	 //f.act();
+	     }
 	}
 
 }
