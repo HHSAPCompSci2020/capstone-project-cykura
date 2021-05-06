@@ -43,6 +43,15 @@ public class Hero extends MovingImage{
 	public void setDash(boolean state) {
 		canDash = state;
 	}
+	
+	public void punch(Enemy e1) {
+//		System.out.println("h " + this.getCenterX());
+//		System.out.println("e " + e1.getCenterX());
+		System.out.println(e1.getCenterX() - this.getCenterX());
+		if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
+			e1.loseHealth(3);
+		}
+	}
 
 	public void walk(int direction) {
 		if (vx <= 10 && vx >= -10)
@@ -170,5 +179,6 @@ public class Hero extends MovingImage{
 			invincibilityTime = 80;
 		}
 	}
+	
 
 }

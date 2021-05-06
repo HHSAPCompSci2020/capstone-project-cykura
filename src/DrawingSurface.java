@@ -74,9 +74,14 @@ public class DrawingSurface extends PApplet{
 //			System.out.println("up");
 			hero.jump();
 		
-		if(keys.contains(KeyEvent.VK_D)) {
+		if(isPressed(KeyEvent.VK_D)) {
 			hero.dash(1);
 		}
+		
+		if(isPressed(KeyEvent.VK_SPACE)) {
+			hero.punch(e1);
+		}
+		
 		
 		hero.act(platforms, e1);
 		e1.act(hero,platforms);
