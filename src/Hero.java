@@ -85,8 +85,10 @@ public class Hero extends MovingImage{
 //		System.out.println("h " + this.getCenterX());
 //		System.out.println("e " + e1.getCenterX());
 //		System.out.println(e1.getCenterX() - this.getCenterX());
-		if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
-			e1.loseHealth(3);
+		if (e1 != null) {
+			if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
+				e1.loseHealth(3);
+			}
 		}
 	}
 	
@@ -232,8 +234,10 @@ public class Hero extends MovingImage{
 		if (Math.abs(vx) < .5)
 			vx = 0;
 		
-		checkCollision(enemy);
-		checkProjectileCollsion(fireballs);
+		if (enemy != null) {
+			checkCollision(enemy);
+			checkProjectileCollsion(fireballs);
+		}
 		//System.out.println(x2+" "+y2);
 		moveToLocation(x2,y2);
 	}

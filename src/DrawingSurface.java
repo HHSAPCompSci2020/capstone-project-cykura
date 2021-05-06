@@ -76,9 +76,14 @@ public class DrawingSurface extends PApplet{
 		}
 //		e1.draw(this);
 		
-		if (fe.getHealth() > 0) {
-			fe.draw(this);
+		if (fe!= null) {
+			if (fe.getHealth() > 0) {
+				fe.draw(this);
+			} else {
+//				fe = null;
+			}
 		}
+
 
 		
 		popMatrix();
@@ -106,7 +111,6 @@ public class DrawingSurface extends PApplet{
 		if(isPressed(KeyEvent.VK_SPACE)) {
 //			hero.punch(e1);
 			hero.punch(fe);
-
 		}
 		
 		if (hero.getHearts() > 0) {
@@ -115,9 +119,14 @@ public class DrawingSurface extends PApplet{
 		}
 		
 //		e1.act(hero,platforms);
-		if (fe.getHealth() > 0) {
-			fe.act(hero, platforms);
+		if (fe!= null) {
+			if (fe.getHealth() > 0) {
+				fe.act(hero, platforms);
+			} else {
+//				fe = null;
+			}
 		}
+
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();
