@@ -1,3 +1,4 @@
+import java.awt.Shape;
 import java.util.ArrayList;
 
 import processing.core.PImage;
@@ -20,6 +21,10 @@ public class FireEnemy extends Enemy{
 	public FireEnemy(PImage img, int x, int y) {
 		super(img, x, y);
 		fireballs = new ArrayList<Fireball>();
+	}
+	
+	public void act(Hero hero, ArrayList<Shape> obstacles) {
+		
 	}
 
 }

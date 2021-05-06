@@ -15,8 +15,8 @@ public class Enemy extends MovingImage{
 	public static final int ENEMY_WIDTH = 40;
 	public static final int ENEMY_HEIGHT = 60;
 	public int health;
-	private int v;
-	private int waitTime;
+	protected int v;
+	protected int waitTime;
 	
 	/**
 	 * Creates a new instance of a Enemy object having its left
