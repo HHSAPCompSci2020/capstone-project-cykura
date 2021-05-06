@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
+
 /**
  * Main class that runs the program
  * @author Alex
