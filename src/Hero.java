@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.*;
 import java.awt.geom.Rectangle2D;
+
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /*
@@ -17,7 +19,10 @@ public class Hero extends MovingImage{
 	private boolean onASurface;
 	private double friction;
 	private double gravity;
-	private double jumpStrength;
+	private int hearts;
+	private ArrayList<Ability> collectedAbilities;
+	private boolean canDash;
+	private int invincibilityTime;
 
 	public Hero(PImage img, int x, int y) {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);
@@ -26,7 +31,17 @@ public class Hero extends MovingImage{
 		onASurface = false;
 		gravity = 0.9;
 		friction = 0.75;
-		jumpStrength = 15;
+		hearts = 5;
+		canDash = false;
+		collectedAbilities = new ArrayList<Ability>();
+	}
+	
+	public void addAbility(Ability a) {
+		collectedAbilities.add(a);
+	}
+	
+	public void setDash(boolean state) {
+		canDash = state;
 	}
 
 	public void walk(int direction) {
@@ -38,11 +53,22 @@ public class Hero extends MovingImage{
 	public void jump() {
 		//System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= jumpStrength;
+			vy -= 15;
 		}
 	}
+	
+	public void dash(double direction) {
+		if(canDash) {
+			vx += (direction*6);
+		}
+	}
+	
+	public void draw(PApplet g) {
+		super.draw(g);
+		g.text("Hearts: " + hearts, (int)x-10, (int)y-20);
+	}
 
-	public void act(ArrayList<Shape> platforms) {
+	public void act(ArrayList<Shape> platforms, Enemy enemy) {
 		double x = getX();
 		double y = getY();
 		double width = getWidth();
@@ -126,8 +152,23 @@ public class Hero extends MovingImage{
 		if (Math.abs(vx) < .5)
 			vx = 0;
 		
+		checkCollision(enemy);
+		
 		//System.out.println(x2+" "+y2);
 		moveToLocation(x2,y2);
+	}
+	
+	
+	public void checkCollision(Enemy e1) {
+		if (invincibilityTime > 0) {
+			invincibilityTime--;
+		}
+		
+		if ((this.intersects(e1)) && (invincibilityTime == 0)) {
+			hearts--;
+			jump();
+			invincibilityTime = 80;
+		}
 	}
 
 }
