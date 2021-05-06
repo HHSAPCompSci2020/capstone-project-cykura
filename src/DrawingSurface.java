@@ -76,7 +76,7 @@ public class DrawingSurface extends PApplet{
 		int chargeTime = 0;
 		if (isPressed(KeyEvent.VK_D)) {
 //			System.out.println("p");
-			chargeTime += 1;
+//			chargeTime += 1;
 			System.out.println(chargeTime);
 			if (chargeTime == 4) {
 				hero.dash(chargeTime);
