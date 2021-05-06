@@ -2,6 +2,8 @@ import java.awt.Shape;
 import java.util.ArrayList;
 
 import processing.core.PImage;
+import processing.core.PApplet;
+
 
 /**
  * The FireEnemy class represents an Enemy with the Fireball projectile which the Player can defeat.
@@ -38,7 +40,8 @@ public class FireEnemy extends Enemy{
 	   	     waitTime=45;
 	    }
 	    if(Math.random()>0.94) {
-	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
+//	    	Fireball f = new Fireball(loadImage("sprites//FullHeart.png"), x, y, v*Math.cos(angle) +x, v*Math.sin(angle +y));
+//	    	fireballs.add(new Fireball(,x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
 	    }
 	     if(waitTime<=0) {
 	    	 x += v * Math.cos(angle);
@@ -53,6 +56,10 @@ public class FireEnemy extends Enemy{
 	    	 //f.act(hero, this, obstacles);
 	    	 }
 	     }
+	}
+	
+	public ArrayList<Fireball> getFireballs() {
+		return fireballs;
 	}
 
 }

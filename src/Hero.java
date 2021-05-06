@@ -148,7 +148,7 @@ public class Hero extends MovingImage{
 	 * @param platforms The platforms which the hero can stand on and interact with.
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	**/
-	public void act(ArrayList<Shape> platforms, Enemy enemy, Projectile projectile) {
+	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> fireballs) {
 		double x = getX();
 		double y = getY();
 		double width = getWidth();
@@ -232,8 +232,8 @@ public class Hero extends MovingImage{
 		if (Math.abs(vx) < .5)
 			vx = 0;
 		
-		checkCollision(enemy,projectile);
-		
+		checkCollision(enemy);
+		checkProjectileCollsion(fireballs);
 		//System.out.println(x2+" "+y2);
 		moveToLocation(x2,y2);
 	}
@@ -243,15 +243,28 @@ public class Hero extends MovingImage{
 	 * 
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	**/
-	public void checkCollision(Enemy e1, Projectile p1) {
+	public void checkCollision(Enemy e1) {
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
 		}
 		
-		if (((this.intersects(e1))||this.intersects(p1)) && (invincibilityTime == 0)) {
+		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
 			hearts--;
 			jump();
 			invincibilityTime = 80;
+		}
+	}
+	
+	public void checkProjectileCollsion(ArrayList<Fireball> p) {
+		if (invincibilityTime > 0) {
+			invincibilityTime--;
+		}
+		for (Projectile p1: p) {
+			if (((this.intersects(p1)) && (invincibilityTime == 0))) {
+				hearts--;
+				invincibilityTime = 80;
+				p1 = null;
+			}
 		}
 	}
 	
