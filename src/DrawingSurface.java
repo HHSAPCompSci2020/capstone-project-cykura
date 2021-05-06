@@ -122,6 +122,7 @@ public class DrawingSurface extends PApplet{
 	
 	public void keyPressed() {
 		//System.out.println("keyPressed");
+		//
 		keys.add(keyCode);
 	}
 
