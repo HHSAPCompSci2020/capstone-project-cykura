@@ -40,6 +40,10 @@ public class Enemy extends MovingImage{
 	     }
 	}
 	
+	public void loseHealth(int damage) {
+		health-=damage;
+	}
+	
 	public void draw(PApplet g) {
 		super.draw(g);
 		g.rect((int)x-10, (int)y-20, 60, 5,3);
