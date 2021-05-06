@@ -1,6 +1,7 @@
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
@@ -21,6 +22,10 @@ public class Main {
 		window.setResizable(true);
 
 		window.setVisible(true);
+		
+		JOptionPane.showMessageDialog(window,
+				"Space: Punch (Get Close to enemy to hit)" + "\n" + "D to Dash" + "\n"
+						+ "Arrow Keys to Move." + "\n" + "Good Luck!");
 		
 	}
 

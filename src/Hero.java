@@ -47,7 +47,7 @@ public class Hero extends MovingImage{
 	public void punch(Enemy e1) {
 //		System.out.println("h " + this.getCenterX());
 //		System.out.println("e " + e1.getCenterX());
-		System.out.println(e1.getCenterX() - this.getCenterX());
+//		System.out.println(e1.getCenterX() - this.getCenterX());
 		if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
 			e1.loseHealth(3);
 		}
