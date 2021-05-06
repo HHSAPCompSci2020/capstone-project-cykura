@@ -25,7 +25,7 @@ public class Main {
 		
 		JOptionPane.showMessageDialog(window,
 				"Space: Punch (Get Close to enemy to hit)" + "\n" + "D to Dash" + "\n"
-						+ "Arrow Keys to Move." + "\n" + "Good Luck!");
+						+ "Arrow Keys to Move." + "\n" + "If you can't move the player, click the window" +"\n" +"Good Luck!");
 		
 	}
 
