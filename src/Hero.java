@@ -22,6 +22,7 @@ public class Hero extends MovingImage{
 	private int hearts;
 	private ArrayList<Ability> collectedAbilities;
 	private boolean canDash;
+	private int facingDirection;
 	private int invincibilityTime;
 
 	public Hero(PImage img, int x, int y) {
@@ -34,6 +35,7 @@ public class Hero extends MovingImage{
 		hearts = 5;
 		canDash = false;
 		collectedAbilities = new ArrayList<Ability>();
+		facingDirection = 0;	// right direction
 	}
 	
 	public void addAbility(Ability a) {
@@ -42,6 +44,10 @@ public class Hero extends MovingImage{
 	
 	public void setDash(boolean state) {
 		canDash = state;
+	}
+	
+	public void setFacingDirection(int x) {	// 0 for facing right, 180 for left
+		facingDirection = x;
 	}
 	
 	public void punch(Enemy e1) {
@@ -67,9 +73,15 @@ public class Hero extends MovingImage{
 	}
 	
 	public void dash(double direction) {
-		if(canDash) {
+		if(canDash && facingDirection == 0) {
 			vx += (direction*6);
+		} else if (canDash && facingDirection == 180) {
+			vx += (direction*-6);
 		}
+	}
+	
+	public int getHearts() {
+		return hearts;
 	}
 	
 	public void draw(PApplet g) {

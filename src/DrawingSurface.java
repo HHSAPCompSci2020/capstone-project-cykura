@@ -66,13 +66,18 @@ public class DrawingSurface extends PApplet{
 		if (isPressed(KeyEvent.VK_LEFT)) {
 //			System.out.println("l");
 			hero.walk(-1);
+			hero.setFacingDirection(180);
 		}
-		if (isPressed(KeyEvent.VK_RIGHT))
+		if (isPressed(KeyEvent.VK_RIGHT)) {
 			//System.out.println("r");
 			hero.walk(1);
-		if (isPressed(KeyEvent.VK_UP))
+			hero.setFacingDirection(0);
+		}
+			
+		if (isPressed(KeyEvent.VK_UP)) {
 //			System.out.println("up");
 			hero.jump();
+		}
 		
 		if(isPressed(KeyEvent.VK_D)) {
 			hero.dash(1);
