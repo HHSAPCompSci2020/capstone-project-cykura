@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
-
+/**
+ * The surface that draws and runs the game
+ * @author Animan
+ *
+ */
 public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
@@ -15,7 +19,9 @@ public class DrawingSurface extends PApplet{
 	private ArrayList<Integer> keys;
 	
 
-	
+	/**
+	 * Default Constructor
+	 */
 	public DrawingSurface() {
 		super();
 		keys = new ArrayList<Integer>();
@@ -37,6 +43,9 @@ public class DrawingSurface extends PApplet{
 		spawnEnemy();
 	}
 	
+	/**
+	 * Draws everything and makes changes in the game
+	 */
 	public void draw() {
 		background(0,255,255);   
 		

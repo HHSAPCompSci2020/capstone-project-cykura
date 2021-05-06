@@ -11,13 +11,18 @@ public class Enemy extends MovingImage{
 	public int health;
 	private int v;
 	private int waitTime;
-
+	
 	public Enemy(PImage img, int x, int y) {
 		super(img, x, y, 40, 60);
 		v = 2;
 		health = 100;
 	}
 	
+	/**
+	 * Changes state of enemy according to position in game
+	 * @param hero the player
+	 * @param obstacles the platforms
+	 */
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
 		 double x1 = hero.x;
 	     double y1 = hero.y;
@@ -39,11 +44,18 @@ public class Enemy extends MovingImage{
 	    	 waitTime--;
 	     }
 	}
-	
+	/**
+	 * Makes enemy lose health
+	 * @param damage health to be lost
+	 */
 	public void loseHealth(int damage) {
 		health-=damage;
 	}
 	
+	/**
+	 * Draws enemy with healthbar
+	 * @param g surface to be drawn on
+	 */
 	public void draw(PApplet g) {
 		super.draw(g);
 		g.rect((int)x-10, (int)y-20, 60, 5,3);
