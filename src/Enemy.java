@@ -27,7 +27,7 @@ public class Enemy extends MovingImage{
 
 	     float angle = (float)Math.atan2(diffY, diffX);
 	     if(this.intersects(hero)) {
-	    	 System.out.println("Collided with hero");
+//	    	 System.out.println("Collided with hero");
 	    	 waitTime=45;
 	     }
 	     if(waitTime<=0) {

@@ -73,7 +73,17 @@ public class DrawingSurface extends PApplet{
 //			System.out.println("up");
 			hero.jump();
 		
-		hero.act(platforms);
+		int chargeTime = 0;
+		if (isPressed(KeyEvent.VK_D)) {
+//			System.out.println("p");
+			chargeTime += 1;
+			System.out.println(chargeTime);
+			if (chargeTime == 4) {
+				hero.dash(chargeTime);
+			}
+		}
+		
+		hero.act(platforms, e1);
 		e1.act(hero,platforms);
 		
 		if (!screenRect.intersects(hero))
