@@ -25,6 +25,7 @@ public class DrawingSurface extends PApplet{
 	
 	private void spawnHero() {
 		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+		hero.setDash(true);
 	}
 	
 	private void spawnEnemy() {
@@ -73,14 +74,8 @@ public class DrawingSurface extends PApplet{
 //			System.out.println("up");
 			hero.jump();
 		
-		int chargeTime = 0;
-		if (isPressed(KeyEvent.VK_D)) {
-//			System.out.println("p");
-//			chargeTime += 1;
-			System.out.println(chargeTime);
-			if (chargeTime == 4) {
-				hero.dash(chargeTime);
-			}
+		if(keys.contains(KeyEvent.VK_D)) {
+			hero.dash(1);
 		}
 		
 		hero.act(platforms, e1);

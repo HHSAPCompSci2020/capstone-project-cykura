@@ -21,8 +21,8 @@ public class Hero extends MovingImage{
 	private double gravity;
 	private int hearts;
 	private ArrayList<Ability> collectedAbilities;
-	private boolean charging;
 	private boolean canDash;
+	private int invincibilityTime;
 
 	public Hero(PImage img, int x, int y) {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);
@@ -57,7 +57,7 @@ public class Hero extends MovingImage{
 		}
 	}
 	
-	public void dash(int direction) {
+	public void dash(double direction) {
 		if(canDash) {
 			vx += (direction*6);
 		}
@@ -152,13 +152,23 @@ public class Hero extends MovingImage{
 		if (Math.abs(vx) < .5)
 			vx = 0;
 		
-		if (this.intersects(enemy)) {
-			hearts--;
-			jump();
-		}
+		checkCollision(enemy);
 		
 		//System.out.println(x2+" "+y2);
 		moveToLocation(x2,y2);
+	}
+	
+	
+	public void checkCollision(Enemy e1) {
+		if (invincibilityTime > 0) {
+			invincibilityTime--;
+		}
+		
+		if ((this.intersects(e1)) && (invincibilityTime == 0)) {
+			hearts--;
+			jump();
+			invincibilityTime = 80;
+		}
 	}
 
 }
