@@ -48,6 +48,12 @@ public class DrawingSurface extends PApplet{
 		spawnHero();
 		spawnEnemy();
 		fireball = loadImage("sprites\\FireballSprite.png");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
