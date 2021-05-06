@@ -34,6 +34,6 @@ public class Enemy extends MovingImage{
 	
 	public void draw(PApplet g) {
 		super.draw(g);
-		g.text("Health: "+health, (int)x+10, (int)y-20);
+		g.text("Health: "+health, (int)x-10, (int)y-20);
 	}
 }
