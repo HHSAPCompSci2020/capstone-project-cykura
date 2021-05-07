@@ -7,6 +7,8 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class Waterfall extends Projectile {
+	private int waterHeight;
+	private int max;
 	/**
 	 * Creates a new instance of a Waterfall object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -23,6 +25,9 @@ public class Waterfall extends Projectile {
 		super(img, x, y, w, h, vx, vy);
 	}
 	public void act() {
+		if(waterHeight<max) {
+			waterHeight+=vy;
+		}
 		//Is this really a projectile? 
 		//Extend the waterfall height till ground/set height and then it will be solid block and dissapear
 	}

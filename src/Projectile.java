@@ -6,7 +6,8 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class Projectile extends MovingImage{
-	private double vy, vx;
+	protected double vy;
+	private double vx;
 	/**
 	 * Creates a new instance of a Projectile object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
