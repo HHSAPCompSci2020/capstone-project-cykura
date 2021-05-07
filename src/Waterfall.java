@@ -1,3 +1,4 @@
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.util.ArrayList;
 
@@ -11,6 +12,8 @@ import processing.core.PImage;
  */
 public class Waterfall extends Projectile {
 	private int waterHeight;
+	private int h1;
+	private int w1;
 	private int max;
 	/**
 	 * Creates a new instance of a Waterfall object having its left
@@ -26,6 +29,8 @@ public class Waterfall extends Projectile {
 	**/
 	public Waterfall(PImage img, int x, int y, int w, int h, double vx, double vy){
 		super(img, x, y, w, h, vx, vy);
+		h1 = h;
+		w1 = w;
 	}
 	public void act() {
 		if(waterHeight<max) {
@@ -36,7 +41,12 @@ public class Waterfall extends Projectile {
 	}
 	
 	public void checkPlatforms(ArrayList<Shape> platforms) {
-		
+		Rectangle r = new Rectangle((int)x,(int)(y+h1),w1,waterHeight);
+		for(Shape plat: platforms) {
+			if(plat.intersects(r)) {
+				
+			}
+		}
 	}
 	
 	public boolean checkCollision(Enemy e, Hero h) {
