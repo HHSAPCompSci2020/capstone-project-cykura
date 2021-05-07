@@ -2,6 +2,8 @@ import java.awt.Shape;
 import java.util.ArrayList;
 
 import processing.core.PImage;
+import processing.core.PApplet;
+
 
 /**
  * The FireEnemy class represents an Enemy with the Fireball projectile which the Player can defeat.
@@ -26,33 +28,53 @@ public class FireEnemy extends Enemy{
 	}
 	
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
-		double x1 = hero.x;
-	    double y1 = hero.y;
-
-	    double diffX = x1 - x;
-	    double diffY = y1 - y;
-
-	    float angle = (float)Math.atan2(diffY, diffX);
-	    if(this.intersects(hero)) {
-//	    	 System.out.println("Collided with hero");
-	   	     waitTime=45;
-	    }
-	    if(Math.random()>0.94) {
-	    	//fireballs.add(new Fireball(x,y,v*Math.cos(angle)+x,v*Math.sin(angle)+y));
-	    }
-	     if(waitTime<=0) {
-	    	 x += v * Math.cos(angle);
-	    	 y += v * Math.sin(angle);
-	    	 waitTime = 0;
-	     }
-	     else {
-	    	 waitTime--;
-	     }
-	     for(Fireball f:fireballs) {
-	    	 if(f!=null) {
-	    	 //f.act(hero, this, obstacles);
-	    	 }
-	     }
+		if(health>0) {
+			double x1 = hero.x;
+		    double y1 = hero.y;
+	
+		    double diffX = x1 - x;
+		    double diffY = y1 - y;
+	
+		    float angle = (float)Math.atan2(diffY, diffX);
+		    if(this.intersects(hero)) {
+	//	    	 System.out.println("Collided with hero");
+		   	     waitTime=45;
+		    }
+		    if(Math.random()>0.985) {
+		    	Fireball f = new Fireball(DrawingSurface.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)+1.5, v*Math.sin(angle)+1.5);
+		    	fireballs.add(f);
+		    }
+		     if(waitTime<=0) {
+		    	x += v * Math.cos(angle);
+		    	y += v * Math.sin(angle);
+		    	 waitTime = 0;
+		     }
+		     else {
+		    	 waitTime--;
+		     }
+		     for(int i=0;i<fireballs.size();i++) {
+		    	 Fireball f = fireballs.get(i);
+		    	 if(f!=null) {
+		    		 f.act();
+		    	 }
+		     }
+		}
+		else {
+			x=-20;
+			y=-20;
+		}
+	}
+	
+	public ArrayList<Fireball> getFireballs() {
+		return fireballs;
 	}
 
+	public void draw(PApplet g) {
+		super.draw(g);
+		for(Fireball f:fireballs) {
+			if(f!=null) {
+				f.draw(g);
+			}
+		}
+	}
 }

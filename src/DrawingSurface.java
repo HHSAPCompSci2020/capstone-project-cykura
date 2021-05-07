@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 /**
  * The surface that draws and runs the game
  * @author Animan
@@ -12,10 +13,13 @@ import processing.core.PApplet;
 public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
+	public static PImage fireball;
 	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
-	private Enemy e1;
+//	private ArrayList<Projectile> projectiles;
+//	private Enemy e1;
+	private FireEnemy fe;
 	private ArrayList<Integer> keys;
 	
 
@@ -27,6 +31,7 @@ public class DrawingSurface extends PApplet{
 		keys = new ArrayList<Integer>();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		platforms = generatePlatforms();
+//		projectiles = new ArrayList<Projectile>();
 	}
 	
 	private void spawnHero() {
@@ -35,12 +40,20 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	private void spawnEnemy() {
-		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50);
+//		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50);
+		fe = new FireEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50);
 	}
 	
 	public void setup() {
 		spawnHero();
 		spawnEnemy();
+		fireball = loadImage("sprites\\FireballSprite.png");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -70,7 +83,13 @@ public class DrawingSurface extends PApplet{
 		if (hero.getHearts() > 0) {
 			hero.draw(this);
 		}
-		e1.draw(this);
+//		e1.draw(this);
+		
+		
+		fe.draw(this);
+			
+
+
 		
 		popMatrix();
 		
@@ -95,14 +114,18 @@ public class DrawingSurface extends PApplet{
 		}
 		
 		if(isPressed(KeyEvent.VK_SPACE)) {
-			hero.punch(e1);
+//			hero.punch(e1);
+			hero.punch(fe);
 		}
 		
 		if (hero.getHearts() > 0) {
-			hero.act(platforms, e1);
+			hero.act(platforms, fe, fe.getFireballs());
+//			hero.act(platforms, e1, e1.getProjectiles());
 		}
 		
-		e1.act(hero,platforms);
+//		e1.act(hero,platforms);
+		fe.act(hero, platforms);
+
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();
