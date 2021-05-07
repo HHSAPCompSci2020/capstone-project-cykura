@@ -23,5 +23,12 @@ public class Fireball extends Projectile {
 	public Fireball(PImage img, int x, int y, int w, int h,double vx, double vy) {
 		super(img, x, y, w, h, vx, vy);
 	}
-
+	public void act() {
+		super.act();
+	}
+	public boolean checkCollision(Enemy e, Hero h, Platform p) {
+		if (this.intersects(p)) return true;
+		super.checkCollision(e, h);
+		return false;
+	}
 }

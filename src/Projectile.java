@@ -28,7 +28,6 @@ public class Projectile extends MovingImage{
 	public void act() {
 		super.moveByAmount(vx,vy);
 	}
-
 	public boolean checkCollision(Enemy e, Hero h) {
 		if (this.intersects(e)||this.intersects(h)) {
 			return true;
