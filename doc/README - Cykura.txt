@@ -1,6 +1,6 @@
 ﻿Cykura
 Authors: Alex Zheng, Animan Patil, Vicram Vijayakumar
-Revision: 4.26.21
+Revision: 5.7.21
 
 
 Introduction: 
@@ -43,7 +43,7 @@ Must-have Features:
    * Fireball shoots a fireball left and right of the player
       * 3 HP damage to enemies
       * ½ Heart damage to player
-   * Waterfall shoots a waterfall up or down (based on whether the player is on the ground or not)
+   * Waterfall shoots a waterfall down if the Hero is air borne
       * 7 HP damage to enemies
       * 1 Heart damage to player
    * Leaf dash allows the player to dash left and right and deal damage to enemies passed
@@ -134,7 +134,7 @@ Class List:
 * Boss: A subclass which is able to use all of the abilities
 * Projectile: Projectiles which players and enemies can use to damage other
 * Fireball: A subclass of the Ability class which shoots a fireball
-* Waterfall: A subclass of the Ability class that shoots a waterfall up or down
+* Waterfall: A subclass of the Ability class that shoots a waterfall down if the Hero is in the air
 * DrawingSurface: The surface which draws all of the different Objects
 * Main: The class which has the DrawingSurface and Window
 * Platform: Class representing the moving platforms player and hero can walk on with potential spikes
@@ -146,8 +146,8 @@ Class List:
 Credits:
 * Work Split:
 Animan: FireEnemy, DrawingSurface, Enemy
-Vicram: WaterEnemy, Hero, Waterfall, Platform
-Alex: GrassEnemy, Main, Ability, Fireball
+Vicram: GrassEnemy, Hero, Platform, Spike
+Alex: Waterfall, WaterEnemy, Main, Projectile, Fireball
 All: Boss, WindEnemy (if coded)
 
 
@@ -158,30 +158,49 @@ Hero Class Base Code <Modified by Vicram>: Mr. Shelby
 
 
 * Outside Resources:
-Hero Character Sprite Credit: 
-https://drive.google.com/file/d/1dmXliJtleGvaMhvep4Mn6j-y9HCR5R_Z/view?usp=sharing
+Hero Character Sprite Credit: https://drive.google.com/file/d/1dmXliJtleGvaMhvep4Mn6j-y9HCR5R_Z/view?usp=sharing
 Hero Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=maskD&nose=button&shoes=boots_black1&legs=pants_teal&clothes=formal_striped&mail=none&armor=12&jacket=none&arms=1&shoulders=none&bracers=none&greaves=2&gloves=3&belt=none&cape=none&hair=none&ears=elven&hat=morion
+
+
 Enemy Sprite Credit:
 https://drive.google.com/file/d/1JGEBLbEOWJ64ST1E9fNlpPLTvu5f45-0/view?usp=sharing
 Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=none&nose=button&shoes=boots_1&legs=pants_teal&clothes=formal_striped&mail=none&armor=15&jacket=none&arms=2&shoulders=none&bracers=none&greaves=5&gloves=1&belt=none&cape=none&hair=none&ears=big&hat=plate5&shield=none&capeacc=none&eyes=none
+
+
 Fire Enemy Sprite Credit:
 https://drive.google.com/file/d/1-rQfYtPvoS2B0jIpQcygxtFOvB9hT-2m/view?usp=sharing
 Fire Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=none&nose=button&shoes=boots_6&legs=pants_teal&clothes=formal_striped&mail=none&armor=16&jacket=none&arms=6&shoulders=none&bracers=none&greaves=6&gloves=7&belt=none&cape=male_red&hair=none&ears=big&hat=horned6&shield=none&capeacc=none&eyes=none
+
+
 Water Enemy Sprite Credit:
 https://drive.google.com/file/d/1H1-Sx-D7XyojQTA1tw2yuulRNNjoAi_a/view?usp=sharing
 Water Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=none&nose=button&shoes=boots_2&legs=none&clothes=none&mail=none&armor=chest_leather3&jacket=none&arms=2&shoulders=none&bracers=none&greaves=2&gloves=3&belt=none&cape=male_blue&hair=none&ears=big&hat=horned2&shield=none&capeacc=none&eyes=none
+
+
 Grass Enemy Sprite Credit:
 https://drive.google.com/file/d/16YZJGXwb2KcsXQTLQy4JHaNj6WTZUzwS/view?usp=sharing
 Grass Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=none&nose=button&shoes=boots_2&legs=pants_formal_stripes&clothes=none&mail=none&armor=chest_leather2&jacket=none&arms=2&shoulders=none&bracers=none&greaves=none&gloves=3&belt=none&cape=none&hair=none&ears=big&hat=horned2&shield=none&capeacc=none&eyes=none
+
+
 Wind Enemy Sprite Credit:
 https://drive.google.com/file/d/1iRpbgks-wXQ9-k_II-4A9as-Sk7rHh0w/view?usp=sharing
 Wind Enemy: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=none&nose=button&shoes=sandalsroman&legs=none&clothes=none&mail=none&armor=11&jacket=none&arms=2&shoulders=legion_steel&bracers=none&greaves=1&gloves=4&belt=none&cape=male_gray&hair=none&ears=big&hat=plate2&shield=none&capeacc=none&eyes=none
+
+
 Boss Enemy Sprite Credit:
 https://drive.google.com/file/d/1A8TZtyKXljocyp3IqByI84jk9w875BNX/view?usp=sharing
 Boss Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?shadow-adult=0&facial=none&nose=button&shoes=boots_3&legs=none&clothes=none&mail=none&armor=14&jacket=none&arms=5&shoulders=none&bracers=none&greaves=5&gloves=4&belt=none&cape=none&hair=none&ears=big&hat=horned4&shield=none&capeacc=none&eyes=none
+
+
+Fireball Sprite Credit:
+https://webstockreview.net/pict/getfirst
+
+
 Platform Sprite Credit:
 https://opengameart.org/content/platformer-art-pixel-edition
 Kenny.nl
+
+
 Heart Sprite Credit:
 heart pixel art | OpenGameArt.org
 Credit DanSevenStar.xyz, DontMind8.blogspot.com
