@@ -236,7 +236,10 @@ public class Hero extends MovingImage{
 		
 		if (enemy != null) {
 			checkCollision(enemy);
-			checkProjectileCollsion(fireballs);
+		}
+		
+		if (fireballs != null) {
+			checkProjectileCollision(fireballs);
 		}
 		//System.out.println(x2+" "+y2);
 		moveToLocation(x2,y2);
@@ -259,7 +262,7 @@ public class Hero extends MovingImage{
 		}
 	}
 	
-	public void checkProjectileCollsion(ArrayList<Fireball> p) {
+	public void checkProjectileCollision(ArrayList<Fireball> p) {
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
 		}
