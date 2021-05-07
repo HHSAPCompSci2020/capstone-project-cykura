@@ -2,6 +2,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.util.ArrayList;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -31,6 +32,7 @@ public class Waterfall extends Projectile {
 		super(img, x, y, w, h, vx, vy);
 		h1 = h;
 		w1 = w;
+		max = 100;
 	}
 	public void act() {
 		if(waterHeight<max) {
@@ -44,9 +46,13 @@ public class Waterfall extends Projectile {
 		Rectangle r = new Rectangle((int)x,(int)(y+h1),w1,waterHeight);
 		for(Shape plat: platforms) {
 			if(plat.intersects(r)) {
-				
+				waterHeight=(int) (plat.getBounds().y-(y+h1));
 			}
 		}
+	}
+	
+	public void draw(PApplet g) {
+		g.image(image,(int)x,(int)y,(int)width,(int)waterHeight);
 	}
 	
 	public boolean checkCollision(Enemy e, Hero h) {
