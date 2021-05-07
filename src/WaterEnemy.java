@@ -22,10 +22,12 @@ public class WaterEnemy extends Enemy {
 	**/
 	public WaterEnemy(PImage img, int x, int y) {
 		super(img, x, y);
-		w = new Waterfall(DrawingSurface.water,(int)x,(int)y,20,20,0,2);
+		
 	}
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
+		if(w==null)
+		w = new Waterfall(DrawingSurface.water,(int)x,(int)y+40,20,20,0,8);
 		w.act();
 		w.checkPlatforms(platforms);
 	}
