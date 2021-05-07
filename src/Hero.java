@@ -48,6 +48,10 @@ public class Hero extends MovingImage{
 		facingDirection = 0;	// right direction
 	}
 	
+	public boolean getOnASurface() {
+		return onASurface;
+	}
+	
 	/**
 	 * Adds a projectile to the Hero's list of projectiles.
 	 * @param a An projectile to add to the Hero's list of projectiles.
