@@ -37,7 +37,7 @@ public class Waterfall extends Projectile {
 	public void act() {
 		if(waterHeight<max) {
 			waterHeight+=vy;
-			System.out.println(waterHeight);
+			//System.out.println(waterHeight);
 		}
 		//Is this really a projectile? 
 		//Extend the waterfall height till ground/set height and then it will be solid block and dissapear
