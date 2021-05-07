@@ -1,3 +1,7 @@
+import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+
 import processing.core.PImage;
 
 /**
@@ -26,8 +30,10 @@ public class Fireball extends Projectile {
 	public void act() {
 		super.act();
 	}
-	public boolean checkCollision(Enemy e, Hero h, Platform p) {
-		if (this.intersects(p)) return true;
+	public boolean checkCollision (Enemy e, Hero h, ArrayList<Shape> shapes) {
+		for (int i=0;i<shapes.size();i++) {
+			if(this.intersects((Rectangle2D) shapes.get(i))) return true;
+		}
 		super.checkCollision(e, h);
 		return false;
 	}
