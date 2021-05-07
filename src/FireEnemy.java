@@ -52,7 +52,8 @@ public class FireEnemy extends Enemy{
 		     else {
 		    	 waitTime--;
 		     }
-		     for(Fireball f:fireballs) {
+		     for(int i=0;i<fireballs.size();i++) {
+		    	 Fireball f = fireballs.get(i);
 		    	 if(f!=null) {
 		    		 f.act();
 		    	 }
