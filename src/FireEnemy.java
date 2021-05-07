@@ -56,6 +56,9 @@ public class FireEnemy extends Enemy{
 		    	 Fireball f = fireballs.get(i);
 		    	 if(f!=null) {
 		    		 f.act();
+		    		 if(f.checkCollision(this, hero, obstacles)) {
+		    			 fireballs.set(i, null);
+		    		 }
 		    	 }
 		     }
 		}
