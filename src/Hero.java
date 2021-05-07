@@ -275,8 +275,8 @@ public class Hero extends MovingImage{
 				if (((this.intersects(p.get(i))) && (invincibilityTime == 0))) {
 					hearts--;
 					invincibilityTime = 80;
-					Fireball p1 = p.get(i);
-					p1 = null;
+					p.remove(i);
+					i--;
 				}
 			}
 		}
