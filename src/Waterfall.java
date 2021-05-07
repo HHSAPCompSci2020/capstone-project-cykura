@@ -42,6 +42,7 @@ public class Waterfall extends Projectile {
 		//Extend the waterfall height till ground/set height and then it will be solid block and dissapear
 	}
 	
+	//call this after calling act
 	public void checkPlatforms(ArrayList<Shape> platforms) {
 		Rectangle r = new Rectangle((int)x,(int)(y+h1),w1,waterHeight);
 		for(Shape plat: platforms) {
