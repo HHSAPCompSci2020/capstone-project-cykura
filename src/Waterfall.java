@@ -1,3 +1,6 @@
+import java.awt.Shape;
+import java.util.ArrayList;
+
 import processing.core.PImage;
 
 /**
@@ -31,6 +34,11 @@ public class Waterfall extends Projectile {
 		//Is this really a projectile? 
 		//Extend the waterfall height till ground/set height and then it will be solid block and dissapear
 	}
+	
+	public void checkPlatforms(ArrayList<Shape> platforms) {
+		
+	}
+	
 	public boolean checkCollision(Enemy e, Hero h) {
 		super.checkCollision(e, h);
 		return false;
