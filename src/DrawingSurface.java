@@ -14,12 +14,14 @@ public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
+	public static PImage water;
 	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 //	private ArrayList<Projectile> projectiles;
 //	private Enemy e1;
 	private FireEnemy fe;
+	private WaterEnemy we;
 	private ArrayList<Integer> keys;
 	
 
@@ -42,12 +44,14 @@ public class DrawingSurface extends PApplet{
 	private void spawnEnemy() {
 //		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50);
 		fe = new FireEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50);
+		we = new WaterEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+200, 50);
 	}
 	
 	public void setup() {
 		spawnHero();
 		spawnEnemy();
 		fireball = loadImage("sprites\\FireballSprite.png");
+		water = loadImage("sprites\\FireballSprite.png");
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -87,7 +91,7 @@ public class DrawingSurface extends PApplet{
 		
 		
 		fe.draw(this);
-			
+		we.draw(this);	
 
 
 		
@@ -125,7 +129,7 @@ public class DrawingSurface extends PApplet{
 		
 //		e1.act(hero,platforms);
 		fe.act(hero, platforms);
-
+		we.act(hero, platforms);
 		
 		if (!screenRect.intersects(hero))
 			spawnHero();

@@ -1,3 +1,7 @@
+import java.awt.Shape;
+import java.util.ArrayList;
+
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -7,7 +11,7 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class WaterEnemy extends Enemy {
-	
+	private Waterfall w;
 	/**
 	 * Creates a new instance of a WaterEnemy object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -19,5 +23,15 @@ public class WaterEnemy extends Enemy {
 	public WaterEnemy(PImage img, int x, int y) {
 		super(img, x, y);
 	}
-
+	
+	public void act(Hero h, ArrayList<Shape> platforms) {
+		w = new Waterfall(DrawingSurface.water,(int)x,(int)y,20,20,0,2);
+		w.act();
+	}
+	
+	public void draw(PApplet g) {
+		super.draw(g);
+		if(w!=null)
+		w.draw(g);
+	}
 }
