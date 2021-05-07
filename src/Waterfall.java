@@ -46,11 +46,11 @@ public class Waterfall extends Projectile {
 	//call this after calling act
 	public void checkPlatforms(ArrayList<Shape> platforms) {
 		Rectangle r = new Rectangle((int)x,(int)(y+h1),w1,waterHeight);
-		System.out.println(waterHeight);
+		//System.out.println(waterHeight);
 		for(Shape plat: platforms) {
 			if(plat.intersects(r)) {
 				waterHeight=(int) (plat.getBounds().y-(y+h1));
-				System.out.println(waterHeight);
+				//System.out.println(waterHeight);
 			}
 		}
 	}
