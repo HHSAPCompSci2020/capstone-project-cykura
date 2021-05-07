@@ -27,7 +27,7 @@ public class WaterEnemy extends Enemy {
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
 		if(w==null)
-		w = new Waterfall(DrawingSurface.water,(int)x,(int)y+40,20,20,0,8);
+		w = new Waterfall(DrawingSurface.water,(int)x+20,(int)y+40,20,20,0,10);
 		w.act();
 		w.checkPlatforms(platforms);
 	}
