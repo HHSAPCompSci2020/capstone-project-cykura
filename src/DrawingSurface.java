@@ -18,6 +18,8 @@ public class DrawingSurface extends PApplet{
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
+	public float x_view;
+	public float y_view;
 	
 	private Rectangle screenRect;
 	private Hero hero;
@@ -69,7 +71,7 @@ public class DrawingSurface extends PApplet{
 	 */
 	public void draw() {
 		background(0,255,255);   
-		
+		scroll();
 		pushMatrix();
 		
 		int width = this.width;
@@ -167,5 +169,8 @@ public class DrawingSurface extends PApplet{
 		return keys.contains(code);
 	}
 	
+	public void scroll() {
+		
+	}
 
 }
