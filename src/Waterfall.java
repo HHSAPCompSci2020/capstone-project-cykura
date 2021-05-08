@@ -8,7 +8,7 @@ import processing.core.PImage;
 /**
  * The Waterfall class represents a water fall which is one of the abilities that the Hero can collect.
  * 
- * @author vicram_vijayakumar
+ * @author animan_patil
  * @version 5.6.21
  */
 public class Waterfall extends Projectile {

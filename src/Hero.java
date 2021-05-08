@@ -47,7 +47,11 @@ public class Hero extends MovingImage{
 		collectedProjectiles = new ArrayList<Projectile>();
 		facingDirection = 0;	// right direction
 	}
-	
+
+	/**
+	 * Gets whether the Hero is on a surface or not.
+	 * @return true if the Hero is standing on a surface.
+	**/
 	public boolean getOnASurface() {
 		return onASurface;
 	}
@@ -266,6 +270,12 @@ public class Hero extends MovingImage{
 		}
 	}
 	
+	/**
+	 * Checks whether the Hero gets hit by a Projectile.
+	 * If so, the Hero loses damage and gains some time in which the Hero is invincible.
+	 * 
+	 * @param p The list of Fireballs to check with the 
+	**/
 	public void checkProjectileCollision(ArrayList<Fireball> p) {
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
