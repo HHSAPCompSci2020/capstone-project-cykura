@@ -4,7 +4,11 @@
 import java.awt.Point;
 import java.awt.Rectangle;
 
-
+/**
+ * 
+ * @author Mr. Shelby
+ *
+ */
 public class FirstScreen extends Screen {
 
 	private DrawingSurface surface;

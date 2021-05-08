@@ -22,7 +22,7 @@ public class GameScreen extends Screen {
 	private DrawingSurface surface;
 //	private Rectangle screenRect;
 //	private Hero hero;
-//	private ArrayList<Shape> platforms;
+	private ArrayList<Shape> platforms;
 //	private ArrayList<Projectile> projectiles;
 //	private Enemy e1;
 //	private FireEnemy fe;
@@ -39,10 +39,11 @@ public class GameScreen extends Screen {
 		
 		x = 30;
 		y = 30;
+		platforms = generatePlatforms();
+
 		
 //		keys = new ArrayList<Integer>();
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-//		platforms = generatePlatforms();
 //		projectiles = new ArrayList<Projectile>();
 	}
 	
@@ -75,9 +76,10 @@ public class GameScreen extends Screen {
 	 */
 	public void draw() {
 		
-		surface.pushStyle();
+		surface.pushMatrix();
 		
-		surface.background(255);   // Clear the screen with a white background
+		surface.background(0, 255, 255);
+		
 		surface.stroke(0);     // Set line drawing color to white
 		surface.noFill();
 
@@ -86,20 +88,21 @@ public class GameScreen extends Screen {
 		surface.fill(0);
 		surface.text("Move: Arrow keys",10,30);
 		surface.text("Menu: Space",10,50);
-
-		surface.popStyle();
 		
-//		surface.background(0,255,255);   
+		surface.fill(100);
+		for (Shape s : platforms) {
+			if (s instanceof Rectangle) {
+				Rectangle r = (Rectangle)s;
+				surface.rect(r.x,r.y,r.width,r.height);
+			}
+		}
+		
+		
+		surface.popMatrix();
+		
 //		scroll();
 //		surface.pushMatrix();
 		
-//		int width = this.width;
-//		int height = this.height;
-		
-//		float ratioX = (float)width/DRAWING_WIDTH;
-//		float ratioY = (float)height/DRAWING_HEIGHT;
-		
-//		scale(ratioX, ratioY);
 		
 //		fill(100);
 //		for (Shape s : platforms) {
@@ -120,7 +123,6 @@ public class GameScreen extends Screen {
 
 
 		
-//		popMatrix();
 		
 //		if (isPressed(KeyEvent.VK_LEFT)) {
 //			System.out.println("l");
@@ -162,17 +164,17 @@ public class GameScreen extends Screen {
 		
 	}
 	
-//	private ArrayList<Shape> generatePlatforms(){
-//		ArrayList<Shape> p = new ArrayList<Shape>();
-//		p.add(new Rectangle(200,365,400,50));	//bottom middle
-//		p.add(new Rectangle(0,250,120,50)); 	// top left
-//		p.add(new Rectangle(680,250,120,50));	// top right
-//		p.add(new Rectangle(375,265,50,100));	// Vertical middle
-//		p.add(new Rectangle(300,250,200,50));	// top middle
-//		p.add(new Rectangle(980,250,120,50));
-//		p.add(new Rectangle(1280,250,120,50));
-//		return p;
-//	}
+	private ArrayList<Shape> generatePlatforms(){
+		ArrayList<Shape> p = new ArrayList<Shape>();
+		p.add(new Rectangle(200,365,400,50));	//bottom middle
+		p.add(new Rectangle(0,250,120,50)); 	// top left
+		p.add(new Rectangle(680,250,120,50));	// top right
+		p.add(new Rectangle(375,265,50,100));	// Vertical middle
+		p.add(new Rectangle(300,250,200,50));	// top middle
+		p.add(new Rectangle(980,250,120,50));
+		p.add(new Rectangle(1280,250,120,50));
+		return p;
+	}
 	
 	public void keyPressed() {
 		//System.out.println("keyPressed");

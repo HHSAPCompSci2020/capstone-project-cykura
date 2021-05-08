@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 
+/**
+ * 
+ * @author Mr. Shelby
+ *
+ */
 public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
 	public float ratioX, ratioY;
