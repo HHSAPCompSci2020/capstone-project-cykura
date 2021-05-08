@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class GameScreen extends PApplet {
+public class GameScreen extends Screen {
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
@@ -18,6 +18,8 @@ public class GameScreen extends PApplet {
 	public float view_x;
 	public float view_y;
 	
+	private int x, y;
+	private DrawingSurface surface;
 	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
@@ -32,7 +34,12 @@ public class GameScreen extends PApplet {
 	 * Default Constructor
 	 */
 	public GameScreen() {
-		super();
+		super(800,600);
+		this.surface = surface;
+		
+		x = 30;
+		y = 30;
+		
 		keys = new ArrayList<Integer>();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		platforms = generatePlatforms();
@@ -67,9 +74,9 @@ public class GameScreen extends PApplet {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
-		background(0,255,255);   
+		surface.background(0,255,255);   
 		scroll();
-		pushMatrix();
+		surface.pushMatrix();
 		
 		int width = this.width;
 		int height = this.height;
