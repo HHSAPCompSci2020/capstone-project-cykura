@@ -33,7 +33,7 @@ public class GameScreen extends Screen {
 	/**
 	 * Default Constructor
 	 */
-	public GameScreen() {
+	public GameScreen(DrawingSurface surface) {
 		super(800,600);
 		this.surface = surface;
 		
@@ -47,21 +47,21 @@ public class GameScreen extends Screen {
 	}
 	
 	private void spawnHero() {
-		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
-		hero.setDash(true);
+//		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+//		hero.setDash(true);
 	}
 	
 	private void spawnEnemy() {
 //		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50);
-		fe = new FireEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50);
-		we = new WaterEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150);
+//		fe = new FireEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50);
+//		we = new WaterEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150);
 	}
 	
 	public void setup() {
 		spawnHero();
 		spawnEnemy();
-		fireball = loadImage("sprites\\FireballSprite.png");
-		water = loadImage("sprites\\FireballSprite.png");
+//		fireball = loadImage("sprites\\FireballSprite.png");
+//		water = loadImage("sprites\\FireballSprite.png");
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -78,34 +78,34 @@ public class GameScreen extends Screen {
 		scroll();
 		surface.pushMatrix();
 		
-		int width = this.width;
-		int height = this.height;
+//		int width = this.width;
+//		int height = this.height;
 		
-		float ratioX = (float)width/DRAWING_WIDTH;
-		float ratioY = (float)height/DRAWING_HEIGHT;
+//		float ratioX = (float)width/DRAWING_WIDTH;
+//		float ratioY = (float)height/DRAWING_HEIGHT;
 		
-		scale(ratioX, ratioY);
+//		scale(ratioX, ratioY);
 		
-		fill(100);
+//		fill(100);
 		for (Shape s : platforms) {
 			if (s instanceof Rectangle) {
 				Rectangle r = (Rectangle)s;
-				rect(r.x,r.y,r.width,r.height);
+//				rect(r.x,r.y,r.width,r.height);
 			}
 		}
 		
 		if (hero.getHearts() > 0) {
-			hero.draw(this);
+//			hero.draw(this);
 		}
 //		e1.draw(this);
 		
 		
-		fe.draw(this);
-		we.draw(this);	
+//		fe.draw(this);
+//		we.draw(this);	
 
 
 		
-		popMatrix();
+//		popMatrix();
 		
 		if (isPressed(KeyEvent.VK_LEFT)) {
 //			System.out.println("l");
@@ -162,13 +162,13 @@ public class GameScreen extends Screen {
 	public void keyPressed() {
 		//System.out.println("keyPressed");
 		//
-		keys.add(keyCode);
+//		keys.add(keyCode);
 	}
 
 	public void keyReleased() {
 		//System.out.println("keyReleased");
-		while(keys.contains(keyCode))
-			keys.remove(new Integer(keyCode));
+//		while(keys.contains(keyCode))
+//			keys.remove(new Integer(keyCode));
 	}
 
 	public boolean isPressed(Integer code) {
@@ -190,7 +190,7 @@ public class GameScreen extends Screen {
 		if(hero.y<t_b) {
 			view_y-=t_b-hero.y;
 		}
-		translate(-view_x,-view_y);
+//		translate(-view_x,-view_y);
 	}
 
 }
