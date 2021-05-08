@@ -15,6 +15,10 @@ public class DrawingSurface extends PApplet{
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage water;
+	public static float Right_Margin = 400;
+	public static float Left_Margin = 60;
+	public static float Vertical_Margin = 40;
+	
 	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
