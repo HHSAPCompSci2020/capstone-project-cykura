@@ -18,8 +18,8 @@ public class DrawingSurface extends PApplet{
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
-	public float x_view;
-	public float y_view;
+	public float view_x;
+	public float view_y;
 	
 	private Rectangle screenRect;
 	private Hero hero;
@@ -170,7 +170,10 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	public void scroll() {
-		
+		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
+		if(hero.x+hero.width>r_b) {
+			view_x+=hero.x+hero.width-r_b;
+		}
 	}
 
 }
