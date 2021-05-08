@@ -28,7 +28,7 @@ public class GameScreen extends Screen {
 //	private Enemy e1;
 //	private FireEnemy fe;
 //	private WaterEnemy we;
-//	private ArrayList<Integer> keys;
+	private ArrayList<Integer> keys;
 	
 
 	/**
@@ -43,7 +43,7 @@ public class GameScreen extends Screen {
 		platforms = generatePlatforms();
 
 		
-//		keys = new ArrayList<Integer>();
+		keys = new ArrayList<Integer>();
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 //		projectiles = new ArrayList<Projectile>();
 	}
@@ -104,53 +104,58 @@ public class GameScreen extends Screen {
 			hero.draw(surface);
 		}
 		
+		for (Enemy e: enemies) {
+			e.draw(surface);
+		}
+		
+		if (isPressed(KeyEvent.VK_LEFT)) {
+//			System.out.println("l");
+			hero.walk(-1);
+			hero.setFacingDirection(180);
+		}
+		
+		if (isPressed(KeyEvent.VK_LEFT)) {
+			System.out.println("l");
+			hero.walk(-1);
+			hero.setFacingDirection(180);
+		}
+		if (isPressed(KeyEvent.VK_RIGHT)) {
+			//System.out.println("r");
+			hero.walk(1);
+			hero.setFacingDirection(0);
+		}
+			
+		if (isPressed(KeyEvent.VK_UP)) {
+			System.out.println("up");
+			hero.jump();
+		}
+		
+		if(isPressed(KeyEvent.VK_D)) {
+			hero.dash();
+		}
 		
 		surface.popMatrix();
 		
 		
-		
-		
-//		if (hero.getHearts() > 0) {
-//			hero.draw(this);
-//		}
-//		e1.draw(this);
-		
-		
-//		fe.draw(this);
-//		we.draw(this);	
+			
 
 
 		
 		
-//		if (isPressed(KeyEvent.VK_LEFT)) {
-//			System.out.println("l");
-//			hero.walk(-1);
-//			hero.setFacingDirection(180);
-//		}
-//		if (isPressed(KeyEvent.VK_RIGHT)) {
-			//System.out.println("r");
-//			hero.walk(1);
-//			hero.setFacingDirection(0);
-//		}
-//			
-//		if (isPressed(KeyEvent.VK_UP)) {
-//			System.out.println("up");
-//			hero.jump();
-//		}
-//		
-//		if(isPressed(KeyEvent.VK_D)) {
-//			hero.dash();
-//		}
+
 		
 //		if(isPressed(KeyEvent.VK_SPACE)) {
 //			hero.punch(e1);
 //			hero.punch(fe);
 //		}
 //		
-//		if (hero.getHearts() > 0) {
-//			hero.act(platforms, fe, fe.getFireballs());
-//			hero.act(platforms, e1, e1.getProjectiles());
-//		}
+		if (hero.getHearts() > 0) {
+			for (Enemy e: enemies) {
+				if (e instanceOf))
+			}
+			hero.act(platforms, fe, fe.getFireballs());
+			hero.act(platforms, e1, e1.getProjectiles());
+		}
 		
 //		e1.act(hero,platforms);
 //		fe.act(hero, platforms);
@@ -185,18 +190,17 @@ public class GameScreen extends Screen {
 	public void keyPressed() {
 		//System.out.println("keyPressed");
 		//
-//		keys.add(keyCode);
+		keys.add(surface.keyCode);
 	}
 
 	public void keyReleased() {
-		//System.out.println("keyReleased");
-//		while(keys.contains(keyCode))
-//			keys.remove(new Integer(keyCode));
+		while(keys.contains(surface.keyCode))
+			keys.remove(new Integer(surface.keyCode));
 	}
 
-//	public boolean isPressed(Integer code) {
-//		return keys.contains(code);
-//	}
+	public boolean isPressed(Integer code) {
+		return keys.contains(code);
+	}
 	
 	public void scroll() {
 //		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
