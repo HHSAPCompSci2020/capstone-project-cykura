@@ -137,8 +137,8 @@ public class DrawingSurface extends PApplet{
 		fe.act(hero, platforms);
 		we.act(hero, platforms);
 		
-		if (!screenRect.intersects(hero))
-			spawnHero();
+		//if (!screenRect.intersects(hero))
+			//spawnHero();
 
 		
 	}
@@ -150,6 +150,8 @@ public class DrawingSurface extends PApplet{
 		p.add(new Rectangle(680,250,120,50));	// top right
 		p.add(new Rectangle(375,265,50,100));	// Vertical middle
 		p.add(new Rectangle(300,250,200,50));	// top middle
+		p.add(new Rectangle(780,250,120,50));
+		p.add(new Rectangle(1080,250,120,50));
 		return p;
 	}
 	
