@@ -8,26 +8,26 @@ import processing.core.PImage;
 
 public class GameScreen extends Screen {
 
-	public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 500;
-	public static PImage fireball;
-	public static PImage water;
-	public static float Right_Margin = 400;
-	public static float Left_Margin = 60;
-	public static float Vertical_Margin = 40;
-	public float view_x;
-	public float view_y;
+//	public static final int DRAWING_WIDTH = 800;
+//	public static final int DRAWING_HEIGHT = 500;
+//	public static PImage fireball;
+//	public static PImage water;
+//	public static float Right_Margin = 400;
+//	public static float Left_Margin = 60;
+//	public static float Vertical_Margin = 40;
+//	public float view_x;
+//	public float view_y;
 	
 	private int x, y;
 	private DrawingSurface surface;
-	private Rectangle screenRect;
-	private Hero hero;
-	private ArrayList<Shape> platforms;
+//	private Rectangle screenRect;
+//	private Hero hero;
+//	private ArrayList<Shape> platforms;
 //	private ArrayList<Projectile> projectiles;
 //	private Enemy e1;
-	private FireEnemy fe;
-	private WaterEnemy we;
-	private ArrayList<Integer> keys;
+//	private FireEnemy fe;
+//	private WaterEnemy we;
+//	private ArrayList<Integer> keys;
 	
 
 	/**
@@ -40,9 +40,9 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		
-		keys = new ArrayList<Integer>();
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		platforms = generatePlatforms();
+//		keys = new ArrayList<Integer>();
+//		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
+//		platforms = generatePlatforms();
 //		projectiles = new ArrayList<Projectile>();
 	}
 	
@@ -58,25 +58,40 @@ public class GameScreen extends Screen {
 	}
 	
 	public void setup() {
-		spawnHero();
-		spawnEnemy();
+//		spawnHero();
+//		spawnEnemy();
 //		fireball = loadImage("sprites\\FireballSprite.png");
 //		water = loadImage("sprites\\FireballSprite.png");
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	/**
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
-		surface.background(0,255,255);   
-		scroll();
-		surface.pushMatrix();
+		
+		surface.pushStyle();
+		
+		surface.background(255);   // Clear the screen with a white background
+		surface.stroke(0);     // Set line drawing color to white
+		surface.noFill();
+
+		surface.rect(x,y,30,30);
+		
+		surface.fill(0);
+		surface.text("Move: Arrow keys",10,30);
+		surface.text("Menu: Space",10,50);
+
+		surface.popStyle();
+		
+//		surface.background(0,255,255);   
+//		scroll();
+//		surface.pushMatrix();
 		
 //		int width = this.width;
 //		int height = this.height;
@@ -87,16 +102,16 @@ public class GameScreen extends Screen {
 //		scale(ratioX, ratioY);
 		
 //		fill(100);
-		for (Shape s : platforms) {
-			if (s instanceof Rectangle) {
-				Rectangle r = (Rectangle)s;
+//		for (Shape s : platforms) {
+//			if (s instanceof Rectangle) {
+//				Rectangle r = (Rectangle)s;
 //				rect(r.x,r.y,r.width,r.height);
-			}
-		}
+//			}
+//		}
 		
-		if (hero.getHearts() > 0) {
+//		if (hero.getHearts() > 0) {
 //			hero.draw(this);
-		}
+//		}
 //		e1.draw(this);
 		
 		
@@ -107,39 +122,39 @@ public class GameScreen extends Screen {
 		
 //		popMatrix();
 		
-		if (isPressed(KeyEvent.VK_LEFT)) {
+//		if (isPressed(KeyEvent.VK_LEFT)) {
 //			System.out.println("l");
-			hero.walk(-1);
-			hero.setFacingDirection(180);
-		}
-		if (isPressed(KeyEvent.VK_RIGHT)) {
+//			hero.walk(-1);
+//			hero.setFacingDirection(180);
+//		}
+//		if (isPressed(KeyEvent.VK_RIGHT)) {
 			//System.out.println("r");
-			hero.walk(1);
-			hero.setFacingDirection(0);
-		}
-			
-		if (isPressed(KeyEvent.VK_UP)) {
+//			hero.walk(1);
+//			hero.setFacingDirection(0);
+//		}
+//			
+//		if (isPressed(KeyEvent.VK_UP)) {
 //			System.out.println("up");
-			hero.jump();
-		}
+//			hero.jump();
+//		}
+//		
+//		if(isPressed(KeyEvent.VK_D)) {
+//			hero.dash();
+//		}
 		
-		if(isPressed(KeyEvent.VK_D)) {
-			hero.dash();
-		}
-		
-		if(isPressed(KeyEvent.VK_SPACE)) {
+//		if(isPressed(KeyEvent.VK_SPACE)) {
 //			hero.punch(e1);
-			hero.punch(fe);
-		}
-		
-		if (hero.getHearts() > 0) {
-			hero.act(platforms, fe, fe.getFireballs());
+//			hero.punch(fe);
+//		}
+//		
+//		if (hero.getHearts() > 0) {
+//			hero.act(platforms, fe, fe.getFireballs());
 //			hero.act(platforms, e1, e1.getProjectiles());
-		}
+//		}
 		
 //		e1.act(hero,platforms);
-		fe.act(hero, platforms);
-		we.act(hero, platforms);
+//		fe.act(hero, platforms);
+//		we.act(hero, platforms);
 		
 		//if (!screenRect.intersects(hero))
 			//spawnHero();
@@ -147,17 +162,17 @@ public class GameScreen extends Screen {
 		
 	}
 	
-	private ArrayList<Shape> generatePlatforms(){
-		ArrayList<Shape> p = new ArrayList<Shape>();
-		p.add(new Rectangle(200,365,400,50));	//bottom middle
-		p.add(new Rectangle(0,250,120,50)); 	// top left
-		p.add(new Rectangle(680,250,120,50));	// top right
-		p.add(new Rectangle(375,265,50,100));	// Vertical middle
-		p.add(new Rectangle(300,250,200,50));	// top middle
-		p.add(new Rectangle(980,250,120,50));
-		p.add(new Rectangle(1280,250,120,50));
-		return p;
-	}
+//	private ArrayList<Shape> generatePlatforms(){
+//		ArrayList<Shape> p = new ArrayList<Shape>();
+//		p.add(new Rectangle(200,365,400,50));	//bottom middle
+//		p.add(new Rectangle(0,250,120,50)); 	// top left
+//		p.add(new Rectangle(680,250,120,50));	// top right
+//		p.add(new Rectangle(375,265,50,100));	// Vertical middle
+//		p.add(new Rectangle(300,250,200,50));	// top middle
+//		p.add(new Rectangle(980,250,120,50));
+//		p.add(new Rectangle(1280,250,120,50));
+//		return p;
+//	}
 	
 	public void keyPressed() {
 		//System.out.println("keyPressed");
@@ -171,25 +186,25 @@ public class GameScreen extends Screen {
 //			keys.remove(new Integer(keyCode));
 	}
 
-	public boolean isPressed(Integer code) {
-		return keys.contains(code);
-	}
+//	public boolean isPressed(Integer code) {
+//		return keys.contains(code);
+//	}
 	
 	public void scroll() {
-		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
-		if(hero.x+hero.width>r_b) {
-			view_x+=hero.x+hero.width-r_b;
-		}
-		
-		float l_b = view_x+Left_Margin;
-		if(hero.x<l_b) {
-			view_x-=l_b-hero.x;
-		}
-		
-		float t_b = view_y+Vertical_Margin;
-		if(hero.y<t_b) {
-			view_y-=t_b-hero.y;
-		}
+//		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
+//		if(hero.x+hero.width>r_b) {
+//			view_x+=hero.x+hero.width-r_b;
+//		}
+//		
+//		float l_b = view_x+Left_Margin;
+//		if(hero.x<l_b) {
+//			view_x-=l_b-hero.x;
+//		}
+//		
+//		float t_b = view_y+Vertical_Margin;
+//		if(hero.y<t_b) {
+//			view_y-=t_b-hero.y;
+//		}
 //		translate(-view_x,-view_y);
 	}
 
