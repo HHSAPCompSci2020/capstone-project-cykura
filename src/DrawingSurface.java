@@ -174,6 +174,17 @@ public class DrawingSurface extends PApplet{
 		if(hero.x+hero.width>r_b) {
 			view_x+=hero.x+hero.width-r_b;
 		}
+		
+		float l_b = view_x+Left_Margin;
+		if(hero.x<l_b) {
+			view_x-=l_b-hero.x;
+		}
+		
+		float t_b = view_y+Vertical_Margin;
+		if(hero.y<t_b) {
+			view_y-=t_b-hero.y;
+		}
+		translate(-view_x,-view_y);
 	}
 
 }
