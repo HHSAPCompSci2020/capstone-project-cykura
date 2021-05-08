@@ -21,8 +21,9 @@ public class GameScreen extends Screen {
 	private int x, y;
 	private DrawingSurface surface;
 //	private Rectangle screenRect;
-//	private Hero hero;
+	private Hero hero;
 	private ArrayList<Shape> platforms;
+	private ArrayList<Enemy> enemies;
 //	private ArrayList<Projectile> projectiles;
 //	private Enemy e1;
 //	private FireEnemy fe;
@@ -48,18 +49,19 @@ public class GameScreen extends Screen {
 	}
 	
 	private void spawnHero() {
-//		hero = new Hero(loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
-//		hero.setDash(true);
+		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+		hero.setDash(true);
 	}
 	
-	private void spawnEnemy() {
+//	private void spawnEnemy() {
 //		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50);
 //		fe = new FireEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50);
 //		we = new WaterEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150);
-	}
+//	}
 	
 	public void setup() {
-//		spawnHero();
+		spawnHero();
+		enemies = generateEnemies();
 //		spawnEnemy();
 //		fireball = loadImage("sprites\\FireballSprite.png");
 //		water = loadImage("sprites\\FireballSprite.png");
@@ -76,6 +78,7 @@ public class GameScreen extends Screen {
 	 */
 	public void draw() {
 		
+//		scroll();
 		surface.pushMatrix();
 		
 		surface.background(0, 255, 255);
@@ -97,20 +100,15 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		if (hero.getHearts() > 0) {
+			hero.draw(surface);
+		}
+		
 		
 		surface.popMatrix();
 		
-//		scroll();
-//		surface.pushMatrix();
 		
 		
-//		fill(100);
-//		for (Shape s : platforms) {
-//			if (s instanceof Rectangle) {
-//				Rectangle r = (Rectangle)s;
-//				rect(r.x,r.y,r.width,r.height);
-//			}
-//		}
 		
 //		if (hero.getHearts() > 0) {
 //			hero.draw(this);
@@ -176,6 +174,14 @@ public class GameScreen extends Screen {
 		return p;
 	}
 	
+	private ArrayList<Enemy> generateEnemies() {
+		ArrayList<Enemy> c = new ArrayList<Enemy>();
+		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50));
+		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
+		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
+		return c;
+	}
+	
 	public void keyPressed() {
 		//System.out.println("keyPressed");
 		//
@@ -209,6 +215,7 @@ public class GameScreen extends Screen {
 //		}
 //		translate(-view_x,-view_y);
 	}
+	
 
 }
 
