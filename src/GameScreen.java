@@ -106,19 +106,19 @@ public class GameScreen extends Screen {
 		}
 		
 		if (surface.isPressed(KeyEvent.VK_LEFT)) {
-			System.out.println("l");
+//			System.out.println("l");
 			hero.walk(-1);
 			hero.setFacingDirection(180);
 		}
 
 		if (surface.isPressed(KeyEvent.VK_RIGHT)) {
-			System.out.println("r");
+//			System.out.println("r");
 			hero.walk(1);
 			hero.setFacingDirection(0);
 		}
 			
 		if (surface.isPressed(KeyEvent.VK_UP)) {
-			System.out.println("up");
+//			System.out.println("up");
 			hero.jump();
 		}
 		
