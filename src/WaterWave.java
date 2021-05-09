@@ -40,7 +40,7 @@ public class WaterWave extends Circle {
 	}
 	
 	public boolean checkCollision(Enemy e, Hero h) {
-		if (this.intersects(e)||this.intersects(h)) {
+		if (this.intersects(e.getBounds2D())||this.intersects(h.getBounds2D())) {
 			return true;
 		}
 		return false;

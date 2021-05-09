@@ -12,7 +12,7 @@ import processing.core.PImage;
  * @author vicram_vijayakumar
  * @version 5.6.21
  */
-public class Hero extends MovingImage{
+public class Hero extends MovingImage {
 
 	public static final int HERO_WIDTH = 40;
 	public static final int HERO_HEIGHT = 60;
