@@ -53,7 +53,7 @@ public class Hero extends MovingImage{
 	 *   
 	**/
 	public void jump() {
-		System.out.println("Jump is called");
+//		System.out.println("Jump is called");
 		if (onASurface) {
 			vy -= 10;
 		}
@@ -119,7 +119,7 @@ public class Hero extends MovingImage{
 	public void walk(int direction) {
 		if (vx <= 10 && vx >= -10)
 			vx += direction;
-		System.out.println("Walk is called");
+//		System.out.println("Walk is called");
 	}
 	
 
@@ -129,7 +129,7 @@ public class Hero extends MovingImage{
 	 *  
 	**/
 	public void dash() {
-		System.out.println("Dash is called");
+//		System.out.println("Dash is called");
 		if(canDash && facingDirection == 0) {
 			vx += (6);
 		} else if (canDash && facingDirection == 180) {
