@@ -11,7 +11,7 @@ import processing.core.PImage;
  * @author animan_patil
  * @version 5.6.21
  */
-public class Waterfall extends Projectile {
+public class WaterWave {
 	private int waterHeight;
 	private int h1;
 	private int w1;
@@ -28,7 +28,7 @@ public class Waterfall extends Projectile {
 	 * @param vx The X component of the Projectile's velocity
 	 * @param vy The Y component of the Projectile's velocity
 	**/
-	public Waterfall(PImage img, int x, int y, int w, int h, double vx, double vy){
+	public WaterWave(PImage img, int x, int y, int w, int h, double vx, double vy){
 		super(img, x, y, w, h, vx, vy);
 		h1 = h;
 		w1 = w;
