@@ -18,14 +18,19 @@ public class Hero extends MovingImage{
 	public static final int HERO_HEIGHT = 60;
 
 	private double vx, vy;
-	private boolean onASurface;
 	private double friction;
 	private double gravity;
 	private int hearts;
-	private ArrayList<Projectile> collectedProjectiles;
-	private boolean canDash;
 	private int facingDirection;
 	private int invincibilityTime;
+
+	private ArrayList<Projectile> collectedProjectiles;
+	
+	
+	private boolean canDash;
+	private boolean onASurface;
+//	private boolean affectedByGravity;
+	private boolean dashing;
 	
 	/**
 	 * Creates a new instance of a Hero object having its left
@@ -40,12 +45,14 @@ public class Hero extends MovingImage{
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		gravity = 0.5;
+		gravity = 0.6;
 		friction = 0.85;
 		hearts = 5;
 		canDash = false;
 		collectedProjectiles = new ArrayList<Projectile>();
 		facingDirection = 0;	// right direction
+		dashing = false;
+//		affectedByGravity = true;
 	}
 	
 	/**
@@ -55,7 +62,7 @@ public class Hero extends MovingImage{
 	public void jump() {
 //		System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= 11;
+			vy -= 13;
 		}
 	}
 	
@@ -128,10 +135,16 @@ public class Hero extends MovingImage{
 	public void dash() {
 //		System.out.println("Dash is called");
 		if(canDash && facingDirection == 0) {
+//			affectedByGravity = false;
+//			dashing = true;
 			vx += (6);
 		} else if (canDash && facingDirection == 180) {
+//			affectedByGravity = false;
+//			dashing = true;
 			vx += (-6);
 		}
+//		dashing = false;
+//		affectedByGravity = true;
 	}
 	
 	/**
@@ -165,43 +178,49 @@ public class Hero extends MovingImage{
 		double height = getHeight();
 
 		// ***********Y AXIS***********
+		double y2 = y;
+		if (dashing == false) {
+//			System.out.println("d");
+			vy += gravity; // GRAVITY
+			y2 = y + vy;
+			//System.out.println(vy);
+			Rectangle2D.Double strechY = new Rectangle2D.Double(x,Math.min(y,y2),width,height+Math.abs(vy));
 
-		vy += gravity; // GRAVITY
-		double y2 = y + vy;
-		//System.out.println(vy);
-		Rectangle2D.Double strechY = new Rectangle2D.Double(x,Math.min(y,y2),width,height+Math.abs(vy));
+			onASurface = false;
 
-		onASurface = false;
-
-		if (vy > 0) {
-			Shape standingSurface = null;
-			for (Shape s : platforms) {
-				if (s.intersects(strechY)) {
-					onASurface = true;
-					standingSurface = s;
-					vy = 0;
+			if (vy > 0) {
+				Shape standingSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechY)) {
+						onASurface = true;
+						standingSurface = s;
+						vy = 0;
+					}
+				}
+				if (standingSurface != null) {
+					Rectangle r = standingSurface.getBounds();
+					y2 = r.getY()-height;
+				}
+			} else if (vy < 0) {
+				Shape headSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechY)) {
+						headSurface = s;
+						vy = 0;
+					}
+				}
+				if (headSurface != null) {
+					Rectangle r = headSurface.getBounds();
+					y2 = r.getY()+r.getHeight();
 				}
 			}
-			if (standingSurface != null) {
-				Rectangle r = standingSurface.getBounds();
-				y2 = r.getY()-height;
-			}
-		} else if (vy < 0) {
-			Shape headSurface = null;
-			for (Shape s : platforms) {
-				if (s.intersects(strechY)) {
-					headSurface = s;
-					vy = 0;
-				}
-			}
-			if (headSurface != null) {
-				Rectangle r = headSurface.getBounds();
-				y2 = r.getY()+r.getHeight();
-			}
+
+			if (Math.abs(vy) < .5)
+				vy = 0;
+		}else {
+//			System.out.println("a");
 		}
 
-		if (Math.abs(vy) < .5)
-			vy = 0;
 
 		// ***********X AXIS***********
 
