@@ -23,10 +23,9 @@ public class Hero extends MovingImage{
 	private int hearts;
 	private int facingDirection;
 	private int invincibilityTime;
-
-	private ArrayList<Projectile> collectedProjectiles;
 	
-	
+	private boolean canThrowFireball;
+	private boolean canWaterWave;
 	private boolean canDash;
 	private boolean onASurface;
 //	private boolean affectedByGravity;
@@ -49,7 +48,6 @@ public class Hero extends MovingImage{
 		friction = 0.85;
 		hearts = 5;
 		canDash = false;
-		collectedProjectiles = new ArrayList<Projectile>();
 		facingDirection = 0;	// right direction
 		dashing = false;
 //		affectedByGravity = true;
@@ -74,13 +72,6 @@ public class Hero extends MovingImage{
 		return onASurface;
 	}
 	
-	/**
-	 * Adds a projectile to the Hero's list of projectiles.
-	 * @param a An projectile to add to the Hero's list of projectiles.
-	**/
-	public void addAbility(Projectile a) {
-		collectedProjectiles.add(a);
-	}
 	
 	/**
 	 * Sets whether the Hero is able to dash or not.

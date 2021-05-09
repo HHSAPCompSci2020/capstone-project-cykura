@@ -32,7 +32,7 @@ public class Spike extends Rectangle2D.Double {
 	/**
 	 * Draws the Spike.
 	 * 
-	 * @param g The PApplet on which the MovingImage is drawn.
+	 * @param g The PApplet on which the Spike is drawn.
 	**/
 	public void draw(PApplet g) {
 		g.image(img,(int)x,(int)y,(int)width,(int)height);
@@ -46,6 +46,10 @@ public class Spike extends Rectangle2D.Double {
 		if (this.intersects(e)||this.intersects(h)) {
 			return true;
 		}
+		return false;
+	}
+	
+	public boolean checkHeroCollsion(Hero h) {
 		return false;
 	}
 	
