@@ -104,7 +104,7 @@ public class GameScreen extends Screen {
 		for (Enemy e: enemies) {
 			e.draw(surface);
 		}
-		
+//		
 		if (surface.isPressed(KeyEvent.VK_LEFT)) {
 //			System.out.println("l");
 			hero.walk(-1);
@@ -142,9 +142,9 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		for (Enemy e: enemies) {
-			e.act(hero, platforms);
-		}
+//		for (Enemy e: enemies) {
+//			e.act(hero, platforms);
+//		}
 		
 		surface.popMatrix();
 		

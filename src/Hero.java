@@ -47,7 +47,18 @@ public class Hero extends MovingImage{
 		collectedProjectiles = new ArrayList<Projectile>();
 		facingDirection = 0;	// right direction
 	}
-
+	
+	/**
+	 * Makes the Hero jump if the Hero is on a surface.
+	 *   
+	**/
+	public void jump() {
+		System.out.println("Jump is called");
+		if (onASurface) {
+			vy -= 10;
+		}
+	}
+	
 	/**
 	 * Gets whether the Hero is on a surface or not.
 	 * @return true if the Hero is standing on a surface.
@@ -108,25 +119,17 @@ public class Hero extends MovingImage{
 	public void walk(int direction) {
 		if (vx <= 10 && vx >= -10)
 			vx += direction;
-		//System.out.println("Walk is called");
+		System.out.println("Walk is called");
 	}
 	
-	/**
-	 * Makes the Hero jump if the Hero is on a surface.
-	 *   
-	**/
-	public void jump() {
-		//System.out.println("Jump is called");
-		if (onASurface) {
-			vy -= 15;
-		}
-	}
+
 	
 	/**
 	 * Makes the Hero dash depending on the direction which the Hero is facing.
 	 *  
 	**/
 	public void dash() {
+		System.out.println("Dash is called");
 		if(canDash && facingDirection == 0) {
 			vx += (6);
 		} else if (canDash && facingDirection == 180) {
