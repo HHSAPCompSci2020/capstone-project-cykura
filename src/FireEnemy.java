@@ -41,8 +41,8 @@ public class FireEnemy extends Enemy{
 		   	     waitTime=45;
 		    }
 		    if(Math.random()>0.985) {
-//		    	Fireball f = new Fireball(DrawingSurface.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
-//		    	fireballs.add(f);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
+		    	fireballs.add(f);
 		    }
 		     if(waitTime<=0) {
 		    	x += v * Math.cos(angle);

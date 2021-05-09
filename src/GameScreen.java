@@ -10,8 +10,8 @@ public class GameScreen extends Screen {
 
 //	public static final int DRAWING_WIDTH = 800;
 //	public static final int DRAWING_HEIGHT = 500;
-//	public static PImage fireball;
-//	public static PImage water;
+	public static PImage fireball;
+	public static PImage water;
 //	public static float Right_Margin = 400;
 //	public static float Left_Margin = 60;
 //	public static float Vertical_Margin = 40;
@@ -25,9 +25,6 @@ public class GameScreen extends Screen {
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 //	private ArrayList<Projectile> projectiles;
-//	private Enemy e1;
-//	private FireEnemy fe;
-//	private WaterEnemy we;
 	private ArrayList<Integer> keys;
 	
 
@@ -63,14 +60,14 @@ public class GameScreen extends Screen {
 		spawnHero();
 		enemies = generateEnemies();
 //		spawnEnemy();
-//		fireball = loadImage("sprites\\FireballSprite.png");
-//		water = loadImage("sprites\\FireballSprite.png");
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		fireball = surface.loadImage("sprites\\FireballSprite.png");
+		water = surface.loadImage("sprites\\FireballSprite.png");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -134,36 +131,28 @@ public class GameScreen extends Screen {
 			hero.dash();
 		}
 		
-		surface.popMatrix();
-		
-		
-			
-
-
-		
-		
-
-		
-//		if(isPressed(KeyEvent.VK_SPACE)) {
-//			hero.punch(e1);
-//			hero.punch(fe);
-//		}
-//		
-		if (hero.getHearts() > 0) {
+		if(isPressed(KeyEvent.VK_SPACE)) {
 			for (Enemy e: enemies) {
-				if (e instanceOf))
+				hero.punch(e);
 			}
-			hero.act(platforms, fe, fe.getFireballs());
-			hero.act(platforms, e1, e1.getProjectiles());
 		}
 		
-//		e1.act(hero,platforms);
-//		fe.act(hero, platforms);
-//		we.act(hero, platforms);
+		if (hero.getHearts() > 0) {
+			for (Enemy e: enemies) {
+				if (e instanceof FireEnemy) {
+					hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
+				} else {
+					hero.act(platforms, e, null);
+				}
+			}
+		}
 		
-		//if (!screenRect.intersects(hero))
-			//spawnHero();
-
+		for (Enemy e: enemies) {
+			e.act(hero, platforms);
+		}
+		
+		surface.popMatrix();
+		
 		
 	}
 	
@@ -188,8 +177,6 @@ public class GameScreen extends Screen {
 	}
 	
 	public void keyPressed() {
-		//System.out.println("keyPressed");
-		//
 		keys.add(surface.keyCode);
 	}
 
