@@ -37,5 +37,18 @@ public class Spike extends Rectangle2D.Double {
 		g.image(img,(int)x,(int)y,(int)width,(int)height);
 	}
 	
+	/**
+	 * Sets the minimum and maximum x and y coordinates the Spike can have according to the window size.
+	 * 	  
+	 * @param windowWidth The width of the window.
+	 * @param windowHeight The height of the window.
+	**/
+	public void applyWindowLimits(int windowWidth, int windowHeight) {
+		x = Math.min(x,windowWidth-width);
+		y = Math.min(y,windowHeight-height);
+		x = Math.max(0,x);
+		y = Math.max(0,y);
+	}
+	
 	
 }
