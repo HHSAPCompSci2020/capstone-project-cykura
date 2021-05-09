@@ -1,4 +1,5 @@
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -35,6 +36,17 @@ public class Spike extends Rectangle2D.Double {
 	**/
 	public void draw(PApplet g) {
 		g.image(img,(int)x,(int)y,(int)width,(int)height);
+	}
+	
+	public void act(ArrayList<Enemy> enemies, Hero h) {
+		
+	}
+	
+	public boolean checkCollision(Enemy e, Hero h) {
+		if (this.intersects(e)||this.intersects(h)) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
