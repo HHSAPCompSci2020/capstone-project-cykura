@@ -25,7 +25,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 //	private ArrayList<Projectile> projectiles;
-	private ArrayList<Integer> keys;
+//	private ArrayList<Integer> keys;
 	
 
 	/**
@@ -40,7 +40,7 @@ public class GameScreen extends Screen {
 		platforms = generatePlatforms();
 
 		
-		keys = new ArrayList<Integer>();
+//		keys = new ArrayList<Integer>();
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 //		projectiles = new ArrayList<Projectile>();
 	}
@@ -105,33 +105,28 @@ public class GameScreen extends Screen {
 			e.draw(surface);
 		}
 		
-		if (isPressed(KeyEvent.VK_LEFT)) {
-//			System.out.println("l");
-			hero.walk(-1);
-			hero.setFacingDirection(180);
-		}
-		
-		if (isPressed(KeyEvent.VK_LEFT)) {
+		if (surface.isPressed(KeyEvent.VK_LEFT)) {
 			System.out.println("l");
 			hero.walk(-1);
 			hero.setFacingDirection(180);
 		}
-		if (isPressed(KeyEvent.VK_RIGHT)) {
-			//System.out.println("r");
+
+		if (surface.isPressed(KeyEvent.VK_RIGHT)) {
+			System.out.println("r");
 			hero.walk(1);
 			hero.setFacingDirection(0);
 		}
 			
-		if (isPressed(KeyEvent.VK_UP)) {
+		if (surface.isPressed(KeyEvent.VK_UP)) {
 			System.out.println("up");
 			hero.jump();
 		}
 		
-		if(isPressed(KeyEvent.VK_D)) {
+		if(surface.isPressed(KeyEvent.VK_D)) {
 			hero.dash();
 		}
 		
-		if(isPressed(KeyEvent.VK_SPACE)) {
+		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (Enemy e: enemies) {
 				hero.punch(e);
 			}
@@ -176,18 +171,19 @@ public class GameScreen extends Screen {
 		return c;
 	}
 	
-	public void keyPressed() {
-		keys.add(surface.keyCode);
-	}
-
-	public void keyReleased() {
-		while(keys.contains(surface.keyCode))
-			keys.remove(new Integer(surface.keyCode));
-	}
-
-	public boolean isPressed(Integer code) {
-		return keys.contains(code);
-	}
+//	public void keyPressed() {
+//		keys.add(surface.keyCode);
+//	}
+//
+//	public void keyReleased() {
+//		while(keys.contains(surface.keyCode))
+//			keys.remove(new Integer(surface.keyCode));
+//	}
+//
+//	public boolean isPressed(Integer code) {
+//		System.out.println("i");
+//		return keys.contains(code);
+//	}
 	
 	public void scroll() {
 //		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
