@@ -68,7 +68,7 @@ public class GameScreen extends Screen {
 	public void draw() {
 		
 //		scroll();
-		surface.pushMatrix();
+		//surface.pushMatrix();
 		
 		surface.background(0, 255, 255);
 		
@@ -138,7 +138,7 @@ public class GameScreen extends Screen {
 //			e.act(hero, platforms);
 //		}
 		
-		surface.popMatrix();
+		//surface.popMatrix();
 		
 		
 	}
