@@ -12,7 +12,7 @@ import processing.core.PApplet;
  * @version 11/1
  */
 public class Circle {
-	private double radius;
+	private double extent;
 	private double x, y;
 	private int strokeWidth;
 	private Color strokeColor;
@@ -31,7 +31,7 @@ public class Circle {
 		x = 0;
 		y = 0;
 		
-		radius = 0;
+		extent = 0;
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class Circle {
 		strokeWidth = 1;
 		this.x = 0;
 		this.y = 0;		
-		this.radius = radius;
+		this.extent = radius;
 	}
 
 	/**
