@@ -18,14 +18,19 @@ public class Hero extends MovingImage{
 	public static final int HERO_HEIGHT = 60;
 
 	private double vx, vy;
-	private boolean onASurface;
 	private double friction;
 	private double gravity;
 	private int hearts;
-	private ArrayList<Projectile> collectedProjectiles;
-	private boolean canDash;
 	private int facingDirection;
 	private int invincibilityTime;
+
+	private ArrayList<Projectile> collectedProjectiles;
+	
+	
+	private boolean canDash;
+	private boolean onASurface;
+//	private boolean affectedByGravity;
+	private boolean dashing;
 	
 	/**
 	 * Creates a new instance of a Hero object having its left
@@ -40,14 +45,31 @@ public class Hero extends MovingImage{
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		gravity = 0.9;
-		friction = 0.75;
+		gravity = 0.6;
+		friction = 0.85;
 		hearts = 5;
 		canDash = false;
 		collectedProjectiles = new ArrayList<Projectile>();
 		facingDirection = 0;	// right direction
+		dashing = false;
+//		affectedByGravity = true;
 	}
 	
+	/**
+	 * Makes the Hero jump if the Hero is on a surface.
+	 *   
+	**/
+	public void jump() {
+//		System.out.println("Jump is called");
+		if (onASurface) {
+			vy -= 13;
+		}
+	}
+	
+	/**
+	 * Gets whether the Hero is on a surface or not.
+	 * @return true if the Hero is standing on a surface.
+	**/
 	public boolean getOnASurface() {
 		return onASurface;
 	}
@@ -86,9 +108,6 @@ public class Hero extends MovingImage{
 	 * @pre The distance from the center of the Hero's x coordinate to the center of the Enemy's x coordinate must be less than 75 to cause damage.
 	**/
 	public void punch(Enemy e1) {
-//		System.out.println("h " + this.getCenterX());
-//		System.out.println("e " + e1.getCenterX());
-//		System.out.println(e1.getCenterX() - this.getCenterX());
 		if (e1 != null) {
 			if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
 				e1.loseHealth(3);
@@ -104,30 +123,32 @@ public class Hero extends MovingImage{
 	public void walk(int direction) {
 		if (vx <= 10 && vx >= -10)
 			vx += direction;
-		//System.out.println("Walk is called");
+//		System.out.println("Walk is called");
 	}
 	
-	/**
-	 * Makes the Hero jump if the Hero is on a surface.
-	 *   
-	**/
-	public void jump() {
-		//System.out.println("Jump is called");
-		if (onASurface) {
-			vy -= 15;
-		}
-	}
+
 	
 	/**
 	 * Makes the Hero dash depending on the direction which the Hero is facing.
 	 *  
 	**/
 	public void dash() {
+//		System.out.println("Dash is called");
 		if(canDash && facingDirection == 0) {
-			vx += (6);
+//			affectedByGravity = false;
+//			dashing = true;
+//			vx += (6);
+			System.out.println(y);
+			moveByAmount(100, 0);
 		} else if (canDash && facingDirection == 180) {
-			vx += (-6);
+			System.out.println(y);
+			moveByAmount(100, 0);
+//			affectedByGravity = false;
+//			dashing = true;
+//			vx += (-6);
 		}
+//		dashing = false;
+//		affectedByGravity = true;
 	}
 	
 	/**
@@ -161,43 +182,49 @@ public class Hero extends MovingImage{
 		double height = getHeight();
 
 		// ***********Y AXIS***********
+		double y2 = y;
+		if (dashing == false) {
+//			System.out.println("d");
+			vy += gravity; // GRAVITY
+			y2 = y + vy;
+			//System.out.println(vy);
+			Rectangle2D.Double strechY = new Rectangle2D.Double(x,Math.min(y,y2),width,height+Math.abs(vy));
 
-		vy += gravity; // GRAVITY
-		double y2 = y + vy;
-		//System.out.println(vy);
-		Rectangle2D.Double strechY = new Rectangle2D.Double(x,Math.min(y,y2),width,height+Math.abs(vy));
+			onASurface = false;
 
-		onASurface = false;
-
-		if (vy > 0) {
-			Shape standingSurface = null;
-			for (Shape s : platforms) {
-				if (s.intersects(strechY)) {
-					onASurface = true;
-					standingSurface = s;
-					vy = 0;
+			if (vy > 0) {
+				Shape standingSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechY)) {
+						onASurface = true;
+						standingSurface = s;
+						vy = 0;
+					}
+				}
+				if (standingSurface != null) {
+					Rectangle r = standingSurface.getBounds();
+					y2 = r.getY()-height;
+				}
+			} else if (vy < 0) {
+				Shape headSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechY)) {
+						headSurface = s;
+						vy = 0;
+					}
+				}
+				if (headSurface != null) {
+					Rectangle r = headSurface.getBounds();
+					y2 = r.getY()+r.getHeight();
 				}
 			}
-			if (standingSurface != null) {
-				Rectangle r = standingSurface.getBounds();
-				y2 = r.getY()-height;
-			}
-		} else if (vy < 0) {
-			Shape headSurface = null;
-			for (Shape s : platforms) {
-				if (s.intersects(strechY)) {
-					headSurface = s;
-					vy = 0;
-				}
-			}
-			if (headSurface != null) {
-				Rectangle r = headSurface.getBounds();
-				y2 = r.getY()+r.getHeight();
-			}
+
+			if (Math.abs(vy) < .5)
+				vy = 0;
+		}else {
+//			System.out.println("a");
 		}
 
-		if (Math.abs(vy) < .5)
-			vy = 0;
 
 		// ***********X AXIS***********
 
@@ -266,6 +293,12 @@ public class Hero extends MovingImage{
 		}
 	}
 	
+	/**
+	 * Checks whether the Hero gets hit by a Projectile.
+	 * If so, the Hero loses damage and gains some time in which the Hero is invincible.
+	 * 
+	 * @param p The list of Fireballs to check with the 
+	**/
 	public void checkProjectileCollision(ArrayList<Fireball> p) {
 		if (invincibilityTime > 0) {
 			invincibilityTime--;

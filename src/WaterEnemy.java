@@ -7,7 +7,7 @@ import processing.core.PImage;
 /**
  * The WaterEnemy class represents an Enemy with the Waterfall projectile which the Player can defeat.
  * 
- * @author vicram_vijayakumar
+ * @author animan_patil
  * @version 5.6.21
  */
 public class WaterEnemy extends Enemy {
@@ -27,7 +27,7 @@ public class WaterEnemy extends Enemy {
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
 		if(w==null)
-		w = new Waterfall(DrawingSurface.water,(int)x+20,(int)y+40,20,20,0,10);
+		w = new Waterfall(GameScreen.water,(int)x-10,(int)y+40,60,20,0,6);
 		w.act();
 		w.checkPlatforms(platforms);
 	}
