@@ -8,8 +8,8 @@ import processing.core.PImage;
 
 public class GameScreen extends Screen {
 
-//	public static final int DRAWING_WIDTH = 800;
-//	public static final int DRAWING_HEIGHT = 500;
+	public static final int DRAWING_WIDTH = 800;
+	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage water;
 //	public static float Right_Margin = 400;
