@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.geom.Point2D;
 
 import processing.core.PApplet;
@@ -10,15 +11,25 @@ import processing.core.PApplet;
  * @author vicram_vijayakumar
  * @version 11/1
  */
-public class Circle extends Shape {
+public class Circle {
 	private double extent;
+	private double x, y;
+	private int strokeWidth;
+	private Color strokeColor;
+	private Color fillColor;
+	private boolean filled;
 
 	/**
 	 * Creates a default instance of a Circle object with all dimensions
 	 * set to zero.
 	**/
 	public Circle() {
-		super(0, 0);
+		strokeColor = Color.BLACK;
+		fillColor = Color.WHITE;
+		filled = true;
+		strokeWidth = 1;
+		this.x = 0;
+		this.y = 0;
 		
 		extent = 0;
 	}
@@ -32,8 +43,12 @@ public class Circle extends Shape {
 	 * @param extent The diameter of the Circle.
 	**/
 	public Circle(double x, double y, double extent) {
-		super(x, y);
-		
+		strokeColor = Color.BLACK;
+		fillColor = Color.WHITE;
+		filled = true;
+		strokeWidth = 1;
+		this.x = 0;
+		this.y = 0;		
 		this.extent = Math.abs(extent);
 	}
 
@@ -81,7 +96,13 @@ public class Circle extends Shape {
 	 * @post The Processing PApplet on which the Circle is drawn is changed.
 	**/
 	public void draw(PApplet marker) {
-		super.draw(marker);
+		if (filled) {
+			marker.fill(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue());
+		} else {
+			marker.noFill();
+		}
+		marker.strokeWeight(strokeWidth);
+		marker.stroke(strokeColor.getRed(), strokeColor.getGreen(), strokeColor.getBlue());
 		marker.circle((float) x, (float) y, (float) extent);
 	}
 	
