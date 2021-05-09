@@ -12,7 +12,7 @@ import processing.core.PApplet;
  * @version 11/1
  */
 public class Circle {
-	private double extent;
+	private double radius;
 	private double x, y;
 	private int strokeWidth;
 	private Color strokeColor;
@@ -28,10 +28,10 @@ public class Circle {
 		fillColor = Color.WHITE;
 		filled = true;
 		strokeWidth = 1;
-		this.x = 0;
-		this.y = 0;
+		x = 0;
+		y = 0;
 		
-		extent = 0;
+		radius = 0;
 	}
 
 	/**
@@ -42,14 +42,14 @@ public class Circle {
 	 * @param y Y value of the Circle's center point.
 	 * @param extent The diameter of the Circle.
 	**/
-	public Circle(double x, double y, double extent) {
+	public Circle(double x, double y, double radius) {
 		strokeColor = Color.BLACK;
 		fillColor = Color.WHITE;
 		filled = true;
 		strokeWidth = 1;
 		this.x = 0;
 		this.y = 0;		
-		this.extent = Math.abs(extent);
+		this.radius = radius;
 	}
 
 	/**
