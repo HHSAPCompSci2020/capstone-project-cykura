@@ -62,12 +62,12 @@ public class GameScreen extends Screen {
 //		spawnEnemy();
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	/**
