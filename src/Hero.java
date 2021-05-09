@@ -137,11 +137,15 @@ public class Hero extends MovingImage{
 		if(canDash && facingDirection == 0) {
 //			affectedByGravity = false;
 //			dashing = true;
-			vx += (6);
+//			vx += (6);
+			System.out.println(y);
+			moveByAmount(100, 0);
 		} else if (canDash && facingDirection == 180) {
+			System.out.println(y);
+			moveByAmount(100, 0);
 //			affectedByGravity = false;
 //			dashing = true;
-			vx += (-6);
+//			vx += (-6);
 		}
 //		dashing = false;
 //		affectedByGravity = true;
