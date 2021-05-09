@@ -182,7 +182,7 @@ public class Circle {
 		return this.y;
 	}
 	
-	private boolean intersects(MovingImage img) {
+	protected boolean intersects(MovingImage img) {
 		return filled;
 	}
 	
