@@ -12,8 +12,7 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class WaterWave extends Circle {
-	private int x,y;
-	private double r,fr,vr;
+	private double fd,vd;
 	/**
 	 * Creates a new instance of a Waterfall object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -26,10 +25,10 @@ public class WaterWave extends Circle {
 	 * @param vx The X component of the Projectile's velocity
 	 * @param vy The Y component of the Projectile's velocity
 	**/
-	public WaterWave(int x, int y, double r, double fr, double vr){
-		super(x,y,2*r);
-		this.fr=fr;
-		this.vr=vr;
+	public WaterWave(int x, int y, double d, double fd, double vd){
+		super(x,y,d);
+		this.fd=fd;
+		this.vd=vd;
 	}
 	public void act() {
 		
