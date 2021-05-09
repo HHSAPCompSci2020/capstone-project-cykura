@@ -14,8 +14,8 @@ import processing.core.PApplet;
  * @version 11/1
  */
 public class Circle {
-	private double extent;
-	private double x, y;
+	protected double extent;
+	protected double x, y;
 	private int strokeWidth;
 	private Color strokeColor;
 	private Color fillColor;

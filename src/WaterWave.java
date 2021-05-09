@@ -31,6 +31,8 @@ public class WaterWave extends Circle {
 		this.vd=vd;
 	}
 	public void act() {
+		super.x--;
+		super.y--;
 		
 	}
 	public void draw(PApplet board) {
