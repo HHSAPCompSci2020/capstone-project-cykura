@@ -24,8 +24,6 @@ public class GameScreen extends Screen {
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
-//	private ArrayList<Projectile> projectiles;
-//	private ArrayList<Integer> keys;
 	
 
 	/**
@@ -40,9 +38,7 @@ public class GameScreen extends Screen {
 		platforms = generatePlatforms();
 
 		
-//		keys = new ArrayList<Integer>();
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-//		projectiles = new ArrayList<Projectile>();
 	}
 	
 	private void spawnHero() {
@@ -50,11 +46,7 @@ public class GameScreen extends Screen {
 		hero.setDash(true);
 	}
 	
-//	private void spawnEnemy() {
-//		e1 = new Enemy(loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50);
-//		fe = new FireEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50);
-//		we = new WaterEnemy(loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150);
-//	}
+
 	
 	public void setup() {
 		spawnHero();
@@ -171,19 +163,6 @@ public class GameScreen extends Screen {
 		return c;
 	}
 	
-//	public void keyPressed() {
-//		keys.add(surface.keyCode);
-//	}
-//
-//	public void keyReleased() {
-//		while(keys.contains(surface.keyCode))
-//			keys.remove(new Integer(surface.keyCode));
-//	}
-//
-//	public boolean isPressed(Integer code) {
-//		System.out.println("i");
-//		return keys.contains(code);
-//	}
 	
 	public void scroll() {
 //		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
