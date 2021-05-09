@@ -27,9 +27,7 @@ public class WaterWave extends Circle {
 	 * @param vy The Y component of the Projectile's velocity
 	**/
 	public WaterWave(int x, int y, double r, double fr, double vr){
-		this.x=x;
-		this.y=y;
-		this.r=r;
+		super(x,y,2*r);
 		this.fr=fr;
 		this.vr=vr;
 	}

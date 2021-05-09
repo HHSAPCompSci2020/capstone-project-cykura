@@ -24,8 +24,8 @@ public class Circle {
 	 * set to zero.
 	**/
 	public Circle() {
-		strokeColor = Color.BLACK;
-		fillColor = Color.WHITE;
+		strokeColor = Color.BLUE;
+		fillColor = Color.BLUE;
 		filled = true;
 		strokeWidth = 1;
 		x = 0;
@@ -43,8 +43,8 @@ public class Circle {
 	 * @param extent The diameter of the Circle.
 	**/
 	public Circle(double x, double y, double radius) {
-		strokeColor = Color.BLACK;
-		fillColor = Color.WHITE;
+		strokeColor = Color.BLUE;
+		fillColor = Color.BLUE;
 		filled = true;
 		strokeWidth = 1;
 		this.x = 0;
