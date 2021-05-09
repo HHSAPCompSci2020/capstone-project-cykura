@@ -40,8 +40,8 @@ public class Hero extends MovingImage{
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		gravity = 0.5;
-		friction = 0.75;
+		gravity = 0.75;
+		friction = 0.7;
 		hearts = 5;
 		canDash = false;
 		collectedProjectiles = new ArrayList<Projectile>();
@@ -55,7 +55,7 @@ public class Hero extends MovingImage{
 	public void jump() {
 //		System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= 9;
+			vy -= 17;
 		}
 	}
 	
