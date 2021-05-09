@@ -20,7 +20,7 @@ public class GameScreen extends Screen {
 	
 	private int x, y;
 	private DrawingSurface surface;
-	private Rectangle screenRect;
+//	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
@@ -38,7 +38,7 @@ public class GameScreen extends Screen {
 		platforms = generatePlatforms();
 
 		
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
+//		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 	}
 	
 	private void spawnHero() {
