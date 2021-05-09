@@ -10,8 +10,8 @@ import processing.core.PImage;
  * @author alex_zheng
  * @version 5.6.21
  */
-public class Fireball extends Projectile {
-	
+public class Fireball extends MovingImage {
+	private double vy, vx;
 	/**
 	 * Creates a new instance of a Fireball object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -21,20 +21,24 @@ public class Fireball extends Projectile {
 	 * @param y The Y value of the Fireball's top left corner.
 	 * @param w The width of the Fireball
 	 * @param h The height of the Fireball
-	 * @param vx The X component of the Projectile's velocity
-	 * @param vy The Y component of the Projectile's velocity
+	 * @param vx The X component of the Fireball's velocity
+	 * @param vy The Y component of the Fireball's velocity
 	**/
 	public Fireball(PImage img, int x, int y, int w, int h,double vx, double vy) {
-		super(img, x, y, w, h, vx, vy);
+		super(img, x, y, w, h);
+		this.vx=vx;
+		this.vy=vy;
 	}
 	public void act() {
-		super.act();
+		super.moveByAmount(vx,vy);
 	}
 	public boolean checkCollision (Enemy e, Hero h, ArrayList<Shape> shapes) {
+		if (this.intersects(e)||this.intersects(h)) {
+			return true;
+		}
 		for (int i=0;i<shapes.size();i++) {
 			if(this.intersects((Rectangle2D) shapes.get(i))) return true;
 		}
-		super.checkCollision(e, h);
 		return false;
 	}
 }
