@@ -40,7 +40,7 @@ public class Hero extends MovingImage{
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		gravity = 0.7;
+		gravity = 0.5;
 		friction = 0.85;
 		hearts = 5;
 		canDash = false;
@@ -55,7 +55,7 @@ public class Hero extends MovingImage{
 	public void jump() {
 //		System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= 15;
+			vy -= 12.5;
 		}
 	}
 	
@@ -101,9 +101,6 @@ public class Hero extends MovingImage{
 	 * @pre The distance from the center of the Hero's x coordinate to the center of the Enemy's x coordinate must be less than 75 to cause damage.
 	**/
 	public void punch(Enemy e1) {
-//		System.out.println("h " + this.getCenterX());
-//		System.out.println("e " + e1.getCenterX());
-//		System.out.println(e1.getCenterX() - this.getCenterX());
 		if (e1 != null) {
 			if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
 				e1.loseHealth(3);
