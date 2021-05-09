@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 import processing.core.PApplet;
 
@@ -181,7 +182,7 @@ public class Circle {
 		return this.y;
 	}
 	
-	private boolean intersects(Rectangle img) {
+	private boolean intersects(Rectangle2D img) {
 		return filled;
 	}
 	
