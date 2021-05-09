@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 
 import processing.core.PApplet;
@@ -178,6 +179,10 @@ public class Circle {
 	**/
 	public double getCenterY() {
 		return this.y;
+	}
+	
+	private boolean intersects(Rectangle img) {
+		return filled;
 	}
 	
 }
