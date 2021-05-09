@@ -55,7 +55,7 @@ public class Hero extends MovingImage{
 	public void jump() {
 //		System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= 12.5;
+			vy -= 11;
 		}
 	}
 	
