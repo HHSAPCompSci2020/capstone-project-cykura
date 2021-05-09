@@ -30,7 +30,7 @@ public class GameScreen extends Screen {
 	 * Default Constructor
 	 */
 	public GameScreen(DrawingSurface surface) {
-		super(800,600);
+		super(800,500);
 		this.surface = surface;
 		
 		x = 30;
