@@ -3,11 +3,11 @@ import processing.core.PImage;
 /**
  * The Projectile class represents the different projectiles which the player can gain and the enemies have.
  * 
+ * @author alex_zheng
  * @version 5.6.21
  */
 public class Projectile extends MovingImage{
-	protected double vy;
-	private double vx;
+	protected double vy, vx;
 	/**
 	 * Creates a new instance of a Projectile object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.

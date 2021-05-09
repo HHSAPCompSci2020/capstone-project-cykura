@@ -6,7 +6,9 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class Platform extends MovingImage {
-
+	private double vx, vy;
+	private int fx, fy;
+	
 	/**
 	 * Creates a new instance of a Platform object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -17,8 +19,22 @@ public class Platform extends MovingImage {
 	 * @param w The width of the Platform
 	 * @param h The height of the Platform
 	**/
-	public Platform(PImage img, int x, int y, int w, int h) {
+	public Platform(PImage img, int x, int y, int w, int h, int fx, int fy, double vx, double vy) {
 		super(img, x, y, w, h);
+		this.fx=fx;
+		this.fy=fy;
+		this.vx=vx;
+		this.vy=vy;
 	}
-
+	public void act() {
+		atEnd();
+		super.moveByAmount(vx, vy);
+	}
+	private void atEnd() {
+		if(super.x==fx&&super.y==fy) {
+			vx=-vx;
+			vy=-vy;
+		}
+		return;
+	}
 }
