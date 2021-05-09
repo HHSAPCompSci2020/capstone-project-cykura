@@ -12,15 +12,15 @@ public class GameScreen extends Screen {
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage water;
-//	public static float Right_Margin = 400;
-//	public static float Left_Margin = 60;
-//	public static float Vertical_Margin = 40;
-//	public float view_x;
-//	public float view_y;
+	public static float Right_Margin = 400;
+	public static float Left_Margin = 60;
+	public static float Vertical_Margin = 40;
+	public float view_x;
+	public float view_y;
 	
 	private int x, y;
 	private DrawingSurface surface;
-//	private Rectangle screenRect;
+	private Rectangle screenRect;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
@@ -38,7 +38,7 @@ public class GameScreen extends Screen {
 		platforms = generatePlatforms();
 
 		
-//		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
+		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 	}
 	
 	private void spawnHero() {
@@ -67,7 +67,7 @@ public class GameScreen extends Screen {
 	 */
 	public void draw() {
 		
-//		scroll();
+		scroll();
 		//surface.pushMatrix();
 		
 		surface.background(0, 255, 255);
@@ -166,21 +166,21 @@ public class GameScreen extends Screen {
 	
 	
 	public void scroll() {
-//		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
-//		if(hero.x+hero.width>r_b) {
-//			view_x+=hero.x+hero.width-r_b;
-//		}
-//		
-//		float l_b = view_x+Left_Margin;
-//		if(hero.x<l_b) {
-//			view_x-=l_b-hero.x;
-//		}
-//		
-//		float t_b = view_y+Vertical_Margin;
-//		if(hero.y<t_b) {
-//			view_y-=t_b-hero.y;
-//		}
-//		translate(-view_x,-view_y);
+		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
+		if(hero.x+hero.width>r_b) {
+			view_x+=hero.x+hero.width-r_b;
+		}
+		
+		float l_b = view_x+Left_Margin;
+		if(hero.x<l_b) {
+			view_x-=l_b-hero.x;
+		}
+		
+		float t_b = view_y+Vertical_Margin;
+		if(hero.y<t_b) {
+			view_y-=t_b-hero.y;
+		}
+		surface.translate(-view_x,-view_y);
 	}
 	
 
