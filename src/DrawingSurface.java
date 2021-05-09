@@ -50,10 +50,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	}
 	
 	public void draw() {
+		pushMatrix();
 		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
 		ratioY = (float)height/activeScreen.DRAWING_HEIGHT;
-
-		pushMatrix();
 		
 		scale(ratioX, ratioY);
 		
