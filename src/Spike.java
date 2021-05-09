@@ -1,5 +1,6 @@
 import java.awt.geom.Rectangle2D;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -10,7 +11,8 @@ import processing.core.PImage;
  */
 public class Spike extends Rectangle2D.Double {
 
-
+	private PImage img;
+	
 	/**
 	 * Creates a new instance of a Spike object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -23,6 +25,16 @@ public class Spike extends Rectangle2D.Double {
 	**/
 	public Spike(PImage img, int x, int y, int w, int h) {
 		super(x, y, w, h);
+		this.img = img;
+	}
+	
+	/**
+	 * Draws the Spike.
+	 * 
+	 * @param g The PApplet on which the MovingImage is drawn.
+	**/
+	public void draw(PApplet g) {
+		g.image(img,(int)x,(int)y,(int)width,(int)height);
 	}
 	
 	
