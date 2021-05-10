@@ -23,7 +23,7 @@ public class GameScreen extends Screen {
 	private int x, y;
 	private DrawingSurface surface;
 //	private Rectangle screenRect;
-//	private ArrayList<Heart> hearts;
+	private ArrayList<Heart> hearts;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
@@ -188,14 +188,15 @@ public class GameScreen extends Screen {
 		surface.translate(-view_x,-view_y);
 	}
 	
-//	private ArrayList<Heart> generateHearts() {
-//		ArrayList<Heart> hearts = new ArrayList<Heart>();
-//		
-//	}
-	
-	private void displayHearts(Hero h) {
+	private ArrayList<Heart> generateHearts() {
+		ArrayList<Heart> hearts = new ArrayList<Heart>();
+		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 50, 10));
 		
 	}
+	
+//	private void displayHearts(Hero h) {
+//		
+//	}
 	
 
 }
