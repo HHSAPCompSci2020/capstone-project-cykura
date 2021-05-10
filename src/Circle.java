@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
@@ -184,7 +185,20 @@ public class Circle {
 	}
 	
 	protected boolean intersects(Rectangle2D img) {
-		return filled;
+		double radius = extent/2;
+		Point p = new Point((int)x,(int)y);
+		if(img.contains(x, y)) {
+			return true;
+		}
+		double d1 = p.distance(new Point((int)img.getX(),(int)img.getY()));
+		if(d1<=radius)return true;
+		double d2 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)img.getY()));
+		if(d2<=radius)return true;
+		double d3 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)(img.getY()+img.getHeight())));
+		if(d3<=radius)return true;
+		double d4 = p.distance(new Point((int)img.getX(),(int)(img.getY()+img.getHeight())));
+		if(d4<=radius)return true;
+		return false;
 	}
 	
 }
