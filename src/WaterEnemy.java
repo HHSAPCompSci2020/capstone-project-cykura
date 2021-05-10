@@ -26,10 +26,10 @@ public class WaterEnemy extends Enemy {
 	}
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
-		if(w==null)
-		w = new WaterWave(GameScreen.water,(int)x-10,(int)y+40,60,20,0,6);
-		w.act();
-		w.checkPlatforms(platforms);
+		//if(w==null)
+		//w = new WaterWave(GameScreen.water,(int)x-10,(int)y+40,60,20,0,6);
+		//w.act();
+		//w.checkPlatforms(platforms);
 	}
 	
 	public void draw(PApplet g) {
