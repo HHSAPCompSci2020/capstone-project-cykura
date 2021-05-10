@@ -6,7 +6,7 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class Boss extends Enemy {
-
+	private int invertTime;
 	/**
 	 * Creates a new instance of a Boss object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -18,5 +18,19 @@ public class Boss extends Enemy {
 	public Boss(PImage img, int x, int y) {
 		super(img, x, y);
 	}
+	
+	public void act() {
+		if(invertTime>0) {
+			invertTime--;
+		}
+		else {
+			invertTime = 0;
+			GameScreen.invertControls = false;
+		}
+	}
 
+	private void invertControls(int duration) {
+		GameScreen.invertControls = true;
+		invertTime = duration;
+	}
 }

@@ -15,6 +15,7 @@ public class GameScreen extends Screen {
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
+	public static boolean invertControls;
 	public float view_x;
 	public float view_y;
 	
