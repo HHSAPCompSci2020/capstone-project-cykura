@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PImage;
 
 /**
@@ -7,6 +9,8 @@ import processing.core.PImage;
  */
 public class Boss extends Enemy {
 	private int invertTime;
+	public ArrayList<Fireball> fireballs;
+	public WaterWave w;
 	/**
 	 * Creates a new instance of a Boss object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -17,6 +21,7 @@ public class Boss extends Enemy {
 	**/
 	public Boss(PImage img, int x, int y) {
 		super(img, x, y);
+		fireballs = new ArrayList<Fireball>();
 	}
 	
 	public void act() {
