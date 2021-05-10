@@ -20,6 +20,7 @@ public class Hero extends MovingImage {
 	private double vx, vy;
 	private double friction;
 	private double gravity;
+	
 	private int hearts;
 	private int facingDirection;
 	private int invincibilityTime;

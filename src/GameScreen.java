@@ -12,6 +12,8 @@ public class GameScreen extends Screen {
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage water;
+	public static PImage heart;
+	
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
@@ -21,6 +23,7 @@ public class GameScreen extends Screen {
 	private int x, y;
 	private DrawingSurface surface;
 //	private Rectangle screenRect;
+//	private ArrayList<Heart> hearts;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
@@ -54,6 +57,8 @@ public class GameScreen extends Screen {
 //		spawnEnemy();
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
+		heart = surface.loadImage("sprites\\FullHeart.png");
+//		hearts = displayHearts();
 //		try {
 //			Thread.sleep(3000);
 //		} catch (InterruptedException e) {
@@ -182,6 +187,11 @@ public class GameScreen extends Screen {
 		}
 		surface.translate(-view_x,-view_y);
 	}
+	
+//	private ArrayList<Heart> generateHearts() {
+//		ArrayList<Heart> hearts = new ArrayList<Heart>();
+//		
+//	}
 	
 	private void displayHearts(Hero h) {
 		
