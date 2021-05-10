@@ -20,6 +20,9 @@ public class Boss extends Enemy {
 	}
 	
 	public void act() {
+		if(Math.random()>0.993&&GameScreen.invertControls==false) {
+			invertControls((int)Math.random()*5000+3000);
+		}
 		if(invertTime>0) {
 			invertTime--;
 		}
