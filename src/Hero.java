@@ -25,6 +25,7 @@ public class Hero extends MovingImage {
 	private int facingDirection;
 	private int invincibilityTime;
 	
+	private ArrayList<Fireball> fireballs;
 	private boolean canThrowFireball;
 	private boolean canWaterWave;
 	private boolean canDash;
@@ -45,12 +46,15 @@ public class Hero extends MovingImage {
 		vx = 0;
 		vy = 0;
 		onASurface = false;
+		canThrowFireball = false;
+		canDash = false;
+
 		gravity = 0.5;
 		friction = 0.85;
 		hearts = 5;
-		canDash = false;
 		facingDirection = 0;	// right direction
 		dashing = false;
+		
 //		affectedByGravity = true;
 	}
 	
@@ -62,6 +66,14 @@ public class Hero extends MovingImage {
 //		System.out.println("Jump is called");
 		if (onASurface) {
 			vy -= 11;
+		}
+	}
+	
+	public void throwFireball() {
+		if (canThrowFireball) {
+			if (facingDirection == 0) {		// Facing to the rigt
+				
+			}
 		}
 	}
 	
@@ -292,7 +304,7 @@ public class Hero extends MovingImage {
 		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
 			hearts--;
 			jump();
-			invincibilityTime = 160;
+			invincibilityTime = 300;
 		}
 	}
 	
