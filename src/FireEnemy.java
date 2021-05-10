@@ -43,7 +43,6 @@ public class FireEnemy extends Enemy{
 		    if(Math.random()>0.985) {
 		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
 		    	fireballs.add(f);
-		    	//System.out.println("Fireball made");
 		    }
 		     if(waitTime<=0) {
 		    	x += v * Math.cos(angle);
@@ -57,7 +56,6 @@ public class FireEnemy extends Enemy{
 		    	 Fireball f = fireballs.get(i);
 		    	 if(f!=null) {
 		    		 f.act();
-		    		 System.out.println(f.x+" "+f.y);
 		    		 if(f.checkCollision(this, hero, obstacles)) {
 		    			 fireballs.set(i, null);
 		    		 }
@@ -77,9 +75,7 @@ public class FireEnemy extends Enemy{
 	public void draw(PApplet g) {
 		super.draw(g);
 		for(Fireball f:fireballs) {
-			System.out.println("Hi");
 			if(f!=null) {
-				System.out.println("fireball drawn");
 				f.draw(g);
 			}
 		}
