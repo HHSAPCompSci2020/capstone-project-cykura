@@ -41,7 +41,7 @@ public class GameScreen extends Screen {
 		y = 30;
 		platforms = generatePlatforms();
 
-		
+//		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 	}
 	
@@ -131,15 +131,24 @@ public class GameScreen extends Screen {
 				hero.setFacingDirection(0);
 			}
 		}
-			
-		if (surface.isPressed(KeyEvent.VK_UP)) {
-//			System.out.println("up");
-			hero.jump();
+		
+		if (!invertControls) {
+			if (surface.isPressed(KeyEvent.VK_UP)) {
+//				System.out.println("up");
+				hero.jump();
+			}
+		} else {
+			if (surface.isPressed(KeyEvent.VK_DOWN)) {
+//				System.out.println("up");
+				hero.jump();
+			}
 		}
+		
 		
 		if(surface.isPressed(KeyEvent.VK_D)) {
 			hero.dash();
 		}
+		
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (Enemy e: enemies) {
