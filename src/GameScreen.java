@@ -75,11 +75,11 @@ public class GameScreen extends Screen {
 		surface.stroke(0);     // Set line drawing color to white
 		surface.noFill();
 
-		surface.rect(x,y,30,30);
-		
-		surface.fill(0);
-		surface.text("Move: Arrow keys",10,30);
-		surface.text("Menu: Space",10,50);
+//		surface.rect(x,y,30,30);
+//		
+//		surface.fill(0);
+//		surface.text("Move: Arrow keys",10,30);
+//		surface.text("Menu: Space",10,50);
 		
 		surface.fill(100);
 		for (Shape s : platforms) {
@@ -181,6 +181,10 @@ public class GameScreen extends Screen {
 			view_y-=t_b-hero.y;
 		}
 		surface.translate(-view_x,-view_y);
+	}
+	
+	private void displayHearts(Hero h) {
+		
 	}
 	
 
