@@ -8,12 +8,11 @@ import processing.core.PImage;
 /**
  * The Waterfall class represents a water fall which is one of the abilities that the Hero can collect.
  * 
- * @author alex
+ * @author animan_patil
  * @version 5.6.21
  */
 public class WaterWave extends Circle {
 	private double fd,vd;
-	
 	/**
 	 * Creates a new instance of a Waterfall object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -32,12 +31,8 @@ public class WaterWave extends Circle {
 		this.vd=vd;
 	}
 	public void act() {
-		super.x--;
-		super.y--;
-		
-	}
-	public void draw(PApplet board) {
-		
+		super.extent+=vd;
+		if(super.extent==fd) remove();
 	}
 	
 	public boolean checkCollision(Enemy e, Hero h) {
@@ -45,5 +40,8 @@ public class WaterWave extends Circle {
 			return true;
 		}
 		return false;
+	}
+	public void remove() {
+		
 	}
 }
