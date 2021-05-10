@@ -117,6 +117,17 @@ public class Hero extends MovingImage {
 //		System.out.println("Walk is called");
 	}
 	
+	
+	/**
+	 * Deals damage to the Hero by losing an inputted number of hearts.
+	 * 
+	 * @param hearts The amount of hearts the hero loses
+	 * @pre hearts must be less than six
+	 */
+	public void loseHearts(int hearts) {
+		this.hearts = this.hearts - hearts;
+	}
+	
 
 	
 	/**
