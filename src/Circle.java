@@ -186,19 +186,19 @@ public class Circle {
 	
 	protected boolean intersects(Rectangle2D img) {
 		double radius = extent/2;
-		Point p = new Point((int)x,(int)y);
-		if(img.contains(x, y)) {
+		Point p = new Point((int)x,(int)y);	// Center of Circle Point
+		if(img.contains(x, y)) {	// If the center of the circle is in the rectangle;
 			return true;
 		}
-		double d1 = p.distance(new Point((int)img.getX(),(int)img.getY()));
+		double d1 = p.distance(new Point((int)img.getX(),(int)img.getY()));	// Distance from center of circle to top left corner of img
 		if(d1<=radius)return true;
-		double d2 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)img.getY()));
+		double d2 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)img.getY()));	// Distance from center of circle to top right corner of img
 		if(d2<=radius)return true;
-		double d3 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)(img.getY()+img.getHeight())));
+		double d3 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)(img.getY()+img.getHeight()))); // Distance from center of circle to bottom right corner of img
 		if(d3<=radius)return true;
-		double d4 = p.distance(new Point((int)img.getX(),(int)(img.getY()+img.getHeight())));
+		double d4 = p.distance(new Point((int)img.getX(),(int)(img.getY()+img.getHeight())));	// Distance from center of circle to bottom left corner of img
 		if(d4<=radius)return true;
-		return false;
+		return false;	// Otherwise returns false (Not one of the corners of the rectangle are in the circle)
 	}
 	
 }
