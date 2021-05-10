@@ -13,6 +13,7 @@ import processing.core.PImage;
  */
 public class WaterWave extends Circle {
 	private double fd,vd;
+	
 	/**
 	 * Creates a new instance of a Waterfall object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.

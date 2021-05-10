@@ -124,20 +124,20 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-//		if (hero.getHearts() > 0) {
-//			for (Enemy e: enemies) {
-//				e.act(hero, platforms);
-//				if (e instanceof FireEnemy) {
-//					hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
-//				} else {
-//					hero.act(platforms, e, null);
-//				}
-//			}
-//		}
+		if (hero.getHearts() > 0) {
+			for (Enemy e: enemies) {
+				e.act(hero, platforms);
+				if (e instanceof FireEnemy) {
+					hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
+				} else {
+					hero.act(platforms, e, null);
+				}
+			}
+		}
 		
-//		for (Enemy e: enemies) {
-//			e.act(hero, platforms);
-//		}
+		for (Enemy e: enemies) {
+			e.act(hero, platforms);
+		}
 		
 		//surface.popMatrix();
 		
