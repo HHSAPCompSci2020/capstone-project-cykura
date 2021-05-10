@@ -24,7 +24,7 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param x The X value of the MovingImage's top left corner.
 	 * @param y The Y value of the MovingImage's top left corner.
 	 * @param w The width of the MovingImage
-	 * @param h The height of the moving image
+	 * @param h The height of the MovingImage
 	**/
 	public MovingImage(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);

@@ -20,6 +20,7 @@ public class Hero extends MovingImage {
 	private double vx, vy;
 	private double friction;
 	private double gravity;
+	
 	private int hearts;
 	private int facingDirection;
 	private int invincibilityTime;
@@ -117,6 +118,17 @@ public class Hero extends MovingImage {
 //		System.out.println("Walk is called");
 	}
 	
+	
+	/**
+	 * Deals damage to the Hero by losing an inputted number of hearts.
+	 * 
+	 * @param hearts The amount of hearts the hero loses
+	 * @pre hearts must be less than six
+	 */
+	public void loseHearts(int hearts) {
+		this.hearts = this.hearts - hearts;
+	}
+	
 
 	
 	/**
@@ -125,15 +137,15 @@ public class Hero extends MovingImage {
 	**/
 	public void dash() {
 //		System.out.println("Dash is called");
-		if(canDash && facingDirection == 0) {
+		if(canDash && facingDirection == 0) {	// Facing to the right
 //			affectedByGravity = false;
 //			dashing = true;
 //			vx += (6);
-			System.out.println(y);
-			moveByAmount(100, 0);
-		} else if (canDash && facingDirection == 180) {
-			System.out.println(y);
-			moveByAmount(100, 0);
+//			System.out.println(y);
+			moveByAmount(50, 0);
+		} else if (canDash && facingDirection == 180) {		// Facing to the left
+//			System.out.println(y);
+			moveByAmount(-50, 0);
 //			affectedByGravity = false;
 //			dashing = true;
 //			vx += (-6);
@@ -280,7 +292,7 @@ public class Hero extends MovingImage {
 		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
 			hearts--;
 			jump();
-			invincibilityTime = 80;
+			invincibilityTime = 160;
 		}
 	}
 	

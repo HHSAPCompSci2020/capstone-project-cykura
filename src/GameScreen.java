@@ -12,6 +12,8 @@ public class GameScreen extends Screen {
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage water;
+	public static PImage heart;
+	
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
@@ -22,6 +24,7 @@ public class GameScreen extends Screen {
 	private int x, y;
 	private DrawingSurface surface;
 //	private Rectangle screenRect;
+	private ArrayList<Heart> hearts;
 	private Hero hero;
 	private ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
@@ -55,6 +58,9 @@ public class GameScreen extends Screen {
 //		spawnEnemy();
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
+		heart = surface.loadImage("sprites\\FullHeart.png");
+		hearts = generateHearts();
+		
 //		try {
 //			Thread.sleep(3000);
 //		} catch (InterruptedException e) {
@@ -76,11 +82,11 @@ public class GameScreen extends Screen {
 		surface.stroke(0);     // Set line drawing color to white
 		surface.noFill();
 
-		surface.rect(x,y,30,30);
-		
-		surface.fill(0);
-		surface.text("Move: Arrow keys",10,30);
-		surface.text("Menu: Space",10,50);
+//		surface.rect(x,y,30,30);
+//		
+//		surface.fill(0);
+//		surface.text("Move: Arrow keys",10,30);
+//		surface.text("Menu: Space",10,50);
 		
 		surface.fill(100);
 		for (Shape s : platforms) {
@@ -92,6 +98,9 @@ public class GameScreen extends Screen {
 		
 		if (hero.getHearts() > 0) {
 			hero.draw(surface);
+			for (Heart h: hearts) {
+				h.draw(surface);
+			}
 		}
 		
 		for (Enemy e: enemies) {
@@ -183,6 +192,18 @@ public class GameScreen extends Screen {
 		}
 		surface.translate(-view_x,-view_y);
 	}
+	
+	private ArrayList<Heart> generateHearts() {
+		ArrayList<Heart> hearts = new ArrayList<Heart>();
+		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 200, 10));
+		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
+		
+		return hearts;
+	}
+	
+//	private void displayHearts(Hero h) {
+//		
+//	}
 	
 
 }
