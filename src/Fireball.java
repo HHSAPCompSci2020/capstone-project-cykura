@@ -32,13 +32,18 @@ public class Fireball extends MovingImage {
 	public void act() {
 		super.moveByAmount(vx,vy);
 	}
-	public boolean checkCollision (Enemy e, Hero h, ArrayList<Shape> shapes) {
-		if (this.intersects(e)||this.intersects(h)) {
-			return true;
-		}
+	public boolean checkCollisionShape (ArrayList<Shape> shapes) {
 		for (int i=0;i<shapes.size();i++) {
 			if(this.intersects((Rectangle2D) shapes.get(i))) return true;
 		}
+		return false;
+	}
+	public boolean checkCollisionEnemy (Enemy e) {
+		if (this.intersects(e)) return true;
+		return false;
+	}
+	public boolean checkCollisionHero (Hero h) {
+		if (this.intersects(h)) return true;
 		return false;
 	}
 }
