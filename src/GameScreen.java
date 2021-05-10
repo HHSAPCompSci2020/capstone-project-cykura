@@ -195,7 +195,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Heart> generateHearts() {
 		ArrayList<Heart> hearts = new ArrayList<Heart>();
 		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 200, 10));
-		
+		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
 		
 		return hearts;
 	}

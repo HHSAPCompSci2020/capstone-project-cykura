@@ -292,7 +292,7 @@ public class Hero extends MovingImage {
 		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
 			hearts--;
 			jump();
-			invincibilityTime = 80;
+			invincibilityTime = 160;
 		}
 	}
 	
