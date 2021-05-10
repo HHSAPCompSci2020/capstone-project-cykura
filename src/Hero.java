@@ -45,7 +45,7 @@ public class Hero extends MovingImage {
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		gravity = 0.9;
+		gravity = 0.7;
 		friction = 0.85;
 		hearts = 5;
 		canDash = false;
@@ -61,7 +61,7 @@ public class Hero extends MovingImage {
 	public void jump() {
 //		System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= 9;
+			vy -= 7;
 		}
 	}
 	
@@ -317,6 +317,7 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
+	
 	
 
 }
