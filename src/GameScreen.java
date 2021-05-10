@@ -58,7 +58,8 @@ public class GameScreen extends Screen {
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
 		heart = surface.loadImage("sprites\\FullHeart.png");
-//		hearts = displayHearts();
+		hearts = generateHearts();
+		
 //		try {
 //			Thread.sleep(3000);
 //		} catch (InterruptedException e) {
@@ -96,6 +97,9 @@ public class GameScreen extends Screen {
 		
 		if (hero.getHearts() > 0) {
 			hero.draw(surface);
+			for (Heart h: hearts) {
+				h.draw(surface);
+			}
 		}
 		
 		for (Enemy e: enemies) {
@@ -190,8 +194,10 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Heart> generateHearts() {
 		ArrayList<Heart> hearts = new ArrayList<Heart>();
-		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 50, 10));
+		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 200, 10));
 		
+		
+		return hearts;
 	}
 	
 //	private void displayHearts(Hero h) {

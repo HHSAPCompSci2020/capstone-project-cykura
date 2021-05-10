@@ -6,8 +6,8 @@ import processing.core.PImage;
 public class Heart extends Rectangle2D.Double {
 
 	private PImage image;
-	public static final int HEART_WIDTH = 20;
-	public static final int HEART_HEIGHT = 40;
+	public static final int HEART_WIDTH = 30;
+	public static final int HEART_HEIGHT = 30;
 	
 	/**
 	 * Creates a new instance of a Heart object having its left
