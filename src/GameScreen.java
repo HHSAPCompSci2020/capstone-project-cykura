@@ -143,10 +143,6 @@ public class GameScreen extends Screen {
 				hero.jump();
 			}
 		}
-			
-		if (surface.isPressed(KeyEvent.VK_UP)) {
-			hero.jump();
-		}
 		
 		
 		if(surface.isPressed(KeyEvent.VK_D)) {
