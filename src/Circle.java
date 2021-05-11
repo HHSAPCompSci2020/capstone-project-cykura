@@ -101,7 +101,7 @@ public class Circle {
 	**/
 	public void draw(PApplet marker) {
 		if (filled) {
-			marker.fill(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue());
+			//marker.fill(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue());
 		} else {
 			marker.noFill();
 		}
