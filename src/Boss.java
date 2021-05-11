@@ -77,11 +77,11 @@ public class Boss extends Enemy {
 			w.act();
 		}
 		
-		if(rotateCooldown>0)
+		/*if(rotateCooldown>0)
 		rotateCooldown--;
 		
 		if(rotateCooldown2>0)
-		rotateCooldown2--;
+		rotateCooldown2--;*/
 		
 	}
 
@@ -100,13 +100,10 @@ public class Boss extends Enemy {
 			//System.out.println("drawing water");
 			w.draw(g);
 		}
-		if(rotateCooldown<=0) {
+		if(Math.random()>0.9) {
+			System.out.println("rotate");
 			g.rotate(g.PI);
-			rotateCooldown2 = 800;
 		}
-		if(rotateCooldown2<=0) {
-			g.rotate(-g.PI);
-			rotateCooldown = 800;
-		}
+			
 	}
 }

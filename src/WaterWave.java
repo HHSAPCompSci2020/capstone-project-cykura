@@ -32,7 +32,6 @@ public class WaterWave extends Circle {
 	}
 	public void act() {
 		super.extent+=vd;
-		System.out.println(super.extent);
 		if(super.extent==fd) remove();
 	}
 	
