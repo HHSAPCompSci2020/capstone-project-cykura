@@ -9,7 +9,7 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class Boss extends Enemy {
-	private int invertTime;
+	private int cnt;
 	public ArrayList<Fireball> fireballs;
 	public WaterWave w;
 	//Cooldown time between shooting fireballs and using a waterwave
@@ -31,6 +31,8 @@ public class Boss extends Enemy {
 	}
 	
 	public void act(Hero hero) {
+		cnt++;
+		//System.out.println(cnt);
 		double x1 = hero.x;
 	    double y1 = hero.y;
 
@@ -39,14 +41,10 @@ public class Boss extends Enemy {
 	    
 	    float angle = (float)Math.atan2(diffY, diffX);
 	    //Inverting Screen
-		if(Math.random()>0.993&&GameScreen.invertControls==false) {
-			invertControls((int)Math.random()*5000+3000);
-		}
-		if(invertTime>0) {
-			invertTime--;
+		if((int)((cnt/300.0)%2)==1) {
+			invertControls();
 		}
 		else {
-			invertTime = 0;
 			GameScreen.invertControls = false;
 		}
 		//Shooting Fireballs
@@ -83,9 +81,8 @@ public class Boss extends Enemy {
 		
 	}
 
-	private void invertControls(int duration) {
+	private void invertControls() {
 		GameScreen.invertControls = true;
-		invertTime = duration;
 	}
 	
 	public void draw(PApplet g) {
