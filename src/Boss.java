@@ -58,7 +58,7 @@ public class Boss extends Enemy {
 		}
 		//Use WaterWave
 		if(Math.random()>0.98&&cooldown<=0&&w==null) {
-			w = new WaterWave((int)(x+20),(int)(y+30),50,300,7);
+			w = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
 			//System.out.println(x+" "+y);
 		}
 		
