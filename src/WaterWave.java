@@ -32,16 +32,17 @@ public class WaterWave extends Circle {
 	}
 	public void act() {
 		super.extent+=vd;
-		if(super.extent==fd) remove();
 	}
-	
-	public boolean checkCollision(Enemy e, Hero h) {
-		if (this.intersects(e.getBounds2D())||this.intersects(h.getBounds2D())) {
-			return true;
-		}
+	public boolean canRemove() {
+		if(super.extent==fd) return true;
 		return false;
 	}
-	public void remove() {
-		
+	public boolean checkCollisionEnemy(Enemy e) {
+		if (this.intersects(e.getBounds2D())) return true;
+		return false;
+	}
+	public boolean checkCollisionHero(Hero h) {
+		if (this.intersects(h.getBounds2D())) return true;
+		return false;
 	}
 }
