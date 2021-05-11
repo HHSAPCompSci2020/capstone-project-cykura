@@ -157,8 +157,13 @@ public class GameScreen extends Screen {
 		
 		if (hero.getHearts() > 0) {
 			for (Enemy e: enemies) {
-				Boss b = (Boss)e;
-				b.act(hero);
+				if(e instanceof Boss) {
+					Boss b = (Boss)e;
+					b.act(hero);
+				}
+				else {
+					e.act(hero, platforms);
+				}
 				if (e instanceof FireEnemy) {
 					hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
 				} else {
