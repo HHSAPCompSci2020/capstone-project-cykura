@@ -34,7 +34,7 @@ public class WaterWave extends Circle {
 		super.extent+=vd;
 	}
 	public boolean canRemove() {
-		if(super.extent==fd) return true;
+		if(super.extent>=fd) return true;
 		return false;
 	}
 	public boolean checkCollisionEnemy(Enemy e) {
