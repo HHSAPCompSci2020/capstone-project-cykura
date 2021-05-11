@@ -57,9 +57,10 @@ public class Boss extends Enemy {
 			cooldown--;
 		}
 		//Use WaterWave
-		if(Math.random()>0.999&&cooldown<=0) {
+		if(Math.random()>0.98&&cooldown<=0) {
 			w = new WaterWave((int)x,(int)y,61,100,5);
 			w.act();
+			System.out.println("water wave created");
 		}
 		
 		//Removing fireballs if colliding with hero
