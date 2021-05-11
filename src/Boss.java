@@ -101,8 +101,8 @@ public class Boss extends Enemy {
 			w.draw(g);
 		}
 		if(Math.random()>0.9) {
-			System.out.println("rotate");
-			g.rotate(g.PI);
+			//System.out.println("rotate");
+			//g.rotate(g.PI);
 		}
 			
 	}

@@ -7,7 +7,6 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class GameScreen extends Screen {
-
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
@@ -73,8 +72,8 @@ public class GameScreen extends Screen {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
-		
 		scroll();
+		//surface.rotate(surface.radians(45));
 		//surface.pushMatrix();
 		
 		surface.background(0, 255, 255);
