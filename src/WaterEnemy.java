@@ -11,7 +11,7 @@ import processing.core.PImage;
  * @version 5.6.21
  */
 public class WaterEnemy extends Enemy {
-	private WaterWave w;
+	private WaterWave waterwave;
 	/**
 	 * Creates a new instance of a WaterEnemy object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -22,19 +22,18 @@ public class WaterEnemy extends Enemy {
 	**/
 	public WaterEnemy(PImage img, int x, int y) {
 		super(img, x, y);
-		
+		waterwave=null;
 	}
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
-		//if(w==null)
-		//w = new WaterWave(GameScreen.water,(int)x-10,(int)y+40,60,20,0,6);
+		if(waterwave==null) {
+			waterwave = new WaterWave((int)(x+20),(int)(y+30),50,300,7);
+		}
 		//w.act();
-		//w.checkPlatforms(platforms);
 	}
 	
 	public void draw(PApplet g) {
 		super.draw(g);
-		if(w!=null)
-		w.draw(g);
+		if(waterwave!=null) waterwave.draw(g);
 	}
 }
