@@ -191,6 +191,7 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
+		p.add(new Rectangle(50,50,120,50));
 		p.add(new Rectangle(100,150,120,50));
 		p.add(new Rectangle(200,365,400,50));	//bottom middle
 		p.add(new Rectangle(0,250,120,50)); 	// top left
@@ -228,6 +229,10 @@ public class GameScreen extends Screen {
 		if(hero.y<t_b) {
 			view_y-=t_b-hero.y;
 		}
+		/*float h_b = (float) (Horizontal_Margin-view_y+hero.height);
+		if(hero.y+hero.height>h_b) {
+			view_y-=h_b+hero.y+hero.height;
+		}*/
 		surface.translate(-view_x,-view_y);
 	}
 	
