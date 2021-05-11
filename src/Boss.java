@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -12,6 +13,8 @@ public class Boss extends Enemy {
 	public ArrayList<Fireball> fireballs;
 	public WaterWave w;
 	private int cooldown;
+	private int rotateCooldown;
+	private int rotateCooldown2;
 	/**
 	 * Creates a new instance of a Boss object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -23,6 +26,7 @@ public class Boss extends Enemy {
 	public Boss(PImage img, int x, int y) {
 		super(img, x, y);
 		fireballs = new ArrayList<Fireball>();
+		rotateCooldown = 800;
 	}
 	
 	public void act(Hero hero) {
@@ -58,10 +62,28 @@ public class Boss extends Enemy {
 			w = new WaterWave((int)x,(int)y,61,100,5);
 		}
 		
+		if(rotateCooldown>0)
+		rotateCooldown--;
+		
+		if(rotateCooldown2>0)
+		rotateCooldown2--;
+		
 	}
 
 	private void invertControls(int duration) {
 		GameScreen.invertControls = true;
 		invertTime = duration;
+	}
+	
+	public void draw(PApplet g) {
+		super.draw(g);
+		if(rotateCooldown<=0) {
+			g.rotate(g.PI);
+			rotateCooldown2 = 800;
+		}
+		if(rotateCooldown2<=0) {
+			g.rotate(-g.PI);
+			rotateCooldown = 800;
+		}
 	}
 }
