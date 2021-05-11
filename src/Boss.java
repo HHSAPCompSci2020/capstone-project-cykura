@@ -12,6 +12,7 @@ public class Boss extends Enemy {
 	private int invertTime;
 	public ArrayList<Fireball> fireballs;
 	public WaterWave w;
+	//Cooldown time between shooting fireballs and using a waterwave
 	private int cooldown;
 	private int rotateCooldown;
 	private int rotateCooldown2;
@@ -58,11 +59,12 @@ public class Boss extends Enemy {
 			cooldown--;
 		}
 		//Use WaterWave
-		if(Math.random()>0.99&&cooldown<=0) {
+		if(Math.random()>0.999&&cooldown<=0) {
 			w = new WaterWave((int)x,(int)y,61,100,5);
 			w.act();
 		}
 		
+		//Removing fireballs if colliding with hero
 		for(int i=0;i<fireballs.size();i++) {
 	    	 Fireball f = fireballs.get(i);
 	    	 if(f!=null) {
