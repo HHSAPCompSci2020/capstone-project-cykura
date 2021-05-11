@@ -27,9 +27,40 @@ public class WaterEnemy extends Enemy {
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
 		if(waterwave==null) {
-			waterwave = new WaterWave((int)(x+20),(int)(y+30),50,300,7);
+			
 		}
-		//w.act();
+		if(health>0) {
+			double x1 = h.x;
+		    double y1 = h.y;
+	
+		    double diffX = x1 - x;
+		    double diffY = y1 - y;
+	
+		    float angle = (float)Math.atan2(diffY, diffX);
+		    if(this.intersects(h)) {
+		   	     waitTime=45;
+		    }
+		    if(Math.sqrt(Math.pow(diffX,2)+Math.pow(diffY, 2))<=150&&waterwave==null&&waitTime<=0) {
+		    	waterwave = new WaterWave((int)(x+20),(int)(y+30),50,300,7);
+		    	waitTime=240;
+		    }
+		     if(waitTime<=0) {
+		    	x += v * Math.cos(angle);
+		    	y += v * Math.sin(angle);
+		    	 waitTime = 0;
+		     }
+		     else {
+		    	 waitTime--;
+		     }
+		     if (waterwave!=null) {
+		    	 waterwave.act();
+		    	 if (waterwave.canRemove())waterwave=null;
+		     }
+		     
+		}
+		else {
+			//remove this enemy and drop the ability
+		}
 	}
 	
 	public void draw(PApplet g) {
