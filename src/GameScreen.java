@@ -26,7 +26,7 @@ public class GameScreen extends Screen {
 //	private Rectangle screenRect;
 	private ArrayList<Heart> hearts;
 	private Hero hero;
-	private ArrayList<Shape> platforms;
+	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	
 

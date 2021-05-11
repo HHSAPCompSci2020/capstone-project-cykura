@@ -60,7 +60,18 @@ public class Boss extends Enemy {
 		//Use WaterWave
 		if(Math.random()>0.99&&cooldown<=0) {
 			w = new WaterWave((int)x,(int)y,61,100,5);
+			w.act();
 		}
+		
+		for(int i=0;i<fireballs.size();i++) {
+	    	 Fireball f = fireballs.get(i);
+	    	 if(f!=null) {
+	    		 f.act();
+	    		 if(f.checkCollisionHero(hero)||f.checkCollisionShape(GameScreen.platforms)) {
+	    			 fireballs.set(i, null);
+	    		 }
+	    	 }
+	     }
 		
 		if(rotateCooldown>0)
 		rotateCooldown--;
@@ -77,6 +88,14 @@ public class Boss extends Enemy {
 	
 	public void draw(PApplet g) {
 		super.draw(g);
+		for(Fireball f:fireballs) {
+			if(f!=null) {
+				f.draw(g);
+			}
+		}
+		if(w!=null) {
+			w.draw(g);
+		}
 		if(rotateCooldown<=0) {
 			g.rotate(g.PI);
 			rotateCooldown2 = 800;
