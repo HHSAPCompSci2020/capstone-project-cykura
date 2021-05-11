@@ -73,7 +73,9 @@ public class Boss extends Enemy {
 	    	 }
 	     }
 		
-		if(w!=null)w.act();
+		if(w!=null) {
+			w.act();
+		}
 		
 		if(rotateCooldown>0)
 		rotateCooldown--;
