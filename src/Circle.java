@@ -1,6 +1,8 @@
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -49,8 +51,8 @@ public class Circle {
 		fillColor = Color.BLUE;
 		filled = true;
 		strokeWidth = 1;
-		this.x = 0;
-		this.y = 0;		
+		this.x = x;
+		this.y = y;		
 		this.extent = radius;
 	}
 
@@ -106,6 +108,7 @@ public class Circle {
 		marker.strokeWeight(strokeWidth);
 		marker.stroke(strokeColor.getRed(), strokeColor.getGreen(), strokeColor.getBlue());
 		marker.circle((float) x, (float) y, (float) extent);
+		//System.out.println(extent);
 	}
 	
 	/**
@@ -183,7 +186,20 @@ public class Circle {
 	}
 	
 	protected boolean intersects(Rectangle2D img) {
-		return filled;
+		double radius = extent/2;
+		Point p = new Point((int)x,(int)y);	// Center of Circle Point
+		if(img.contains(x, y)) {	// If the center of the circle is in the rectangle;
+			return true;
+		}
+		double d1 = p.distance(new Point((int)img.getX(),(int)img.getY()));	// Distance from center of circle to top left corner of img
+		if(d1<=radius)return true;
+		double d2 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)img.getY()));	// Distance from center of circle to top right corner of img
+		if(d2<=radius)return true;
+		double d3 = p.distance(new Point((int)(img.getX()+img.getWidth()),(int)(img.getY()+img.getHeight()))); // Distance from center of circle to bottom right corner of img
+		if(d3<=radius)return true;
+		double d4 = p.distance(new Point((int)img.getX(),(int)(img.getY()+img.getHeight())));	// Distance from center of circle to bottom left corner of img
+		if(d4<=radius)return true;
+		return false;	// Otherwise returns false (Not one of the corners of the rectangle are in the circle)
 	}
 	
 }

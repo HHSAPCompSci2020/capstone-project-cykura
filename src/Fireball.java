@@ -12,6 +12,7 @@ import processing.core.PImage;
  */
 public class Fireball extends MovingImage {
 	private double vy, vx;
+	
 	/**
 	 * Creates a new instance of a Fireball object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
