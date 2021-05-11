@@ -51,8 +51,8 @@ public class Circle {
 		fillColor = Color.BLUE;
 		filled = true;
 		strokeWidth = 1;
-		this.x = 0;
-		this.y = 0;		
+		this.x = x;
+		this.y = y;		
 		this.extent = radius;
 	}
 
@@ -108,6 +108,7 @@ public class Circle {
 		marker.strokeWeight(strokeWidth);
 		marker.stroke(strokeColor.getRed(), strokeColor.getGreen(), strokeColor.getBlue());
 		marker.circle((float) x, (float) y, (float) extent);
+		//System.out.println(x+" "+y);
 	}
 	
 	/**
