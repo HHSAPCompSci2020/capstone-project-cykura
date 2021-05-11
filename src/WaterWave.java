@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Waterfall class represents a water fall which is one of the abilities that the Hero can collect.
+ * The Waterwave class represents a water wave which is one of the abilities that the Hero can collect.
  * 
  * @author Alex Zheng
  * @version 5.6.21
