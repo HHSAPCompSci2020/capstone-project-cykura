@@ -108,7 +108,7 @@ public class Circle {
 		marker.strokeWeight(strokeWidth);
 		marker.stroke(strokeColor.getRed(), strokeColor.getGreen(), strokeColor.getBlue());
 		marker.circle((float) x, (float) y, (float) extent);
-		//System.out.println(x+" "+y);
+		//System.out.println(extent);
 	}
 	
 	/**
