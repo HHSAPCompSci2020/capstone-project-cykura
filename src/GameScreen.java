@@ -103,6 +103,7 @@ public class GameScreen extends Screen {
 		}
 		
 		for (Enemy e: enemies) {
+			if(e!=null)
 			e.draw(surface);
 		}
 //		
@@ -156,13 +157,24 @@ public class GameScreen extends Screen {
 		}
 		
 		if (hero.getHearts() > 0) {
-			for (Enemy e: enemies) {
-				Boss b = (Boss)e;
-				b.act(hero);
-				if (e instanceof FireEnemy) {
-					hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
-				} else {
-					hero.act(platforms, e, null);
+			for (int i =0;i<enemies.size();i++) {
+				Enemy e = enemies.get(i);
+				if(e!=null) {
+					if(e instanceof Boss) {
+						Boss b = (Boss)e;
+						b.act(hero);
+					}
+					else {
+						e.act(hero, platforms);
+					}
+					if (e instanceof FireEnemy) {
+						hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
+					} else {
+						hero.act(platforms, e, null);
+					}
+					if(e.canRemove()) {
+						enemies.set(i, null);
+					}
 				}
 			}
 		}
@@ -191,7 +203,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50));
-		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
+		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
 		//c.add(new WaterEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-100, 100));
 		c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
