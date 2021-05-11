@@ -28,7 +28,7 @@ public class Enemy extends MovingImage{
 	**/
 	public Enemy(PImage img, int x, int y) {
 		super(img, x, y, 40, 60);
-		v = 1;
+		v = 2;
 		health = 100;
 	}
 	
