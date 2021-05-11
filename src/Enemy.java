@@ -92,4 +92,8 @@ public class Enemy extends MovingImage{
 		//g.text("Health: "+health, (int)x-10, (int)y-20);
 	}
 	
+	public boolean canRemove() {
+		return health<=0;
+	}
+	
 }
