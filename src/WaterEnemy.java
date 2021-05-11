@@ -7,7 +7,7 @@ import processing.core.PImage;
 /**
  * The WaterEnemy class represents an Enemy with the Waterfall projectile which the Player can defeat.
  * 
- * @author alex
+ * @author alex_zheng
  * @version 5.6.21
  */
 public class WaterEnemy extends Enemy {

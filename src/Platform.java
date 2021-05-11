@@ -3,6 +3,7 @@ import processing.core.PImage;
 /**
  * The Platform class represents a movable platform on which the Hero and enemies can stand. The Platform may contain Spikes.
  * 
+ * @author alex_zheng
  * @version 5.6.21
  */
 public class Platform extends MovingImage {
