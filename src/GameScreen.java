@@ -16,6 +16,7 @@ public class GameScreen extends Screen {
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
+	public static float Horizontal_Margin = 40;
 	public static boolean invertControls;
 	public float view_x;
 	public float view_y;
@@ -190,6 +191,7 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
+		p.add(new Rectangle(100,150,120,50));
 		p.add(new Rectangle(200,365,400,50));	//bottom middle
 		p.add(new Rectangle(0,250,120,50)); 	// top left
 		p.add(new Rectangle(680,250,120,50));	// top right
