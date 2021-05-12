@@ -88,7 +88,10 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 		
-		keysReleased.add(keyCode);
+		if (!keysReleased.contains(keyCode))
+			keysReleased.add(keyCode);
+		
+		
 	}
 	
 //	public void removeKey(Integer code) {

@@ -197,19 +197,21 @@ public class Hero extends MovingImage {
 	
 	
 	public void charge() {
-		System.out.println("cT: " + chargeTime);
-		System.out.println("charging state: " + charging);
-		if (chargeTime >= 10 && chargeCoolDown <= 0) {		// If youve held it for long enough
-			charging = false; 	// you are no longer charging
-			dash();	// dashes the hero
-			chargeTime = 0;
-			chargeCoolDown = 50;
-		} else {	// Charge is held but not long enough
-			chargeCoolDown--;
-//			charging = true;
-			chargeTime++;
-			
-		}
+//		charging = true;
+		chargeTime++;
+//		System.out.println("cT: " + chargeTime);
+//		System.out.println("charging state: " + charging);
+//		if (chargeTime >= 10 && chargeCoolDown <= 0) {		// If youve held it for long enough
+//			charging = false; 	// you are no longer charging
+//			dash();	// dashes the hero
+//			chargeTime = 0;
+//			chargeCoolDown = 50;
+//		} else {	// Charge is held but not long enough
+//			chargeCoolDown--;
+////			charging = true;
+//			chargeTime++;
+//			
+//		}
 		
 	}
 	
@@ -222,11 +224,15 @@ public class Hero extends MovingImage {
 //		charging = false;
 //		if (dashing == false) {
 //			dashing = true;
+		if (chargeTime > 100) {
+			chargeTime = 0;
 			if(canDash && facingDirection == 0) {	// Facing to the right
 				moveByAmount(30, 0);
 			} else if (canDash && facingDirection == 180) {		// Facing to the left
 				moveByAmount(-30, 0);
 			}
+		}
+
 //			dashing = false;
 //		} else {
 //			dashing = false;
@@ -300,7 +306,7 @@ public class Hero extends MovingImage {
 
 		// ***********Y AXIS***********
 		double y2 = y;
-		if (isDashing() == false && isCharging() == false) {
+		if (chargeTime <= 0) {
 //			System.out.println("d");
 			vy += gravity; // GRAVITY
 			y2 = y + vy;
@@ -339,7 +345,7 @@ public class Hero extends MovingImage {
 			if (Math.abs(vy) < .5)
 				vy = 0;
 		} else {
-			System.out.println("dashing/charging");
+//			System.out.println("dashing/charging");
 		}
 
 
@@ -347,7 +353,7 @@ public class Hero extends MovingImage {
 
 		double x2 = x;
 		
-		if (isDashing() == false && isCharging() == false) {
+		if (chargeTime <= 0) {
 			vx *= friction;
 
 			x2 = x + vx;
@@ -388,7 +394,7 @@ public class Hero extends MovingImage {
 			moveToLocation(x2,y2);
 			
 		} else {
-			System.out.println("dashing/charging");
+//			System.out.println("dashing/charging");
 		}
 		
 

@@ -161,6 +161,8 @@ public class GameScreen extends Screen {
 //			if (hero.getChargeTime() >= 80) {
 //				hero.dash();
 //			}
+		} else {
+			hero.dash();
 		}
 		
 		if(surface.isPressed(KeyEvent.VK_A)) {
