@@ -6,8 +6,8 @@ import processing.core.PImage;
 /**
  * The GrassEnemy class represents an Enemy with the Leaf Dash move which the Player can defeat.
  * 
- * @author alex_zheng
- * @version 5.6.21
+ * @author vicram_vijayakumar
+ * @version 5.12.21
  */
 public class GrassEnemy extends Enemy {
 	private int dashCoolDownTimeRemaining;
@@ -31,8 +31,9 @@ public class GrassEnemy extends Enemy {
 		     double diffY = hero.y - y;
 	
 		     float angle = (float)Math.atan2(diffY, diffX);
-		     if(this.intersects(hero)) {
-		    	 waitTime=30;
+		     if(this.intersects(hero)) {	// If it collides with the hero
+		    	 waitTime=30;	// Wait Time to start Moving again
+		    	 dashCoolDownTimeRemaining += 25;	// Increase Dash time to not dash right after hitting the hero
 		     }
 		     if (waitTime <= 0) {
 		    	 x += v * Math.cos(angle);
@@ -47,10 +48,10 @@ public class GrassEnemy extends Enemy {
 			     if (Math.abs(diffY) <= 100 && Math.abs(diffX) <= 100) {
 				 		if(hero.x < this.x) {	// The Hero is to the left
 							moveByAmount(-50, 0);
-							dashCoolDownTimeRemaining = 100;
+							dashCoolDownTimeRemaining = 200;
 						} else if (hero.x > this.x) {		// Hero is to the right
 							moveByAmount(50, 0);
-							dashCoolDownTimeRemaining = 100;
+							dashCoolDownTimeRemaining = 200;
 						}
 				     }
 		     } else {
