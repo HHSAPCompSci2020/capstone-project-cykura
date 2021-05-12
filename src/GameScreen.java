@@ -163,6 +163,10 @@ public class GameScreen extends Screen {
 			hero.dash();
 		}
 		
+		if(surface.isPressed(KeyEvent.VK_A)) {
+			hero.throwFireball();
+		}
+		
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (Enemy e: enemies) {

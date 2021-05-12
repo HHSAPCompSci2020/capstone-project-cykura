@@ -50,7 +50,7 @@ public class Hero extends MovingImage {
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		canThrowFireball = false;
+		canThrowFireball = true;
 		canDash = false;
 		hearts = 5;
 
@@ -59,6 +59,8 @@ public class Hero extends MovingImage {
 
 		facingDirection = 0;	// right direction
 		dashing = false;
+		
+		fireballs = new ArrayList<Fireball>();
 		
 //		hearts = new ArrayList<Heart>();
 //		hearts.add(new Heart(GameScreen.heart, 10, 10, 30, 30));
@@ -81,10 +83,10 @@ public class Hero extends MovingImage {
 	public void throwFireball() {
 		if (canThrowFireball) {
 			if (facingDirection == 0) {		// Facing to the right
-		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y, 20, 20, 15, 0);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y, 20, 20, 20, 0);
 		    	fireballs.add(f);
 			} else {	// Facing to the left
-		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y, 20, 20, -15, 0);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y, 20, 20, -20, 0);
 		    	fireballs.add(f);
 			}
 		}
@@ -205,6 +207,11 @@ public class Hero extends MovingImage {
 	**/
 	public void draw(PApplet g) {
 		super.draw(g);
+		for(Fireball f: fireballs) {
+			if(f!=null) {
+				f.draw(g);
+			}
+		}
 //		drawHearts(g);
 		
 		
@@ -363,7 +370,7 @@ public class Hero extends MovingImage {
 		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
 			hearts--;
 			jump();
-			invincibilityTime = 300;
+			invincibilityTime = 150;
 		}
 	}
 	
@@ -371,7 +378,7 @@ public class Hero extends MovingImage {
 	 * Checks whether the Hero gets hit by a Projectile.
 	 * If so, the Hero loses damage and gains some time in which the Hero is invincible.
 	 * 
-	 * @param p The list of Fireballs to check with the 
+	 * @param p The list of Fireballs to check with
 	**/
 	public void checkProjectileCollision(ArrayList<Fireball> p) {
 //		if (invincibilityTime > 0) {
