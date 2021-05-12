@@ -84,6 +84,10 @@ public class Hero extends MovingImage {
 		}
 	}
 	
+	public ArrayList<Fireball> getFireballs() {
+		return fireballs;
+	}
+	
 	public void throwFireball() {
 		if (canThrowFireball&&fireballCoolDown>30) {
 			if (facingDirection == 0) {		// Facing to the right
