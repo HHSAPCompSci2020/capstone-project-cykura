@@ -25,12 +25,14 @@ public class Hero extends MovingImage {
 	private int invincibilityTime;
 	
 	private ArrayList<Fireball> fireballs;
-	private ArrayList<Heart> hearts;
+//	private ArrayList<Heart> hearts;
 	
 	private boolean canThrowFireball;
 	private boolean canWaterWave;
 	private boolean canDash;
 	private boolean onASurface;
+	private int hearts;
+	
 //	private boolean affectedByGravity;
 	private boolean dashing;
 	
@@ -49,6 +51,7 @@ public class Hero extends MovingImage {
 		onASurface = false;
 		canThrowFireball = false;
 		canDash = false;
+		hearts = 5;
 
 		gravity = 0.5;
 		friction = 0.85;
@@ -56,8 +59,8 @@ public class Hero extends MovingImage {
 		facingDirection = 0;	// right direction
 		dashing = false;
 		
-		hearts = new ArrayList<Heart>();
-		hearts.add(new Heart(GameScreen.heart, 10, 10));
+//		hearts = new ArrayList<Heart>();
+//		hearts.add(new Heart(GameScreen.heart, 10, 10, 30, 30));
 //		generateHearts();
 		
 //		affectedByGravity = true;
@@ -188,14 +191,32 @@ public class Hero extends MovingImage {
 	**/
 	public void draw(PApplet g) {
 		super.draw(g);
+		drawHearts(g);
 		
 		
-		for (Heart h: hearts) {
-			h.draw(g);
-		}
-		g.text(" " + hearts.size(), (int) x-10, (int) y-10);
+		
+//		for (Heart h: hearts) {
+//			h.draw(g);
+//		}
+//		g.text(" " + hearts.size(), (int) x-10, (int) y-10);
 //		hearts.get(0).draw(g);
 //		g.text("Hearts: " + hearts.size(), (int)x-10, (int)y-20);
+	}
+	
+	
+	public void drawHearts(PApplet g) {
+		ArrayList<Heart> h = new ArrayList<Heart>();
+		for (int i = 0; i < hearts; i++) {
+			if (i == 0) {
+				h.add(new Heart(GameScreen.heart, 10, 10, 30, 30));
+			} else {
+				h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+			}
+		}
+		
+		for (Heart he : h) {
+			he.draw(g);
+		}
 	}
 	
 	/**
@@ -346,7 +367,7 @@ public class Hero extends MovingImage {
 	
 	
 	private void generateHearts() {
-		hearts.add(new Heart(GameScreen.heart, (int) 10, (int) 10));
+//		hearts.add(new Heart(GameScreen.heart, (int) 10, (int) 10, 30, 30));
 //		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
 //		return hearts;
 	}
