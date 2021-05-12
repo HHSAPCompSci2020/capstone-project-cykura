@@ -229,10 +229,12 @@ public class GameScreen extends Screen {
 		float t_b = view_y+Vertical_Margin;
 		if(hero.y<t_b) {
 			view_y-=t_b-hero.y;
+			System.out.println("vertical");
 		}
 		float h_b = view_y+DRAWING_HEIGHT-Horizontal_Margin;
 		if(hero.y+hero.height>h_b) {
-			view_y+=h_b+hero.y;
+			System.out.println("horizontal");
+			view_y+=h_b-hero.y;
 		}
 		surface.translate(-view_x,-view_y);
 	}
