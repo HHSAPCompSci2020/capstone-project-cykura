@@ -38,10 +38,10 @@ public class Heart extends Rectangle2D.Double {
 	/**
 	 * Draws the Heart.
 	 * 
-	 * @param g The PApplet on which the MovingImage is drawn.
+	 * @param g The PApplet on which the Heart is drawn.
 	**/
 	public void draw(PApplet g) {
-		g.image(image,(int)x,(int)y,(int)width,(int)height);
+		g.image(image,(int)x,(int)y, HEART_WIDTH, HEART_HEIGHT);
 	}
 	
 }

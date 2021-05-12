@@ -52,9 +52,13 @@ public class Hero extends MovingImage {
 
 		gravity = 0.5;
 		friction = 0.85;
-		hearts = new ArrayList<Heart>();
+
 		facingDirection = 0;	// right direction
 		dashing = false;
+		
+		hearts = new ArrayList<Heart>();
+		hearts.add(new Heart(GameScreen.heart, 10, 10));
+//		generateHearts();
 		
 //		affectedByGravity = true;
 	}
@@ -175,6 +179,8 @@ public class Hero extends MovingImage {
 		return 5;
 	}
 	
+	
+	
 	/**
 	 * Draws the Hero and displays its number of hearts above the Hero.
 	 * 
@@ -182,7 +188,14 @@ public class Hero extends MovingImage {
 	**/
 	public void draw(PApplet g) {
 		super.draw(g);
-		g.text("Hearts: " + hearts, (int)x-10, (int)y-20);
+		
+		
+		for (Heart h: hearts) {
+			h.draw(g);
+		}
+		g.text(" " + hearts.size(), (int) x-10, (int) y-10);
+//		hearts.get(0).draw(g);
+//		g.text("Hearts: " + hearts.size(), (int)x-10, (int)y-20);
 	}
 	
 	/**
@@ -331,6 +344,12 @@ public class Hero extends MovingImage {
 		}
 	}
 	
+	
+	private void generateHearts() {
+		hearts.add(new Heart(GameScreen.heart, (int) 10, (int) 10));
+//		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
+//		return hearts;
+	}
 	
 
 }
