@@ -83,10 +83,10 @@ public class Hero extends MovingImage {
 	public void throwFireball() {
 		if (canThrowFireball) {
 			if (facingDirection == 0) {		// Facing to the right
-		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y, 20, 20, 20, 0);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x+20), (int)(y+20), 20, 20, 10, 0);
 		    	fireballs.add(f);
 			} else {	// Facing to the left
-		    	Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y, 20, 20, -20, 0);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x+20), (int)(y+20), 20, 20, -10, 0);
 		    	fireballs.add(f);
 			}
 		}
