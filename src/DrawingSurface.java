@@ -15,6 +15,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	public float ratioX, ratioY;
 	
 	private ArrayList<Integer> keys;
+	private ArrayList<Integer> keysTyped;
+	private ArrayList<Integer> keysReleased;
+	
 //	private ArrayList<Integer> keysTapped;
 	
 	private Screen activeScreen;
@@ -27,6 +30,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		screens = new ArrayList<Screen>();
 		
 		keys = new ArrayList<Integer>();
+		keysTyped = new ArrayList<Integer>();
+		keysReleased = new ArrayList<Integer>();
+
 //		keysTapped = new ArrayList<Integer>();
 		
 		
@@ -70,6 +76,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 //		if (!keys.contains(keyCode)) {
 			keys.add(keyCode);
 //		}
+			
+		while(keysReleased.contains(keyCode))
+			keysReleased.remove(new Integer(keyCode));
 	}
 
 	public void keyReleased() {
@@ -78,6 +87,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
+		
+		keysReleased.add(keyCode);
 	}
 	
 //	public void removeKey(Integer code) {
@@ -85,6 +96,18 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 //			keys.remove(new Integer(code));
 //		}
 //	}
+	
+	public void keyTyped() {
+		keysTyped.add(keyCode);
+	}
+	
+	public boolean isTyped(Integer code) {
+		return keysTyped.contains(code);
+	}
+	
+	public boolean isReleased(Integer code) {
+		return keysReleased.contains(code);
+	}
 
 	public boolean isPressed(Integer code) {
 //		System.out.println(keys);
