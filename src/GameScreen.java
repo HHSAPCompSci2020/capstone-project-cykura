@@ -160,7 +160,10 @@ public class GameScreen extends Screen {
 		
 		
 		if(surface.isPressed(KeyEvent.VK_D)) {
-			hero.dash();
+			hero.charge();
+			if (hero.getChargeTime() >= 80) {
+				hero.dash();
+			}
 		}
 		
 		if(surface.isPressed(KeyEvent.VK_A)) {
@@ -173,7 +176,7 @@ public class GameScreen extends Screen {
 			for (Enemy e: enemies) {
 				hero.punch(e);
 			}
-			surface.removeKey(KeyEvent.VK_SPACE);
+//			surface.removeKey(KeyEvent.VK_SPACE);
 		}
 		
 		if (hero.getHearts() > 0) {

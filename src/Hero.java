@@ -101,6 +101,24 @@ public class Hero extends MovingImage {
 //		
 //	}
 	
+	public void charge() {
+//		System.out.println(chargeTime);
+		charging = true;
+		chargeTime++;
+	}
+	
+	public int getChargeTime() {
+		return chargeTime;
+	}
+	
+	public boolean isCharging() {
+		return charging;
+	}
+	
+	public boolean isDashing() {
+		return dashing;
+	}
+	
 	/**
 	 * Gets whether the Hero is on a surface or not.
 	 * @return true if the Hero is standing on a surface.
@@ -181,22 +199,14 @@ public class Hero extends MovingImage {
 	 *  
 	**/
 	public void dash() {
-//		System.out.println("Dash is called");
+		charging = false;
+		dashing = true;
 		if(canDash && facingDirection == 0) {	// Facing to the right
-//			affectedByGravity = false;
-//			dashing = true;
-//			vx += (6);
-//			System.out.println(y);
 			moveByAmount(50, 0);
 		} else if (canDash && facingDirection == 180) {		// Facing to the left
-//			System.out.println(y);
 			moveByAmount(-50, 0);
-//			affectedByGravity = false;
-//			dashing = true;
-//			vx += (-6);
 		}
-//		dashing = false;
-//		affectedByGravity = true;
+		dashing = false;
 	}
 	
 	/**
@@ -264,7 +274,7 @@ public class Hero extends MovingImage {
 
 		// ***********Y AXIS***********
 		double y2 = y;
-		if (dashing == false) {
+		if (!isDashing() && !isCharging()) {
 //			System.out.println("d");
 			vy += gravity; // GRAVITY
 			y2 = y + vy;
@@ -302,49 +312,56 @@ public class Hero extends MovingImage {
 
 			if (Math.abs(vy) < .5)
 				vy = 0;
-		}else {
+		} else {
 //			System.out.println("a");
 		}
 
 
 		// ***********X AXIS***********
 
+		double x2 = x;
+		
+		if (!isDashing() && !isCharging()) {
+			vx *= friction;
 
-		vx *= friction;
+			x2 = x + vx;
+			//System.out.println(vx);
+			Rectangle2D.Double strechX = new Rectangle2D.Double(Math.min(x,x2),y2,width+Math.abs(vx),height);
 
-		double x2 = x + vx;
-		//System.out.println(vx);
-		Rectangle2D.Double strechX = new Rectangle2D.Double(Math.min(x,x2),y2,width+Math.abs(vx),height);
-
-		if (vx > 0) {
-			Shape rightSurface = null;
-			for (Shape s : platforms) {
-				if (s.intersects(strechX)) {
-					rightSurface = s;
-					vx = 0;
+			if (vx > 0) {
+				Shape rightSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechX)) {
+						rightSurface = s;
+						vx = 0;
+					}
+				}
+				if (rightSurface != null) {
+					Rectangle r = rightSurface.getBounds();
+					x2 = r.getX()-width;
+				}
+			} else if (vx < 0) {
+				Shape leftSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechX)) {
+						leftSurface = s;
+						vx = 0;
+					}
+				}
+				if (leftSurface != null) {
+					Rectangle r = leftSurface.getBounds();
+					x2 = r.getX()+r.getWidth();
 				}
 			}
-			if (rightSurface != null) {
-				Rectangle r = rightSurface.getBounds();
-				x2 = r.getX()-width;
-			}
-		} else if (vx < 0) {
-			Shape leftSurface = null;
-			for (Shape s : platforms) {
-				if (s.intersects(strechX)) {
-					leftSurface = s;
-					vx = 0;
-				}
-			}
-			if (leftSurface != null) {
-				Rectangle r = leftSurface.getBounds();
-				x2 = r.getX()+r.getWidth();
-			}
+
+
+			if (Math.abs(vx) < .5)
+				vx = 0;
+			
+			moveToLocation(x2,y2);
 		}
+		
 
-
-		if (Math.abs(vx) < .5)
-			vx = 0;
 		
 		if (enemy != null) {
 			checkEnemyCollision(enemy);
@@ -372,7 +389,6 @@ public class Hero extends MovingImage {
 		
 		
 		//System.out.println(x2+" "+y2);
-		moveToLocation(x2,y2);
 	}
 	
 	/**
