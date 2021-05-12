@@ -67,7 +67,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 //		if (keysTapped.contains(keyCode) == false) {
 //			keysTapped.add(keyCode);
 //		}
-		keys.add(keyCode);
+//		if (!keys.contains(keyCode)) {
+			keys.add(keyCode);
+//		}
 	}
 
 	public void keyReleased() {
