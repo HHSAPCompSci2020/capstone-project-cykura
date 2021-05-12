@@ -34,8 +34,12 @@ public class Hero extends MovingImage {
 	private boolean onASurface;
 	private int hearts;
 	
+	private int chargeTime;
+	
 //	private boolean affectedByGravity;
 	private boolean dashing;
+	private boolean charging;
+	
 	
 	/**
 	 * Creates a new instance of a Hero object having its left
@@ -83,14 +87,19 @@ public class Hero extends MovingImage {
 	public void throwFireball() {
 		if (canThrowFireball) {
 			if (facingDirection == 0) {		// Facing to the right
-		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x+20), (int)(y+20), 20, 20, 5, 0);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x+30), (int)(y+20), 20, 20, 5, 0);
 		    	fireballs.add(f);
 			} else {	// Facing to the left
-		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x+20), (int)(y+20), 20, 20, -5, 0);
+		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x-10), (int)(y+20), 20, 20, -5, 0);
 		    	fireballs.add(f);
 			}
 		}
 	}
+	
+	
+//	public void makeWaterWave() {
+//		
+//	}
 	
 	/**
 	 * Gets whether the Hero is on a surface or not.
