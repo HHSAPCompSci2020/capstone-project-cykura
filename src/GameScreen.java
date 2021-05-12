@@ -208,7 +208,7 @@ public class GameScreen extends Screen {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50));
 		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
+		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-100, 100));
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
@@ -234,6 +234,21 @@ public class GameScreen extends Screen {
 		if(hero.y+hero.height>h_b) {
 			view_y-=h_b-hero.y-hero.height;
 		}
+		
+		ArrayList<Heart> h = new ArrayList<Heart>();
+		for (int i = 0; i < hero.getHearts(); i++) {
+			if (i == 0) {
+				h.add(new Heart(GameScreen.heart, (int) (view_x + 50), (int) (view_y + 50)));
+			} else {
+				//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+				h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y));
+			}
+		}
+		
+		for (Heart he : h) {
+			he.draw(surface);
+		}
+		
 		surface.translate(-view_x,-view_y);
 	}
 	

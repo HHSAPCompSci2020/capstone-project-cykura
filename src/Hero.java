@@ -179,7 +179,7 @@ public class Hero extends MovingImage {
 	 *  
 	**/
 	public int getHearts() {
-		return 5;
+		return hearts;
 	}
 	
 	
@@ -191,7 +191,7 @@ public class Hero extends MovingImage {
 	**/
 	public void draw(PApplet g) {
 		super.draw(g);
-		drawHearts(g);
+//		drawHearts(g);
 		
 		
 		
@@ -204,21 +204,21 @@ public class Hero extends MovingImage {
 	}
 	
 	
-	public void drawHearts(PApplet g) {
-		ArrayList<Heart> h = new ArrayList<Heart>();
-		for (int i = 0; i < hearts; i++) {
-			if (i == 0) {
-				h.add(new Heart(GameScreen.heart, (int) (x-350), 30, 30, 30));
-			} else {
-				//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
-				h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y, 30, 30));
-			}
-		}
-		
-		for (Heart he : h) {
-			he.draw(g);
-		}
-	}
+//	public void drawHearts(PApplet g) {
+//		ArrayList<Heart> h = new ArrayList<Heart>();
+//		for (int i = 0; i < hearts; i++) {
+//			if (i == 0) {
+//				h.add(new Heart(GameScreen.heart, (int) (x-350), 30, 30, 30));
+//			} else {
+//				//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+//				h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y, 30, 30));
+//			}
+//		}
+//		
+//		for (Heart he : h) {
+//			he.draw(g);
+//		}
+//	}
 	
 	/**
 	 * Makes the Hero act by moving, being affected by gravity and friction, and get hurt if attacked by enemy.

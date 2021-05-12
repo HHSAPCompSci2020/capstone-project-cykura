@@ -6,8 +6,8 @@ import processing.core.PImage;
 public class Heart extends Rectangle2D.Double {
 
 	private PImage image;
-//	public static final int HEART_WIDTH = 30;
-//	public static final int HEART_HEIGHT = 30;
+	public static final int HEART_WIDTH = 30;
+	public static final int HEART_HEIGHT = 30;
 	
 	/**
 	 * Creates a new instance of a Heart object having its left
@@ -17,8 +17,8 @@ public class Heart extends Rectangle2D.Double {
 	 * @param x The X value of the Heart's top left corner.
 	 * @param y The Y value of the Heart's top left corner.
 	**/
-	public Heart(PImage img, int x, int y, int w, int h) {
-		super(x,y, w, h);
+	public Heart(PImage img, int x, int y) {
+		super(x,y, HEART_WIDTH, HEART_HEIGHT);
 		image = img;
 	}
 	
@@ -41,7 +41,7 @@ public class Heart extends Rectangle2D.Double {
 	 * @param g The PApplet on which the Heart is drawn.
 	**/
 	public void draw(PApplet g) {
-		g.image(image,(int)x,(int)y, (int)width, (int)height);
+		g.image(image,(int)x,(int)y, HEART_WIDTH, HEART_HEIGHT);
 	}
 	
 }
