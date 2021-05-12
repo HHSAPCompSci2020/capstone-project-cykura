@@ -63,6 +63,7 @@ public class Hero extends MovingImage {
 
 		facingDirection = 0;	// right direction
 		dashing = false;
+		charging = false;
 		
 		fireballs = new ArrayList<Fireball>();
 		
@@ -109,8 +110,15 @@ public class Hero extends MovingImage {
 	
 	public void charge() {
 //		System.out.println(chargeTime);
-		charging = true;
-		chargeTime++;
+		if (chargeTime >= 40) {
+			charging = false;
+			dash();
+			chargeTime = 0;
+		} else {
+			charging = true;
+			chargeTime++;
+		}
+		
 	}
 	
 	public int getChargeTime() {
@@ -205,14 +213,19 @@ public class Hero extends MovingImage {
 	 *  
 	**/
 	public void dash() {
-		charging = false;
-		dashing = true;
-		if(canDash && facingDirection == 0) {	// Facing to the right
-			moveByAmount(50, 0);
-		} else if (canDash && facingDirection == 180) {		// Facing to the left
-			moveByAmount(-50, 0);
-		}
-		dashing = false;
+//		charging = false;
+//		if (dashing == false) {
+//			dashing = true;
+			if(canDash && facingDirection == 0) {	// Facing to the right
+				moveByAmount(30, 0);
+			} else if (canDash && facingDirection == 180) {		// Facing to the left
+				moveByAmount(-30, 0);
+			}
+//			dashing = false;
+//		} else {
+//			dashing = false;
+//		}
+
 	}
 	
 	/**
