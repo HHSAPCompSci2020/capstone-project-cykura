@@ -146,7 +146,7 @@ public class Hero extends MovingImage {
 	 * @pre hearts must be less than six
 	 */
 	public void loseHearts(int heartsToLose) {
-		
+		hearts -= heartsToLose;
 	}
 	
 
@@ -338,7 +338,7 @@ public class Hero extends MovingImage {
 		}
 		
 		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
-//			hearts--;
+			hearts--;
 			jump();
 			invincibilityTime = 300;
 		}
@@ -351,14 +351,17 @@ public class Hero extends MovingImage {
 	 * @param p The list of Fireballs to check with the 
 	**/
 	public void checkProjectileCollision(ArrayList<Fireball> p) {
-		if (invincibilityTime > 0) {
-			invincibilityTime--;
-		}
+//		if (invincibilityTime > 0) {
+//			invincibilityTime--;
+//		}
 		for (int i = 0; i < p.size(); i++) {
 			if (p.get(i) != null) {
-				if (((this.intersects(p.get(i))) && (invincibilityTime == 0))) {
-//					hearts--;
-					invincibilityTime = 80;
+//				if (((this.intersects(p.get(i))) && (invincibilityTime == 0))) {
+				if (this.intersects(p.get(i))) {
+//					System.out.println(hearts);
+					hearts--;
+//					System.out.println(hearts);
+//					invincibilityTime = 80;
 					p.remove(i);
 					i--;
 				}
