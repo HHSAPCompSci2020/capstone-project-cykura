@@ -21,11 +21,12 @@ public class Hero extends MovingImage {
 	private double friction;
 	private double gravity;
 	
-	private int hearts;
 	private int facingDirection;
 	private int invincibilityTime;
 	
 	private ArrayList<Fireball> fireballs;
+	private ArrayList<Heart> hearts;
+	
 	private boolean canThrowFireball;
 	private boolean canWaterWave;
 	private boolean canDash;
@@ -51,7 +52,7 @@ public class Hero extends MovingImage {
 
 		gravity = 0.5;
 		friction = 0.85;
-		hearts = 5;
+		hearts = new ArrayList<Heart>();
 		facingDirection = 0;	// right direction
 		dashing = false;
 		
@@ -137,8 +138,8 @@ public class Hero extends MovingImage {
 	 * @param hearts The amount of hearts the hero loses
 	 * @pre hearts must be less than six
 	 */
-	public void loseHearts(int hearts) {
-		this.hearts = this.hearts - hearts;
+	public void loseHearts(int heartsToLose) {
+		
 	}
 	
 
@@ -171,7 +172,7 @@ public class Hero extends MovingImage {
 	 *  
 	**/
 	public int getHearts() {
-		return hearts;
+		return 5;
 	}
 	
 	/**
@@ -302,7 +303,7 @@ public class Hero extends MovingImage {
 		}
 		
 		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
-			hearts--;
+//			hearts--;
 			jump();
 			invincibilityTime = 300;
 		}
@@ -321,7 +322,7 @@ public class Hero extends MovingImage {
 		for (int i = 0; i < p.size(); i++) {
 			if (p.get(i) != null) {
 				if (((this.intersects(p.get(i))) && (invincibilityTime == 0))) {
-					hearts--;
+//					hearts--;
 					invincibilityTime = 80;
 					p.remove(i);
 					i--;

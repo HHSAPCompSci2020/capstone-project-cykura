@@ -24,7 +24,7 @@ public class GameScreen extends Screen {
 	private int x, y;
 	private DrawingSurface surface;
 //	private Rectangle screenRect;
-	private ArrayList<Heart> hearts;
+//	private ArrayList<Heart> hearts;
 	private Hero hero;
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
@@ -59,7 +59,7 @@ public class GameScreen extends Screen {
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
 		heart = surface.loadImage("sprites\\FullHeart.png");
-		hearts = generateHearts();
+//		hearts = generateHearts();
 		
 //		try {
 //			Thread.sleep(3000);
@@ -98,9 +98,9 @@ public class GameScreen extends Screen {
 		
 		if (hero.getHearts() > 0) {
 			hero.draw(surface);
-			for (Heart h: hearts) {
-				h.draw(surface);
-			}
+//			for (Heart h: hearts) {
+//				h.draw(surface);
+//			}
 		}
 		
 		for (Enemy e: enemies) {
@@ -239,13 +239,13 @@ public class GameScreen extends Screen {
 		surface.translate(-view_x,-view_y);
 	}
 	
-	private ArrayList<Heart> generateHearts() {
-		ArrayList<Heart> hearts = new ArrayList<Heart>();
-		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 200, 10));
-		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
-		
-		return hearts;
-	}
+//	private ArrayList<Heart> generateHearts() {
+//		ArrayList<Heart> hearts = new ArrayList<Heart>();
+//		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 200, 10));
+//		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
+//		
+//		return hearts;
+//	}
 	
 //	private void displayHearts(Hero h) {
 //		
