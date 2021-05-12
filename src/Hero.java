@@ -343,14 +343,14 @@ public class Hero extends MovingImage {
 		
 		if (fireballs != null) {
 			checkProjectileCollision(fireballs);	// checking if Hero got hit with Fireballs
+			for(int i = 0; i < fireballs.size(); i++) {
+		    	 Fireball f = fireballs.get(i);
+		    	 if(f != null) {
+		    		 f.act();
+		    	 }
+		     }
 		}
 		
-		for(int i = 0; i < fireballs.size(); i++) {
-	    	 Fireball f = fireballs.get(i);
-	    	 if(f != null) {
-	    		 f.act();
-	    	 }
-	     }
 		
 		
 		//System.out.println(x2+" "+y2);
