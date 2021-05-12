@@ -228,9 +228,9 @@ public class Hero extends MovingImage {
 			dashing = true;
 			chargeTime = 0;
 			if(canDash && facingDirection == 0) {	// Facing to the right
-				moveByAmount(30, 0);
+				moveByAmount(50, 0);
 			} else if (canDash && facingDirection == 180) {		// Facing to the left
-				moveByAmount(-30, 0);
+				moveByAmount(-50, 0);
 			}
 		}
 
@@ -309,9 +309,9 @@ public class Hero extends MovingImage {
 			dashing = false;
 		}
 		
-		System.out.println("ct: " + chargeTime);
-		System.out.println(dashing);
-		System.out.println();
+//		System.out.println("ct: " + chargeTime);
+//		System.out.println(dashing);
+//		System.out.println();
 		
 		// ***********Y AXIS***********
 		double y2 = y;
