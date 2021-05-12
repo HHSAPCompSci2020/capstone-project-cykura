@@ -392,8 +392,8 @@ public class Hero extends MovingImage {
 					hearts--;
 //					System.out.println(hearts);
 //					invincibilityTime = 80;
-					p.remove(i);
-					i--;
+					//p.remove(i);
+					//i--;
 				}
 			}
 		}
