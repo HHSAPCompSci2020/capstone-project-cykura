@@ -201,9 +201,11 @@ public class Hero extends MovingImage {
 		if (chargeTime >= 10) {		// If youve held it for long enough
 			charging = false; 	// you are no longer charging
 			dash();	// dashes the hero
-			chargeTime = -10000;	// resets chargeTime
-		} else if (chargeTime >= 0){
+			chargeTime = -50;	// cooldown chargeTime
+		} else if (chargeTime >= 0){	//
 			charging = true;
+			chargeTime++;
+		} else {	// if chargeTime is negative
 			chargeTime++;
 		}
 		
