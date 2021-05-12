@@ -168,15 +168,16 @@ public class GameScreen extends Screen {
 					else {
 						e.act(hero, platforms);
 					}
+					if(e.canRemove()) {
+						enemies.set(i, null);
+					}
+				}
 					if (e instanceof FireEnemy) {
 						hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
 					} else {
 						hero.act(platforms, e, null);
 					}
-					if(e.canRemove()) {
-						enemies.set(i, null);
-					}
-				}
+				
 			}
 		}
 		
@@ -228,11 +229,13 @@ public class GameScreen extends Screen {
 		float t_b = view_y+Vertical_Margin;
 		if(hero.y<t_b) {
 			view_y-=t_b-hero.y;
+			System.out.println("vertical");
 		}
-		/*float h_b = (float) (Horizontal_Margin-view_y+hero.height);
+		float h_b = view_y+DRAWING_HEIGHT-Horizontal_Margin;
 		if(hero.y+hero.height>h_b) {
-			view_y-=h_b+hero.y+hero.height;
-		}*/
+			System.out.println("horizontal");
+			view_y+=h_b-hero.y;
+		}
 		surface.translate(-view_x,-view_y);
 	}
 	
