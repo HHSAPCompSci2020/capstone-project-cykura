@@ -225,6 +225,7 @@ public class Hero extends MovingImage {
 //		if (dashing == false) {
 //			dashing = true;
 		if (chargeTime > 100) {
+			dashing = true;
 			chargeTime = 0;
 			if(canDash && facingDirection == 0) {	// Facing to the right
 				moveByAmount(30, 0);
@@ -303,10 +304,18 @@ public class Hero extends MovingImage {
 		double y = getY();
 		double width = getWidth();
 		double height = getHeight();
-
+		
+		if (onASurface) {
+			dashing = false;
+		}
+		
+		System.out.println("ct: " + chargeTime);
+		System.out.println(dashing);
+		System.out.println();
+		
 		// ***********Y AXIS***********
 		double y2 = y;
-		if (chargeTime <= 0) {
+		if ((chargeTime <= 0 && dashing == false) || (chargeTime <= 0 && dashing == true)) {	// want to move is not dashing and chargeTime is 0
 //			System.out.println("d");
 			vy += gravity; // GRAVITY
 			y2 = y + vy;
@@ -344,16 +353,23 @@ public class Hero extends MovingImage {
 
 			if (Math.abs(vy) < .5)
 				vy = 0;
-		} else {
-//			System.out.println("dashing/charging");
-		}
+			
+		} 
+//		else if (dashing == true && chargeTime <= 0) {	// Done dashing and now should fall
+////			System.out.println("dashing/charging");
+//			vy += gravity; // GRAVITY
+//			y2 = y + vy;
+//			if (Math.abs(vy) < .5)
+//				vy = 0;
+//			
+//		}
 
 
 		// ***********X AXIS***********
 
 		double x2 = x;
 		
-		if (chargeTime <= 0) {
+		if (chargeTime <= 0 && dashing == false) {
 			vx *= friction;
 
 			x2 = x + vx;
@@ -390,15 +406,15 @@ public class Hero extends MovingImage {
 			if (Math.abs(vx) < .5)
 				vx = 0;
 			
-			
 			moveToLocation(x2,y2);
 			
-		} else {
+		} else if (dashing == true && chargeTime <= 0) {	// Done dashing and now should fall
 //			System.out.println("dashing/charging");
+			moveToLocation(x2, y2);
 		}
 		
 
-		
+
 		if (enemy != null) {
 			checkEnemyCollision(enemy);
 		}
