@@ -165,6 +165,7 @@ public class GameScreen extends Screen {
 		
 		if(surface.isPressed(KeyEvent.VK_A)) {
 			hero.throwFireball();
+			surface.removeKey(KeyEvent.VK_A);
 		}
 		
 		

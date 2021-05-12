@@ -15,6 +15,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	public float ratioX, ratioY;
 	
 	private ArrayList<Integer> keys;
+//	private ArrayList<Integer> keysTapped;
 	
 	private Screen activeScreen;
 	private ArrayList<Screen> screens;
@@ -26,6 +27,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		screens = new ArrayList<Screen>();
 		
 		keys = new ArrayList<Integer>();
+//		keysTapped = new ArrayList<Integer>();
 		
 		
 		FirstScreen screen1 = new FirstScreen(this);
@@ -62,17 +64,35 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	}
 	
 	public void keyPressed() {
+//		if (keysTapped.contains(keyCode) == false) {
+//			keysTapped.add(keyCode);
+//		}
 		keys.add(keyCode);
 	}
 
 	public void keyReleased() {
+//		while (keysTapped.contains(keyCode))
+//			keys.remove(new Integer(keyCode));
+		
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
+	
+	public void removeKey(Integer code) {
+		while (keys.contains(code)) {
+			keys.remove(new Integer(code));
+		}
+	}
 
 	public boolean isPressed(Integer code) {
+//		System.out.println(keys);
 		return keys.contains(code);
 	}
+	
+//	public boolean isTapped(Integer code) {
+//		return keysTapped.contains(code);
+//	}
+	
 	
 	public void mousePressed() {
 		activeScreen.mousePressed();
