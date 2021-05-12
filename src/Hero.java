@@ -39,6 +39,7 @@ public class Hero extends MovingImage {
 //	private boolean affectedByGravity;
 	private boolean dashing;
 	private boolean charging;
+	private int chargeCoolDown;
 	private int fireballCoolDown;
 	
 	/**
@@ -198,15 +199,16 @@ public class Hero extends MovingImage {
 	public void charge() {
 		System.out.println("cT: " + chargeTime);
 		System.out.println("charging state: " + charging);
-		if (chargeTime >= 10) {		// If youve held it for long enough
+		if (chargeTime >= 10 && chargeCoolDown <= 0) {		// If youve held it for long enough
 			charging = false; 	// you are no longer charging
 			dash();	// dashes the hero
-			chargeTime = -50;	// cooldown chargeTime
-		} else if (chargeTime >= 0){	//
-			charging = true;
+			chargeTime = 0;
+			chargeCoolDown = 50;
+		} else {	// Charge is held but not long enough
+			chargeCoolDown--;
+//			charging = true;
 			chargeTime++;
-		} else {	// if chargeTime is negative
-			chargeTime++;
+			
 		}
 		
 	}
