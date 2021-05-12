@@ -247,7 +247,7 @@ public class Hero extends MovingImage {
 	 * @param platforms The platforms which the hero can stand on and interact with.
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	**/
-	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> fireballs) {
+	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> enemyFireballs) {
 		double x = getX();
 		double y = getY();
 		double width = getWidth();
@@ -338,11 +338,11 @@ public class Hero extends MovingImage {
 			vx = 0;
 		
 		if (enemy != null) {
-			checkCollision(enemy);
+			checkEnemyCollision(enemy);
 		}
 		
-		if (fireballs != null) {
-			checkProjectileCollision(fireballs);	// checking if Hero got hit with Fireballs
+		if (enemyFireballs != null) {
+			checkFireballCollision(enemyFireballs);	// checking if Hero got hit with Fireballs
 			/*for(int i = 0; i < fireballs.size(); i++) {
 		    	 Fireball f = fireballs.get(i);
 		    	 if(f != null) {
@@ -351,6 +351,15 @@ public class Hero extends MovingImage {
 		     }*/
 		}
 		
+		
+		if (this.fireballs != null && canThrowFireball) {	// If the Hero has thrown some fireballs
+			for(int i = 0; i < fireballs.size(); i++) {
+				Fireball f = fireballs.get(i);
+				if(f != null) {
+					f.act();
+				}
+			}
+		}
 		
 		
 		//System.out.println(x2+" "+y2);
@@ -362,7 +371,7 @@ public class Hero extends MovingImage {
 	 * 
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	**/
-	public void checkCollision(Enemy e1) {
+	public void checkEnemyCollision(Enemy e1) {
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
 		}
@@ -380,7 +389,7 @@ public class Hero extends MovingImage {
 	 * 
 	 * @param p The list of Fireballs to check with
 	**/
-	public void checkProjectileCollision(ArrayList<Fireball> p) {
+	public void checkFireballCollision(ArrayList<Fireball> p) {
 //		if (invincibilityTime > 0) {
 //			invincibilityTime--;
 //		}
@@ -400,11 +409,11 @@ public class Hero extends MovingImage {
 	}
 	
 	
-	private void generateHearts() {
+//	private void generateHearts() {
 //		hearts.add(new Heart(GameScreen.heart, (int) 10, (int) 10, 30, 30));
 //		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
 //		return hearts;
-	}
+//	}
 	
 
 }
