@@ -229,10 +229,10 @@ public class GameScreen extends Screen {
 		if(hero.y<t_b) {
 			view_y-=t_b-hero.y;
 		}
-		/*float h_b = (float) (Horizontal_Margin-view_y+hero.height);
+		float h_b = view_y+DRAWING_HEIGHT-Horizontal_Margin;
 		if(hero.y+hero.height>h_b) {
-			view_y-=h_b+hero.y+hero.height;
-		}*/
+			view_y+=h_b+hero.y+hero.height;
+		}
 		surface.translate(-view_x,-view_y);
 	}
 	
