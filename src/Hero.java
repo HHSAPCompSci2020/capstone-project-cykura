@@ -39,7 +39,7 @@ public class Hero extends MovingImage {
 //	private boolean affectedByGravity;
 	private boolean dashing;
 	private boolean charging;
-	
+	private int fireballCoolDown;
 	
 	/**
 	 * Creates a new instance of a Hero object having its left
@@ -85,13 +85,15 @@ public class Hero extends MovingImage {
 	}
 	
 	public void throwFireball() {
-		if (canThrowFireball) {
+		if (canThrowFireball&&fireballCoolDown>30) {
 			if (facingDirection == 0) {		// Facing to the right
 		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x+30), (int)(y+20), 20, 20, 5, 0);
 		    	fireballs.add(f);
+		    	fireballCoolDown = 0;
 			} else {	// Facing to the left
 		    	Fireball f = new Fireball(GameScreen.fireball, (int)(x-10), (int)(y+20), 20, 20, -5, 0);
 		    	fireballs.add(f);
+		    	fireballCoolDown = 0;
 			}
 		}
 	}
@@ -267,6 +269,7 @@ public class Hero extends MovingImage {
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	**/
 	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> enemyFireballs) {
+		fireballCoolDown++;
 		double x = getX();
 		double y = getY();
 		double width = getWidth();
