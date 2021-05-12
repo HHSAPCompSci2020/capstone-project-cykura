@@ -30,6 +30,7 @@ public class Hero extends MovingImage {
 	private boolean canThrowFireball;
 	private boolean canWaterWave;
 	private boolean canDash;
+	
 	private boolean onASurface;
 	private int hearts;
 	
@@ -79,7 +80,7 @@ public class Hero extends MovingImage {
 	
 	public void throwFireball() {
 		if (canThrowFireball) {
-			if (facingDirection == 0) {		// Facing to the rigt
+			if (facingDirection == 0) {		// Facing to the right
 				
 			}
 		}
@@ -102,6 +103,15 @@ public class Hero extends MovingImage {
 	public void setDash(boolean state) {
 		canDash = state;
 	}
+	
+	public void setCanThrowFireball(boolean state) {
+		canThrowFireball = state;
+	}
+	
+	public void setCanWaterWave(boolean state) {
+		canWaterWave = state;
+	}
+	
 	
 	/**
 	 * Sets what direction the Hero is facing.
