@@ -51,8 +51,8 @@ public class Circle {
 		fillColor = Color.BLUE;
 		filled = true;
 		strokeWidth = 1;
-		this.x = 0;
-		this.y = 0;		
+		this.x = x;
+		this.y = y;		
 		this.extent = radius;
 	}
 
@@ -100,14 +100,16 @@ public class Circle {
 	 * @post The Processing PApplet on which the Circle is drawn is changed.
 	**/
 	public void draw(PApplet marker) {
-		if (filled) {
+		/*if (filled) {
 			marker.fill(fillColor.getRed(), fillColor.getGreen(), fillColor.getBlue());
 		} else {
 			marker.noFill();
-		}
+		}*/
+		marker.noFill();
 		marker.strokeWeight(strokeWidth);
 		marker.stroke(strokeColor.getRed(), strokeColor.getGreen(), strokeColor.getBlue());
 		marker.circle((float) x, (float) y, (float) extent);
+		//System.out.println(extent);
 	}
 	
 	/**

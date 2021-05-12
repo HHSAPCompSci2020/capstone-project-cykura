@@ -7,11 +7,11 @@ import processing.core.PImage;
 /**
  * The WaterEnemy class represents an Enemy with the Waterfall projectile which the Player can defeat.
  * 
- * @author alex
+ * @author alex_zheng
  * @version 5.6.21
  */
 public class WaterEnemy extends Enemy {
-	private WaterWave w;
+	private WaterWave waterwave;
 	/**
 	 * Creates a new instance of a WaterEnemy object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -22,19 +22,49 @@ public class WaterEnemy extends Enemy {
 	**/
 	public WaterEnemy(PImage img, int x, int y) {
 		super(img, x, y);
-		
+		waterwave=null;
 	}
 	
 	public void act(Hero h, ArrayList<Shape> platforms) {
-		//if(w==null)
-		//w = new WaterWave(GameScreen.water,(int)x-10,(int)y+40,60,20,0,6);
-		//w.act();
-		//w.checkPlatforms(platforms);
+		if(waterwave==null) {
+			
+		}
+		if(health>0) {
+			double x1 = h.x;
+		    double y1 = h.y;
+	
+		    double diffX = x1 - x;
+		    double diffY = y1 - y;
+	
+		    float angle = (float)Math.atan2(diffY, diffX);
+		    if(this.intersects(h)) {
+		   	     waitTime=45;
+		    }
+		    if(Math.sqrt(Math.pow(diffX,2)+Math.pow(diffY, 2))<=150&&waterwave==null&&waitTime<=0) {
+		    	waterwave = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
+		    	waitTime=210;
+		    }
+		     if(waitTime<=0) {
+		    	x += v * Math.cos(angle);
+		    	y += v * Math.sin(angle);
+		    	 waitTime = 0;
+		     }
+		     else {
+		    	 waitTime--;
+		     }
+		     if (waterwave!=null) {
+		    	 waterwave.act();
+		    	 if (waterwave.canRemove())waterwave=null;
+		     }
+		     
+		}
+		else {
+			//remove this enemy and drop the ability
+		}
 	}
 	
 	public void draw(PApplet g) {
 		super.draw(g);
-		if(w!=null)
-		w.draw(g);
+		if(waterwave!=null) waterwave.draw(g);
 	}
 }

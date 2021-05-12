@@ -7,7 +7,6 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class GameScreen extends Screen {
-
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
@@ -17,6 +16,8 @@ public class GameScreen extends Screen {
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 60;
 	public static float Vertical_Margin = 40;
+	public static float Horizontal_Margin = 40;
+	public static boolean invertControls;
 	public float view_x;
 	public float view_y;
 	
@@ -25,7 +26,7 @@ public class GameScreen extends Screen {
 //	private Rectangle screenRect;
 	private ArrayList<Heart> hearts;
 	private Hero hero;
-	private ArrayList<Shape> platforms;
+	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	
 
@@ -40,7 +41,7 @@ public class GameScreen extends Screen {
 		y = 30;
 		platforms = generatePlatforms();
 
-		
+//		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 	}
 	
@@ -72,8 +73,8 @@ public class GameScreen extends Screen {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
-		
 		scroll();
+		//surface.rotate(surface.radians(45));
 		//surface.pushMatrix();
 		
 		surface.background(0, 255, 255);
@@ -103,29 +104,52 @@ public class GameScreen extends Screen {
 		}
 		
 		for (Enemy e: enemies) {
+			if(e!=null)
 			e.draw(surface);
 		}
 //		
-		if (surface.isPressed(KeyEvent.VK_LEFT)) {
-//			System.out.println("l");
-			hero.walk(-1);
-			hero.setFacingDirection(180);
+		if(!invertControls) {
+			if (surface.isPressed(KeyEvent.VK_LEFT)) {
+	//			System.out.println("l");
+				hero.walk(-1);
+				hero.setFacingDirection(180);
+			}
+	
+			if (surface.isPressed(KeyEvent.VK_RIGHT)) {
+	//			System.out.println("r");
+				hero.walk(1);
+				hero.setFacingDirection(0);
+			}
 		}
-
-		if (surface.isPressed(KeyEvent.VK_RIGHT)) {
-//			System.out.println("r");
-			hero.walk(1);
-			hero.setFacingDirection(0);
+		else {
+			if (surface.isPressed(KeyEvent.VK_LEFT)) {
+				hero.walk(1);
+				hero.setFacingDirection(180);
+			}
+				
+			if (surface.isPressed(KeyEvent.VK_RIGHT)) {
+				hero.walk(-1);
+				hero.setFacingDirection(0);
+			}
 		}
-			
-		if (surface.isPressed(KeyEvent.VK_UP)) {
-//			System.out.println("up");
-			hero.jump();
+		
+		if (!invertControls) {
+			if (surface.isPressed(KeyEvent.VK_UP)) {
+//				System.out.println("up");
+				hero.jump();
+			}
+		} else {
+			if (surface.isPressed(KeyEvent.VK_DOWN)) {
+//				System.out.println("up");
+				hero.jump();
+			}
 		}
+		
 		
 		if(surface.isPressed(KeyEvent.VK_D)) {
 			hero.dash();
 		}
+		
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (Enemy e: enemies) {
@@ -134,19 +158,31 @@ public class GameScreen extends Screen {
 		}
 		
 		if (hero.getHearts() > 0) {
-			for (Enemy e: enemies) {
-				e.act(hero, platforms);
-				if (e instanceof FireEnemy) {
-					hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
-				} else {
-					hero.act(platforms, e, null);
+			for (int i =0;i<enemies.size();i++) {
+				Enemy e = enemies.get(i);
+				if(e!=null) {
+					if(e instanceof Boss) {
+						Boss b = (Boss)e;
+						b.act(hero);
+					}
+					else {
+						e.act(hero, platforms);
+					}
+					if (e instanceof FireEnemy) {
+						hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
+					} else {
+						hero.act(platforms, e, null);
+					}
+					if(e.canRemove()) {
+						enemies.set(i, null);
+					}
 				}
 			}
 		}
 		
-		for (Enemy e: enemies) {
-			e.act(hero, platforms);
-		}
+		//for (Enemy e: enemies) {
+		//	e.act(hero, platforms);
+		//}
 		
 		//surface.popMatrix();
 		
@@ -155,6 +191,8 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
+		p.add(new Rectangle(50,50,120,50));
+		p.add(new Rectangle(100,150,120,50));
 		p.add(new Rectangle(200,365,400,50));	//bottom middle
 		p.add(new Rectangle(0,250,120,50)); 	// top left
 		p.add(new Rectangle(680,250,120,50));	// top right
@@ -168,8 +206,10 @@ public class GameScreen extends Screen {
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50));
-		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
+		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
 		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
+		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-100, 100));
+		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
 	
@@ -189,6 +229,10 @@ public class GameScreen extends Screen {
 		if(hero.y<t_b) {
 			view_y-=t_b-hero.y;
 		}
+		/*float h_b = (float) (Horizontal_Margin-view_y+hero.height);
+		if(hero.y+hero.height>h_b) {
+			view_y-=h_b+hero.y+hero.height;
+		}*/
 		surface.translate(-view_x,-view_y);
 	}
 	
