@@ -208,9 +208,10 @@ public class Hero extends MovingImage {
 		ArrayList<Heart> h = new ArrayList<Heart>();
 		for (int i = 0; i < hearts; i++) {
 			if (i == 0) {
-				h.add(new Heart(GameScreen.heart, 10, 10, 30, 30));
+				h.add(new Heart(GameScreen.heart, (int) (x-350), 30, 30, 30));
 			} else {
-				h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+				//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+				h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y, 30, 30));
 			}
 		}
 		
