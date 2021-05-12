@@ -111,9 +111,6 @@ public class GameScreen extends Screen {
 			for (Heart he : h) {
 				he.draw(surface);
 			}
-//			for (Heart h: hearts) {
-//				h.draw(surface);
-//			}
 		}
 		
 		for (Enemy e: enemies) {
@@ -180,7 +177,7 @@ public class GameScreen extends Screen {
 		}
 		
 		if (hero.getHearts() > 0) {
-			for (int i =0;i<enemies.size();i++) {
+			for (int i = 0; i < enemies.size(); i++) {
 				Enemy e = enemies.get(i);
 				if(e!=null) {
 					if(e instanceof Boss) {
@@ -190,7 +187,7 @@ public class GameScreen extends Screen {
 					else {
 						e.act(hero, platforms);
 					}
-					if(e.canRemove()) {
+					if (e.canRemove()) {	// Enemies heath is less than zero
 						enemies.set(i, null);
 					}
 				}
@@ -230,7 +227,8 @@ public class GameScreen extends Screen {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50));
 //		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
+//		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
+		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Grass Enemy
 //		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-100, 100));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
