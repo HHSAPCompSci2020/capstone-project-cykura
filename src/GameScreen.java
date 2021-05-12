@@ -14,9 +14,9 @@ public class GameScreen extends Screen {
 	public static PImage heart;
 	
 	public static float Right_Margin = 400;
-	public static float Left_Margin = 60;
+	public static float Left_Margin = 100;
 	public static float Vertical_Margin = 40;
-	public static float Horizontal_Margin = 40;
+	public static float Horizontal_Margin = 100;
 	public static boolean invertControls;
 	public float view_x;
 	public float view_y;
@@ -234,7 +234,7 @@ public class GameScreen extends Screen {
 		float h_b = view_y+DRAWING_HEIGHT-Horizontal_Margin;
 		if(hero.y+hero.height>h_b) {
 			System.out.println("horizontal");
-			view_y-=h_b-hero.y;
+			view_y-=h_b-hero.y-hero.height;
 		}
 		surface.translate(-view_x,-view_y);
 	}
