@@ -208,7 +208,7 @@ public class GameScreen extends Screen {
 					} else {
 						hero.act(platforms, e, null);
 					}*/
-				//hero.act(platforms, enemy, enemyFireballs);
+				hero.act(platforms, enemies);
 				
 			}
 		}
