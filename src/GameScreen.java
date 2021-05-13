@@ -12,6 +12,7 @@ public class GameScreen extends Screen {
 	public static PImage fireball;
 	public static PImage water;
 	public static PImage heart;
+	public static PImage fireToken;
 //	private PImage bg;
 	
 	public static float Right_Margin = 400;
@@ -63,6 +64,7 @@ public class GameScreen extends Screen {
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
 		heart = surface.loadImage("sprites\\FullHeart.png");
+		fireToken = surface.loadImage("sprites\\tokens\\FireballTokenSprite.png");
 //		hearts = generateHearts();
 		
 //		try {
@@ -230,11 +232,11 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
-		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
+//		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
 		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1280, 50));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1880, 150));	// Water Enemy
-		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2480, 150));	// Grass Enemy
-		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),2980, 100));	// Boss
+//		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1880, 150));	// Water Enemy
+//		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2480, 150));	// Grass Enemy
+//		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),2980, 100));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}

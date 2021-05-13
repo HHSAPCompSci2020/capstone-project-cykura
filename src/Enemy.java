@@ -19,6 +19,7 @@ public class Enemy extends MovingImage{
 	protected int v;
 	protected int waitTime;
 	protected Point spawnPoint;
+	protected Token token;
 	
 	/**
 	 * Creates a new instance of a Enemy object having its left
