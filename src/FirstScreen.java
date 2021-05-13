@@ -37,7 +37,7 @@ public class FirstScreen extends Screen {
 		float w = surface.textWidth(str);
 		surface.text(str, gameButton.x+gameButton.width/2-w/2, gameButton.y+gameButton.height/2);
 		
-		surface.fill(0);
+		surface.fill(255);
 		surface.rect(instructionsButton.x, instructionsButton.y, instructionsButton.width, instructionsButton.height, 10, 10, 10, 10);
 		surface.fill(0);
 		String str1 = "Instructions";
