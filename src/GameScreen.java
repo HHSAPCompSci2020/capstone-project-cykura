@@ -214,10 +214,8 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
-		p.add(new Rectangle(50,50,120,50));
-		p.add(new Rectangle(100,150,120,50));
-		p.add(new Rectangle(200,365,400,50));	//bottom middle
-		p.add(new Rectangle(0,250,120,50)); 	// top left
+		p.add(new Rectangle(0,365,600,50));	//bottom middle
+		p.add(new Rectangle(0,-300,120,1000)); 	// top left
 		p.add(new Rectangle(680,250,120,50));	// top right
 		p.add(new Rectangle(375,265,50,100));	// Vertical middle
 		p.add(new Rectangle(300,250,200,50));	// top middle

@@ -42,7 +42,7 @@ public class WaterEnemy extends Enemy {
 		    }
 		    if(Math.sqrt(Math.pow(diffX,2)+Math.pow(diffY, 2))<=150&&waterwave==null&&waitTime<=0) {
 		    	waterwave = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
-		    	waitTime=210;
+		    	waitTime=180;
 		    }
 		     if(waitTime<=0) {
 		    	x += v * Math.cos(angle);
