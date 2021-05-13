@@ -47,19 +47,25 @@ public class Enemy extends MovingImage{
 	
 		     double diffX = x1 - x;
 		     double diffY = y1 - y;
-	
-		     float angle = (float)Math.atan2(diffY, diffX);
-		     if(this.intersects(hero)) {
-	//	    	 System.out.println("Collided with hero");
-		    	 waitTime=30;
-		     }
-		     if(waitTime<=0) {
-		    	 x += v * Math.cos(angle);
-		    	 y += v * Math.sin(angle);
-		    	 waitTime = 0;
+		     if(Math.abs(x-spawnPoint.x)<600||Math.abs(y-spawnPoint.y)<300) {
+			     float angle = (float)Math.atan2(diffY, diffX);
+			     if(this.intersects(hero)) {
+		//	    	 System.out.println("Collided with hero");
+			    	 waitTime=30;
+			     }
+			     if(waitTime<=0) {
+			    	 x += v * Math.cos(angle);
+			    	 y += v * Math.sin(angle);
+			    	 waitTime = 0;
+			     }
+			     else {
+			    	 waitTime--;
+			     }
 		     }
 		     else {
-		    	 waitTime--;
+		    	 float angle = (float)Math.atan2(spawnPoint.x-x, spawnPoint.y-y);
+		    	 x += v * Math.cos(angle);
+		    	 y += v * Math.sin(angle);
 		     }
 		}
 		else {
