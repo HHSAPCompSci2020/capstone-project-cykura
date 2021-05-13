@@ -19,6 +19,7 @@ public class GameScreen extends Screen {
 	public static float Vertical_Margin = 40;
 	public static float Horizontal_Margin = 100;
 	public static boolean invertControls;
+	public static boolean flipped;
 	public float view_x;
 	public float view_y;
 	
@@ -41,7 +42,7 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
-
+		flipped =true;
 //		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 	}
@@ -79,8 +80,10 @@ public class GameScreen extends Screen {
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
 		scroll();
-		//surface.translate(200,100);
-		//surface.rotate(surface.radians(45));
+		if(flipped) {
+			surface.translate(800,500);
+			surface.rotate(surface.radians(180));
+		}
 		//surface.pushMatrix();
 		
 		surface.background(0, 255, 255);
