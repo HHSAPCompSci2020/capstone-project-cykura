@@ -47,7 +47,7 @@ public class Enemy extends MovingImage{
 	
 		     double diffX = x1 - x;
 		     double diffY = y1 - y;
-		     if(Math.abs(x-spawnPoint.x)<600||Math.abs(y-spawnPoint.y)<300) {
+		     if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300) {
 			     float angle = (float)Math.atan2(diffY, diffX);
 			     if(this.intersects(hero)) {
 		//	    	 System.out.println("Collided with hero");
