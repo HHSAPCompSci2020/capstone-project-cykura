@@ -112,6 +112,10 @@ public class Enemy extends MovingImage{
 		health-=damage;
 	}
 	
+	/**
+	 * Get health of enemy
+	 * @return health
+	 */
 	public int getHealth() {
 		return health;
 	}
@@ -132,6 +136,10 @@ public class Enemy extends MovingImage{
 		//g.text("Health: "+health, (int)x-10, (int)y-20);
 	}
 	
+	/**
+	 * Checks is enemy can be removed
+	 * @return true is can be removed
+	 */
 	public boolean canRemove() {
 		return health<=0;
 	}
