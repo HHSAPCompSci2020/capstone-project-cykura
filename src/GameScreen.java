@@ -137,6 +137,9 @@ public class GameScreen extends Screen {
 		if(waterToken1!=null) {
 			waterToken1.draw(surface);
 		}
+		if(grassToken1!=null) {
+			grassToken1.draw(surface);
+		}
 		
 		for (Enemy e: enemies) {
 			if(e!=null)
@@ -253,8 +256,8 @@ public class GameScreen extends Screen {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 //		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
 //		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1280, 50));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1880, 150));	// Water Enemy
-//		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2480, 150));	// Grass Enemy
+//		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1880, 150));	// Water Enemy
+		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2480, 150));	// Grass Enemy
 //		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),2980, 100));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;

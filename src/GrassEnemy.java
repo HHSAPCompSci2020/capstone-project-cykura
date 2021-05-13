@@ -58,6 +58,8 @@ public class GrassEnemy extends Enemy {
 		     }
 
 		} else {
+			if(GameScreen.grassToken1==null)
+				GameScreen.grassToken1 = new Token(GameScreen.grassToken,(int)x,(int)y);
 			x = -20;
 			y =- 20;
 		}
