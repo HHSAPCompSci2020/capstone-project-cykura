@@ -25,6 +25,11 @@ public class WaterEnemy extends Enemy {
 		waterwave=null;
 	}
 	
+	/**
+	 * Changes state of waterenemy
+	 * @param h Hero
+	 * @param platforms all platforms in game
+	 */
 	public void act(Hero h, ArrayList<Shape> platforms) {
 		if(waterwave==null) {
 			
@@ -67,6 +72,9 @@ public class WaterEnemy extends Enemy {
 		}
 	}
 	
+	/**
+	 * Draw the waterenemy
+	 */
 	public void draw(PApplet g) {
 		super.draw(g);
 		if(waterwave!=null) waterwave.draw(g);
