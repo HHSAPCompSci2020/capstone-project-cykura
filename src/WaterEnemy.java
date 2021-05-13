@@ -68,6 +68,8 @@ public class WaterEnemy extends Enemy {
 		     
 		}
 		else {
+			if(GameScreen.waterToken1==null)
+				GameScreen.waterToken1 = new Token(GameScreen.waterToken,(int)x,(int)y);
 			//remove this enemy and drop the ability
 		}
 	}
