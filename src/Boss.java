@@ -43,9 +43,11 @@ public class Boss extends Enemy {
 	    //Inverting Screen
 		if((int)((cnt/300.0)%2)==1) {
 			invertControls();
+			GameScreen.flipped = true;
 		}
 		else {
 			GameScreen.invertControls = false;
+			GameScreen.flipped = false;
 		}
 		//Shooting Fireballs
 		if(Math.random()>0.99&& w==null) {
