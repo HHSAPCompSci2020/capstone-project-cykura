@@ -100,6 +100,7 @@ public class Boss extends Enemy {
 	
 	/**
 	 * Draw the boss
+	 * @param g surface to be drawn on
 	 */
 	public void draw(PApplet g) {
 		super.draw(g);

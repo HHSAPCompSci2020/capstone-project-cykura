@@ -27,6 +27,11 @@ public class FireEnemy extends Enemy{
 		fireballs = new ArrayList<Fireball>();
 	}
 	
+	/**
+	 * Changes state of fireenemy in game
+	 * @param hero the player
+	 * @param obstacles all platforms in the game
+	 */
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
 		if(health>0) {
 			double x1 = hero.x;
@@ -72,10 +77,18 @@ public class FireEnemy extends Enemy{
 		}
 	}
 	
+	/**
+	 * Return the fireballs shot by this enemy
+	 * @return
+	 */
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
 	}
 
+	/**
+	 * Draw fireenemy
+	 * @param g surface to be drawn on
+	 */
 	public void draw(PApplet g) {
 		super.draw(g);
 		for(Fireball f:fireballs) {
