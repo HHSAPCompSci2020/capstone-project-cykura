@@ -67,12 +67,29 @@ public class Enemy extends MovingImage{
 		    	 x += v * Math.cos(angle);
 		    	 y += v * Math.sin(angle);
 		     }
+		     
+		     if (hero.getFireballs() != null) {
+			     for(int i=0;i<hero.getFireballs().size();i++) {
+			    	 Fireball f = hero.getFireballs().get(i);
+			    	 if(f!=null) {
+			    		 if (f.checkCollisionEnemy(this)) {	// If the hero's fireball hits an enemy
+			    			 this.loseHealth(10); 	// Enemy loses 10 hp
+			    			 hero.getFireballs().set(i, null);
+		    			 }
+
+			    	 }
+			     }
+
+		     }
+		     
+		     
 		}
 		else {
 			x = -20;
 			y=-20;
 		}
 	}
+	
 	/**
 	 * Makes enemy lose health
 	 * @param damage health to be lost
