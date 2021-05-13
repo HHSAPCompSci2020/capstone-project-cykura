@@ -37,12 +37,12 @@ public class FirstScreen extends Screen {
 		float w = surface.textWidth(str);
 		surface.text(str, gameButton.x+gameButton.width/2-w/2, gameButton.y+gameButton.height/2);
 		
-//		surface.fill(0);
-//		surface.rect(instructionsButton.x, instructionsButton.y, instructionsButton.width, instructionsButton.height, 10, 10, 10, 10);
-//		surface.fill(0);
-//		String str1 = "Instructions";
-//		float w1 = surface.textWidth(str1);
-//		surface.text(str1, instructionsButton.x+instructionsButton.width/2-w1/2, instructionsButton.y+instructionsButton.height/2);
+		surface.fill(0);
+		surface.rect(instructionsButton.x, instructionsButton.y, instructionsButton.width, instructionsButton.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String str1 = "Instructions";
+		float w1 = surface.textWidth(str1);
+		surface.text(str1, instructionsButton.x+instructionsButton.width/2-w1/2, instructionsButton.y+instructionsButton.height/2);
 		
 		
 		surface.popStyle();
