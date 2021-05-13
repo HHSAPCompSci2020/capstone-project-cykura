@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 public class InstructionScreen extends Screen {
 
 	private DrawingSurface surface;
+	private Rectangle firstScreenButton;
 
 	
 //	public InstructionScreen(int width, int height) {
@@ -20,6 +21,7 @@ public class InstructionScreen extends Screen {
 
 //		gameButton = new Rectangle(800/2-100,600/2-75,200,100);	// x, y, w, h
 //		instructionsButton = new Rectangle(800/2-100,600/2-250,200,100);
+		firstScreenButton = new Rectangle(800/2-100,600/2+225,200,50);	// x, y, w, h
 	}
 	
 	public void draw() {
@@ -40,7 +42,14 @@ public class InstructionScreen extends Screen {
 		float w = surface.textWidth(str);
 		surface.text(str, 400 - w/2, 65);
 		
-		// 400 - w/2
+		
+		surface.textSize(30);
+		surface.fill(255);
+		surface.rect(firstScreenButton.x, firstScreenButton.y, firstScreenButton.width, firstScreenButton.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String str1 = "Option Menu";
+		float w1 = surface.textWidth(str1);
+		surface.text(str1, firstScreenButton.x+firstScreenButton.width/2-w1/2, (firstScreenButton.y+firstScreenButton.height/2) +10);
 
 		
 //		surface.rect(gameButton.x, gameButton.y, gameButton.width, gameButton.height, 10, 10, 10, 10);
