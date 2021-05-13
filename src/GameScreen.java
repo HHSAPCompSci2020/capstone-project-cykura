@@ -181,6 +181,11 @@ public class GameScreen extends Screen {
 //			surface.removeKey(KeyEvent.VK_A);
 		}
 		
+		if(surface.isPressed(KeyEvent.VK_S)) {
+			hero.doWaterWave();
+//			surface.removeKey(KeyEvent.VK_A);
+		}
+		
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 //			System.out.println("p");
