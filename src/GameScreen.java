@@ -278,8 +278,12 @@ public class GameScreen extends Screen {
 //		for (Heart he : h) {
 //			he.draw(surface);
 //		}
-		
-		surface.translate(-view_x,-view_y);
+		if(flipped) {
+			surface.translate(view_x,-view_y);
+		}
+		else {
+			surface.translate(-view_x,-view_y);
+		}
 	}
 	
 //	private ArrayList<Heart> generateHearts() {
