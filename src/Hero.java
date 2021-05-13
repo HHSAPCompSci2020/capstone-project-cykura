@@ -37,21 +37,16 @@ public class Hero extends MovingImage {
 	private int chargeTime;
 	private int punchCoolDown;
 
-	// private boolean affectedByGravity;
 	private boolean dashing;
-	// private int chargeCoolDown;
 	private int fireballCoolDown;
 
 	/**
 	 * Creates a new instance of a Hero object having its left corner at the inputed
 	 * (x, y) coordinates.
 	 * 
-	 * @param img
-	 *            The PImage which the Hero will look like in the game (sprite).
-	 * @param x
-	 *            The X value of the Hero's top left corner.
-	 * @param y
-	 *            The Y value of the Hero's top left corner.
+	 * @param img The PImage which the Hero will look like in the game (sprite).
+	 * @param x The X value of the Hero's top left corner.
+	 * @param y The Y value of the Hero's top left corner.
 	 **/
 	public Hero(PImage img, int x, int y) {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);
@@ -152,8 +147,7 @@ public class Hero extends MovingImage {
 	/**
 	 * Sets what direction the Hero is facing.
 	 * 
-	 * @param x
-	 *            The facing direction of the Hero.
+	 * @param x The facing direction of the Hero.
 	 * @pre The value of x is either 0 (right) or 180 (less)
 	 **/
 	public void setFacingDirection(int x) { // 0 for facing right, 180 for left
@@ -163,8 +157,7 @@ public class Hero extends MovingImage {
 	/**
 	 * Deals damage to an enemy by punching it.
 	 * 
-	 * @param e1
-	 *            The enemy which the Hero deals damage to.
+	 * @param e1 The enemy which the Hero deals damage to.
 	 * @pre The distance from the center of the Hero's x coordinate to the center of
 	 *      the Enemy's x coordinate must be less than 75 to cause damage.
 	 **/
@@ -182,34 +175,36 @@ public class Hero extends MovingImage {
 	/**
 	 * Makes the Hero walk depending on the inputed direction.
 	 * 
-	 * @param direction
-	 *            The direction and magnitude which the Hero will move in.
+	 * @param direction The direction and magnitude which the Hero will move in.
 	 **/
 	public void walk(int direction) {
 		if (chargeTime <= 0 || dashing == true) {
 			if (vx <= 10 && vx >= -10)
 				vx += direction;
 		}
-		// System.out.println("Walk is called");
 	}
 
 	/**
-	 * Deals damage to the Hero by losing an inputted number of hearts.
+	 * Deals damage to the Hero by losing an inputed number of hearts.
 	 * 
-	 * @param hearts
-	 *            The amount of hearts the hero loses
+	 * @param hearts The amount of hearts the hero loses
 	 * @pre hearts must be less than six
 	 */
 	public void loseHearts(int heartsToLose) {
 		hearts -= heartsToLose;
 	}
 
+	/**
+	 * Charges the hero to dash.
+	 * 
+	 */
 	public void charge() {
 		chargeTime++;
 	}
 
 	/**
-	 * Makes the Hero dash depending on the direction which the Hero is facing.
+	 * Makes the Hero dash depending on the direction which the Hero is facing
+	 * and how long it is charged.
 	 * 
 	 **/
 	public void dash() {
@@ -269,9 +264,7 @@ public class Hero extends MovingImage {
 	/**
 	 * Draws the Hero and displays its number of hearts above the Hero.
 	 * 
-	 * @param g
-	 *            The PApplet to draw the Hero and display the text which has the
-	 *            number of hearts the Hero has.
+	 * @param g The PApplet to draw the Hero and it's thrown fireballs
 	 **/
 	public void draw(PApplet g) {
 		super.draw(g);
@@ -280,41 +273,16 @@ public class Hero extends MovingImage {
 				f.draw(g);
 			}
 		}
-		// drawHearts(g);
-
-		// for (Heart h: hearts) {
-		// h.draw(g);
-		// }
-		// g.text(" " + hearts.size(), (int) x-10, (int) y-10);
-		// hearts.get(0).draw(g);
-		// g.text("Hearts: " + hearts.size(), (int)x-10, (int)y-20);
 	}
 
-	// public void drawHearts(PApplet g) {
-	// ArrayList<Heart> h = new ArrayList<Heart>();
-	// for (int i = 0; i < hearts; i++) {
-	// if (i == 0) {
-	// h.add(new Heart(GameScreen.heart, (int) (x-350), 30, 30, 30));
-	// } else {
-	// //h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
-	// h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y,
-	// 30, 30));
-	// }
-	// }
-	//
-	// for (Heart he : h) {
-	// he.draw(g);
-	// }
-	// }
 
 	/**
 	 * Makes the Hero act by moving, being affected by gravity and friction, and get
 	 * hurt if attacked by enemy.
 	 * 
-	 * @param platforms
-	 *            The platforms which the hero can stand on and interact with.
-	 * @param enemy
-	 *            The enemy which can attack the Hero and cause damage.
+	 * @param platforms The platforms which the hero can stand on and interact with.
+	 * @param enemy The enemy which can attack the Hero and cause damage.
+	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
 	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> enemyFireballs) {
 		fireballCoolDown++;
@@ -336,6 +304,7 @@ public class Hero extends MovingImage {
 //		System.out.println(dashing);
 		double y2 = y;
 		// System.out.println("d");
+		
 		vy += gravity; // GRAVITY
 		y2 = y + vy;
 		// System.out.println(vy);
@@ -372,18 +341,8 @@ public class Hero extends MovingImage {
 
 		if (Math.abs(vy) < .5)
 			vy = 0;
-
-		// else if (dashing == true && chargeTime <= 0) { // Done dashing and now should
-		// fall
-		//// System.out.println("dashing/charging");
-		// vy += gravity; // GRAVITY
-		// y2 = y + vy;
-		// if (Math.abs(vy) < .5)
-		// vy = 0;
-		//
-		// }
-
-		// ***********X AXIS***********
+		
+		
 
 		vx *= friction;
 
@@ -451,9 +410,9 @@ public class Hero extends MovingImage {
 
 	/**
 	 * Makes the Hero lose a heart and jump up if it collides with an enemy.
+	 * The Hero also gains some invinciblity for some time after it collides with an enemy.
 	 * 
-	 * @param enemy
-	 *            The enemy which can attack the Hero and cause damage.
+	 * @param enemy The enemy which can attack the Hero and cause damage.
 	 **/
 	public void checkEnemyCollision(Enemy e1) {
 		if (invincibilityTime > 0) {
@@ -468,11 +427,10 @@ public class Hero extends MovingImage {
 	}
 
 	/**
-	 * Checks whether the Hero gets hit by a Projectile. If so, the Hero loses
+	 * Checks whether the Hero gets hit by a Fireball. If so, the Hero loses
 	 * damage and gains some time in which the Hero is invincible.
 	 * 
-	 * @param p
-	 *            The list of Fireballs to check with
+	 * @param p The list of Fireballs to check with
 	 **/
 	public void checkFireballCollision(ArrayList<Fireball> p) {
 		// if (invincibilityTime > 0) {
@@ -493,11 +451,5 @@ public class Hero extends MovingImage {
 		}
 	}
 
-	// private void generateHearts() {
-	// hearts.add(new Heart(GameScreen.heart, (int) 10, (int) 10, 30, 30));
-	// hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int)
-	// (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
-	// return hearts;
-	// }
 
 }
