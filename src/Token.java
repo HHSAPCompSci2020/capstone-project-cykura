@@ -3,6 +3,11 @@ import java.awt.geom.Rectangle2D;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * A token object which the hero can collect
+ * @author animan_patil
+ *
+ */
 public class Token extends Rectangle2D.Double{
 	private PImage image;
 	public static final int TOKEN_WIDTH = 30;

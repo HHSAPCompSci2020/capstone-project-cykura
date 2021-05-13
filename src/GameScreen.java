@@ -53,6 +53,9 @@ public class GameScreen extends Screen {
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 	}
 	
+	/**
+	 * Creates a new Hero
+	 */
 	private void spawnHero() {
 		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
 		hero.setDash(true);

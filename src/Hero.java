@@ -53,8 +53,8 @@ public class Hero extends MovingImage {
 		vx = 0;
 		vy = 0;
 		onASurface = false;
-		canThrowFireball = true;
-		canWaterWave = true;
+		canThrowFireball = false;
+		canWaterWave = false;
 		canDash = false;
 		hearts = 5;
 
@@ -103,10 +103,12 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
-	
+	/**
+	 * Hero creates a Water wave
+	 */
 	public void doWaterWave() {
 		if (canWaterWave && wave == null) {
-			wave = new WaterWave((int) x, (int) y, (double) 10, (double)50, (double)10);
+			wave = new WaterWave((int) x +10, (int) y +10, (double) 10, (double)100, (double)2);
 		}
 	}
 
@@ -423,10 +425,27 @@ public class Hero extends MovingImage {
 			if (enemies != null) {
 				for (Enemy e: enemies) {
 					if (e != null) {
-						wave.checkCollisionEnemy(e);
+						if (wave.checkCollisionEnemy(e)) {
+							e.loseHealth(20);
+						}
 					}
 				}
 			}
+			if (wave.canRemove()) {
+				wave = null;
+			}
+		}
+		
+		if (GameScreen.fireToken1 != null) {
+			canThrowFireball = true;
+		}
+		
+		if (GameScreen.waterToken1 != null) {
+			canWaterWave = true;
+		}
+		
+		if (GameScreen.grassToken1 != null) {
+			canDash = true;
 		}
 
 		// System.out.println(x2+" "+y2);
@@ -474,6 +493,18 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
+	
+//	/**
+//	 * Checks if Hero collides with a token to pick it up
+//	 * @param t The token which the Hero can collect
+//	 */
+//	public void checkTokenCollision(Token t) {
+//		if (t.intersects(this)) {
+//			canThrowFireball = true;
+//			canWaterWave = true;
+//			canDash = true;
+//		}
+//	}
 
 
 }
