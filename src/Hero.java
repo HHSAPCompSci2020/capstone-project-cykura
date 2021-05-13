@@ -181,8 +181,10 @@ public class Hero extends MovingImage {
 	 * @param direction The direction and magnitude which the Hero will move in.
 	**/
 	public void walk(int direction) {
-		if (vx <= 10 && vx >= -10)
-			vx += direction;
+		if (chargeTime <= 0 || dashing == true) {
+			if (vx <= 10 && vx >= -10)
+				vx += direction;
+		}
 //		System.out.println("Walk is called");
 	}
 	
