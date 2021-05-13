@@ -38,7 +38,6 @@ public class Hero extends MovingImage {
 	
 //	private boolean affectedByGravity;
 	private boolean dashing;
-	private boolean charging;
 	private int chargeCoolDown;
 	private int fireballCoolDown;
 	
@@ -64,7 +63,6 @@ public class Hero extends MovingImage {
 
 		facingDirection = 0;	// right direction
 		dashing = false;
-		charging = false;
 		
 		fireballs = new ArrayList<Fireball>();
 		
@@ -114,9 +112,9 @@ public class Hero extends MovingImage {
 		return chargeTime;
 	}
 	
-	public boolean isCharging() {
-		return charging;
-	}
+//	public boolean isCharging() {
+//		return charging;
+//	}
 	
 	public boolean isDashing() {
 		return dashing;
@@ -197,22 +195,7 @@ public class Hero extends MovingImage {
 	
 	
 	public void charge() {
-//		charging = true;
 		chargeTime++;
-//		System.out.println("cT: " + chargeTime);
-//		System.out.println("charging state: " + charging);
-//		if (chargeTime >= 10 && chargeCoolDown <= 0) {		// If youve held it for long enough
-//			charging = false; 	// you are no longer charging
-//			dash();	// dashes the hero
-//			chargeTime = 0;
-//			chargeCoolDown = 50;
-//		} else {	// Charge is held but not long enough
-//			chargeCoolDown--;
-////			charging = true;
-//			chargeTime++;
-//			
-//		}
-		
 	}
 	
 	
@@ -315,7 +298,7 @@ public class Hero extends MovingImage {
 		
 		// ***********Y AXIS***********
 		double y2 = y;
-		if ((chargeTime <= 0 && dashing == false) || (chargeTime <= 0 && dashing == true)) {	// want to move is not dashing and chargeTime is 0
+		if ((chargeTime <= 0 && dashing == false) || (chargeTime <= 0 && dashing == true)) {	// get affected by gravity if charging or if finished dashing but has not touched ground
 //			System.out.println("d");
 			vy += gravity; // GRAVITY
 			y2 = y + vy;
