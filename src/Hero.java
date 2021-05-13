@@ -65,11 +65,6 @@ public class Hero extends MovingImage {
 
 		fireballs = new ArrayList<Fireball>();
 
-		// hearts = new ArrayList<Heart>();
-		// hearts.add(new Heart(GameScreen.heart, 10, 10, 30, 30));
-		// generateHearts();
-
-		// affectedByGravity = true;
 	}
 
 	/**
@@ -101,17 +96,10 @@ public class Hero extends MovingImage {
 		}
 	}
 
-	// public void makeWaterWave() {
-	//
-	// }
-
 	public int getChargeTime() {
 		return chargeTime;
 	}
 
-	// public boolean isCharging() {
-	// return charging;
-	// }
 
 	public boolean isDashing() {
 		return dashing;
@@ -129,17 +117,26 @@ public class Hero extends MovingImage {
 	/**
 	 * Sets whether the Hero is able to dash or not.
 	 * 
-	 * @param state
-	 *            The boolean which sets whether the Hero can dash or not.
+	 * @param state The boolean which sets whether the Hero can dash or not.
 	 **/
 	public void setDash(boolean state) {
 		canDash = state;
 	}
-
+	
+	/**
+	 * Sets whether the Hero is able to throw a fireball or not.
+	 * 
+	 * @param state The boolean which sets whether the Hero can throw a fireball or not.
+	 **/
 	public void setCanThrowFireball(boolean state) {
 		canThrowFireball = state;
 	}
-
+	
+	/**
+	 * Sets whether the Hero is able to do a water wave or not.
+	 * 
+	 * @param state The boolean which sets whether the Hero is able to water wave or not.
+	 **/
 	public void setCanWaterWave(boolean state) {
 		canWaterWave = state;
 	}
@@ -208,9 +205,6 @@ public class Hero extends MovingImage {
 	 * 
 	 **/
 	public void dash() {
-		// charging = false;
-		// if (dashing == false) {
-		// dashing = true;
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (chargeTime >= 180) {
 			chargeTime = 0;
@@ -245,11 +239,6 @@ public class Hero extends MovingImage {
 				moveByAmount(-25, 0);
 			}
 		}
-
-		// dashing = false;
-		// } else {
-		// dashing = false;
-		// }
 
 	}
 
@@ -296,14 +285,8 @@ public class Hero extends MovingImage {
 			dashing = false;
 		}
 
-		// System.out.println("ct: " + chargeTime);
-		// System.out.println(dashing);
-		// System.out.println();
-
 		// ***********Y AXIS***********
-//		System.out.println(dashing);
 		double y2 = y;
-		// System.out.println("d");
 		
 		vy += gravity; // GRAVITY
 		y2 = y + vy;
@@ -393,8 +376,6 @@ public class Hero extends MovingImage {
 				}
 			}
 		}
-		
-
 		
 
 		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
