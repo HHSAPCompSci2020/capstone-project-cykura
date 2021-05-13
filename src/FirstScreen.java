@@ -55,6 +55,10 @@ public class FirstScreen extends Screen {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (gameButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.SCREEN2);
+		
+		if(instructionsButton.contains(p))
+			surface.switchScreen(ScreenSwitcher.SCREEN3);
+		
 	}
 	
 
