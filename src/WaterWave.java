@@ -31,6 +31,10 @@ public class WaterWave extends Circle {
 		this.vd=vd;
 		hit=false;
 	}
+	
+	/**
+	 * Changes state of waterwave
+	 */
 	public void act() {
 		super.extent+=vd;
 	}
@@ -42,10 +46,22 @@ public class WaterWave extends Circle {
 		}
 		return false;
 	}
+	
+	/**
+	 * Checks collision with enemy
+	 * @param e Enemy
+	 * @return true if collided with enemy
+	 */
 	public boolean checkCollisionEnemy(Enemy e) {
 		if (this.intersects(e.getBounds2D())) return true;
 		return false;
 	}
+	
+	/**
+	 * Checks collision with hero
+	 * @param h Hero
+	 * @return true if collided with hero
+	 */
 	public boolean checkCollisionHero(Hero h) {
 		if (this.intersects(h.getBounds2D())) return true;
 		return false;
