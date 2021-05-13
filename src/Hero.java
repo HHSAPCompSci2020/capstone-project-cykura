@@ -35,6 +35,7 @@ public class Hero extends MovingImage {
 	private int hearts;
 	
 	private int chargeTime;
+	private int punchCoolDown;
 	
 //	private boolean affectedByGravity;
 	private boolean dashing;
@@ -164,9 +165,12 @@ public class Hero extends MovingImage {
 	 * @pre The distance from the center of the Hero's x coordinate to the center of the Enemy's x coordinate must be less than 75 to cause damage.
 	**/
 	public void punch(Enemy e1) {
-		if (e1 != null) {
-			if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
-				e1.loseHealth(3);
+		if (punchCoolDown <= 0) {
+			punchCoolDown = 120;
+			if (e1 != null) {
+				if(Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
+					e1.loseHealth(3);
+				}
 			}
 		}
 	}
@@ -283,6 +287,7 @@ public class Hero extends MovingImage {
 	**/
 	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> enemyFireballs) {
 		fireballCoolDown++;
+		punchCoolDown--;
 		double x = getX();
 		double y = getY();
 		double width = getWidth();
