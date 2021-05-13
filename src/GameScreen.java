@@ -171,7 +171,7 @@ public class GameScreen extends Screen {
 		}
 		
 		
-		if(surface.isReleased(KeyEvent.VK_SPACE)) {
+		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 //			System.out.println("p");
 			for (Enemy e: enemies) {
 				hero.punch(e);
