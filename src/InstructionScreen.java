@@ -37,7 +37,7 @@ public class InstructionScreen extends Screen {
 				"Up arrow key - Jump\n" + 
 				"Space Bar - Punch\n" + 
 				"A - Use Fireball\n" + 
-				"S - Use Waterfall\n" + 
+				"S - Use Water Wave\n" + 
 				"D - Use Leaf Dash (Hold to charge)\n" + 
 				"";
 		float w = surface.textWidth(str);
