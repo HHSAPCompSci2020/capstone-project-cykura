@@ -33,7 +33,7 @@ public class GrassEnemy extends Enemy {
 		     float angle = (float)Math.atan2(diffY, diffX);
 		     if(this.intersects(hero)) {	// If it collides with the hero
 		    	 waitTime=30;	// Wait Time to start Moving again
-		    	 dashCoolDownTimeRemaining += 25;	// Increase Dash time to not dash right after hitting the hero
+		    	 dashCoolDownTimeRemaining = 60;	// Increase Dash time to not dash right after hitting the hero
 		     }
 		     if (waitTime <= 0) {
 		    	 x += v * Math.cos(angle);
@@ -43,17 +43,16 @@ public class GrassEnemy extends Enemy {
 		    	 waitTime--;
 		     }
 		     
-		     
 		     if (dashCoolDownTimeRemaining <= 0) {
-			     if (Math.abs(diffY) <= 100 && Math.abs(diffX) <= 100) {
+			     if (Math.abs(diffY) <= 300 && Math.abs(diffX) <= 500) {
 				 		if(hero.x < this.x) {	// The Hero is to the left
 							moveByAmount(-50, 0);
-							dashCoolDownTimeRemaining = 200;
+							dashCoolDownTimeRemaining = 60;
 						} else if (hero.x > this.x) {		// Hero is to the right
 							moveByAmount(50, 0);
-							dashCoolDownTimeRemaining = 200;
+							dashCoolDownTimeRemaining = 60;
 						}
-				     }
+				  }
 		     } else {
 		    	 dashCoolDownTimeRemaining--;
 		     }
