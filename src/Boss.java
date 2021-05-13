@@ -30,6 +30,10 @@ public class Boss extends Enemy {
 		rotateCooldown = 800;
 	}
 	
+	/**
+	 * Changes state of boss
+	 * @param hero The player
+	 */
 	public void act(Hero hero) {
 		cnt++;
 		//System.out.println(cnt);
@@ -94,6 +98,9 @@ public class Boss extends Enemy {
 		GameScreen.invertControls = true;
 	}
 	
+	/**
+	 * Draw the boss
+	 */
 	public void draw(PApplet g) {
 		super.draw(g);
 		for(Fireball f:fireballs) {
