@@ -184,7 +184,7 @@ public class Hero extends MovingImage {
 			punchCoolDown = 60; // 1 sec cooldown
 			if (e1 != null) {
 				if (Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
-					e1.loseHealth(50);
+					e1.loseHealth(3);
 				}
 			}
 		}
