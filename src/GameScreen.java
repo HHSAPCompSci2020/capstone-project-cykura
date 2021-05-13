@@ -244,7 +244,9 @@ public class GameScreen extends Screen {
 		return c;
 	}
 	
-	
+	/**
+	 * Shifts the screen based on players location
+	 */
 	public void scroll() {
 		float r_b = view_x+DRAWING_WIDTH-Right_Margin;
 		if(hero.x+hero.width>r_b) {
