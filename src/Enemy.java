@@ -47,6 +47,9 @@ public class Enemy extends MovingImage{
 	
 		     double diffX = x1 - x;
 		     double diffY = y1 - y;
+//		     System.out.println("1x: " + x + ", 1y: " + y);
+//		     System.out.println("1sx: " + spawnPoint.x + ", 1sy: " + spawnPoint.y);
+//		     System.out.println();
 		     if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300) {
 			     float angle = (float)Math.atan2(diffY, diffX);
 			     if(this.intersects(hero)) {
@@ -61,11 +64,22 @@ public class Enemy extends MovingImage{
 			     else {
 			    	 waitTime--;
 			     }
-		     }
-		     else {
-		    	 float angle = (float)Math.atan2(spawnPoint.x-x, spawnPoint.y-y);
-		    	 x += v * Math.cos(angle);
-		    	 y += v * Math.sin(angle);
+		     } else {
+//		    	 System.out.println("far");
+//			     System.out.println("x: " + x + ", y: " + y);
+//			     System.out.println("sx: " + spawnPoint.x + ", sy: " + spawnPoint.y);
+		    	 
+		    	 float angle = (float)Math.atan2(spawnPoint.y-y, spawnPoint.x-x);
+//		    	 System.out.println("angle " + angle);
+//			     System.out.println("cosAngle " + Math.cos(angle));
+//			     System.out.println("sinAngle " + Math.sin(angle));
+//			     System.out.println("V " + v);
+		    	 x += (v*100) * Math.cos(angle);
+		    	 y += (v*100) * Math.sin(angle);
+		    	 
+		    	 
+//			     System.out.println();
+
 		     }
 		     
 		     if (hero.getFireballs() != null) {
