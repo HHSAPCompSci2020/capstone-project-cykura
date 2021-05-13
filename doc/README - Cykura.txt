@@ -1,13 +1,13 @@
 ﻿Cykura
 Authors: Alex Zheng, Animan Patil, Vicram Vijayakumar
-Revision: 5.7.21
+Revision: 5.12.21
 
 
 Introduction: 
 It is the year 2873. Your village has been invaded by an advanced alien race and all of the villagers were kidnapped by Doctor Bowgetaroth. You were also severely injured in the invasion. However you were taken in by a mysterious man and transformed into a cyborg. Meanwhile, the villain is planning to return to his home planet. Now, you, as the player, must defeat the villain and rescue the villagers while facing his minions.
 
 
-In this 2D platformer game, the player must defeat various enemies while traversing the game to finally clear the villain. This game is intended for middle and high school students, but it can be played by anyone to get rid of boredom and have fun. By defeating each enemy, the player gains a new ability which can be used. These various abilities include: punch, fireball, waterfall, leaf dash, and double jump. However, defeating enemies is not all there is to the game. You must navigate through the level while avoiding spikes and holes in the ground to not get hurt with the help of platforms. Will you be able to vanquish Doctor Bowgetaroth and save your fellow villagers?
+In this 2D platformer game, the player must defeat various enemies while traversing the game to finally clear the villain. This game is intended for middle and high school students, but it can be played by anyone to get rid of boredom and have fun. Initially the player can only punch to cause damage to enemies. But after defeating each enemy, the player gains a new ability which can be used. These various abilities include fireball, water wave, and leaf dash. However, defeating enemies is not all there is to the game. You must navigate through the level while avoiding spikes and holes in the ground to not get hurt with the help of platforms. Will you be able to vanquish Doctor Bowgetaroth and save your fellow villagers?
 
 
 
@@ -27,11 +27,10 @@ Keyboard Keys Layout:
 Left arrow key - Move to the left
 Right arrow key - Move to the right
 Up arrow key - Jump
-Down arrow key - Drop down platforms/Dash down
 Space Bar - Punch
 A - Use Fireball
 S - Use Waterfall
-D - Use Leaf Dash
+D - Use Leaf Dash (Hold to charge - Will dash when the key is released)
 
 
 
@@ -41,21 +40,21 @@ Must-have Features:
 * There should be 3 abilities that the enemies and players can have or collect. 
    * If a player/enemy gets hit with an ability, they lose health
    * Fireball shoots a fireball left and right of the player
-      * 3 HP damage to enemies
-      * ½ Heart damage to player
-   * Waterfall shoots a waterfall down if the Hero is air borne
-      * 7 HP damage to enemies
+      * 10 HP damage to enemies
       * 1 Heart damage to player
+   * WaterWave shoots a shock wave extending outward from the Hero
+      * 20 HP damage to enemies
+      * 2 Heart damage to player
    * Leaf dash allows the player to dash left and right and deal damage to enemies passed
-      * Base Damage: 1 HP damage to enemies
-      * Base Damage: ¼ Heart to player
+      * Base Damage: 5 HP damage to enemies
+      * Base Damage: 1/2 Heart to player
       * Does not fall while dashing
       * Hold the ability button, D, to charge the dash
          * Longer the charge, longer the dash (distance covered), greater the damage
-         * Max Damage: 10 HP damage to enemies
-         * Max Damage: 1 Heart to player
+         * Max Damage: 20 HP damage to enemies
+         * Max Damage: 2 Hearts to player
          * Cannot charge for more than 5 seconds
-         * When player is in air and charges, player will move horizontally to the right and will not fall after the button is released (depending on how long the charge was held)
+         * When player is in air and charges, player will move horizontally to the right and will not fall while dashing (depending on how long the charge was held)
          * Can fall while charging (while the button is held and the player is in the air)
 * The enemies should be able to spawn and function correctly. The enemy should be able to use  abilities and they should be able to drop rewards/powers when defeated.
    * FireEnemy
@@ -63,8 +62,8 @@ Must-have Features:
       * Drops Fireball ability once defeated
       * HP: 100
    * WaterEnemy
-      * Uses Waterfall ability
-      * Drops Waterfall ability once defeated
+      * Uses WaterWave ability
+      * Drops WaterWave ability once defeated
       * HP: 100
    * GrassEnemy
       * Uses Leaf Dash ability
@@ -82,7 +81,6 @@ Must-have Features:
    * The world should include holes in the ground
    * The world should include spikes which can induce damage to the player
    * The world should also include hearts which the player can obtain to regain health
-   * The player’s hearts should be above the player
 * There should be a final boss that is fully functional with specific abilities such as inverting movement controls, flipping the screen vertically, and flipping the screen horizontally. Once defeated the player will win the game
 
 
@@ -107,7 +105,7 @@ Want-to-have Features:
    * Boots for double jump 
 * Special attacks for the Boss
    * Ability to use attacks in diagonal directions
-   * Ability to use two attacks at the same time (e.g. Waterfall + Fireball)
+   * Ability to use two attacks at the same time (e.g. Water Wave + Fireball)
 
 
 Stretch Features:
@@ -125,36 +123,48 @@ Stretch Features:
 
 
 Class List:
-* Hero: The player’s character which can move and use special abilities
-* Enemy: A superclass for all of the different types of enemies against the Hero
-* FireEnemy: A subclass which uses the fireball projectile
-* WaterEnemy: A subclass which uses the waterfall projectile
-* GrassEnemy: A subclass which uses the leaf dash move
-* <If Implemented> WindEnemy: A subclass which uses the double jump ability
-* Boss: A subclass which is able to use all of the abilities
-* Projectile: Projectiles which players and enemies can use to damage other
-* Fireball: A subclass of the Ability class which shoots a fireball
-* Waterfall: A subclass of the Ability class that shoots a waterfall down if the Hero is in the air
-* DrawingSurface: The surface which draws all of the different Objects
-* Main: The class which has the DrawingSurface and Window
-* Platform: Class representing the moving platforms player and hero can walk on with potential spikes
-* MovingImage: A superclass that represents an Image which can move 
+* Boss: A Enemy subclass which is able to use all of the special abilities and do certain effects like inverting controls and flipping the screen
+* Circle: A double precision Circle which can be drawn.
+* DrawingSurface: The surface on which the Active Screen is drawn
+* Enemy: An Enemy which can move and deal damage to the Hero
+* FireEnemy: A subclass of Enemy which can throw fireballs
+* FirstScreen: A Screen with options which the user can interact with such as “Cykura” or “Instructions”
+* GameScreen: A Screen which represents the game and has all of the Enemies and Platforms
+* GrassEnemy: A subclass of Enemy which can leaf dash
+* Heart: A Heart which the Hero can collect to gain health
+* Hero: The playable character which can move and do the special abilities
+* InstructionsScreen: A screen which displays the instructions and the keyboard layout
+* Main: The Main class which runs the program and has the DrawingSurface and Window
+* MovingImage: An Image which can move 
+* Platform: A movable platform on which the Hero can stand and may contain spikes
+* Spike: A Spike which can cause damage to the Hero
+* Token: A token which the Hero can collect
+* WaterEnemy: A subclass of Enemy which can do a Water Wave
+* WaterWave: A wave which extends outward from the Hero dealing damage to Enemies.
+
+
 
 
 
 
 Credits:
 * Work Split:
-Animan: FireEnemy, DrawingSurface, Enemy
-Vicram: GrassEnemy, Hero, Platform, Spike
-Alex: Waterfall, WaterEnemy, Main, Projectile, Fireball
-All: Boss, WindEnemy (if coded)
+Animan: FireEnemy, GameScreen, Enemy, Boss, Circle <intersects() method>
+Vicram: GrassEnemy, Hero, Spike, Circle <Base Code>, Heart, InstructionScreen.
+Alex: WaterWave, WaterEnemy, Main, Projectile, Fireball, Platform.
+All: WindEnemy (if coded)
+
+
 
 
 * Outside Credit:
-DrawingSurface Base Code <Modified by Animan>: Mr. Shelby
-MovingImage: Mr. Shelby
-Hero Class Base Code <Modified by Vicram>: Mr. Shelby
+GameScreen Base Code <Modified by Animan>: Mr. Shelby (AnimationDemo)
+FirstScreen Base Code <Modified by Vicram>: Mr. Shelby (ProcessingScreenSwitching Demo)
+Hero Base Code <Modified by Vicram>: Mr. Shelby (AnimationDemo)
+MovingImage: Mr. Shelby (AnimationDemo)
+Screen: Mr. Shelby (ProcessingScreenSwitching Demo)
+ScreenSwitcher: Mr. Shelby (ProcessingScreenSwitching Demo)
+DrawingSurface: Mr. Shelby (ProcessingScreenSwitching Demo)
 
 
 * Outside Resources:
@@ -193,7 +203,21 @@ Boss Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Cha
 
 
 Fireball Sprite Credit:
-https://webstockreview.net/pict/getfirst
+https://webstockreview.net/images/fireball-clipart-sprite.png
+
+
+Fireball Token Sprite Credit:
+https://cdn5.vectorstock.com/i/1000x1000/96/84/cartoon-fire-flame-sheet-sprite-animation-vector-18799684.jpg
+
+
+Leaf Token Sprite Credit:
+https://www.pinclipart.com/picdir/middle/68-683649_leaf-sprite-png-leaf-vector-simple-clipart.png
+
+
+
+
+Waterball Token Sprite Credit:
+https://www.shutterstock.com/search/water+sprite
 
 
 Platform Sprite Credit:
@@ -201,6 +225,15 @@ https://opengameart.org/content/platformer-art-pixel-edition
 Kenny.nl
 
 
+Game Background:
+https://craftpix.net/freebies/free-horizontal-2d-game-backgrounds/
+
+
+Spike Sprite Credit:
+https://opengameart.org/content/spike-aqua-crystal-w-rock-base
+Author: FunWithPixels
+
+
 Heart Sprite Credit:
-heart pixel art | OpenGameArt.org
+https://opengameart.org/content/heart-pixel-art
 Credit DanSevenStar.xyz, DontMind8.blogspot.com

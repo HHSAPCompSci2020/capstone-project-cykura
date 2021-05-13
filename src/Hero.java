@@ -229,39 +229,42 @@ public class Hero extends MovingImage {
 	 **/
 	public void dash() {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
-		if (chargeTime >= 180) {
-			chargeTime = 0;
-			dashing = true;
-			if (canDash && facingDirection == 0) { // Facing to the right
-				moveByAmount(100, 0);
-			} else if (canDash && facingDirection == 180) { // Facing to the left
-				moveByAmount(-100, 0);
-			}
-		} else if (chargeTime >= 120) {
-			chargeTime = 0;
-			dashing = true;
-			if (canDash && facingDirection == 0) { // Facing to the right
-				moveByAmount(75, 0);
-			} else if (canDash && facingDirection == 180) { // Facing to the left
-				moveByAmount(-75, 0);
-			}
-		} else if (chargeTime >= 60) {
-			chargeTime = 0;
-			dashing = true;
-			if (canDash && facingDirection == 0) { // Facing to the right
-				moveByAmount(50, 0);
-			} else if (canDash && facingDirection == 180) { // Facing to the left
-				moveByAmount(-50, 0);
-			}
-		} else if (chargeTime > 0) {
-			chargeTime = 0;
-			dashing = true;
-			if (canDash && facingDirection == 0) { // Facing to the right
-				moveByAmount(25, 0);
-			} else if (canDash && facingDirection == 180) { // Facing to the left
-				moveByAmount(-25, 0);
+		if (canDash == true) {
+			if (chargeTime >= 180) {
+				chargeTime = 0;
+				dashing = true;
+				if (canDash && facingDirection == 0) { // Facing to the right
+					moveByAmount(100, 0);
+				} else if (canDash && facingDirection == 180) { // Facing to the left
+					moveByAmount(-100, 0);
+				}
+			} else if (chargeTime >= 120) {
+				chargeTime = 0;
+				dashing = true;
+				if (canDash && facingDirection == 0) { // Facing to the right
+					moveByAmount(75, 0);
+				} else if (canDash && facingDirection == 180) { // Facing to the left
+					moveByAmount(-75, 0);
+				}
+			} else if (chargeTime >= 60) {
+				chargeTime = 0;
+				dashing = true;
+				if (canDash && facingDirection == 0) { // Facing to the right
+					moveByAmount(50, 0);
+				} else if (canDash && facingDirection == 180) { // Facing to the left
+					moveByAmount(-50, 0);
+				}
+			} else if (chargeTime > 0) {
+				chargeTime = 0;
+				dashing = true;
+				if (canDash && facingDirection == 0) { // Facing to the right
+					moveByAmount(25, 0);
+				} else if (canDash && facingDirection == 180) { // Facing to the left
+					moveByAmount(-25, 0);
+				}
 			}
 		}
+
 
 	}
 	
