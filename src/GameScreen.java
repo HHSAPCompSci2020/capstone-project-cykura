@@ -203,21 +203,10 @@ public class GameScreen extends Screen {
 						enemies.set(i, null);
 					}
 				}
-					/*if (e instanceof FireEnemy) {
-						hero.act(platforms, (FireEnemy) e, ((FireEnemy) e).getFireballs());
-					} else {
-						hero.act(platforms, e, null);
-					}*/
 				
 			}
 			hero.act(platforms, enemies);
 		}
-		
-		//for (Enemy e: enemies) {
-		//	e.act(hero, platforms);
-		//}
-		
-		//surface.popMatrix();
 		
 		
 	}
