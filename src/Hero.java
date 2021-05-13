@@ -284,7 +284,7 @@ public class Hero extends MovingImage {
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
-	public void act(ArrayList<Shape> platforms, Enemy enemy, ArrayList<Fireball> enemyFireballs) {
+	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies) {
 		fireballCoolDown++;
 		punchCoolDown--;
 		double x = getX();
@@ -381,17 +381,21 @@ public class Hero extends MovingImage {
 
 		moveToLocation(x2, y2);
 
-		if (enemy != null) {
-			checkEnemyCollision(enemy);
+		if (enemies != null) {
+			for (Enemy e: enemies) {
+				if (e != null) {
+					checkEnemyCollision(e);
+					if (e instanceof FireEnemy) {
+						if (((FireEnemy) e).getFireballs() != null) {
+							checkFireballCollision(((FireEnemy) e).getFireballs());
+						}
+					}
+				}
+			}
 		}
+		
 
-		if (enemyFireballs != null) {
-			checkFireballCollision(enemyFireballs); // checking if Hero got hit with Fireballs
-			/*
-			 * for(int i = 0; i < fireballs.size(); i++) { Fireball f = fireballs.get(i);
-			 * if(f != null) { f.act(); } }
-			 */
-		}
+		
 
 		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
 			for (int i = 0; i < fireballs.size(); i++) {
