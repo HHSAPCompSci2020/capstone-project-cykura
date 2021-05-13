@@ -12,6 +12,7 @@ public class GameScreen extends Screen {
 	public static PImage fireball;
 	public static PImage water;
 	public static PImage heart;
+//	private PImage bg;
 	
 	public static float Right_Margin = 400;
 	public static float Left_Margin = 100;
@@ -53,6 +54,8 @@ public class GameScreen extends Screen {
 
 	
 	public void setup() {
+//		bg = surface.loadImage("sprites/gameScreenBackground.png");
+//		System.out.println(bg.width);
 		spawnHero();
 		enemies = generateEnemies();
 //		spawnEnemy();
@@ -73,6 +76,8 @@ public class GameScreen extends Screen {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
+//		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
+//		surface.background(bg);
 		scroll();
 		//surface.rotate(surface.radians(45));
 		//surface.pushMatrix();
