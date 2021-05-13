@@ -26,9 +26,16 @@ public class InstructionScreen extends Screen {
 		surface.pushStyle();
 		
 		surface.background(255,255,255);
-		surface.rect(10, 10, 780, 500);
+		surface.rect(10, 10, 780, 500);	// x = 10, y = 10, w = 780, h = 500
 		surface.fill(0);
-		String str = "Instruction";
+		String str = "Game Instructions: \nLeft arrow key - Move to the left\r\n" + 
+				"Right arrow key - Move to the right\r\n" + 
+				"Up arrow key - Jump\r\n" + 
+				"Space Bar - Punch\r\n" + 
+				"A - Use Fireball\r\n" + 
+				"S - Use Waterfall\r\n" + 
+				"D - Use Leaf Dash\r\n" + 
+				"";
 		float w = surface.textWidth(str);
 		surface.text(str, 10, 10);
 
