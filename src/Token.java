@@ -9,12 +9,12 @@ public class Token extends Rectangle2D.Double{
 	public static final int TOKEN_HEIGHT = 30;
 	
 	/**
-	 * Creates a new instance of a Heart object having its left
+	 * Creates a new instance of a Token object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
 	 * 
-	 * @param img The PImage which the Heart will look like in the game (sprite).
-	 * @param x The X value of the Heart's top left corner.
-	 * @param y The Y value of the Heart's top left corner.
+	 * @param img The PImage which the Token will look like in the game (sprite).
+	 * @param x The X value of the Token's top left corner.
+	 * @param y The Y value of the Token's top left corner.
 	**/
 	public Token(PImage img, int x, int y) {
 		super(x,y, TOKEN_WIDTH, TOKEN_HEIGHT);
@@ -22,7 +22,7 @@ public class Token extends Rectangle2D.Double{
 	}
 	
 	/**
-	 * Sets the minimum and maximum x and y coordinates the Heart can have according to the window size.
+	 * Sets the minimum and maximum x and y coordinates the Token can have according to the window size.
 	 * 	  
 	 * @param windowWidth The width of the window.
 	 * @param windowHeight The height of the window.
@@ -35,11 +35,11 @@ public class Token extends Rectangle2D.Double{
 	}
 	
 	/**
-	 * Draws the Heart.
+	 * Draws the Token.
 	 * 
-	 * @param g The PApplet on which the Heart is drawn.
+	 * @param g The PApplet on which the Token is drawn.
 	**/
 	public void draw(PApplet g) {
-		//g.image(image,(int)x,(int)y, HEART_WIDTH, HEART_HEIGHT);
+		g.image(image,(int)x,(int)y, TOKEN_WIDTH, TOKEN_HEIGHT);
 	}
 }
