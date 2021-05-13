@@ -435,6 +435,9 @@ public class Hero extends MovingImage {
 				Fireball f = fireballs.get(i);
 				if(f != null) {
 					f.act();
+		    		 if(f.checkCollisionShape(platforms)) {
+		    			 fireballs.set(i, null);
+		    		 }
 				}
 			}
 		}
