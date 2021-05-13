@@ -27,6 +27,10 @@ public class Platform extends MovingImage {
 		this.vx=vx;
 		this.vy=vy;
 	}
+	
+	/**
+	 * Changes state of platform
+	 */
 	public void act() {
 		atEnd();
 		super.moveByAmount(vx, vy);
