@@ -25,7 +25,7 @@ public class Hero extends MovingImage {
 	private int invincibilityTime;
 
 	private ArrayList<Fireball> fireballs;
-	// private ArrayList<Heart> hearts;
+	private WaterWave wave;
 
 	private boolean canThrowFireball;
 	private boolean canWaterWave;
@@ -54,6 +54,7 @@ public class Hero extends MovingImage {
 		vy = 0;
 		onASurface = false;
 		canThrowFireball = true;
+		canWaterWave = true;
 		canDash = false;
 		hearts = 5;
 
@@ -78,10 +79,17 @@ public class Hero extends MovingImage {
 		}
 	}
 
+	/**
+	 * 
+	 * @return The fireballs which the Hero has thrown.
+	 */
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
 	}
 
+	/**
+	 * Hero throws a fireball
+	 */
 	public void throwFireball() {
 		if (canThrowFireball && fireballCoolDown > 30) {
 			if (facingDirection == 0) { // Facing to the right
@@ -95,12 +103,25 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
+	
+	public void doWaterWave() {
+		if (canWaterWave && wave == null) {
+			wave = new WaterWave((int) x, (int) y, (double) 10, (double)50, (double)10);
+		}
+	}
 
+	/**
+	 * 
+	 * @return How long the hero has been charging
+	 */
 	public int getChargeTime() {
 		return chargeTime;
 	}
 
-
+	/**
+	 * 
+	 * @return if the Hero is dashing or not
+	 */
 	public boolean isDashing() {
 		return dashing;
 	}
@@ -241,6 +262,7 @@ public class Hero extends MovingImage {
 		}
 
 	}
+	
 
 	/**
 	 * Gets the amount of hearts the Hero currently has.
@@ -261,6 +283,10 @@ public class Hero extends MovingImage {
 			if (f != null) {
 				f.draw(g);
 			}
+		}
+		
+		if (wave != null) {
+			wave.draw(g);
 		}
 	}
 
@@ -284,6 +310,8 @@ public class Hero extends MovingImage {
 		if (onASurface) {
 			dashing = false;
 		}
+		
+		
 
 		// ***********Y AXIS***********
 		double y2 = y;
@@ -385,6 +413,17 @@ public class Hero extends MovingImage {
 					f.act();
 					if (f.checkCollisionShape(platforms)) {
 						fireballs.set(i, null);
+					}
+				}
+			}
+		}
+		
+		if (wave != null) {	// if there is a wave
+			wave.act();
+			if (enemies != null) {
+				for (Enemy e: enemies) {
+					if (e != null) {
+						wave.checkCollisionEnemy(e);
 					}
 				}
 			}
