@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.awt.Shape;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class Enemy extends MovingImage{
 	public int health;
 	protected int v;
 	protected int waitTime;
+	protected Point spawnPoint;
 	
 	/**
 	 * Creates a new instance of a Enemy object having its left
@@ -30,6 +32,7 @@ public class Enemy extends MovingImage{
 		super(img, x, y, 40, 60);
 		v = 2;
 		health = 100;
+		spawnPoint = new Point(x,y);
 	}
 	
 	/**
