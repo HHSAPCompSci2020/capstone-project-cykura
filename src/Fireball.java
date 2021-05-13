@@ -30,19 +30,41 @@ public class Fireball extends MovingImage {
 		this.vx=vx;
 		this.vy=vy;
 	}
+	
+	/**
+	 * Changes state of fireball
+	 */
 	public void act() {
 		super.moveByAmount(vx,vy);
 	}
+	
+	/**
+	 * Check collision with platforms
+	 * @param shapes platforms in game
+	 * @return true if fireball collides with any platforms
+	 */
 	public boolean checkCollisionShape (ArrayList<Shape> shapes) {
 		for (int i=0;i<shapes.size();i++) {
 			if(this.intersects((Rectangle2D) shapes.get(i))) return true;
 		}
 		return false;
 	}
+	
+	/**
+	 * Check collision with enemy
+	 * @param e enemy 
+	 * @return true if collides with enemy
+	 */
 	public boolean checkCollisionEnemy (Enemy e) {
 		if (this.intersects(e)) return true;
 		return false;
 	}
+	
+	/**
+	 * Check collision with hero
+	 * @param h the hero
+	 * @return true if collided with hero
+	 */
 	public boolean checkCollisionHero (Hero h) {
 		if (this.intersects(h)) return true;
 		return false;
