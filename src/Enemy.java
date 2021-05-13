@@ -74,8 +74,8 @@ public class Enemy extends MovingImage{
 //			     System.out.println("cosAngle " + Math.cos(angle));
 //			     System.out.println("sinAngle " + Math.sin(angle));
 //			     System.out.println("V " + v);
-		    	 x += (v*100) * Math.cos(angle);
-		    	 y += (v*100) * Math.sin(angle);
+		    	 x += (v) * Math.cos(angle);
+		    	 y += (v) * Math.sin(angle);
 		    	 
 		    	 
 //			     System.out.println();
