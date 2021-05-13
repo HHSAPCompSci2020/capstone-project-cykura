@@ -79,6 +79,7 @@ public class GameScreen extends Screen {
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
 		scroll();
+		//surface.translate(200,100);
 		//surface.rotate(surface.radians(45));
 		//surface.pushMatrix();
 		
