@@ -230,6 +230,11 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(300,250,200,50));	// top middle
 		p.add(new Rectangle(980,250,120,50));
 		p.add(new Rectangle(1280,250,120,50));
+		p.add(new Rectangle(1580,250,120,50));
+		p.add(new Rectangle(1880,250,120,50));
+		p.add(new Rectangle(2180,250,120,50));
+		p.add(new Rectangle(2480,250,120,50));
+		p.add(new Rectangle(2780,250,120,50));
 		return p;
 	}
 	
@@ -238,7 +243,7 @@ public class GameScreen extends Screen {
 //		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), DRAWING_WIDTH/2-Enemy.ENEMY_WIDTH/2-200, 50));
 //		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-200, 50));	// Fire Enemy
 //		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Water Enemy
-		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Grass Enemy
+//		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2+160, 150));	// Grass Enemy
 //		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),DRAWING_WIDTH/2-FireEnemy.ENEMY_WIDTH/2-100, 100));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
