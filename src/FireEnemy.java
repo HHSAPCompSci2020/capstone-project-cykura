@@ -79,9 +79,8 @@ public class FireEnemy extends Enemy{
 		     }
 		}
 		else {
-			if(token==null)
-			token = new Token(GameScreen.fireToken,(int)x,(int)y);
-			System.out.println(token);
+			if(GameScreen.fireToken1==null)
+			GameScreen.fireToken1 = new Token(GameScreen.fireToken,(int)x,(int)y);
 			x=-20;
 			y=-20;
 		}
@@ -105,10 +104,6 @@ public class FireEnemy extends Enemy{
 			if(f!=null) {
 				f.draw(g);
 			}
-		}
-		System.out.println(token);
-		if(token!=null) {
-			token.draw(g);
 		}
 	}
 }

@@ -13,6 +13,7 @@ public class GameScreen extends Screen {
 	public static PImage water;
 	public static PImage heart;
 	public static PImage fireToken;
+	public static Token fireToken1;
 //	private PImage bg;
 	
 	public static float Right_Margin = 400;
@@ -122,6 +123,10 @@ public class GameScreen extends Screen {
 			for (Heart he : h) {
 				he.draw(surface);
 			}
+		}
+		
+		if(fireToken1!=null) {
+			fireToken1.draw(surface);
 		}
 		
 		for (Enemy e: enemies) {
