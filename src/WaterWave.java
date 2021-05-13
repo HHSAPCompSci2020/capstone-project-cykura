@@ -13,6 +13,7 @@ import processing.core.PImage;
  */
 public class WaterWave extends Circle {
 	private double fd,vd;
+	protected boolean hit;
 	/**
 	 * Creates a new instance of a Waterfall object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -28,12 +29,17 @@ public class WaterWave extends Circle {
 		super(x,y,d);
 		this.fd=fd;
 		this.vd=vd;
+		hit=false;
 	}
 	public void act() {
 		super.extent+=vd;
 	}
 	public boolean canRemove() {
 		if(super.extent>=fd) return true;
+		if (hit) {
+			hit=false;
+			return true;
+		}
 		return false;
 	}
 	public boolean checkCollisionEnemy(Enemy e) {

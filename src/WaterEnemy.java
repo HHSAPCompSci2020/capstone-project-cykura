@@ -54,7 +54,11 @@ public class WaterEnemy extends Enemy {
 		     }
 		     if (waterwave!=null) {
 		    	 waterwave.act();
-		    	 if (waterwave.canRemove())waterwave=null;
+		    	 if(waterwave.checkCollisionHero(h)) {
+		    		 h.loseHearts(2);
+		    		 waterwave.hit=true;
+		    	 }
+		    	 if (waterwave.canRemove()) waterwave=null;
 		     }
 		     
 		}
