@@ -50,7 +50,7 @@ public class Enemy extends MovingImage{
 //		     System.out.println("1x: " + x + ", 1y: " + y);
 //		     System.out.println("1sx: " + spawnPoint.x + ", 1sy: " + spawnPoint.y);
 //		     System.out.println();
-		     if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300) {
+		     if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(x-hero.x)<500&&Math.abs(y-hero.y)<300) {
 			     float angle = (float)Math.atan2(diffY, diffX);
 			     if(this.intersects(hero)) {
 		//	    	 System.out.println("Collided with hero");

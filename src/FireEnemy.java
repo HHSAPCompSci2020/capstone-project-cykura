@@ -34,7 +34,7 @@ public class FireEnemy extends Enemy{
 	 */
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
 		if(health>0) {
-			if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300) {
+			if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(x-hero.x)<500&&Math.abs(y-hero.y)<300) {
 				double x1 = hero.x;
 			    double y1 = hero.y;
 		
