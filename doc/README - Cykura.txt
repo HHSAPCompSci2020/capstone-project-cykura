@@ -149,7 +149,7 @@ Class List:
 
 Credits:
 * Work Split:
-Animan: FireEnemy, GameScreen, Enemy, Boss, Circle <intersects() method>
+Animan: FireEnemy, GameScreen, Enemy, Boss, Circle <intersects() method>, Token
 Vicram: GrassEnemy, Hero, Spike, Circle <Base Code>, Heart, InstructionScreen.
 Alex: WaterWave, WaterEnemy, Main, Projectile, Fireball, Platform.
 All: WindEnemy (if coded)
