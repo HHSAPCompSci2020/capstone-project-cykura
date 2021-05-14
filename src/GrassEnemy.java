@@ -26,38 +26,44 @@ public class GrassEnemy extends Enemy {
 	
 	public void act(Hero hero, ArrayList<Shape> obstacles) {
 		if(health > 0) {
-	
-		     double diffX = hero.x - x;
-		     double diffY = hero.y - y;
-	
-		     float angle = (float)Math.atan2(diffY, diffX);
-		     if(this.intersects(hero)) {	// If it collides with the hero
-		    	 waitTime=30;	// Wait Time to start Moving again
-		    	 dashCoolDownTimeRemaining = 60;	// Increase Dash time to not dash right after hitting the hero
-		     }
-		     if (waitTime <= 0) {
-		    	 x += v * Math.cos(angle);
-		    	 y += v * Math.sin(angle);
-		    	 waitTime = 0;
-		     } else {
-		    	 waitTime--;
-		     }
-		     
-		     if (dashCoolDownTimeRemaining <= 0) {
-			     if (Math.abs(diffY) <= 300 && Math.abs(diffX) <= 500) {
-				 		if(hero.x < this.x) {	// The Hero is to the left
-							moveByAmount(-50, 0);
-							dashCoolDownTimeRemaining = 60;
-						} else if (hero.x > this.x) {		// Hero is to the right
-							moveByAmount(50, 0);
-							dashCoolDownTimeRemaining = 60;
-						}
-				  }
-		     } else {
-		    	 dashCoolDownTimeRemaining--;
-		     }
+			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(x - hero.x) < 500 && Math.abs(y - hero.y) < 300) {	// If u are close to spawn
 
-		} else {
+			     double diffX = hero.x - x;
+			     double diffY = hero.y - y;
+		
+			     float angle = (float)Math.atan2(diffY, diffX);
+			     if(this.intersects(hero)) {	// If it collides with the hero
+			    	 waitTime=30;	// Wait Time to start Moving again
+			    	 dashCoolDownTimeRemaining = 60;	// Increase Dash time to not dash right after hitting the hero
+			     }
+			     if (waitTime <= 0) {
+			    	 x += v * Math.cos(angle);
+			    	 y += v * Math.sin(angle);
+			    	 waitTime = 0;
+			     } else {
+			    	 waitTime--;
+			     }
+			     
+			     if (dashCoolDownTimeRemaining <= 0) {	// if u can dash
+				     if (Math.abs(diffY) <= 300 && Math.abs(diffX) <= 500) {
+					 		if(hero.x < this.x) {	// The Hero is to the left
+								moveByAmount(-50, 0);
+								dashCoolDownTimeRemaining = 60;
+							} else if (hero.x > this.x) {		// Hero is to the right
+								moveByAmount(50, 0);
+								dashCoolDownTimeRemaining = 60;
+							}
+					  }
+			     } else {	// if u still have a cool down time
+			    	 dashCoolDownTimeRemaining--;
+			     }
+			} else {	// If away from spawn
+				float angle = (float) Math.atan2(spawnPoint.y - y, spawnPoint.x - x);
+				x += (v) * Math.cos(angle);
+				y += (v) * Math.sin(angle);
+			}
+			
+		} else {	// health < 0 so should die
 			if(GameScreen.grassToken1==null)
 				GameScreen.grassToken1 = new Token(GameScreen.grassToken,(int)x,(int)y);
 			x = -20;
