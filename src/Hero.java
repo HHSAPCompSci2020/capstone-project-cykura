@@ -186,7 +186,7 @@ public class Hero extends MovingImage {
 			punchCoolDown = 60; // 1 sec cooldown
 			if (e1 != null) {
 				if (Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
-					e1.loseHealth(3);
+					e1.loseHealth(20);
 				}
 			}
 		}
@@ -198,7 +198,7 @@ public class Hero extends MovingImage {
 	 * @param direction The direction and magnitude which the Hero will move in.
 	 **/
 	public void walk(int direction) {
-		if (chargeTime <= 0 || dashing == true) {
+		if (chargeTime <= 0 && dashing == false) {	// only walk if u are not charging or if u are not dashing
 			if (vx <= 10 && vx >= -10)
 				vx += direction;
 		}
@@ -219,7 +219,8 @@ public class Hero extends MovingImage {
 	 * 
 	 */
 	public void charge() {
-		chargeTime++;
+		if (canDash)
+			chargeTime++;
 	}
 
 	/**
@@ -230,6 +231,7 @@ public class Hero extends MovingImage {
 	public void dash() {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
+			System.out.println(canDash);
 			if (chargeTime >= 180) {
 				chargeTime = 0;
 				dashing = true;
@@ -448,6 +450,7 @@ public class Hero extends MovingImage {
 		}
 		
 		if (GameScreen.grassToken1 != null) {
+			System.out.println("g");
 			canDash = true;
 		}
 
