@@ -103,6 +103,7 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
+	
 	/**
 	 * Hero creates a Water wave
 	 */
