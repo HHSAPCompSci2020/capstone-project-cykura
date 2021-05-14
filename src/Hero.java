@@ -109,7 +109,7 @@ public class Hero extends MovingImage {
 	 */
 	public void doWaterWave() {
 		if (canWaterWave && wave == null) {
-			wave = new WaterWave((int) x +10, (int) y +10, (double) 10, (double)100, (double)2);
+			wave = new WaterWave((int) x +20, (int) y +30, (double) 50, (double)120, (double)4);
 		}
 	}
 

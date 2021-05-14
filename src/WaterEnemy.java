@@ -31,9 +31,6 @@ public class WaterEnemy extends Enemy {
 	 * @param platforms all platforms in game
 	 */
 	public void act(Hero h, ArrayList<Shape> platforms) {
-		if(waterwave==null) {
-			
-		}
 		if(health>0) {
 			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(x - h.x) < 500 && Math.abs(y - h.y) < 300) {	// If u are close to spawn
 				double x1 = h.x;
@@ -74,9 +71,8 @@ public class WaterEnemy extends Enemy {
 			
 		     
 		} else {
-			if(GameScreen.waterToken1==null)
-				GameScreen.waterToken1 = new Token(GameScreen.waterToken,(int)x,(int)y);
-			//remove this enemy and drop the ability
+			if(GameScreen.waterToken1==null) GameScreen.waterToken1 = new Token(GameScreen.waterToken,(int)x,(int)y);
+			
 		}
 	}
 	
