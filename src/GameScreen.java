@@ -68,6 +68,7 @@ public class GameScreen extends Screen {
 //		System.out.println(bg.width);
 		spawnHero();
 		enemies = generateEnemies();
+//		System.out.println(enemies);
 //		spawnEnemy();
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
@@ -210,7 +211,10 @@ public class GameScreen extends Screen {
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 //			System.out.println("p");
 			for (Enemy e: enemies) {
-				hero.punch(e);
+//				System.out.println(e);
+				if (e!= null) {
+					hero.punch(e);
+				}
 			}
 //			surface.removeKey(KeyEvent.VK_SPACE);
 		}

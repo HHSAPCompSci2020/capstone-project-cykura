@@ -183,11 +183,13 @@ public class Hero extends MovingImage {
 	 *      the Enemy's x coordinate must be less than 75 to cause damage.
 	 **/
 	public void punch(Enemy e1) {
-		if (punchCoolDown <= 0) {
+//		System.out.println(e1);
+		if (punchCoolDown <= 0) {	// if can punch
 			punchCoolDown = 60; // 1 sec cooldown
+//			System.out.println(e1);
 			if (e1 != null) {
-				if (Math.abs(e1.getCenterX() - this.getCenterX()) < 75) {
-					e1.loseHealth(20);
+				if (Math.abs(e1.getCenterX() - this.getCenterX()) < 150) {
+					e1.loseHealth(100);
 				}
 			}
 		}
@@ -232,7 +234,7 @@ public class Hero extends MovingImage {
 	public void dash() {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
-			System.out.println(canDash);
+//			System.out.println(canDash);
 			if (chargeTime >= 180) {
 				chargeTime = 0;
 				dashing = true;
@@ -310,6 +312,9 @@ public class Hero extends MovingImage {
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies) {
 		fireballCoolDown++;
 		punchCoolDown--;
+		
+//		System.out.println(punchCoolDown);
+		
 		double x = getX();
 		double y = getY();
 		double width = getWidth();
@@ -403,10 +408,10 @@ public class Hero extends MovingImage {
 		if (enemies != null) {
 			for (Enemy e: enemies) {
 				if (e != null) {
-					checkEnemyCollision(e);
+					checkEnemyCollision(e);	// check if hero gets hit by enemy
 					if (e instanceof FireEnemy) {
-						if (((FireEnemy) e).getFireballs() != null) {
-							checkFireballCollision(((FireEnemy) e).getFireballs());
+						if (((FireEnemy) e).getFireballs() != null) {	// if fireenemy has thrown fireballs
+							checkFireballCollision(((FireEnemy) e).getFireballs());	// Check if hero got hit by FireEnemy's fireballs
 						}
 					}
 				}
@@ -422,6 +427,18 @@ public class Hero extends MovingImage {
 					if (f.checkCollisionShape(platforms)) {
 						fireballs.set(i, null);
 					}
+					
+					if (enemies!= null) {
+						for (Enemy e: enemies) {
+							if (e!= null) {
+								if(f.checkCollisionEnemy(e)) {
+									fireballs.set(i, null);
+									e.loseHealth(20);
+								}
+							}
+						}
+					}
+					
 				}
 			}
 		}
@@ -451,7 +468,7 @@ public class Hero extends MovingImage {
 		}
 		
 		if (GameScreen.grassToken1 != null) {
-			System.out.println("g");
+//			System.out.println("g");
 			canDash = true;
 		}
 
