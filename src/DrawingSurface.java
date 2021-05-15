@@ -73,35 +73,15 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	}
 	
 	public void keyPressed() {
-//		if (keysTapped.contains(keyCode) == false) {
-//			keysTapped.add(keyCode);
-//		}
-//		if (!keys.contains(keyCode)) {
-			keys.add(keyCode);
-//		}
-			
-//		while(keysReleased.contains(keyCode))
-//			keysReleased.remove(new Integer(keyCode));
+		keys.add(keyCode);
+		
 	}
 
 	public void keyReleased() {
-//		while (keysTapped.contains(keyCode))
-//			keys.remove(new Integer(keyCode));
-		
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 		
-//		if (!keysReleased.contains(keyCode))
-//			keysReleased.add(keyCode);
-		
-		
 	}
-	
-//	public void removeKey(Integer code) {
-//		while (keys.contains(code)) {
-//			keys.remove(new Integer(code));
-//		}
-//	}
 	
 	public void keyTyped() {
 		keysTyped.add(keyCode);
@@ -111,19 +91,10 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		return keysTyped.contains(code);
 	}
 	
-//	public boolean isReleased(Integer code) {
-//		return keysReleased.contains(code);
-//	}
 
 	public boolean isPressed(Integer code) {
-//		System.out.println(keys);
 		return keys.contains(code);
 	}
-	
-//	public boolean isTapped(Integer code) {
-//		return keysTapped.contains(code);
-//	}
-	
 	
 	public void mousePressed() {
 		activeScreen.mousePressed();

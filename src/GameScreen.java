@@ -116,11 +116,6 @@ public class GameScreen extends Screen {
 		tokens = generateTokens();
 
 		
-
-		
-//		System.out.println("v");
-//		fistToken1 = new Token(fistToken, (int) (view_x + 100), (int) (view_y + 100));
-
 		
 //		try {
 //			Thread.sleep(3000);
@@ -148,14 +143,8 @@ public class GameScreen extends Screen {
 		
 		surface.stroke(0);     // Set line drawing color to white
 		surface.noFill();
-
-//		surface.rect(x,y,30,30);
-//		
-//		surface.fill(0);
-//		surface.text("Move: Arrow keys",10,30);
-//		surface.text("Menu: Space",10,50);
-		
 		surface.fill(100);
+		
 		for (Shape s : platforms) {
 			if (s instanceof Rectangle) {
 				Rectangle r = (Rectangle)s;
@@ -301,6 +290,9 @@ public class GameScreen extends Screen {
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 //			System.out.println("p");
 			for (Enemy e: enemies) {
+				System.out.println(enemies);
+				System.out.println(e);
+				System.out.println();
 //				System.out.println(e);
 				if (e!= null) {
 					hero.punch(e);
