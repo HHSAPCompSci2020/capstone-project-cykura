@@ -55,7 +55,7 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
-		fistToken1 = new Token(fistToken, (int) 100, (int) 100);
+		
 //		flipped =true;
 //		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -76,16 +76,19 @@ public class GameScreen extends Screen {
 //		System.out.println(bg.width);
 		spawnHero();
 		enemies = generateEnemies();
-//		System.out.println(enemies);
-//		spawnEnemy();
+		
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
 		water = surface.loadImage("sprites\\FireballSprite.png");
 		heart = surface.loadImage("sprites\\FullHeart.png");
 		fireToken = surface.loadImage("sprites\\tokens\\FireballTokenSprite.png");
 		waterToken = surface.loadImage("sprites\\tokens\\WaterWaveTokenSprite.png");
 		grassToken = surface.loadImage("sprites\\tokens\\GrassTokenSprite.png");
+		
 		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
-//		hearts = generateHearts();
+		
+//		System.out.println("v");
+//		fistToken1 = new Token(fistToken, (int) (view_x + 100), (int) (view_y + 100));
+
 		
 //		try {
 //			Thread.sleep(3000);
@@ -99,6 +102,7 @@ public class GameScreen extends Screen {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
+		System.out.println("vx " + view_x + " vy " + view_y);
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
 		scroll();
@@ -148,6 +152,10 @@ public class GameScreen extends Screen {
 		}
 		
 		
+		ArrayList<Token> t = new ArrayList<Token>();
+		t.add(new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
+		t.get(0).draw(surface);
+		
 		
 		if(fireToken1!=null) {
 			fireToken1.draw(surface);
@@ -158,10 +166,11 @@ public class GameScreen extends Screen {
 		if(grassToken1!=null) {
 			grassToken1.draw(surface);
 		}
-		if (fistToken1 != null) {
+//		if (fistToken1 != null) {
+//		fistToken1.draw(surface);
 //			System.out.println("f");
 //			fistToken1.draw(surface);
-		}
+//		}
 		
 		for (Enemy e: enemies) {
 			if(e!=null)
