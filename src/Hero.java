@@ -459,17 +459,17 @@ public class Hero extends MovingImage {
 			}
 		}
 		
-		if (GameScreen.fireToken1 != null) {
+		if (GameScreen.fireToken1 != null&&GameScreen.fireToken1.intersects(this)) {
 			canThrowFireball = true;
 			GameScreen.fireToken1 = null;
 		}
 		
-		if (GameScreen.waterToken1 != null) {
+		if (GameScreen.waterToken1 != null&&GameScreen.waterToken1.intersects(this)) {
 			canWaterWave = true;
 			GameScreen.waterToken1=null;
 		}
 		
-		if (GameScreen.grassToken1 != null) {
+		if (GameScreen.grassToken1 != null&&GameScreen.grassToken1.intersects(this)) {
 //			System.out.println("g");
 			canDash = true;
 			GameScreen.grassToken1 = null;
