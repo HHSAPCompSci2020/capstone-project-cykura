@@ -1,6 +1,7 @@
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.util.ArrayList;
+import java.util.Timer;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
@@ -49,6 +50,7 @@ public class GameScreen extends Screen {
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
+	private Timer startTime;
 
 	/**
 	 * Default Constructor
@@ -56,7 +58,6 @@ public class GameScreen extends Screen {
 	public GameScreen(DrawingSurface surface) {
 		super(800,500);
 		this.surface = surface;
-		
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
