@@ -10,8 +10,8 @@ import processing.core.PImage;
  */
 public class Token extends Rectangle2D.Double{
 	private PImage image;
-	public static final int TOKEN_WIDTH = 50;
-	public static final int TOKEN_HEIGHT = 50;
+	public static final int TOKEN_WIDTH = 30;
+	public static final int TOKEN_HEIGHT = 30;
 	
 	/**
 	 * Creates a new instance of a Token object having its left
