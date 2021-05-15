@@ -32,7 +32,7 @@ public class WaterEnemy extends Enemy {
 	 */
 	public void act(Hero h, ArrayList<Shape> platforms, ArrayList<Token> tokens) {
 		if(health>0) {
-			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(x - h.x) < 500 && Math.abs(y - h.y) < 300) {	// If u are close to spawn
+			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(spawnPoint.x - h.x) < 500 && Math.abs(spawnPoint.y - h.y) < 300) {	// If u are close to spawn
 				double x1 = h.x;
 			    double y1 = h.y;
 		
