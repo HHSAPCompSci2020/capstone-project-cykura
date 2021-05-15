@@ -413,6 +413,11 @@ public class Hero extends MovingImage {
 						if (((FireEnemy) e).getFireballs() != null) {	// if fireenemy has thrown fireballs
 							checkFireballCollision(((FireEnemy) e).getFireballs());	// Check if hero got hit by FireEnemy's fireballs
 						}
+					} else if (e instanceof Boss) {
+						if (((Boss) e).getFireballs() != null) {	// if boss has thrown fireballs
+//							System.out.println("Bos threw fire");
+							checkFireballCollision(((Boss) e).getFireballs());	// Check if hero got hit by FireEnemy's fireballs
+						}
 					}
 				}
 			}
@@ -433,7 +438,7 @@ public class Hero extends MovingImage {
 							if (e!= null) {
 								if(f.checkCollisionEnemy(e)) {
 									fireballs.set(i, null);
-									e.loseHealth(20);
+									e.loseHealth(10);
 								}
 							}
 						}

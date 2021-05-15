@@ -125,4 +125,8 @@ public class Boss extends Enemy {
 		}
 			
 	}
+	
+	public ArrayList<Fireball> getFireballs() {
+		return fireballs;
+	}
 }
