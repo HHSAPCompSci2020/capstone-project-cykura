@@ -179,39 +179,35 @@ public class GameScreen extends Screen {
 		
 		if (tokens.size() != 0) {
 			if (hero.getPunchCoolDown() <= 0) {	// can punch since there is no cooldown
-				tokens.set(0, new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
+				tokens.set(0, new Token(fistToken, (int) (view_x + 300), (int) (view_y + 10)));
 			} else {	// can't punch since there is a cooldown
 				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 300), (int) (view_y + 10)));
 //				tokens.add(new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
 			}
 			
 			tokens.get(0).draw(surface);
+			
 			for (int i = 1; i <tokens.size(); i ++) {	// goes thru other tokens
-				if (tokens.get(i) != null) {
+				if (tokens.get(i) != null) { 
 					if (tokens.get(i).getImage() == fireToken || tokens.get(i).getImage() == fireTokenUsed) {
-						if (hero.canThrowFireball()) {
-							tokens.get(i).moveTo((int) (view_x + 350), (int) (view_y + 10));
-							tokens.get(i).draw(surface);
-						} else {
-							tokens.get(i).draw(surface);
+						if (hero.canThrowFireball()) {	// if the hero has already touched the token
+							if (hero.getFireballCoolDown() <= 0) {
+								tokens.set(i, new Token(fireToken, (int) (view_x + 350), (int) (view_y + 10)));
+							} else {
+								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 350), (int) (view_y + 10)));
+							}
 						}
+						
+						tokens.get(i).draw(surface);
 					}
-
 				}
 			}
 			
-
-//			for (Token t: tokens) {
-//				if (t != null) {
-//					t.draw(surface);
-//				}
-//			}		
+			
 		}
 
 
 
-		
-		
 		
 		for (Enemy e: enemies) {
 			if(e!=null)

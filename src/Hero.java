@@ -91,15 +91,15 @@ public class Hero extends MovingImage {
 	 * Hero throws a fireball
 	 */
 	public void throwFireball() {
-		if (canThrowFireball && fireballCoolDown > 30) {
+		if (canThrowFireball && fireballCoolDown <=0) {
 			if (facingDirection == 0) { // Facing to the right
 				Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
 				fireballs.add(f);
-				fireballCoolDown = 0;
+				fireballCoolDown = 30;
 			} else { // Facing to the left
 				Fireball f = new Fireball(GameScreen.fireball, (int) (x - 10), (int) (y + 20), 20, 20, -5, 0);
 				fireballs.add(f);
-				fireballCoolDown = 0;
+				fireballCoolDown = 30;
 			}
 		}
 	}
@@ -208,6 +208,9 @@ public class Hero extends MovingImage {
 		return punchCoolDown;
 	}
 	
+	public int getFireballCoolDown() {
+		return fireballCoolDown;
+	}
 
 	/**
 	 * Makes the Hero walk depending on the inputed direction.
@@ -324,7 +327,9 @@ public class Hero extends MovingImage {
 	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens) {
-		fireballCoolDown++;
+		if (fireballCoolDown > 0) {
+			fireballCoolDown--;
+		}
 		if (punchCoolDown > 0) {
 			punchCoolDown--;
 		}
