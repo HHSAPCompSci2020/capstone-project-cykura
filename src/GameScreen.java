@@ -320,18 +320,18 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
-		p.add(new Rectangle(0,400,6000,500));	//bottom 
+		p.add(new Rectangle(0,450,6000,500));	//bottom 
 		
 		p.add(new Rectangle(0,-300,120,1200)); 	// top left
-		p.add(new Rectangle(300,250,200,50));	// top middle
+		p.add(new Rectangle(300,300,200,50));	// top middle
 		//Fire enemy
-		p.add(new Rectangle(700,250,250,50));
-		p.add(new Rectangle(1050,250,250,50));		
-		p.add(new Rectangle(925,35,150,50));
-		p.add(new Rectangle(1200,-300,50,490));
-		p.add(new Rectangle(750,-300,50,490));
-		p.add(new Rectangle(1125, 140,75,50));
-		p.add(new Rectangle(800, 140,75,50));
+		p.add(new Rectangle(700,300,250,50));
+		p.add(new Rectangle(1050,300,250,50));		
+		p.add(new Rectangle(925,85,150,50));
+		p.add(new Rectangle(1200,-300,50,540));
+		p.add(new Rectangle(750,-300,50,540));
+		p.add(new Rectangle(1125, 190,75,50));
+		p.add(new Rectangle(800, 190,75,50));
 		//Water enemy
 		p.add(new Rectangle(1500,250,250,50));
 		p.add(new Rectangle(1850,250,250,50));		
@@ -348,6 +348,11 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(2350,-300,50,490));
 		p.add(new Rectangle(2725, 140,75,50));
 		p.add(new Rectangle(2400, 140,75,50));
+		//Final Boss
+		p.add(new Rectangle(3100,250,800,50));	
+		p.add(new Rectangle(3450,150,100,100));
+		p.add(new Rectangle(3150,50,200,50));
+		p.add(new Rectangle(3650,50,200,50));
 		
 		return p;
 	}
@@ -358,7 +363,7 @@ public class GameScreen extends Screen {
 		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 980, -10));	// Fire Enemy
 		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1780, -10));	// Water Enemy
 		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2580, -10));	// Grass Enemy
-		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),2980, 100));	// Boss
+		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),3480, -20));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
