@@ -288,16 +288,20 @@ public class GameScreen extends Screen {
 		
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
-//			System.out.println("p");
-			for (Enemy e: enemies) {
-				System.out.println(enemies);
-				System.out.println(e);
-				System.out.println();
-//				System.out.println(e);
-				if (e!= null) {
-					hero.punch(e);
+			for (int i = 0; i < enemies.size(); i++) {
+				if (enemies.get(i) != null) {
+//					System.out.println(enemies.get(i));
+					hero.punch(enemies.get(i));
 				}
 			}
+			
+//			System.out.println();
+//			for (Enemy e: enemies) {
+//				if (e!= null) {
+//					System.out.println(e);
+//					hero.punch(e);
+//				}
+//			}
 //			surface.removeKey(KeyEvent.VK_SPACE);
 		}
 		

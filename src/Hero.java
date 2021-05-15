@@ -206,13 +206,14 @@ public class Hero extends MovingImage {
 //		Token punchToken = GameScreen.tokens.get(0);
 		
 		if (punchCoolDown <= 0) {	// if can punch
-			punchCoolDown = 60; // 1 sec cooldown
+
 //			System.out.println(e1);
-			if (e1 != null) {
-				if (Math.abs(e1.getCenterX() - this.getCenterX()) < 150) {
-					e1.loseHealth(30);
-				}
+			if (Math.abs(e1.getCenterX() - this.getCenterX()) < 150) {
+				punchCoolDown = 60; // 1 sec cooldown
+//				System.out.println(e1);
+				e1.loseHealth(30);
 			}
+			
 		}
 	}
 	
