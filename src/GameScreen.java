@@ -50,7 +50,7 @@ public class GameScreen extends Screen {
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
-	private Timer startTime;
+	private long startTime;
 
 	/**
 	 * Default Constructor
@@ -61,6 +61,7 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
+		startTime = System.currentTimeMillis();
 		
 //		tokens = new ArrayList<Token>();
 //		flipped =true;
@@ -137,6 +138,8 @@ public class GameScreen extends Screen {
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
 		scroll();
+		surface.stroke(255);
+		surface.text((System.currentTimeMillis()-startTime)/1000, view_x+500, view_y+10);
 		if(flipped) {
 			surface.translate(800,500);
 			surface.rotate(surface.radians(180));
