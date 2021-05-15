@@ -189,7 +189,7 @@ public class Hero extends MovingImage {
 //			System.out.println(e1);
 			if (e1 != null) {
 				if (Math.abs(e1.getCenterX() - this.getCenterX()) < 150) {
-					e1.loseHealth(100);
+					e1.loseHealth(30);
 				}
 			}
 		}
@@ -461,15 +461,18 @@ public class Hero extends MovingImage {
 		
 		if (GameScreen.fireToken1 != null) {
 			canThrowFireball = true;
+			GameScreen.fireToken1 = null;
 		}
 		
 		if (GameScreen.waterToken1 != null) {
 			canWaterWave = true;
+			GameScreen.waterToken1=null;
 		}
 		
 		if (GameScreen.grassToken1 != null) {
 //			System.out.println("g");
 			canDash = true;
+			GameScreen.grassToken1 = null;
 		}
 
 		// System.out.println(x2+" "+y2);
