@@ -138,8 +138,6 @@ public class GameScreen extends Screen {
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
 		scroll();
-		surface.stroke(255);
-		surface.text((System.currentTimeMillis()-startTime)/1000, view_x+500, view_y+10);
 		if(flipped) {
 			surface.translate(800,500);
 			surface.rotate(surface.radians(180));
@@ -230,6 +228,9 @@ public class GameScreen extends Screen {
 			if(e!=null)
 			e.draw(surface);
 		}
+		
+		surface.stroke(255);
+		surface.text((int)((System.currentTimeMillis()-startTime)/1000), view_x+500, view_y+50);
 //		
 		if(!invertControls) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {
