@@ -211,6 +211,14 @@ public class GameScreen extends Screen {
 								tokens.set(i , new Token(waterTokenUsed, (int) (view_x + 720), (int) (view_y + 5)));
 							}
 						}
+					} else if (tokens.get(i).getImage() == grassToken || tokens.get(i).getImage() == grassTokenUsed) {
+						if (hero.canDash()) {
+							if (hero.isDashing() == false) {	// if the hero is not dashing
+								tokens.set(i, new Token(grassToken, (int) (view_x + 760), (int) (view_y + 5)));
+							} else {
+								tokens.set(i , new Token(grassTokenUsed, (int) (view_x + 760), (int) (view_y + 5)));
+							}
+						}
 					}
 					
 					
