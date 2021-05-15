@@ -184,6 +184,10 @@ public class Hero extends MovingImage {
 	 **/
 	public void punch(Enemy e1) {
 //		System.out.println(e1);
+//		System.out.println("___________________________________________________");
+//		System.out.println(punchCoolDown);
+//		System.out.println("___________________________________________________");
+
 		if (punchCoolDown <= 0) {	// if can punch
 			punchCoolDown = 60; // 1 sec cooldown
 //			System.out.println(e1);
@@ -311,7 +315,9 @@ public class Hero extends MovingImage {
 	 **/
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies) {
 		fireballCoolDown++;
-		punchCoolDown--;
+		if (punchCoolDown > 0) {
+			punchCoolDown--;
+		}
 		
 //		System.out.println(punchCoolDown);
 		
