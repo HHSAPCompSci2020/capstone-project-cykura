@@ -91,6 +91,15 @@ public class Boss extends Enemy {
 			float angle = (float)Math.atan2(spawnPoint.y-y, spawnPoint.x-x);
 	    	 x += (v) * Math.cos(angle);
 	    	 y += (v) * Math.sin(angle);
+	    	 for(int i=0;i<fireballs.size();i++) {
+		    	 Fireball f = fireballs.get(i);
+		    	 if(f!=null) {
+		    		 f.act();
+		    		 if(f.checkCollisionHero(hero)||f.checkCollisionShape(GameScreen.platforms)) {
+		    			 fireballs.set(i, null);
+		    		 }
+		    	 }
+		     }
 		}
 		/*if(rotateCooldown>0)
 		rotateCooldown--;
