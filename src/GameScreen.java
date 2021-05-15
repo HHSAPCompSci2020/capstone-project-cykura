@@ -164,7 +164,7 @@ public class GameScreen extends Screen {
 		}
 		
 		surface.fill(205, 133, 63);
-		surface.rect(view_x, view_y, DRAWING_WIDTH, 75);		// Brown Rectangle
+		surface.rect(view_x + 630, view_y, 170, 40);		// Brown Rectangle
 		
 		if (hero.getHearts() > 0) {
 			hero.draw(surface);
@@ -185,9 +185,9 @@ public class GameScreen extends Screen {
 		
 		if (tokens.size() != 0) {
 			if (hero.getPunchCoolDown() <= 0) {	// can punch since there is no cooldown
-				tokens.set(0, new Token(fistToken, (int) (view_x + 300), (int) (view_y + 10)));
+				tokens.set(0, new Token(fistToken, (int) (view_x + 640), (int) (view_y + 5)));
 			} else {	// can't punch since there is a cooldown
-				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 300), (int) (view_y + 10)));
+				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 640), (int) (view_y + 5)));
 //				tokens.add(new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
 			}
 			
@@ -198,17 +198,17 @@ public class GameScreen extends Screen {
 					if (tokens.get(i).getImage() == fireToken || tokens.get(i).getImage() == fireTokenUsed) {
 						if (hero.canThrowFireball()) {	// if the hero has already touched the token
 							if (hero.getFireballCoolDown() <= 0) {
-								tokens.set(i, new Token(fireToken, (int) (view_x + 350), (int) (view_y + 10)));
+								tokens.set(i, new Token(fireToken, (int) (view_x + 680), (int) (view_y + 5)));
 							} else {
-								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 350), (int) (view_y + 10)));
+								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 680), (int) (view_y + 5)));
 							}
 						}
 					} else if (tokens.get(i).getImage() == waterToken || tokens.get(i).getImage() == waterTokenUsed) {
 						if (hero.canWaterWave()) {
 							if (hero.getWaterWaveCoolDown() <= 0) {
-								tokens.set(i, new Token(waterToken, (int) (view_x + 400), (int) (view_y + 10)));
+								tokens.set(i, new Token(waterToken, (int) (view_x + 720), (int) (view_y + 5)));
 							} else {
-								tokens.set(i , new Token(waterTokenUsed, (int) (view_x + 400), (int) (view_y + 10)));
+								tokens.set(i , new Token(waterTokenUsed, (int) (view_x + 720), (int) (view_y + 5)));
 							}
 						}
 					}
