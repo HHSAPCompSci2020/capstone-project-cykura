@@ -320,14 +320,18 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
-		p.add(new Rectangle(0,365,6000,50));	//bottom 
-		p.add(new Rectangle(0,-300,120,1000)); 	// top left
-		p.add(new Rectangle(680,250,120,50));	// top right
-		p.add(new Rectangle(375,265,50,100));	// Vertical middle
-		p.add(new Rectangle(300,250,200,50));	// top middle
-		p.add(new Rectangle(980,250,120,50));
-		p.add(new Rectangle(1280,250,120,50));
+		p.add(new Rectangle(0,400,6000,500));	//bottom 
 		
+		p.add(new Rectangle(0,-300,120,1200)); 	// top left
+		p.add(new Rectangle(300,250,200,50));	// top middle
+		//Fire enemy
+		p.add(new Rectangle(700,250,250,50));
+		p.add(new Rectangle(1050,250,250,50));		
+		p.add(new Rectangle(925,35,150,50));
+		p.add(new Rectangle(1200,-300,50,490));
+		p.add(new Rectangle(750,-300,50,490));
+		p.add(new Rectangle(1125, 140,75,50));
+		p.add(new Rectangle(800, 140,75,50));
 		//Water enemy
 		p.add(new Rectangle(1500,250,250,50));
 		p.add(new Rectangle(1850,250,250,50));		
@@ -336,20 +340,24 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(1550,-300,50,490));
 		p.add(new Rectangle(1925, 140,75,50));
 		p.add(new Rectangle(1600, 140,75,50));
+		//Grass Enemy
+		p.add(new Rectangle(2300,250,250,50));
+		p.add(new Rectangle(2650,250,250,50));		
+		p.add(new Rectangle(2525,35,150,50));
+		p.add(new Rectangle(2800,-300,50,490));
+		p.add(new Rectangle(2350,-300,50,490));
+		p.add(new Rectangle(2725, 140,75,50));
+		p.add(new Rectangle(2400, 140,75,50));
 		
-		
-		p.add(new Rectangle(2180,250,120,50));
-		p.add(new Rectangle(2480,250,120,50));
-		p.add(new Rectangle(2780,250,120,50));
 		return p;
 	}
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
-		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1280, 50));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1880, 150));	// Water Enemy
-		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2480, 150));	// Grass Enemy
+		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 980, -10));	// Fire Enemy
+		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1780, -10));	// Water Enemy
+		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2580, -10));	// Grass Enemy
 		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),2980, 100));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
