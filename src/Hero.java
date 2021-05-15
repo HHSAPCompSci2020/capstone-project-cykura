@@ -187,7 +187,8 @@ public class Hero extends MovingImage {
 //		System.out.println("___________________________________________________");
 //		System.out.println(punchCoolDown);
 //		System.out.println("___________________________________________________");
-
+//		Token punchToken = GameScreen.tokens.get(0);
+		
 		if (punchCoolDown <= 0) {	// if can punch
 			punchCoolDown = 60; // 1 sec cooldown
 //			System.out.println(e1);
@@ -198,6 +199,11 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
+	
+	public int getPunchCoolDown() {
+		return punchCoolDown;
+	}
+	
 
 	/**
 	 * Makes the Hero walk depending on the inputed direction.

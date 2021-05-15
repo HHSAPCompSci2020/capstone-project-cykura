@@ -23,7 +23,10 @@ public class GameScreen extends Screen {
 	public static Token grassToken1;
 	
 	public static PImage fistToken;
+	public static PImage fistTokenUsed;
 	public static Token fistToken1;
+	
+	public static ArrayList<Token> tokens;
 	
 //	private PImage bg;
 	
@@ -56,6 +59,7 @@ public class GameScreen extends Screen {
 		y = 30;
 		platforms = generatePlatforms();
 		
+		tokens = new ArrayList<Token>();
 //		flipped =true;
 //		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -69,6 +73,10 @@ public class GameScreen extends Screen {
 //		hero.setDash(true);
 	}
 	
+	
+//	public ArrayList<Token> getTokens() {
+//		return tokens;
+//	}
 
 	
 	public void setup() {
@@ -85,6 +93,7 @@ public class GameScreen extends Screen {
 		grassToken = surface.loadImage("sprites\\tokens\\GrassTokenSprite.png");
 		
 		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
+		fistTokenUsed = surface.loadImage("sprites\\tokens\\FistTokenSpriteUsed.png");
 		
 //		System.out.println("v");
 //		fistToken1 = new Token(fistToken, (int) (view_x + 100), (int) (view_y + 100));
@@ -102,7 +111,7 @@ public class GameScreen extends Screen {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
-		System.out.println("vx " + view_x + " vy " + view_y);
+//		System.out.println("vx " + view_x + " vy " + view_y);
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
 		scroll();
@@ -151,10 +160,22 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		if (tokens.size() == 0) {
+			tokens.add(new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
+		} else {
+			if (hero.getPunchCoolDown() <= 0) {	// can punch since there is no cooldown
+				tokens.set(0, new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
+				
+			} else {	// can't punch since there is a cooldown
+				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
+
+//				tokens.add(new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
+			}
+		}
+
+		tokens.get(0).draw(surface);
 		
-		ArrayList<Token> t = new ArrayList<Token>();
-		t.add(new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
-		t.get(0).draw(surface);
+//		tokendraw(surface);
 		
 		
 		if(fireToken1!=null) {

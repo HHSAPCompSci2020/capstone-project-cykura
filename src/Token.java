@@ -47,4 +47,9 @@ public class Token extends Rectangle2D.Double{
 	public void draw(PApplet g) {
 		g.image(image,(int)x,(int)y, TOKEN_WIDTH, TOKEN_HEIGHT);
 	}
+	
+	
+	public void setImage(PImage img) {
+		image = img;
+	}
 }
