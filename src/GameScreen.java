@@ -10,7 +10,6 @@ public class GameScreen extends Screen {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
-	public static PImage water;
 	public static PImage heart;
 	
 	public static PImage fireToken;
@@ -18,9 +17,11 @@ public class GameScreen extends Screen {
 //	public static Token fireToken1;
 	
 	public static PImage waterToken;
-	public static Token waterToken1;
+	public static PImage waterTokenUsed;
+//	public static Token waterToken1;
 	
 	public static PImage grassToken;
+	public static PImage grassTokenUsed;
 //	public static Token grassToken1;
 	
 	public static PImage fistToken;
@@ -95,7 +96,6 @@ public class GameScreen extends Screen {
 		enemies = generateEnemies();
 		
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
-		water = surface.loadImage("sprites\\FireballSprite.png");
 		heart = surface.loadImage("sprites\\FullHeart.png");
 		
 		fireToken = surface.loadImage("sprites\\tokens\\FireballTokenSprite.png");
@@ -103,7 +103,11 @@ public class GameScreen extends Screen {
 
 		
 		waterToken = surface.loadImage("sprites\\tokens\\WaterWaveTokenSprite.png");
+		waterTokenUsed = surface.loadImage("sprites\\tokens\\WaterWaveTokenSpriteUsed.png");
+		
 		grassToken = surface.loadImage("sprites\\tokens\\GrassTokenSprite.png");
+		grassTokenUsed = surface.loadImage("sprites\\tokens\\GrassTokenSpriteUsed.png");
+
 		
 		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
 		fistTokenUsed = surface.loadImage("sprites\\tokens\\FistTokenSpriteUsed.png");
@@ -197,9 +201,12 @@ public class GameScreen extends Screen {
 								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 350), (int) (view_y + 10)));
 							}
 						}
+					} else if (tokens.get(i).getImage() == waterToken || tokens.get(i).getImage() == fireTokenUsed) {
 						
-						tokens.get(i).draw(surface);
 					}
+					
+					
+					tokens.get(i).draw(surface);
 				}
 			}
 			
