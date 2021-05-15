@@ -147,6 +147,10 @@ public class Hero extends MovingImage {
 		canDash = state;
 	}
 	
+	public boolean canThrowFireball() {
+		return canThrowFireball;
+	}
+	
 	/**
 	 * Sets whether the Hero is able to throw a fireball or not.
 	 * 
@@ -481,17 +485,18 @@ public class Hero extends MovingImage {
 				if (tokens.get(i).getImage() == GameScreen.fireToken) {
 					if (tokens.get(i).intersects(this)) {
 						canThrowFireball = true;
-						tokens.set(i, null);
+						tokens.get(i).moveTo(10, 10);
+//						tokens.set(i, null);
 					}
 				} else if (tokens.get(i).getImage() == GameScreen.waterToken) {
 					if (tokens.get(i).intersects(this)) {
 						canWaterWave = true;
-						tokens.set(i, null);
+//						tokens.set(i, null);
 					}
 				} else if (tokens.get(i).getImage() == GameScreen.grassToken) {
 					if (tokens.get(i).intersects(this)) {
 						canDash = true;
-						tokens.set(i, null);
+//						tokens.set(i, null);
 					}
 				}
 			}
