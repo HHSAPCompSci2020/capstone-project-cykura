@@ -118,6 +118,9 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		surface.fill(205, 133, 63);
+		surface.rect(view_x, view_y, DRAWING_WIDTH, 75);		// Brown Rectangle
+		
 		if (hero.getHearts() > 0) {
 			hero.draw(surface);
 			ArrayList<Heart> h = new ArrayList<Heart>();
