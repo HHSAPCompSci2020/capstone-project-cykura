@@ -35,10 +35,11 @@ public class Hero extends MovingImage {
 	private int hearts;
 
 	private int chargeTime;
-	private int punchCoolDown;
 
 	private boolean dashing;
 	private int fireballCoolDown;
+	private int punchCoolDown;
+	private int waterWaveCoolDown;
 
 	/**
 	 * Creates a new instance of a Hero object having its left corner at the inputed
@@ -108,8 +109,11 @@ public class Hero extends MovingImage {
 	 * Hero creates a Water wave
 	 */
 	public void doWaterWave() {
-		if (canWaterWave && wave == null) {
-			wave = new WaterWave((int) x +20, (int) y +30, (double) 50, (double)120, (double)4);
+		if (canWaterWave) {
+			if (waterWaveCoolDown <= 0) {
+				waterWaveCoolDown = 60;
+				wave = new WaterWave((int) x +20, (int) y +30, (double) 50, (double)120, (double)4);
+			}
 		}
 	}
 
@@ -137,6 +141,10 @@ public class Hero extends MovingImage {
 	public boolean getOnASurface() {
 		return onASurface;
 	}
+	
+	public boolean canDash() {
+		return canDash;
+	}
 
 	/**
 	 * Sets whether the Hero is able to dash or not.
@@ -158,6 +166,10 @@ public class Hero extends MovingImage {
 	 **/
 	public void setCanThrowFireball(boolean state) {
 		canThrowFireball = state;
+	}
+	
+	public boolean canWaterWave() {
+		return canWaterWave;
 	}
 	
 	/**
@@ -210,6 +222,10 @@ public class Hero extends MovingImage {
 	
 	public int getFireballCoolDown() {
 		return fireballCoolDown;
+	}
+	
+	public int getWaterWaveCoolDown() {
+		return waterWaveCoolDown;
 	}
 
 	/**
@@ -332,6 +348,10 @@ public class Hero extends MovingImage {
 		}
 		if (punchCoolDown > 0) {
 			punchCoolDown--;
+		}
+		
+		if (waterWaveCoolDown > 0) {
+			waterWaveCoolDown--;
 		}
 		
 //		System.out.println(punchCoolDown);
@@ -490,12 +510,13 @@ public class Hero extends MovingImage {
 				if (tokens.get(i).getImage() == GameScreen.fireToken) {
 					if (tokens.get(i).intersects(this)) {
 						canThrowFireball = true;
-						tokens.get(i).moveTo(10, 10);
+//						tokens.get(i).moveTo(10, 10);
 //						tokens.set(i, null);
 					}
 				} else if (tokens.get(i).getImage() == GameScreen.waterToken) {
 					if (tokens.get(i).intersects(this)) {
 						canWaterWave = true;
+						
 //						tokens.set(i, null);
 					}
 				} else if (tokens.get(i).getImage() == GameScreen.grassToken) {

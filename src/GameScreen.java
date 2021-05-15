@@ -201,8 +201,14 @@ public class GameScreen extends Screen {
 								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 350), (int) (view_y + 10)));
 							}
 						}
-					} else if (tokens.get(i).getImage() == waterToken || tokens.get(i).getImage() == fireTokenUsed) {
-						
+					} else if (tokens.get(i).getImage() == waterToken || tokens.get(i).getImage() == waterTokenUsed) {
+						if (hero.canWaterWave()) {
+							if (hero.getWaterWaveCoolDown() <= 0) {
+								tokens.set(i, new Token(waterToken, (int) (view_x + 400), (int) (view_y + 10)));
+							} else {
+								tokens.set(i , new Token(waterTokenUsed, (int) (view_x + 400), (int) (view_y + 10)));
+							}
+						}
 					}
 					
 					
