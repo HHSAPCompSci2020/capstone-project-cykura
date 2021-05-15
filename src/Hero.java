@@ -480,7 +480,7 @@ public class Hero extends MovingImage {
 			GameScreen.waterToken1=null;
 		}
 		
-		if (GameScreen.grassToken1 != null&&GameScreen.grassToken1.intersects(this)) {
+		if (GameScreen.grassToken1 != null && GameScreen.grassToken1.intersects(this)) {
 //			System.out.println("g");
 			canDash = true;
 			GameScreen.grassToken1 = null;
@@ -531,18 +531,6 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
-	
-//	/**
-//	 * Checks if Hero collides with a token to pick it up
-//	 * @param t The token which the Hero can collect
-//	 */
-//	public void checkTokenCollision(Token t) {
-//		if (t.intersects(this)) {
-//			canThrowFireball = true;
-//			canWaterWave = true;
-//			canDash = true;
-//		}
-//	}
 
 
 }

@@ -12,12 +12,19 @@ public class GameScreen extends Screen {
 	public static PImage fireball;
 	public static PImage water;
 	public static PImage heart;
+	
 	public static PImage fireToken;
 	public static Token fireToken1;
+	
 	public static PImage waterToken;
 	public static Token waterToken1;
+	
 	public static PImage grassToken;
 	public static Token grassToken1;
+	
+	public static PImage fistToken;
+	public static Token fistToken1;
+	
 //	private PImage bg;
 	
 	public static float Right_Margin = 400;
@@ -48,6 +55,7 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
+		fistToken1 = new Token(fistToken, (int) 100, (int) 100);
 //		flipped =true;
 //		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -76,6 +84,7 @@ public class GameScreen extends Screen {
 		fireToken = surface.loadImage("sprites\\tokens\\FireballTokenSprite.png");
 		waterToken = surface.loadImage("sprites\\tokens\\WaterWaveTokenSprite.png");
 		grassToken = surface.loadImage("sprites\\tokens\\GrassTokenSprite.png");
+		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
 //		hearts = generateHearts();
 		
 //		try {
@@ -138,6 +147,8 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		
+		
 		if(fireToken1!=null) {
 			fireToken1.draw(surface);
 		}
@@ -146,6 +157,10 @@ public class GameScreen extends Screen {
 		}
 		if(grassToken1!=null) {
 			grassToken1.draw(surface);
+		}
+		if (fistToken1 != null) {
+//			System.out.println("f");
+//			fistToken1.draw(surface);
 		}
 		
 		for (Enemy e: enemies) {
