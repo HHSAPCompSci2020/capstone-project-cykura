@@ -354,6 +354,10 @@ public class Hero extends MovingImage {
 			waterWaveCoolDown--;
 		}
 		
+		if (invincibilityTime > 0) {
+			invincibilityTime--;
+		}
+		
 //		System.out.println(punchCoolDown);
 		
 		double x = getX();
@@ -538,14 +542,12 @@ public class Hero extends MovingImage {
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	 **/
 	public void checkEnemyCollision(Enemy e1) {
-		if (invincibilityTime > 0) {
-			invincibilityTime--;
-		}
-
-		if (((this.intersects(e1)) && (invincibilityTime == 0))) {
-			hearts--;
-			jump();
-			invincibilityTime = 150;
+		if (invincibilityTime <= 0) {
+			if (this.intersects(e1)) {
+				hearts--;
+				jump();
+				invincibilityTime = 120;
+			}
 		}
 	}
 
