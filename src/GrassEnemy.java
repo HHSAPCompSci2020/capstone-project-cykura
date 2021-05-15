@@ -24,7 +24,7 @@ public class GrassEnemy extends Enemy {
 		super(img, x, y);
 	}
 	
-	public void act(Hero hero, ArrayList<Shape> obstacles) {
+	public void act(Hero hero, ArrayList<Shape> obstacles, ArrayList<Token> tokens) {
 		if(health > 0) {
 			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(spawnPoint.x - hero.x) < 500 && Math.abs(spawnPoint.y - hero.y) < 300) {	// If u are close to spawn
 
@@ -64,8 +64,9 @@ public class GrassEnemy extends Enemy {
 			}
 			
 		} else {	// health < 0 so should die
-			if(GameScreen.grassToken1==null)
-				GameScreen.grassToken1 = new Token(GameScreen.grassToken,(int)x,(int)y);
+			tokens.add(new Token(GameScreen.grassToken,(int)x,(int)y));
+//			if(GameScreen.grassToken1==null)
+//				GameScreen.grassToken1 = new Token(GameScreen.grassToken,(int)x,(int)y);
 			
 			x = -20;
 			y =- 20;

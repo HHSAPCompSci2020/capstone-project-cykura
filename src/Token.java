@@ -52,4 +52,8 @@ public class Token extends Rectangle2D.Double{
 	public void setImage(PImage img) {
 		image = img;
 	}
+	
+	public PImage getImage() {
+		return image;
+	}
 }

@@ -40,7 +40,7 @@ public class Enemy extends MovingImage{
 	 * @param hero the player
 	 * @param obstacles the platforms
 	 */
-	public void act(Hero hero, ArrayList<Shape> obstacles) {
+	public void act(Hero hero, ArrayList<Shape> obstacles, ArrayList<Token> tokens) {
 		if(health>0) {
 			 double x1 = hero.x;
 		     double y1 = hero.y;

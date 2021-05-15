@@ -319,7 +319,7 @@ public class Hero extends MovingImage {
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
-	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies) {
+	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens) {
 		fireballCoolDown++;
 		if (punchCoolDown > 0) {
 			punchCoolDown--;
@@ -475,24 +475,29 @@ public class Hero extends MovingImage {
 				wave = null;
 			}
 		}
-		
-		if (GameScreen.fireToken1 != null&&GameScreen.fireToken1.intersects(this)) {
-			canThrowFireball = true;
-			GameScreen.fireToken1 = null;
-		}
-		
-		if (GameScreen.waterToken1 != null&&GameScreen.waterToken1.intersects(this)) {
-			canWaterWave = true;
-			GameScreen.waterToken1=null;
-		}
-		
-		if (GameScreen.grassToken1 != null && GameScreen.grassToken1.intersects(this)) {
-//			System.out.println("g");
-			canDash = true;
-			GameScreen.grassToken1 = null;
+//		
+		for (int i = 0; i < tokens.size(); i++) {
+			if (tokens.get(i) != null) {
+				if (tokens.get(i).getImage() == GameScreen.fireToken) {
+					if (tokens.get(i).intersects(this)) {
+						canThrowFireball = true;
+						tokens.set(i, null);
+					}
+				} else if (tokens.get(i).getImage() == GameScreen.waterToken) {
+					if (tokens.get(i).intersects(this)) {
+						canWaterWave = true;
+						tokens.set(i, null);
+					}
+				} else if (tokens.get(i).getImage() == GameScreen.grassToken) {
+					if (tokens.get(i).intersects(this)) {
+						canDash = true;
+						tokens.set(i, null);
+					}
+				}
+			}
+
 		}
 
-		// System.out.println(x2+" "+y2);
 	}
 
 	/**

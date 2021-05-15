@@ -33,7 +33,7 @@ public class FireEnemy extends Enemy {
 	 * @param hero the player
 	 * @param obstacles all platforms in the game
 	 */
-	public void act(Hero hero, ArrayList<Shape> obstacles) {
+	public void act(Hero hero, ArrayList<Shape> obstacles, ArrayList<Token> tokens) {
 		if (health > 0) {
 			if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(spawnPoint.x-hero.x)<500&&Math.abs(spawnPoint.y-hero.y)<300) {
 				double x1 = hero.x;
@@ -78,8 +78,9 @@ public class FireEnemy extends Enemy {
 				}
 			}
 		} else { // If health < 0, or dead
-			if (GameScreen.fireToken1 == null)
-				GameScreen.fireToken1 = new Token(GameScreen.fireToken, (int) x, (int) y);
+			tokens.add(new Token(GameScreen.fireToken, (int) x, (int) y));
+//			if (GameScreen.fireToken1 == null)
+//				GameScreen.fireToken1 = new Token(GameScreen.fireToken, (int) x, (int) y);
 
 			x = -20;
 			y = -20;

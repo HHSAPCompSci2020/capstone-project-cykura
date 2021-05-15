@@ -14,19 +14,19 @@ public class GameScreen extends Screen {
 	public static PImage heart;
 	
 	public static PImage fireToken;
-	public static Token fireToken1;
+//	public static Token fireToken1;
 	
 	public static PImage waterToken;
 	public static Token waterToken1;
 	
 	public static PImage grassToken;
-	public static Token grassToken1;
+//	public static Token grassToken1;
 	
 	public static PImage fistToken;
 	public static PImage fistTokenUsed;
-	public static Token fistToken1;
+//	public static Token fistToken1;
 	
-	public static ArrayList<Token> tokens;
+
 	
 //	private PImage bg;
 	
@@ -46,7 +46,7 @@ public class GameScreen extends Screen {
 	private Hero hero;
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
-	
+	private ArrayList<Token> tokens;
 
 	/**
 	 * Default Constructor
@@ -59,7 +59,7 @@ public class GameScreen extends Screen {
 		y = 30;
 		platforms = generatePlatforms();
 		
-		tokens = new ArrayList<Token>();
+//		tokens = new ArrayList<Token>();
 //		flipped =true;
 //		invertControls = true;
 //		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -74,9 +74,9 @@ public class GameScreen extends Screen {
 	}
 	
 	
-//	public ArrayList<Token> getTokens() {
-//		return tokens;
-//	}
+	public ArrayList<Token> getTokens() {
+		return tokens;
+	}
 
 	
 	public void setup() {
@@ -94,6 +94,10 @@ public class GameScreen extends Screen {
 		
 		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
 		fistTokenUsed = surface.loadImage("sprites\\tokens\\FistTokenSpriteUsed.png");
+		tokens = generateTokens();
+
+		
+
 		
 //		System.out.println("v");
 //		fistToken1 = new Token(fistToken, (int) (view_x + 100), (int) (view_y + 100));
@@ -160,37 +164,34 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		if (tokens.size() == 0) {
-			tokens.add(new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
-		} else {
+		if (tokens.size() != 0) {
 			if (hero.getPunchCoolDown() <= 0) {	// can punch since there is no cooldown
 				tokens.set(0, new Token(fistToken, (int) (view_x + 300), (int) view_y + 10));
-				
 			} else {	// can't punch since there is a cooldown
 				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
-
 //				tokens.add(new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
 			}
+			
+
+			for (Token t: tokens) {
+				if (t != null) {
+					t.draw(surface);
+				}
+			}		
 		}
 
-		tokens.get(0).draw(surface);
+
+
 		
-//		tokendraw(surface);
 		
-		
-		if(fireToken1!=null) {
-			fireToken1.draw(surface);
-		}
-		if(waterToken1!=null) {
-			waterToken1.draw(surface);
-		}
-		if(grassToken1!=null) {
-			grassToken1.draw(surface);
-		}
-//		if (fistToken1 != null) {
-//		fistToken1.draw(surface);
-//			System.out.println("f");
-//			fistToken1.draw(surface);
+//		if(fireToken1!=null) {
+//			fireToken1.draw(surface);
+//		}
+//		if(waterToken1!=null) {
+//			waterToken1.draw(surface);
+//		}
+//		if(grassToken1!=null) {
+//			grassToken1.draw(surface);
 //		}
 		
 		for (Enemy e: enemies) {
@@ -274,9 +275,8 @@ public class GameScreen extends Screen {
 					if(e instanceof Boss) {
 						Boss b = (Boss)e;
 						b.act(hero);
-					}
-					else {
-						e.act(hero, platforms);
+					} else {
+						e.act(hero, platforms, tokens);
 					}
 					if (e.canRemove()) {	// Enemies heath is less than zero
 						enemies.set(i, null);
@@ -284,7 +284,7 @@ public class GameScreen extends Screen {
 				}
 				
 			}
-			hero.act(platforms, enemies);
+			hero.act(platforms, enemies, getTokens());
 		}
 		
 		
@@ -325,6 +325,16 @@ public class GameScreen extends Screen {
 		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),2980, 100));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
+	}
+	
+	private ArrayList<Token> generateTokens() {
+		ArrayList<Token> t = new ArrayList<Token>();
+//		System.out.println(fistToken);
+//		System.out.println(view_x);
+//		System.out.println(view_y);
+		t.add(new Token(surface.loadImage("sprites\\tokens\\FistTokenSprite.png"), (int) (300), (int) 10));
+		
+		return t;
 	}
 	
 	/**
