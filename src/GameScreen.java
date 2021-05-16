@@ -29,6 +29,8 @@ public class GameScreen extends Screen {
 	public static PImage fistTokenUsed;
 //	public static Token fistToken1;
 	
+	public static PImage spike;
+	
 
 	
 //	private PImage bg;
@@ -50,6 +52,7 @@ public class GameScreen extends Screen {
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
+	private ArrayList<Spike> spikes;
 	private long startTime;
 
 	/**
@@ -113,6 +116,9 @@ public class GameScreen extends Screen {
 		
 		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
 		fistTokenUsed = surface.loadImage("sprites\\tokens\\FistTokenSpriteUsed.png");
+		
+		spike = surface.loadImage("sprites\\SpikeSprite.png");
+		spikes = generateSpikes();
 		tokens = generateTokens();
 
 		
@@ -145,7 +151,7 @@ public class GameScreen extends Screen {
 		surface.noFill();
 		surface.fill(100);
 		
-		for (Shape s : platforms) {
+		for (Shape s : platforms) {	// Draw rectangle platforms
 			if (s instanceof Rectangle) {
 				Rectangle r = (Rectangle)s;
 				surface.rect(r.x,r.y,r.width,r.height);
@@ -217,7 +223,10 @@ public class GameScreen extends Screen {
 			
 			
 		}
-
+		
+		for (Spike s: spikes) {
+			s.draw(surface);
+		}
 
 
 		
@@ -323,6 +332,12 @@ public class GameScreen extends Screen {
 				}
 				
 			}
+			for (int i = 0; i < spikes.size(); i++) {
+				Spike s = spikes.get(i);
+				if (s != null) {
+					s.act(enemies, hero);
+				}
+			}
 			hero.act(platforms, enemies, getTokens());
 		}
 		
@@ -387,6 +402,16 @@ public class GameScreen extends Screen {
 		t.add(new Token(surface.loadImage("sprites\\tokens\\FistTokenSprite.png"), (int) (300), (int) 10));
 		
 		return t;
+	}
+	
+	private ArrayList<Spike> generateSpikes() {
+		ArrayList<Spike> s = new ArrayList<Spike>();
+		int x = 90;
+		for (int i = 0; i < 100; i++) {
+			s.add(new Spike(spike, x+35, 420, 30, 30));
+			x+=30;
+		}
+		return s;
 	}
 	
 	/**

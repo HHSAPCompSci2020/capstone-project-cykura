@@ -13,6 +13,7 @@ import processing.core.PImage;
 public class Spike extends Rectangle2D.Double {
 
 	private PImage img;
+	private int invincibilityTime;
 	
 	/**
 	 * Creates a new instance of a Spike object having its left
@@ -27,6 +28,7 @@ public class Spike extends Rectangle2D.Double {
 	public Spike(PImage img, int x, int y, int w, int h) {
 		super(x, y, w, h);
 		this.img = img;
+		invincibilityTime = 0;
 	}
 	
 	/**
@@ -39,19 +41,29 @@ public class Spike extends Rectangle2D.Double {
 	}
 	
 	public void act(ArrayList<Enemy> enemies, Hero h) {
-		
-	}
-	
-	public boolean checkCollision(Enemy e, Hero h) {
-		if (this.intersects(e)||this.intersects(h)) {
-			return true;
+//		System.out.println(invincibilityTime);
+		if (invincibilityTime <= 0) {
+			if (h.intersects(this)) {
+				h.jump();
+				invincibilityTime = 60;
+				h.loseHearts(1);
+
+			}
+		} else {
+			invincibilityTime--;
 		}
-		return false;
 	}
 	
-	public boolean checkHeroCollsion(Hero h) {
-		return false;
-	}
+//	public boolean checkCollision(Enemy e, Hero h) {
+//		if (this.intersects(e)||this.intersects(h)) {
+//			return true;
+//		}
+//		return false;
+//	}
+//	
+//	public boolean checkHeroCollsion(Hero h) {
+//		return false;
+//	}
 	
 	/**
 	 * Sets the minimum and maximum x and y coordinates the Spike can have according to the window size.

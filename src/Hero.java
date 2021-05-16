@@ -201,7 +201,7 @@ public class Hero extends MovingImage {
 	public void punch(Enemy e1) {
 			if (punchCoolDown <= 0) {	// if can punch
 				punchCoolDown = 60;
-				System.out.println(e1);
+//				System.out.println(e1);
 				e1.loseHealth(30);
 				
 			}
