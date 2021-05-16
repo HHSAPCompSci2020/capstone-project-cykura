@@ -199,17 +199,13 @@ public class Hero extends MovingImage {
 	 *      the Enemy's x coordinate must be less than 75 to cause damage.
 	 **/
 	public void punch(Enemy e1) {
-//		System.out.println(e1);
-//		System.out.println("___________________________________________________");
-//		System.out.println(punchCoolDown);
-//		System.out.println("___________________________________________________");
-//		Token punchToken = GameScreen.tokens.get(0);
-		if (Math.abs(this.getCenterX() - e1.getCenterX()) < 100) {
 			if (punchCoolDown <= 0) {	// if can punch
 				punchCoolDown = 60;
+				System.out.println(e1);
 				e1.loseHealth(30);
+				
 			}
-		}
+//		}
 
 
 	}
@@ -559,7 +555,9 @@ public class Hero extends MovingImage {
 	public void checkFireballCollision(ArrayList<Fireball> p) {
 		for (int i = 0; i < p.size(); i++) {
 			if (p.get(i) != null) {
+//				System.out.println("n");
 				if (this.intersects(p.get(i))) {
+//					System.out.println("p");
 					hearts--;
 					p.set(i, null);
 				}

@@ -290,10 +290,10 @@ public class GameScreen extends Screen {
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (int i = 0; i < enemies.size(); i++) {
 				if (enemies.get(i) != null) {
-//					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 100) {
-						hero.punch(enemies.get(i));
-//					}
 //					System.out.println(enemies.get(i));
+					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 150) {
+						hero.punch(enemies.get(i));
+					}
 				}
 			}
 			
