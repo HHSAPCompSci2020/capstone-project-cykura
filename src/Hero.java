@@ -40,6 +40,8 @@ public class Hero extends MovingImage {
 	private int fireballCoolDown;
 	private int punchCoolDown;
 	private int waterWaveCoolDown;
+	private boolean hitBySpike;
+	private int jumpTimes;
 
 	/**
 	 * Creates a new instance of a Hero object having its left corner at the inputed
@@ -58,12 +60,16 @@ public class Hero extends MovingImage {
 		canWaterWave = false;
 		canDash = false;
 		hearts = 5;
+		
+		hitBySpike = false;
 
 		gravity = 0.5;
 		friction = 0.85;
 
 		facingDirection = 0; // right direction
 		dashing = false;
+		
+		jumpTimes = 0;
 
 		fireballs = new ArrayList<Fireball>();
 
@@ -336,7 +342,7 @@ public class Hero extends MovingImage {
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
-	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens) {
+	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens, ArrayList<Spike> spikes) {
 		if (fireballCoolDown > 0) {
 			fireballCoolDown--;
 		}
@@ -363,6 +369,9 @@ public class Hero extends MovingImage {
 			dashing = false;
 		}
 		
+		if (jumpTimes == 1 && !onASurface) {
+			jumpTimes = 0;
+		}
 		
 
 		// ***********Y AXIS***********
@@ -503,6 +512,26 @@ public class Hero extends MovingImage {
 				wave = null;
 			}
 		}
+		
+		for (int i = 0; i < spikes.size(); i++) {
+			if (spikes.get(i).intersects(this)) {
+//				System.out.println(spikes.get(i));
+				if (jumpTimes == 0) {	// if u are in a spike and havent been hit by a spike
+//						this.jump();
+						jumpTimes = 1;
+						System.out.println("jump");
+//						this.loseHearts(1);
+//						hitBySpike = true;
+				} 
+//				if (invincibilityTime <= 0) {
+//					this.jump();
+//				} else {
+//					
+//				}
+			}
+		}
+			
+		
 //		
 		for (int i = 0; i < tokens.size(); i++) {
 			if (tokens.get(i) != null) {

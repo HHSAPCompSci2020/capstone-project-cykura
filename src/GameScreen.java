@@ -338,7 +338,7 @@ public class GameScreen extends Screen {
 					s.act(enemies, hero);
 				}
 			}
-			hero.act(platforms, enemies, getTokens());
+			hero.act(platforms, enemies, getTokens(), spikes);
 		}
 		
 		
@@ -406,10 +406,10 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Spike> generateSpikes() {
 		ArrayList<Spike> s = new ArrayList<Spike>();
-		int x = 90;
-		for (int i = 0; i < 100; i++) {
-			s.add(new Spike(spike, x+35, 420, 30, 30));
-			x+=30;
+//		int x = 90;
+		for (int i = 0; i < 130; i++) {
+			s.add(new Spike(spike, 120 + (i*40), 420, 30, 30));
+//			x+=30;
 		}
 		return s;
 	}
