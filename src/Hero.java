@@ -204,17 +204,14 @@ public class Hero extends MovingImage {
 //		System.out.println(punchCoolDown);
 //		System.out.println("___________________________________________________");
 //		Token punchToken = GameScreen.tokens.get(0);
-		
-		if (punchCoolDown <= 0) {	// if can punch
-
-//			System.out.println(e1);
-			if (Math.abs(e1.getCenterX() - this.getCenterX()) < 150) {
-				punchCoolDown = 60; // 1 sec cooldown
-//				System.out.println(e1);
+		if (Math.abs(this.getCenterX() - e1.getCenterX()) < 100) {
+			if (punchCoolDown <= 0) {	// if can punch
+				punchCoolDown = 60;
 				e1.loseHealth(30);
 			}
-			
 		}
+
+
 	}
 	
 	public int getPunchCoolDown() {
@@ -462,6 +459,7 @@ public class Hero extends MovingImage {
 					} else if (e instanceof Boss) {
 						if (((Boss) e).getFireballs() != null) {	// if boss has thrown fireballs
 //							System.out.println("Bos threw fire");
+//							System.out.println(((Boss) e).getFireballs());
 							checkFireballCollision(((Boss) e).getFireballs());	// Check if hero got hit by FireEnemy's fireballs
 						}
 					}
@@ -559,19 +557,11 @@ public class Hero extends MovingImage {
 	 * @param p The list of Fireballs to check with
 	 **/
 	public void checkFireballCollision(ArrayList<Fireball> p) {
-		// if (invincibilityTime > 0) {
-		// invincibilityTime--;
-		// }
 		for (int i = 0; i < p.size(); i++) {
 			if (p.get(i) != null) {
-				// if (((this.intersects(p.get(i))) && (invincibilityTime == 0))) {
 				if (this.intersects(p.get(i))) {
-					// System.out.println(hearts);
 					hearts--;
-					// System.out.println(hearts);
-					// invincibilityTime = 80;
-					// p.remove(i);
-					// i--;
+					p.set(i, null);
 				}
 			}
 		}
