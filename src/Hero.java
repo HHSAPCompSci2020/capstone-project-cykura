@@ -82,9 +82,9 @@ public class Hero extends MovingImage {
 	public void jump() {
 		// System.out.println("Jump is called");
 		if (onASurface) {
-			if (!(hitBySpike && !onASurface)) {
+//			if (!(hitBySpike && !onASurface)) {
 				vy -= 11;
-			}
+//			}
 		}
 	}
 
