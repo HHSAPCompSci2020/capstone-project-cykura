@@ -377,7 +377,7 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(2800,345,200,50)); //Spike in front, space, another spike
 		p.add(new Rectangle(3100,345,100,50)); //Spike on end
 		p.add(new Rectangle(3300,305,40,10)); //Spike on top
-		p.add(new Rectangle(3300,385,55,50));
+		p.add(new Rectangle(3300,385,50,30));
 		//Water enemy
 		p.add(new Rectangle(3500,345,250,50));
 		p.add(new Rectangle(3850,345,250,50));		
