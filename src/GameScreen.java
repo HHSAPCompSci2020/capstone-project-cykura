@@ -343,6 +343,11 @@ public class GameScreen extends Screen {
 			}
 			hero.act(platforms, enemies, getTokens(), spikes);
 		}
+		else {
+			surface.textFont(f);
+			surface.fill(255, 0, 0);
+			surface.text("YOU LOSE", view_x+400, view_y+250);
+		}
 		
 		surface.textFont(f);
 		surface.fill(0);
