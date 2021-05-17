@@ -374,10 +374,10 @@ public class Hero extends MovingImage {
 			dashing = false;
 		}
 		
-		if (hitBySpike && !onASurface) {
-			hitBySpike = false;
-			hearts--;
-		}
+//		if (hitBySpike && !onASurface) {
+//			hitBySpike = false;
+//			hearts--;
+//		}
 		
 
 		// ***********Y AXIS***********
@@ -487,9 +487,10 @@ public class Hero extends MovingImage {
 		}
 		
 		if (hitBySpike) {
-//			hitBySpike = false;
-			jump();
-//			hearts--;
+			hitBySpike = false;
+			this.moveByAmount(0, -200);
+//			jump();
+			hearts--;
 		}
 		
 
