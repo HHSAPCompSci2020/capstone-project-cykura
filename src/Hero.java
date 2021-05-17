@@ -481,12 +481,14 @@ public class Hero extends MovingImage {
 		for (int i = 0; i < spikes.size(); i++) {
 			if (spikes.get(i).intersects(this)) {
 				if (hitBySpike == false) {
+					System.out.println("hit by spike is now true");
 					hitBySpike = true;
 				}
 			}
 		}
 		
 		if (hitBySpike) {
+			System.out.println("hit by spike so jump now");
 			hitBySpike = false;
 			this.moveByAmount(0, -200);
 //			jump();
