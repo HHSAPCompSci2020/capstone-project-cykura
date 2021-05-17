@@ -24,7 +24,7 @@ public class VictoryScreen extends Screen {
 		surface.pushStyle();
 		
 		surface.background(255,255,255);
-		surface.rect(10, 10, 780, 500);	// x = 10, y = 10, w = 780, h = 500
+		//surface.rect(10, 10, 780, 500);	// x = 10, y = 10, w = 780, h = 500
 		surface.fill(0);
 		surface.textSize(40);
 		String str = "YOU WIN";
