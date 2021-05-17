@@ -482,9 +482,9 @@ public class Hero extends MovingImage {
 		
 		for (int i = 0; i < spikes.size(); i++) {
 			if (spikes.get(i).intersects(this)) {
-				System.out.println(i + " spike check: " + hitBySpike);
+//				System.out.println(i + " spike check: " + hitBySpike);
 				if (hitBySpike == false) {
-					System.out.println("hit by spike is now true");
+//					System.out.println("hit by spike is now true");
 					hitBySpike = true;
 					
 				}
@@ -493,15 +493,17 @@ public class Hero extends MovingImage {
 		}
 		
 		if (hitBySpike) {
-			System.out.println("__________________________________________________");
-			System.out.println("current hit by spike: "  + hitBySpike);
-			System.out.println("hit by spike so jump now");
+//			System.out.println("__________________________________________________");
+//			System.out.println("current hit by spike: "  + hitBySpike);
+//			System.out.println("hit by spike so jump now");
 			hitBySpike = false;
-			System.out.println("final hit by spike: " + hitBySpike);
-			this.moveByAmount(0, -200);
+//			System.out.println("final hit by spike: " + hitBySpike);
+//			this.moveByAmount(0, -200);
+			vy=-15;
 //			jump();
 			hearts--;
-			System.out.println("__________________________________________________");
+			
+//			System.out.println("__________________________________________________");
 		}
 		
 
