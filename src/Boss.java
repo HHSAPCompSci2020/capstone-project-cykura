@@ -70,12 +70,12 @@ public class Boss extends Enemy {
 					//System.out.println(x+" "+y);
 				}
 				
-				//Removing fireballs if colliding with hero
+				//Removing fireballs if colliding with platforms
 				for(int i=0;i<fireballs.size();i++) {
 			    	 Fireball f = fireballs.get(i);
 			    	 if(f!=null) {
 			    		 f.act();
-			    		 if(f.checkCollisionHero(hero)||f.checkCollisionShape(GameScreen.platforms)) {
+			    		 if(f.checkCollisionShape(GameScreen.platforms)) {
 			    			 fireballs.set(i, null);
 			    		 }
 			    	 }

@@ -297,6 +297,9 @@ public class GameScreen extends Screen {
 //			surface.removeKey(KeyEvent.VK_A);
 		}
 		
+		if (surface.isPressed(KeyEvent.VK_H)) {
+			hero.gainHearts(1);
+		}
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (int i = 0; i < enemies.size(); i++) {

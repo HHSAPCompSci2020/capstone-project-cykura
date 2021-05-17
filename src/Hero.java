@@ -124,6 +124,10 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
+	
+	public void gainHearts(int h) {
+		hearts += h;
+	}
 
 	/**
 	 * 
@@ -493,17 +497,11 @@ public class Hero extends MovingImage {
 		}
 		
 		if (hitBySpike) {
-//			System.out.println("__________________________________________________");
-//			System.out.println("current hit by spike: "  + hitBySpike);
-//			System.out.println("hit by spike so jump now");
 			hitBySpike = false;
-//			System.out.println("final hit by spike: " + hitBySpike);
-//			this.moveByAmount(0, -200);
 			vy=-15;
 //			jump();
 			hearts--;
 			
-//			System.out.println("__________________________________________________");
 		}
 		
 
@@ -604,7 +602,7 @@ public class Hero extends MovingImage {
 			if (p.get(i) != null) {
 //				System.out.println("n");
 				if (this.intersects(p.get(i))) {
-//					System.out.println("p");
+					System.out.println("p");
 					hearts--;
 					p.set(i, null);
 				}
