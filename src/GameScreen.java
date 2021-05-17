@@ -353,50 +353,69 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
-		p.add(new Rectangle(0,450,6000,500));	//bottom 
+		p.add(new Rectangle(0,495,60000,500));	//bottom 
 		
 		p.add(new Rectangle(0,-300,120,1200)); 	// top left
 		p.add(new Rectangle(300,345,200,50));	// top middle
+		//Parkour1
+		//250 is around max leap distance
+		p.add(new Rectangle(600,345,50,50)); 
+		p.add(new Rectangle(700,345,100,50));
+		p.add(new Rectangle(1050,345,100,50));
+		p.add(new Rectangle(1300,345,50,50));
+		p.add(new Rectangle(1425,345,25,50));
 		//Fire enemy
-		p.add(new Rectangle(700,345,250,50));
-		p.add(new Rectangle(1050,345,250,50));		
-		p.add(new Rectangle(925,130,150,50));
-		p.add(new Rectangle(1200,-300,50,585));
-		p.add(new Rectangle(750,-300,50,585));
-		p.add(new Rectangle(1125, 235,75,50));
-		p.add(new Rectangle(800, 235,75,50));
+		p.add(new Rectangle(1700,345,250,50));
+		p.add(new Rectangle(2050,345,250,50));		
+		p.add(new Rectangle(1925,130,150,50));
+		p.add(new Rectangle(2200,-300,50,585));
+		p.add(new Rectangle(1750,-300,50,585));
+		p.add(new Rectangle(2125, 235,75,50));
+		p.add(new Rectangle(1800, 235,75,50));
+		//Parkour2 
+		p.add(new Rectangle(2450,345,200,50)); //2 Spikes in middle
+		p.add(new Rectangle(2800,345,200,50)); //Spike in front, space, another spike
+		p.add(new Rectangle(3100,345,100,50)); //Spike on end
+		p.add(new Rectangle(3300,305,40,10)); //Spike on top
+		p.add(new Rectangle(3300,385,55,50));
 		//Water enemy
-		p.add(new Rectangle(1500,345,250,50));
-		p.add(new Rectangle(1850,345,250,50));		
-		p.add(new Rectangle(1725,130,150,50));
-		p.add(new Rectangle(2000,-300,50,585));
-		p.add(new Rectangle(1550,-300,50,585));
-		p.add(new Rectangle(1925, 235,75,50));
-		p.add(new Rectangle(1600, 235,75,50));
+		p.add(new Rectangle(3500,345,250,50));
+		p.add(new Rectangle(3850,345,250,50));		
+		p.add(new Rectangle(3725,130,150,50));
+		p.add(new Rectangle(4000,-300,50,585));
+		p.add(new Rectangle(3550,-300,50,585));
+		p.add(new Rectangle(3925,235,75,50));
+		p.add(new Rectangle(3600, 235,75,50));
+		//Parkour3
+		//Moving Platforms
+		p.add(new Rectangle(4300,345,800,50)); //temp
 		//Grass Enemy
-		p.add(new Rectangle(2300,345,250,50));
-		p.add(new Rectangle(2650,345,250,50));		
-		p.add(new Rectangle(2525,130,150,50));
-		p.add(new Rectangle(2800,-300,50,585));
-		p.add(new Rectangle(2350,-300,50,585));
-		p.add(new Rectangle(2725, 235,75,50));
-		p.add(new Rectangle(2400, 235,75,50));
+		p.add(new Rectangle(5300,345,250,50));
+		p.add(new Rectangle(5650,345,250,50));		
+		p.add(new Rectangle(5525,130,150,50));
+		p.add(new Rectangle(5800,-300,50,585));
+		p.add(new Rectangle(5350,-300,50,585));
+		p.add(new Rectangle(5725, 235,75,50));
+		p.add(new Rectangle(5400, 235,75,50));
+		//Parkour4
+		p.add(new Rectangle(6100,345,800,50));
 		//Final Boss
-		p.add(new Rectangle(3100,345,800,50));	
-		p.add(new Rectangle(3450,245,100,100));
-		p.add(new Rectangle(3150,145,200,50));
-		p.add(new Rectangle(3650,140,200,50));
+		p.add(new Rectangle(7100,345,800,50));	
+		p.add(new Rectangle(7450,245,100,100));
+		p.add(new Rectangle(7150,145,200,50));
+		p.add(new Rectangle(7650,140,200,50));
+		p.add(new Rectangle(7900,-300,1200,5000));
 		
 		return p;
 	}
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
-		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
-		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 980, 50));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1780, 50));	// Water Enemy
-		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2580, 50));	// Grass Enemy
-		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),3480, 40));	// Boss
+		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
+		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 980, 50));	// Fire Enemy
+		//c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1780, 50));	// Water Enemy
+		//c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2580, 50));	// Grass Enemy
+		//c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),3480, 40));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
@@ -414,11 +433,20 @@ public class GameScreen extends Screen {
 	private ArrayList<Spike> generateSpikes() {
 		ArrayList<Spike> s = new ArrayList<Spike>();
 //		int x = 90;
+		//Floor
 		for (int i = 0; i < 130; i++) {
-			s.add(new Spike(spike, 120 + (i*40), 420, 30, 30));
+			s.add(new Spike(spike, 120 + (i*40), 465, 30, 30));
 //			x+=30;
 		}
+		//Parkour2
+		s.add(new Spike(spike,2510,305,40,40));
+		s.add(new Spike(spike,2550,305,40,40));
+		s.add(new Spike(spike,2800,305,40,40));
+		s.add(new Spike(spike,2900,305,40,40));
+		s.add(new Spike(spike,3160,305,40,40));
+		s.add(new Spike(spike,3300,265,40,40));
 		return s;
+		
 	}
 	
 	/**
