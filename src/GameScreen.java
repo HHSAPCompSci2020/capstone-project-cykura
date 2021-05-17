@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 public class GameScreen extends Screen {
@@ -29,6 +30,8 @@ public class GameScreen extends Screen {
 	public static PImage fistTokenUsed;
 //	public static Token fistToken1;
 	
+	public static PImage spike;
+	
 
 	
 //	private PImage bg;
@@ -50,8 +53,10 @@ public class GameScreen extends Screen {
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
-	private Timer startTime;
-
+	private ArrayList<Spike> spikes;
+	private long startTime;
+	private long currTime;
+	private PFont f;
 	/**
 	 * Default Constructor
 	 */
@@ -61,6 +66,8 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
+		startTime = System.currentTimeMillis();
+		currTime = startTime;
 		
 //		tokens = new ArrayList<Token>();
 //		flipped =true;
@@ -94,6 +101,7 @@ public class GameScreen extends Screen {
 //		bg = surface.loadImage("sprites/gameScreenBackground.png");
 //		System.out.println(bg.width);
 		spawnHero();
+		f = surface.createFont("Arial", 16,true);
 		enemies = generateEnemies();
 		
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
@@ -112,14 +120,12 @@ public class GameScreen extends Screen {
 		
 		fistToken = surface.loadImage("sprites\\tokens\\FistTokenSprite.png");
 		fistTokenUsed = surface.loadImage("sprites\\tokens\\FistTokenSpriteUsed.png");
+		
+		spike = surface.loadImage("sprites\\SpikeSprite.png");
+		spikes = generateSpikes();
 		tokens = generateTokens();
 
 		
-
-		
-//		System.out.println("v");
-//		fistToken1 = new Token(fistToken, (int) (view_x + 100), (int) (view_y + 100));
-
 		
 //		try {
 //			Thread.sleep(3000);
@@ -147,15 +153,9 @@ public class GameScreen extends Screen {
 		
 		surface.stroke(0);     // Set line drawing color to white
 		surface.noFill();
-
-//		surface.rect(x,y,30,30);
-//		
-//		surface.fill(0);
-//		surface.text("Move: Arrow keys",10,30);
-//		surface.text("Menu: Space",10,50);
-		
 		surface.fill(100);
-		for (Shape s : platforms) {
+		
+		for (Shape s : platforms) {	// Draw rectangle platforms
 			if (s instanceof Rectangle) {
 				Rectangle r = (Rectangle)s;
 				surface.rect(r.x,r.y,r.width,r.height);
@@ -163,7 +163,7 @@ public class GameScreen extends Screen {
 		}
 		
 		surface.fill(205, 133, 63);
-		surface.rect(view_x, view_y, DRAWING_WIDTH, 75);		// Brown Rectangle
+		surface.rect(view_x + 630, view_y, 170, 40);		// Brown Rectangle
 		
 		if (hero.getHearts() > 0) {
 			hero.draw(surface);
@@ -184,9 +184,9 @@ public class GameScreen extends Screen {
 		
 		if (tokens.size() != 0) {
 			if (hero.getPunchCoolDown() <= 0) {	// can punch since there is no cooldown
-				tokens.set(0, new Token(fistToken, (int) (view_x + 300), (int) (view_y + 10)));
+				tokens.set(0, new Token(fistToken, (int) (view_x + 640), (int) (view_y + 5)));
 			} else {	// can't punch since there is a cooldown
-				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 300), (int) (view_y + 10)));
+				tokens.set(0, new Token(fistTokenUsed, (int) (view_x + 640), (int) (view_y + 5)));
 //				tokens.add(new Token(fistTokenUsed, (int) (view_x + 300), (int) view_y + 10));
 			}
 			
@@ -197,17 +197,25 @@ public class GameScreen extends Screen {
 					if (tokens.get(i).getImage() == fireToken || tokens.get(i).getImage() == fireTokenUsed) {
 						if (hero.canThrowFireball()) {	// if the hero has already touched the token
 							if (hero.getFireballCoolDown() <= 0) {
-								tokens.set(i, new Token(fireToken, (int) (view_x + 350), (int) (view_y + 10)));
+								tokens.set(i, new Token(fireToken, (int) (view_x + 680), (int) (view_y + 5)));
 							} else {
-								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 350), (int) (view_y + 10)));
+								tokens.set(i , new Token(fireTokenUsed, (int) (view_x + 680), (int) (view_y + 5)));
 							}
 						}
 					} else if (tokens.get(i).getImage() == waterToken || tokens.get(i).getImage() == waterTokenUsed) {
 						if (hero.canWaterWave()) {
 							if (hero.getWaterWaveCoolDown() <= 0) {
-								tokens.set(i, new Token(waterToken, (int) (view_x + 400), (int) (view_y + 10)));
+								tokens.set(i, new Token(waterToken, (int) (view_x + 720), (int) (view_y + 5)));
 							} else {
-								tokens.set(i , new Token(waterTokenUsed, (int) (view_x + 400), (int) (view_y + 10)));
+								tokens.set(i , new Token(waterTokenUsed, (int) (view_x + 720), (int) (view_y + 5)));
+							}
+						}
+					} else if (tokens.get(i).getImage() == grassToken || tokens.get(i).getImage() == grassTokenUsed) {
+						if (hero.canDash()) {
+							if (hero.isDashing() == false) {	// if the hero is not dashing
+								tokens.set(i, new Token(grassToken, (int) (view_x + 760), (int) (view_y + 5)));
+							} else {
+								tokens.set(i , new Token(grassTokenUsed, (int) (view_x + 760), (int) (view_y + 5)));
 							}
 						}
 					}
@@ -219,7 +227,10 @@ public class GameScreen extends Screen {
 			
 			
 		}
-
+		
+		for (Spike s: spikes) {
+			s.draw(surface);
+		}
 
 
 		
@@ -227,6 +238,7 @@ public class GameScreen extends Screen {
 			if(e!=null)
 			e.draw(surface);
 		}
+		
 //		
 		if(!invertControls) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {
@@ -287,17 +299,27 @@ public class GameScreen extends Screen {
 		
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
-//			System.out.println("p");
-			for (Enemy e: enemies) {
-//				System.out.println(e);
-				if (e!= null) {
-					hero.punch(e);
+			for (int i = 0; i < enemies.size(); i++) {
+				if (enemies.get(i) != null) {
+//					System.out.println(enemies.get(i));
+					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 150) {
+						hero.punch(enemies.get(i));
+					}
 				}
 			}
+			
+//			System.out.println();
+//			for (Enemy e: enemies) {
+//				if (e!= null) {
+//					System.out.println(e);
+//					hero.punch(e);
+//				}
+//			}
 //			surface.removeKey(KeyEvent.VK_SPACE);
 		}
 		
 		if (hero.getHearts() > 0) {
+			currTime = System.currentTimeMillis()-startTime;
 			for (int i = 0; i < enemies.size(); i++) {
 				Enemy e = enemies.get(i);
 				if(e!=null) {
@@ -313,77 +335,68 @@ public class GameScreen extends Screen {
 				}
 				
 			}
-			hero.act(platforms, enemies, getTokens());
+			for (int i = 0; i < spikes.size(); i++) {
+				Spike s = spikes.get(i);
+				if (s != null) {
+					s.act(enemies, hero);
+				}
+			}
+			hero.act(platforms, enemies, getTokens(), spikes);
 		}
+		
+		surface.textFont(f);
+		surface.fill(0);
+		surface.text((int)(currTime/1000)+" ", view_x+397, view_y+50);
 		
 		
 	}
 	
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
-		p.add(new Rectangle(0,495,60000,500));	//bottom 
+		p.add(new Rectangle(0,450,6000,500));	//bottom 
 		
 		p.add(new Rectangle(0,-300,120,1200)); 	// top left
 		p.add(new Rectangle(300,345,200,50));	// top middle
-		//Parkour1
-		//250 is around max leap distance
-		p.add(new Rectangle(600,345,50,50)); 
-		p.add(new Rectangle(700,345,100,50));
-		p.add(new Rectangle(1050,345,100,50));
-		p.add(new Rectangle(1300,345,50,50));
-		p.add(new Rectangle(1425,345,25,50));
 		//Fire enemy
-		p.add(new Rectangle(1700,345,250,50));
-		p.add(new Rectangle(2050,345,250,50));		
-		p.add(new Rectangle(1925,130,150,50));
-		p.add(new Rectangle(2200,-300,50,585));
-		p.add(new Rectangle(1750,-300,50,585));
-		p.add(new Rectangle(2125, 235,75,50));
-		p.add(new Rectangle(1800, 235,75,50));
-		//Parkour2 
-		p.add(new Rectangle(2450,345,200,50)); //2 Spikes in middle
-		p.add(new Rectangle(2800,345,200,50)); //Spike in front, space, another spike
-		p.add(new Rectangle(3250,345,150,50)); //Spike in middle
-		p.add(new Rectangle(3400,395,50,50)); //Spike on top
-		p.add(new Rectangle(3400,295,75,50));
+		p.add(new Rectangle(700,345,250,50));
+		p.add(new Rectangle(1050,345,250,50));		
+		p.add(new Rectangle(925,130,150,50));
+		p.add(new Rectangle(1200,-300,50,585));
+		p.add(new Rectangle(750,-300,50,585));
+		p.add(new Rectangle(1125, 235,75,50));
+		p.add(new Rectangle(800, 235,75,50));
 		//Water enemy
-		p.add(new Rectangle(3500,345,250,50));
-		p.add(new Rectangle(3850,345,250,50));		
-		p.add(new Rectangle(3725,130,150,50));
-		p.add(new Rectangle(4000,-300,50,585));
-		p.add(new Rectangle(3550,-300,50,585));
-		p.add(new Rectangle(3925,235,75,50));
-		p.add(new Rectangle(3600, 235,75,50));
-		//Parkour3
-		//Moving Platforms
-		p.add(new Rectangle(4300,345,800,50)); //temp
+		p.add(new Rectangle(1500,345,250,50));
+		p.add(new Rectangle(1850,345,250,50));		
+		p.add(new Rectangle(1725,130,150,50));
+		p.add(new Rectangle(2000,-300,50,585));
+		p.add(new Rectangle(1550,-300,50,585));
+		p.add(new Rectangle(1925, 235,75,50));
+		p.add(new Rectangle(1600, 235,75,50));
 		//Grass Enemy
-		p.add(new Rectangle(5300,345,250,50));
-		p.add(new Rectangle(5650,345,250,50));		
-		p.add(new Rectangle(5525,130,150,50));
-		p.add(new Rectangle(5800,-300,50,585));
-		p.add(new Rectangle(5350,-300,50,585));
-		p.add(new Rectangle(5725, 235,75,50));
-		p.add(new Rectangle(5400, 235,75,50));
-		//Parkour4
-		p.add(new Rectangle(6100,345,800,50));
+		p.add(new Rectangle(2300,345,250,50));
+		p.add(new Rectangle(2650,345,250,50));		
+		p.add(new Rectangle(2525,130,150,50));
+		p.add(new Rectangle(2800,-300,50,585));
+		p.add(new Rectangle(2350,-300,50,585));
+		p.add(new Rectangle(2725, 235,75,50));
+		p.add(new Rectangle(2400, 235,75,50));
 		//Final Boss
-		p.add(new Rectangle(7100,345,800,50));	
-		p.add(new Rectangle(7450,245,100,100));
-		p.add(new Rectangle(7150,145,200,50));
-		p.add(new Rectangle(7650,140,200,50));
-		p.add(new Rectangle(7900,-300,1200,5000));
+		p.add(new Rectangle(3100,345,800,50));	
+		p.add(new Rectangle(3450,245,100,100));
+		p.add(new Rectangle(3150,145,200,50));
+		p.add(new Rectangle(3650,140,200,50));
 		
 		return p;
 	}
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
-		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
-		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 980, 50));	// Fire Enemy
-		//c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1780, 50));	// Water Enemy
-		//c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2580, 50));	// Grass Enemy
-		//c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),3480, 40));	// Boss
+		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
+		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 980, 50));	// Fire Enemy
+		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 1780, 50));	// Water Enemy
+		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 2580, 50));	// Grass Enemy
+		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),3480, 40));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
@@ -396,6 +409,16 @@ public class GameScreen extends Screen {
 		t.add(new Token(surface.loadImage("sprites\\tokens\\FistTokenSprite.png"), (int) (300), (int) 10));
 		
 		return t;
+	}
+	
+	private ArrayList<Spike> generateSpikes() {
+		ArrayList<Spike> s = new ArrayList<Spike>();
+//		int x = 90;
+		for (int i = 0; i < 130; i++) {
+			s.add(new Spike(spike, 120 + (i*40), 420, 30, 30));
+//			x+=30;
+		}
+		return s;
 	}
 	
 	/**
