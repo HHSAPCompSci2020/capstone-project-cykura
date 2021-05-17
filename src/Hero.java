@@ -345,6 +345,9 @@ public class Hero extends MovingImage {
 	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens, ArrayList<Spike> spikes) {
+		System.out.println("x :" + x);
+		System.out.println("y: " + y);
+		
 		if (fireballCoolDown > 0) {
 			fireballCoolDown--;
 		}
