@@ -46,7 +46,7 @@ public class GameScreen extends Screen {
 	public float view_y;
 	
 	private int x, y;
-	private DrawingSurface surface;
+	public static DrawingSurface surface;
 //	private Rectangle screenRect;
 //	private ArrayList<Heart> hearts;
 	private Hero hero;

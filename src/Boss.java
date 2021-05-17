@@ -104,7 +104,7 @@ public class Boss extends Enemy {
 			}
 		}
 		else {
-			
+			GameScreen.surface.switchScreen(ScreenSwitcher.SCREEN4);
 		}
 		/*if(rotateCooldown>0)
 		rotateCooldown--;
