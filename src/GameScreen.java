@@ -5,6 +5,7 @@ import java.util.Timer;
 import java.awt.event.KeyEvent;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 public class GameScreen extends Screen {
@@ -54,7 +55,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Token> tokens;
 	private ArrayList<Spike> spikes;
 	private long startTime;
-
+	private PFont f;
 	/**
 	 * Default Constructor
 	 */
@@ -98,6 +99,7 @@ public class GameScreen extends Screen {
 //		bg = surface.loadImage("sprites/gameScreenBackground.png");
 //		System.out.println(bg.width);
 		spawnHero();
+		f = surface.createFont("Arial", 16,true);
 		enemies = generateEnemies();
 		
 		fireball = surface.loadImage("sprites\\FireballSprite.png");
@@ -235,8 +237,9 @@ public class GameScreen extends Screen {
 			e.draw(surface);
 		}
 		
+		surface.textFont(f);
 		surface.fill(0);
-		surface.text((int)((System.currentTimeMillis()-startTime)/1000)+" ", view_x+300, view_y+50);
+		surface.text((int)((System.currentTimeMillis()-startTime)/1000)+" ", view_x+397, view_y+50);
 //		
 		if(!invertControls) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {
