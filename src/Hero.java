@@ -345,8 +345,8 @@ public class Hero extends MovingImage {
 	 * @param enemyFireballs The fireballs which the Enemy has thrown.
 	 **/
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens, ArrayList<Spike> spikes) {
-		System.out.println("x :" + x);
-		System.out.println("y: " + y);
+//		System.out.println("x :" + x);
+//		System.out.println("y: " + y);
 		
 		if (fireballCoolDown > 0) {
 			fireballCoolDown--;
@@ -376,6 +376,7 @@ public class Hero extends MovingImage {
 		
 		if (hitBySpike && !onASurface) {
 			hitBySpike = false;
+			hearts--;
 		}
 		
 
@@ -479,20 +480,14 @@ public class Hero extends MovingImage {
 		
 		for (int i = 0; i < spikes.size(); i++) {
 			if (spikes.get(i).intersects(this)) {
-//				System.out.println(spikes.get(i));
 				if (hitBySpike == false) {
 					hitBySpike = true;
 				}
-//				if (invincibilityTime <= 0) {
-//					this.jump();
-//				} else {
-//					
-//				}
 			}
 		}
 		
 		if (hitBySpike) {
-			hitBySpike = false;
+//			hitBySpike = false;
 			jump();
 //			hearts--;
 		}
