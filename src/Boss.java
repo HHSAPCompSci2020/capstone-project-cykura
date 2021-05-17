@@ -103,6 +103,9 @@ public class Boss extends Enemy {
 			     }
 			}
 		}
+		else {
+			
+		}
 		/*if(rotateCooldown>0)
 		rotateCooldown--;
 		
