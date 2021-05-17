@@ -55,6 +55,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Token> tokens;
 	private ArrayList<Spike> spikes;
 	private long startTime;
+	private long currTime;
 	private PFont f;
 	/**
 	 * Default Constructor
@@ -66,6 +67,7 @@ public class GameScreen extends Screen {
 		y = 30;
 		platforms = generatePlatforms();
 		startTime = System.currentTimeMillis();
+		currTime = startTime;
 		
 //		tokens = new ArrayList<Token>();
 //		flipped =true;
@@ -237,9 +239,6 @@ public class GameScreen extends Screen {
 			e.draw(surface);
 		}
 		
-		surface.textFont(f);
-		surface.fill(0);
-		surface.text((int)((System.currentTimeMillis()-startTime)/1000)+" ", view_x+397, view_y+50);
 //		
 		if(!invertControls) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {
@@ -320,6 +319,7 @@ public class GameScreen extends Screen {
 		}
 		
 		if (hero.getHearts() > 0) {
+			currTime = System.currentTimeMillis()-startTime;
 			for (int i = 0; i < enemies.size(); i++) {
 				Enemy e = enemies.get(i);
 				if(e!=null) {
@@ -343,6 +343,10 @@ public class GameScreen extends Screen {
 			}
 			hero.act(platforms, enemies, getTokens(), spikes);
 		}
+		
+		surface.textFont(f);
+		surface.fill(0);
+		surface.text((int)(currTime/1000)+" ", view_x+397, view_y+50);
 		
 		
 	}
