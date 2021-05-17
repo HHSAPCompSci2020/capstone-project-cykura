@@ -235,8 +235,8 @@ public class GameScreen extends Screen {
 			e.draw(surface);
 		}
 		
-		surface.stroke(255);
-		surface.text((int)((System.currentTimeMillis()-startTime)/1000), view_x+500, view_y+50);
+		surface.fill(0);
+		surface.text((int)((System.currentTimeMillis()-startTime)/1000)+" ", view_x+300, view_y+50);
 //		
 		if(!invertControls) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {

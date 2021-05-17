@@ -127,6 +127,7 @@ public class Enemy extends MovingImage{
 	public void draw(PApplet g) {
 		if(health>0) {
 			super.draw(g);
+			g.fill(50);
 			g.rect((int)x-10, (int)y-20, 60, 5,3);
 			if(health<30) g.fill(255,0,0);
 			else if(health<60) g.fill(255,255,0);
