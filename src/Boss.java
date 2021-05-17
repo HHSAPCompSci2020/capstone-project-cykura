@@ -144,6 +144,10 @@ public class Boss extends Enemy {
 			
 	}
 	
+	public WaterWave getWaterWave() {
+		return w;
+	}
+	
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
 	}
