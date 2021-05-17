@@ -35,71 +35,73 @@ public class Boss extends Enemy {
 	 * @param hero The player
 	 */
 	public void act(Hero hero) {
-		if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(x-hero.x)<500&&Math.abs(y-hero.y)<300) {
-			cnt++;
-			//System.out.println(cnt);
-			double x1 = hero.x;
-		    double y1 = hero.y;
-	
-		    double diffX = x1 - x;
-		    double diffY = y1 - y;
-		    
-		    float angle = (float)Math.atan2(diffY, diffX);
-		    //Inverting Screen
-			if((int)((cnt/300.0)%2)==1) {
-				invertControls();
-				GameScreen.flipped = true;
-			}
-			else {
-				GameScreen.invertControls = false;
-				GameScreen.flipped = false;
-			}
-			//Shooting Fireballs
-			if(Math.random()>0.99&& w==null) {
-				Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
-				fireballs.add(f);
-				cooldown=60;
-			}
-			if(cooldown>0) {
-				cooldown--;
-			}
-			//Use WaterWave
-			if(Math.random()>0.98&&cooldown<=0&&w==null) {
-				w = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
-				//System.out.println(x+" "+y);
-			}
-			
-			//Removing fireballs if colliding with hero
-			for(int i=0;i<fireballs.size();i++) {
-		    	 Fireball f = fireballs.get(i);
-		    	 if(f!=null) {
-		    		 f.act();
-		    		 if(f.checkCollisionHero(hero)||f.checkCollisionShape(GameScreen.platforms)) {
-		    			 fireballs.set(i, null);
-		    		 }
-		    	 }
-		     }
-			
-			if(w!=null) {
-				w.act();
-				if(w.canRemove()) {
-					w = null;
+		if(health>0) {
+			if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(x-hero.x)<500&&Math.abs(y-hero.y)<300) {
+				cnt++;
+				//System.out.println(cnt);
+				double x1 = hero.x;
+			    double y1 = hero.y;
+		
+			    double diffX = x1 - x;
+			    double diffY = y1 - y;
+			    
+			    float angle = (float)Math.atan2(diffY, diffX);
+			    //Inverting Screen
+				if((int)((cnt/300.0)%2)==1) {
+					invertControls();
+					GameScreen.flipped = true;
+				}
+				else {
+					GameScreen.invertControls = false;
+					GameScreen.flipped = false;
+				}
+				//Shooting Fireballs
+				if(Math.random()>0.99&& w==null) {
+					Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
+					fireballs.add(f);
+					cooldown=60;
+				}
+				if(cooldown>0) {
+					cooldown--;
+				}
+				//Use WaterWave
+				if(Math.random()>0.98&&cooldown<=0&&w==null) {
+					w = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
+					//System.out.println(x+" "+y);
+				}
+				
+				//Removing fireballs if colliding with hero
+				for(int i=0;i<fireballs.size();i++) {
+			    	 Fireball f = fireballs.get(i);
+			    	 if(f!=null) {
+			    		 f.act();
+			    		 if(f.checkCollisionHero(hero)||f.checkCollisionShape(GameScreen.platforms)) {
+			    			 fireballs.set(i, null);
+			    		 }
+			    	 }
+			     }
+				
+				if(w!=null) {
+					w.act();
+					if(w.canRemove()) {
+						w = null;
+					}
 				}
 			}
-		}
-		else {
-			float angle = (float)Math.atan2(spawnPoint.y-y, spawnPoint.x-x);
-	    	 x += (v) * Math.cos(angle);
-	    	 y += (v) * Math.sin(angle);
-	    	 for(int i=0;i<fireballs.size();i++) {
-		    	 Fireball f = fireballs.get(i);
-		    	 if(f!=null) {
-		    		 f.act();
-		    		 if(f.checkCollisionShape(GameScreen.platforms)) {
-		    			 fireballs.set(i, null);
-		    		 }
-		    	 }
-		     }
+			else {
+				float angle = (float)Math.atan2(spawnPoint.y-y, spawnPoint.x-x);
+		    	 x += (v) * Math.cos(angle);
+		    	 y += (v) * Math.sin(angle);
+		    	 for(int i=0;i<fireballs.size();i++) {
+			    	 Fireball f = fireballs.get(i);
+			    	 if(f!=null) {
+			    		 f.act();
+			    		 if(f.checkCollisionShape(GameScreen.platforms)) {
+			    			 fireballs.set(i, null);
+			    		 }
+			    	 }
+			     }
+			}
 		}
 		/*if(rotateCooldown>0)
 		rotateCooldown--;
