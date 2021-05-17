@@ -463,7 +463,7 @@ public class Hero extends MovingImage {
 
 		moveToLocation(x2, y2);
 
-		if (enemies != null) {
+		if (enemies != null) {		// check if the hero is going to get hurt
 			for (Enemy e: enemies) {
 				if (e != null) {
 					checkEnemyCollision(e);	// check if hero gets hit by enemy
@@ -504,7 +504,7 @@ public class Hero extends MovingImage {
 			
 		}
 		
-
+		// CHECK IF THE ENEMIES ARE GOING TO GET HURT
 		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
 			for (int i = 0; i < fireballs.size(); i++) {
 				Fireball f = fireballs.get(i);
