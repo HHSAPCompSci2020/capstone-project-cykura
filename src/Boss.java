@@ -96,6 +96,10 @@ public class Boss extends Enemy {
 			    	 Fireball f = fireballs.get(i);
 			    	 if(f!=null) {
 			    		 f.act();
+			    		 if(f.checkCollisionHero(hero)) {
+			    			 hero.loseHearts(1);
+			    			 fireballs.set(i, null);
+			    		 }
 			    		 if(f.checkCollisionShape(GameScreen.platforms)) {
 			    			 fireballs.set(i, null);
 			    		 }
