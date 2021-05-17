@@ -41,7 +41,7 @@ public class Hero extends MovingImage {
 	private int punchCoolDown;
 	private int waterWaveCoolDown;
 	private boolean hitBySpike;
-	private int jumpTimes;
+//	private int jumpTimes;
 
 	/**
 	 * Creates a new instance of a Hero object having its left corner at the inputed
@@ -69,7 +69,7 @@ public class Hero extends MovingImage {
 		facingDirection = 0; // right direction
 		dashing = false;
 		
-		jumpTimes = 0;
+//		jumpTimes = 0;
 
 		fireballs = new ArrayList<Fireball>();
 
@@ -82,7 +82,9 @@ public class Hero extends MovingImage {
 	public void jump() {
 		// System.out.println("Jump is called");
 		if (onASurface) {
-			vy -= 11;
+			if (!(hitBySpike && !onASurface)) {
+				vy -= 11;
+			}
 		}
 	}
 
@@ -369,8 +371,8 @@ public class Hero extends MovingImage {
 			dashing = false;
 		}
 		
-		if (jumpTimes == 1 && !onASurface) {
-			jumpTimes = 0;
+		if (hitBySpike && !onASurface) {
+			hitBySpike = false;
 		}
 		
 
@@ -472,6 +474,26 @@ public class Hero extends MovingImage {
 			}
 		}
 		
+		for (int i = 0; i < spikes.size(); i++) {
+			if (spikes.get(i).intersects(this)) {
+//				System.out.println(spikes.get(i));
+				if (hitBySpike == false) {
+					hitBySpike = true;
+				}
+//				if (invincibilityTime <= 0) {
+//					this.jump();
+//				} else {
+//					
+//				}
+			}
+		}
+		
+		if (hitBySpike) {
+			hitBySpike = false;
+			jump();
+//			hearts--;
+		}
+		
 
 		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
 			for (int i = 0; i < fireballs.size(); i++) {
@@ -513,23 +535,7 @@ public class Hero extends MovingImage {
 			}
 		}
 		
-		for (int i = 0; i < spikes.size(); i++) {
-			if (spikes.get(i).intersects(this)) {
-//				System.out.println(spikes.get(i));
-				if (jumpTimes == 0) {	// if u are in a spike and havent been hit by a spike
-//						this.jump();
-						jumpTimes = 1;
-						System.out.println("jump");
-//						this.loseHearts(1);
-//						hitBySpike = true;
-				} 
-//				if (invincibilityTime <= 0) {
-//					this.jump();
-//				} else {
-//					
-//				}
-			}
-		}
+
 			
 		
 //		
