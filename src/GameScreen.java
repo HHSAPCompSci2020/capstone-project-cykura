@@ -54,6 +54,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
 	private ArrayList<Spike> spikes;
+	private ArrayList<Platform> movingPlatforms;
 	private long startTime;
 	private long currTime;
 	private PFont f;
@@ -123,6 +124,7 @@ public class GameScreen extends Screen {
 		
 		spike = surface.loadImage("sprites\\SpikeSprite.png");
 		spikes = generateSpikes();
+		movingPlatforms=generateMovingPlatforms();
 		tokens = generateTokens();
 
 		
@@ -231,7 +233,9 @@ public class GameScreen extends Screen {
 		for (Spike s: spikes) {
 			s.draw(surface);
 		}
-
+		for (Platform m:movingPlatforms) {
+			m.draw(surface);
+		}
 
 		
 		for (Enemy e: enemies) {
@@ -344,7 +348,13 @@ public class GameScreen extends Screen {
 					s.act(enemies, hero);
 				}
 			}
-			hero.act(platforms, enemies, getTokens(), spikes);
+			for(int i=0;i<movingPlatforms.size();i++) {
+				Platform m=movingPlatforms.get(i);
+				if (m!=null) {
+					m.act();
+				}
+			}
+			hero.act(platforms, enemies, getTokens(), spikes,movingPlatforms);
 		}
 		else {
 			surface.textFont(f);
@@ -419,11 +429,11 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
-		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
-		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1976, 60));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
-		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
-		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
+		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
+		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1976, 60));	// Fire Enemy
+		//c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
+		//c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
+		//c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
 		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
@@ -442,8 +452,8 @@ public class GameScreen extends Screen {
 		ArrayList<Spike> s = new ArrayList<Spike>();
 //		int x = 90;
 		//Floor
-		for (int i = 0; i < 130; i++) {
-			s.add(new Spike(spike, 120 + (i*40), 465, 30, 30));
+		for (int i = 0; i < 194; i++) {
+			s.add(new Spike(spike, 135 + (i*40), 465, 30, 30));
 //			x+=30;
 		}
 		//Parkour2
@@ -457,6 +467,11 @@ public class GameScreen extends Screen {
 		
 	}
 	
+	private ArrayList<Platform> generateMovingPlatforms(){
+		ArrayList<Platform> m=new ArrayList<Platform>();
+		m.add(new Platform(spike,200,345,100,50,400,345,5,0));
+		return m;
+	}
 	/**
 	 * Shifts the screen based on players location
 	 */

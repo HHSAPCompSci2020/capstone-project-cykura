@@ -8,7 +8,7 @@ import processing.core.PImage;
  */
 public class Platform extends MovingImage {
 	private double vx, vy;
-	private int fx, fy;
+	private int fx, fy,sx,sy;
 	
 	/**
 	 * Creates a new instance of a Platform object having its left
@@ -26,6 +26,8 @@ public class Platform extends MovingImage {
 		this.fy=fy;
 		this.vx=vx;
 		this.vy=vy;
+		sx=x-1;
+		sy=y-1;
 	}
 	
 	/**
@@ -36,10 +38,11 @@ public class Platform extends MovingImage {
 		super.moveByAmount(vx, vy);
 	}
 	private void atEnd() {
-		if(super.x==fx&&super.y==fy) {
+		if(super.x>=fx&&super.y>=fy||super.x<=sx&&super.y<=sy) {//only bounces back at end. need to bounce at beginning as well
 			vx=-vx;
 			vy=-vy;
 		}
 		return;
 	}
+	
 }
