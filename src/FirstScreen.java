@@ -75,6 +75,10 @@ public class FirstScreen extends Screen {
 		if(instructionsButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.SCREEN3);
 		
+		if(exitButton.contains(p)) {
+			System.exit(0);
+		}
+		
 	}
 	
 
