@@ -429,12 +429,12 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
-		//c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
-		//c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1976, 60));	// Fire Enemy
-		//c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
-		//c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
-		//c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
-		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
+		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
+		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1976, 60));	// Fire Enemy
+		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
+		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
+		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
+//		c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
 	
