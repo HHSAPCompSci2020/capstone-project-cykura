@@ -261,8 +261,11 @@ public class Hero extends MovingImage {
 	 * 
 	 */
 	public void charge() {
-		if (canDash)
-			chargeTime++;
+		if (canDash) {
+			if (chargeTime < 180)	// Max Charge Time is 3 seconds
+				chargeTime++;
+
+		}
 	}
 
 	/**
@@ -274,7 +277,7 @@ public class Hero extends MovingImage {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
 //			System.out.println(canDash);
-			if (chargeTime >= 180) {	// greater than equal to 3 sec
+			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
 				chargeTime = 0;
 				dashing = true;
 				if (canDash && facingDirection == 0) { // Facing to the right
@@ -341,13 +344,26 @@ public class Hero extends MovingImage {
 			wave.draw(g);
 		}
 	
-		if (chargeTime > 0) {	// 3 sec
+		if (chargeTime > 0) {	
 			g.fill(50);
 			g.rect((int)x-10, (int)y-20, 60, 5, 3);	// draws the rectangle
-			if(chargeTime>=180) g.fill(255,0,0);	// greater than or equal to 3 sec
-			else if(chargeTime>=120) g.fill(255,255,0);	// greater than or equal to 2sec
-			else g.fill(0,255,0);	
-			g.rect((int)x-10, (int)y-20, (int)(chargeTime*0.6), 5,3);
+//			if (chargeTime <= )
+			
+			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
+				// green color fill
+				g.fill(0, 255, 0);
+			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
+				// yellow color fill
+				g.fill(255, 215, 0);
+			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
+				// orange color fill
+				g.fill(255, 165, 0);
+			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
+				//red color fill
+				g.fill(255, 0, 0);
+			}
+
+			g.rect((int)x-10, (int)y-20, (int)(chargeTime/3.0), 5,3);
 			
 			
 //			
