@@ -41,7 +41,6 @@ public class Hero extends MovingImage {
 	private int punchCoolDown;
 	private int waterWaveCoolDown;
 	private boolean hitBySpike;
-//	private int jumpTimes;
 
 	/**
 	 * Creates a new instance of a Hero object having its left corner at the inputed
@@ -68,8 +67,7 @@ public class Hero extends MovingImage {
 
 		facingDirection = 0; // right direction
 		dashing = false;
-		
-//		jumpTimes = 0;
+
 
 		fireballs = new ArrayList<Fireball>();
 
@@ -80,11 +78,8 @@ public class Hero extends MovingImage {
 	 * 
 	 **/
 	public void jump() {
-		// System.out.println("Jump is called");
 		if (onASurface) {
-//			if (!(hitBySpike && !onASurface)) {
 				vy -= 11;
-//			}
 		}
 	}
 
@@ -125,6 +120,11 @@ public class Hero extends MovingImage {
 		}
 	}
 	
+	/**
+	 * The hero gains an inputted number of hearts
+	 * 
+	 * @param h The number of hearts the hero gains.
+	 */
 	public void gainHearts(int h) {
 		hearts += h;
 	}
@@ -274,7 +274,7 @@ public class Hero extends MovingImage {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
 //			System.out.println(canDash);
-			if (chargeTime >= 180) {
+			if (chargeTime >= 180) {	// greater than equal to 3 sec
 				chargeTime = 0;
 				dashing = true;
 				if (canDash && facingDirection == 0) { // Facing to the right
@@ -282,7 +282,7 @@ public class Hero extends MovingImage {
 				} else if (canDash && facingDirection == 180) { // Facing to the left
 					moveByAmount(-100, 0);
 				}
-			} else if (chargeTime >= 120) {
+			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
 				chargeTime = 0;
 				dashing = true;
 				if (canDash && facingDirection == 0) { // Facing to the right
@@ -290,7 +290,7 @@ public class Hero extends MovingImage {
 				} else if (canDash && facingDirection == 180) { // Facing to the left
 					moveByAmount(-75, 0);
 				}
-			} else if (chargeTime >= 60) {
+			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
 				chargeTime = 0;
 				dashing = true;
 				if (canDash && facingDirection == 0) { // Facing to the right
@@ -298,7 +298,7 @@ public class Hero extends MovingImage {
 				} else if (canDash && facingDirection == 180) { // Facing to the left
 					moveByAmount(-50, 0);
 				}
-			} else if (chargeTime > 0) {
+			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
 				chargeTime = 0;
 				dashing = true;
 				if (canDash && facingDirection == 0) { // Facing to the right
@@ -324,18 +324,37 @@ public class Hero extends MovingImage {
 	/**
 	 * Draws the Hero and displays its number of hearts above the Hero.
 	 * 
-	 * @param g The PApplet to draw the Hero and it's thrown fireballs
+	 * @param g The PApplet to draw the Hero, its thrown fireballs, and water wave
 	 **/
 	public void draw(PApplet g) {
-		super.draw(g);
-		for (Fireball f : fireballs) {
+		super.draw(g); 	// draws hero
+		for (Fireball f : fireballs) {	// draws fireballs
 			if (f != null) {
 				f.draw(g);
 			}
 		}
 		
+		
+
+		
 		if (wave != null) {
 			wave.draw(g);
+		}
+	
+		if (chargeTime > 0) {	// 3 sec
+			g.fill(50);
+			g.rect((int)x-10, (int)y-20, 60, 5, 3);	// draws the rectangle
+			if(chargeTime>=180) g.fill(255,0,0);	// greater than or equal to 3 sec
+			else if(chargeTime>=120) g.fill(255,255,0);	// greater than or equal to 2sec
+			else g.fill(0,255,0);	
+			g.rect((int)x-10, (int)y-20, (int)(chargeTime*0.6), 5,3);
+			
+			
+//			
+//			if(health<30) g.fill(255,0,0);
+//			else if(health<60) g.fill(255,255,0);
+//			else g.fill(0,255,0);
+//			g.rect((int)x-10, (int)y-20, (int)(health*0.6), 5,3);
 		}
 	}
 
