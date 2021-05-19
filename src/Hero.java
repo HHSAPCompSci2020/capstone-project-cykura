@@ -530,6 +530,9 @@ public class Hero extends MovingImage {
 			vy=-15;
 //			jump();
 			hearts--;
+			if (dashing) {
+				dashing = false;
+			}
 			
 		}
 		
