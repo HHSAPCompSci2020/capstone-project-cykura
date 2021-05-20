@@ -88,7 +88,7 @@ public class Boss extends Enemy {
 						hero.loseHearts(2);
 						w = null;
 					}
-					if(w.canRemove()) {
+					else if(w.canRemove()) {
 						w = null;
 					}
 				}
