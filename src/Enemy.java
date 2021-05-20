@@ -99,6 +99,7 @@ public class Enemy extends MovingImage{
 		     
 		}
 		else {
+			tokens.add(new Token(GameScreen.heart,(int)x,(int)y));
 			x = -20;
 			y=-20;
 		}
