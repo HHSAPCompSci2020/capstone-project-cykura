@@ -544,12 +544,21 @@ public class Hero extends MovingImage {
 			
 		}*/
 		if (hitBySpike) {
+
 			hearts--;
 			if (dashing) {
 				dashing = false;
 			}
-			vx = 0;
-			vy=-15;			
+			
+			if (vy > 0) {	// moving down
+				vy = -13;			
+			} else if (vx < 0) {	// moving left
+//				System.out.println("Moving left");
+				vx = 5;
+			} else if (vx > 0) {	// moving right
+//				System.out.println("Moving right");
+				vx = -5;
+			}
 			hitBySpike = false;
 //			jump();
 			
