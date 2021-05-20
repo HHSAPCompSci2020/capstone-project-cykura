@@ -83,10 +83,6 @@ public class Boss extends Enemy {
 				
 				if(w!=null) {
 					w.act();
-					if(w.checkCollisionHero(hero)) {
-						hero.loseHearts(2);
-						w = null;
-					}
 					if(w.canRemove()) {
 						w = null;
 					}
@@ -100,10 +96,6 @@ public class Boss extends Enemy {
 			    	 Fireball f = fireballs.get(i);
 			    	 if(f!=null) {
 			    		 f.act();
-			    		 if(f.checkCollisionHero(hero)) {
-			    			 hero.loseHearts(1);
-			    			 fireballs.set(i, null);
-			    		 }
 			    		 if(f.checkCollisionShape(GameScreen.platforms)) {
 			    			 fireballs.set(i, null);
 			    		 }

@@ -64,19 +64,23 @@ public class FireEnemy extends Enemy {
 				x += (v) * Math.cos(angle);
 				y += (v) * Math.sin(angle);
 			}
-			for (int i = 0; i < fireballs.size(); i++) {
+			for (int i = 0; i < fireballs.size(); i++) {	// check if the firenemy's fireball hits obstacles
 				Fireball f = fireballs.get(i);
 				if (f != null) {
 					f.act();
-					if (f.checkCollisionHero(hero)) {
-						hero.loseHearts(1);
-						fireballs.set(i, null);
-					}
 					if (f.checkCollisionShape(obstacles)) {
 						fireballs.set(i, null);
 					}
 				}
 			}
+			
+		     if (hero.getWaterWave() != null) {	// hero has done a water wave
+		    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
+		    		 hero.getWaterWave().hit = true;
+		    		 this.loseHealth(20);
+		    	 }
+		     }
+		     
 		} else { // If health < 0, or dead
 			tokens.add(new Token(GameScreen.fireToken, (int) x, (int) y));
 //			if (GameScreen.fireToken1 == null)
