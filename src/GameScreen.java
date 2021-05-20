@@ -434,7 +434,7 @@ public class GameScreen extends Screen {
 		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
 		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
 		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
-//		c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
+		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
 		return c;
 	}
 	

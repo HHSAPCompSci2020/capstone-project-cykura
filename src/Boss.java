@@ -190,4 +190,13 @@ public class Boss extends Enemy {
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
 	}
+	
+	protected void healthBar(PApplet g) {
+		g.fill(50);
+		g.rect((int)x-10, (int)y-20, 60, 5,3);
+		if(health<60) g.fill(255,0,0);
+		else if(health<120) g.fill(255,255,0);
+		else g.fill(0,255,0);
+		g.rect((int)x-10, (int)y-20, (int)(health*0.3), 5,3);
+	}
 }
