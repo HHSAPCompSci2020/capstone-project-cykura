@@ -530,7 +530,7 @@ public class Hero extends MovingImage {
 			
 		}
 		
-		if (hitBySpike) {
+		/*if (hitBySpike) {
 			if(spikeCD<=0) {
 				spikeCD = 30;
 				hearts--;
@@ -539,6 +539,16 @@ public class Hero extends MovingImage {
 				}
 				vy=-15;
 			}
+			hitBySpike = false;
+//			jump();
+			
+		}*/
+		if (hitBySpike) {
+			hearts--;
+			if (dashing) {
+				dashing = false;
+			}
+			vy=-15;			
 			hitBySpike = false;
 //			jump();
 			
