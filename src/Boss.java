@@ -28,6 +28,7 @@ public class Boss extends Enemy {
 		super(img, x, y);
 		fireballs = new ArrayList<Fireball>();
 		rotateCooldown = 800;
+		health = 200;
 	}
 	
 	/**
@@ -47,7 +48,7 @@ public class Boss extends Enemy {
 			    
 			    float angle = (float)Math.atan2(diffY, diffX);
 			    //Inverting Screen
-				if((int)((cnt/300.0)%2)==1) {
+				if((int)((cnt/300.0)%2)==1&&health<=125) {
 					invertControls();
 					GameScreen.flipped = true;
 				}
