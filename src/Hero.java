@@ -241,7 +241,7 @@ public class Hero extends MovingImage {
 	 * @param direction The direction and magnitude which the Hero will move in.
 	 **/
 	public void walk(int direction) {
-		if (chargeTime <= 0 && dashing == false) {	// only walk if u are not charging or if u are not dashing
+		if ((chargeTime <= 0 && dashing == false) && (hitBySpike == false)) {	// only walk if u are not charging or if u are not dashing & ur not in a spike
 			if (vx <= 10 && vx >= -10)
 				vx += direction;
 		}
@@ -548,6 +548,7 @@ public class Hero extends MovingImage {
 			if (dashing) {
 				dashing = false;
 			}
+			vx = 0;
 			vy=-15;			
 			hitBySpike = false;
 //			jump();
