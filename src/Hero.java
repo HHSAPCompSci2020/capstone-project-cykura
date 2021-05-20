@@ -516,10 +516,13 @@ public class Hero extends MovingImage {
 							checkFireballCollision(((Boss) e).getFireballs());	// Check if hero got hit by Boss's fireballs
 						}
 						
-						if(((Boss) e).getWaterWave().checkCollisionHero(this)) {
-				    		 this.loseHearts(2);
-				    		 ((Boss) e).getWaterWave().hit=true;
-				    	 }
+						if (((Boss) e).getWaterWave() != null) {	// if boss has thrown fireballs
+							if(((Boss) e).getWaterWave().checkCollisionHero(this)) {
+					    		 this.loseHearts(2);
+					    		 ((Boss) e).getWaterWave().hit=true;
+					    	 }
+						}
+
 					} else if (e instanceof WaterEnemy) {	// if enemy is water enemy
 						if (((WaterEnemy) e).getWaterWave() != null) {	// if the enemy has done a water wave
 							if(((WaterEnemy) e).getWaterWave().checkCollisionHero(this)) {
