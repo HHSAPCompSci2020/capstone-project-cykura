@@ -354,7 +354,7 @@ public class GameScreen extends Screen {
 					m.act();
 				}
 			}
-			hero.act(platforms, enemies, getTokens(), spikes,movingPlatforms);
+			hero.act(platforms, enemies, tokens, spikes,movingPlatforms);
 		}
 		else {
 			surface.textFont(f);
