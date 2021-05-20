@@ -40,6 +40,7 @@ public class Hero extends MovingImage {
 	private int fireballCoolDown;
 	private int punchCoolDown;
 	private int waterWaveCoolDown;
+	private int spikeCD;
 	private boolean hitBySpike;
 
 	/**
@@ -392,6 +393,10 @@ public class Hero extends MovingImage {
 			waterWaveCoolDown--;
 		}
 		
+		if (spikeCD > 0) {
+			spikeCD--;
+		}
+		
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
 		}
@@ -526,13 +531,16 @@ public class Hero extends MovingImage {
 		}
 		
 		if (hitBySpike) {
-			hitBySpike = false;
-			vy=-15;
-//			jump();
-			hearts--;
-			if (dashing) {
-				dashing = false;
+			if(spikeCD<=0) {
+				spikeCD = 30;
+				hearts--;
+				if (dashing) {
+					dashing = false;
+				}
+				vy=-15;
 			}
+			hitBySpike = false;
+//			jump();
 			
 		}
 		
