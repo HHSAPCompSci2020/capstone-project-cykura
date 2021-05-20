@@ -14,8 +14,9 @@ public class Boss extends Enemy {
 	public WaterWave w;
 	//Cooldown time between shooting fireballs and using a waterwave
 	private int cooldown;
-	private int rotateCooldown;
-	private int rotateCooldown2;
+	private int rotation;
+	private int fireballCnt;
+	private int waterCnt;
 	/**
 	 * Creates a new instance of a Boss object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -27,7 +28,7 @@ public class Boss extends Enemy {
 	public Boss(PImage img, int x, int y) {
 		super(img, x, y);
 		fireballs = new ArrayList<Fireball>();
-		rotateCooldown = 800;
+		health = 200;
 	}
 	
 	/**
@@ -47,7 +48,7 @@ public class Boss extends Enemy {
 			    
 			    float angle = (float)Math.atan2(diffY, diffX);
 			    //Inverting Screen
-				if((int)((cnt/300.0)%2)==1) {
+				if((int)((cnt/300.0)%2)==1&&health<=125) {
 					invertControls();
 					GameScreen.flipped = true;
 				}
@@ -55,21 +56,27 @@ public class Boss extends Enemy {
 					GameScreen.invertControls = false;
 					GameScreen.flipped = false;
 				}
-				//Shooting Fireballs
-				if(Math.random()>0.99&& w==null) {
-					Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
-					fireballs.add(f);
-					cooldown=60;
+				if(rotation==0) {
+					//Shooting Fireballs
+					if(Math.random()>0.99&& w==null) {
+						Fireball f = new Fireball(GameScreen.fireball, (int)x, (int)y,20,20, v*Math.cos(angle)*2, v*Math.sin(angle)*2);
+						fireballs.add(f);
+						cooldown=60;
+						fireballCnt++;
+					}
+					if(cooldown>0) {
+						cooldown--;
+					}
+					//Use WaterWave
+					if(Math.random()>0.98&&cooldown<=0&&w==null) {
+						w = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
+						waterCnt++;
+						//System.out.println(x+" "+y);
+					}
+					if(fireballCnt>=5&&waterCnt>=2) {
+						rotation++;
+					}
 				}
-				if(cooldown>0) {
-					cooldown--;
-				}
-				//Use WaterWave
-				if(Math.random()>0.98&&cooldown<=0&&w==null) {
-					w = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
-					//System.out.println(x+" "+y);
-				}
-				
 				//Removing fireballs if colliding with platforms
 				for(int i=0;i<fireballs.size();i++) {
 			    	 Fireball f = fireballs.get(i);
@@ -106,6 +113,8 @@ public class Boss extends Enemy {
 		else {
 			GameScreen.surface.switchScreen(ScreenSwitcher.SCREEN4);
 		}
+			
+		
 		/*if(rotateCooldown>0)
 		rotateCooldown--;
 		
