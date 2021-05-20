@@ -57,6 +57,28 @@ public class GrassEnemy extends Enemy {
 			     } else {	// if u still have a cool down time
 			    	 dashCoolDownTimeRemaining--;
 			     }
+			     
+			     if (hero.getFireballs() != null) {	// check if enemy got hit by fireball
+				     for(int i=0;i<hero.getFireballs().size();i++) {
+				    	 Fireball f = hero.getFireballs().get(i);
+				    	 if(f!=null) {
+				    		 if (f.checkCollisionEnemy(this)) {	// If the hero's fireball hits an enemy
+				    			 this.loseHealth(10); 	// Enemy loses 10 hp
+				    			 hero.getFireballs().set(i, null);
+			    			 }
+
+				    	 }
+				     }
+			     }
+			     
+			     if (hero.getWaterWave() != null) {	// hero has done a water wave
+			    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
+			    		 hero.getWaterWave().hit = true;
+			    		 this.loseHealth(20);
+			    		 
+			    	 }
+			     }
+			     
 			} else {	// If away from spawn
 				float angle = (float) Math.atan2(spawnPoint.y - y, spawnPoint.x - x);
 				x += (v) * Math.cos(angle);

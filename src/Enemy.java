@@ -65,15 +65,8 @@ public class Enemy extends MovingImage{
 			    	 waitTime--;
 			     }
 		     } else {
-//		    	 System.out.println("far");
-//			     System.out.println("x: " + x + ", y: " + y);
-//			     System.out.println("sx: " + spawnPoint.x + ", sy: " + spawnPoint.y);
 		    	 
 		    	 float angle = (float)Math.atan2(spawnPoint.y-y, spawnPoint.x-x);
-//		    	 System.out.println("angle " + angle);
-//			     System.out.println("cosAngle " + Math.cos(angle));
-//			     System.out.println("sinAngle " + Math.sin(angle));
-//			     System.out.println("V " + v);
 		    	 x += (v) * Math.cos(angle);
 		    	 y += (v) * Math.sin(angle);
 		    	 
@@ -82,7 +75,7 @@ public class Enemy extends MovingImage{
 
 		     }
 		     
-		     if (hero.getFireballs() != null) {
+		     if (hero.getFireballs() != null) {	// check if enemy got hit by fireball
 			     for(int i=0;i<hero.getFireballs().size();i++) {
 			    	 Fireball f = hero.getFireballs().get(i);
 			    	 if(f!=null) {
@@ -93,9 +86,15 @@ public class Enemy extends MovingImage{
 
 			    	 }
 			     }
-
 		     }
 		     
+		     if (hero.getWaterWave() != null) {	// hero has done a water wave
+		    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
+		    		 hero.getWaterWave().hit = true;
+		    		 this.loseHealth(20);
+		    		 
+		    	 }
+		     }
 		     
 		}
 		else {

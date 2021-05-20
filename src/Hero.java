@@ -40,7 +40,7 @@ public class Hero extends MovingImage {
 	private int fireballCoolDown;
 	private int punchCoolDown;
 	private int waterWaveCoolDown;
-	private int spikeCD;
+//	private int spikeCD;
 	private boolean hitBySpike;
 
 	/**
@@ -90,6 +90,10 @@ public class Hero extends MovingImage {
 	 */
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
+	}
+	
+	public WaterWave getWaterWave() {
+		return wave;
 	}
 
 	/**
@@ -393,9 +397,9 @@ public class Hero extends MovingImage {
 			waterWaveCoolDown--;
 		}
 		
-		if (spikeCD > 0) {
-			spikeCD--;
-		}
+//		if (spikeCD > 0) {
+//			spikeCD--;
+//		}
 		
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
@@ -509,7 +513,22 @@ public class Hero extends MovingImage {
 						if (((Boss) e).getFireballs() != null) {	// if boss has thrown fireballs
 //							System.out.println("Bos threw fire");
 //							System.out.println(((Boss) e).getFireballs());
-							checkFireballCollision(((Boss) e).getFireballs());	// Check if hero got hit by FireEnemy's fireballs
+							checkFireballCollision(((Boss) e).getFireballs());	// Check if hero got hit by Boss's fireballs
+						}
+						
+						if (((Boss) e).getWaterWave() != null) {	// if boss has thrown fireballs
+							if(((Boss) e).getWaterWave().checkCollisionHero(this)) {
+					    		 this.loseHearts(2);
+					    		 ((Boss) e).getWaterWave().hit=true;
+					    	 }
+						}
+
+					} else if (e instanceof WaterEnemy) {	// if enemy is water enemy
+						if (((WaterEnemy) e).getWaterWave() != null) {	// if the enemy has done a water wave
+							if(((WaterEnemy) e).getWaterWave().checkCollisionHero(this)) {
+					    		 this.loseHearts(2);
+					    		 ((WaterEnemy) e).getWaterWave().hit=true;
+					    	 }
 						}
 					}
 				}
@@ -518,7 +537,7 @@ public class Hero extends MovingImage {
 		
 //		System.out.println("hit by spike before spike check " + hitBySpike);
 		
-		for (int i = 0; i < spikes.size(); i++) {
+		for (int i = 0; i < spikes.size(); i++) {	// Check if hero got hit by spikes
 			if (spikes.get(i).intersects(this)) {
 //				System.out.println(i + " spike check: " + hitBySpike);
 				if (hitBySpike == false) {
@@ -564,7 +583,8 @@ public class Hero extends MovingImage {
 			
 		}
 		
-		// CHECK IF THE ENEMIES ARE GOING TO GET HURT
+		
+		// Check if fireball gets hit on a platform
 		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
 			for (int i = 0; i < fireballs.size(); i++) {
 				Fireball f = fireballs.get(i);
@@ -573,37 +593,59 @@ public class Hero extends MovingImage {
 					if (f.checkCollisionShape(platforms)) {
 						fireballs.set(i, null);
 					}
-					
-					if (enemies!= null) {
-						for (Enemy e: enemies) {
-							if (e!= null) {
-								if(f.checkCollisionEnemy(e)) {
-									fireballs.set(i, null);
-									e.loseHealth(10);
-								}
-							}
-						}
-					}
-					
 				}
 			}
 		}
 		
-		if (wave != null) {	// if there is a wave
+		if (wave != null) {
 			wave.act();
-			if (enemies != null) {
-				for (Enemy e: enemies) {
-					if (e != null) {
-						if (wave.checkCollisionEnemy(e)) {
-							e.loseHealth(20);
-						}
-					}
-				}
-			}
 			if (wave.canRemove()) {
 				wave = null;
 			}
 		}
+		
+		
+		
+		// CHECK IF THE ENEMIES ARE GOING TO GET HURT
+//		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
+//			for (int i = 0; i < fireballs.size(); i++) {
+//				Fireball f = fireballs.get(i);
+//				if (f != null) {
+//					f.act();
+//					if (f.checkCollisionShape(platforms)) {
+//						fireballs.set(i, null);
+//					}
+//					
+//					if (enemies!= null) {
+//						for (Enemy e: enemies) {
+//							if (e!= null) {
+//								if(f.checkCollisionEnemy(e)) {
+//									fireballs.set(i, null);
+//									e.loseHealth(10);
+//								}
+//							}
+//						}
+//					}
+//					
+//				}
+//			}
+//		}
+		
+//		if (wave != null) {	// if hero does a wave, deal damage to enemy
+//			wave.act();
+//			if (enemies != null) {
+//				for (Enemy e: enemies) {
+//					if (e != null) {
+//						if (wave.checkCollisionEnemy(e)) {
+//							e.loseHealth(20);
+//						}
+//					}
+//				}
+//			}
+//			if (wave.canRemove()) {
+//				wave = null;
+//			}
+//		}
 		
 
 			

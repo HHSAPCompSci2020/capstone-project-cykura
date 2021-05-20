@@ -57,11 +57,28 @@ public class WaterEnemy extends Enemy {
 			     }
 			     if (waterwave!=null) {
 			    	 waterwave.act();
-			    	 if(waterwave.checkCollisionHero(h)) {
-			    		 h.loseHearts(2);
-			    		 waterwave.hit=true;
-			    	 }
 			    	 if (waterwave.canRemove()) waterwave=null;
+			     }
+			     
+			     if (h.getFireballs() != null) {	// check if enemy got hit by fireball
+				     for(int i=0;i<h.getFireballs().size();i++) {
+				    	 Fireball f = h.getFireballs().get(i);
+				    	 if(f!=null) {
+				    		 if (f.checkCollisionEnemy(this)) {	// If the hero's fireball hits an enemy
+				    			 this.loseHealth(10); 	// Enemy loses 10 hp
+				    			 h.getFireballs().set(i, null);
+			    			 }
+
+				    	 }
+				     }
+			     }
+			     
+			     if (h.getWaterWave() != null) {	// hero has done a water wave
+			    	 if (h.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
+			    		 h.getWaterWave().hit = true;
+			    		 this.loseHealth(20);
+			    		 
+			    	 }
 			     }
 			} else {
 				float angle = (float) Math.atan2(spawnPoint.y - y, spawnPoint.x - x);
@@ -83,5 +100,9 @@ public class WaterEnemy extends Enemy {
 	public void draw(PApplet g) {
 		super.draw(g);
 		if(waterwave!=null) waterwave.draw(g);
+	}
+	
+	public WaterWave getWaterWave() {
+		return waterwave;
 	}
 }
