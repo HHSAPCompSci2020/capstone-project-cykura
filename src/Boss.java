@@ -39,6 +39,19 @@ public class Boss extends Enemy {
 		if(health>0) {
 			if(Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(x-hero.x)<500&&Math.abs(y-hero.y)<300) {
 				cnt++;
+				if(rotation==1) {
+					if(Math.random()>0.5) {
+						x+=100;
+						spawnPoint.setLocation(spawnPoint.x+100, spawnPoint.y);
+					}
+					else {
+						x-=100;
+						spawnPoint.setLocation(spawnPoint.x-100, spawnPoint.y);
+					}
+					rotation = 0;
+					waterCnt=0;
+					fireballCnt = 0;
+				}
 				//System.out.println(cnt);
 				double x1 = hero.x;
 			    double y1 = hero.y;
@@ -68,7 +81,7 @@ public class Boss extends Enemy {
 						cooldown--;
 					}
 					//Use WaterWave
-					if(Math.random()>0.98&&cooldown<=0&&w==null) {
+					if(Math.random()>0.98&&cooldown<=0&&w==null&&waterCnt<=2) {
 						w = new WaterWave((int)(x+20),(int)(y+30),50,250,5);
 						waterCnt++;
 						//System.out.println(x+" "+y);
