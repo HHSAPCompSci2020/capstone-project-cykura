@@ -83,6 +83,10 @@ public class Boss extends Enemy {
 				
 				if(w!=null) {
 					w.act();
+					if(w.checkCollisionHero(hero)) {
+						hero.loseHearts(2);
+						w = null;
+					}
 					if(w.canRemove()) {
 						w = null;
 					}
