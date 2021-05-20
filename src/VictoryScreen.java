@@ -27,7 +27,7 @@ public class VictoryScreen extends Screen {
 		//surface.rect(10, 10, 780, 500);	// x = 10, y = 10, w = 780, h = 500
 		surface.fill(0);
 		surface.textSize(40);
-		String str = "YOU WIN";
+		String str = "YOU WIN\nTime: "+ (int)(GameScreen.currTime/1000)+" s";
 		float w = surface.textWidth(str);
 		surface.text(str, 400 - w/2, 65);
 		

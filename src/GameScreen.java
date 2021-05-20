@@ -56,7 +56,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Spike> spikes;
 	private ArrayList<Platform> movingPlatforms;
 	private long startTime;
-	private long currTime;
+	public static long currTime;
 	private PFont f;
 	/**
 	 * Default Constructor
