@@ -458,7 +458,7 @@ public class GameScreen extends Screen {
 		}
 		//Parkour2
 		s.add(new Spike(spike,2510,305,40,40));
-		s.add(new Spike(spike,2550,305,40,40));
+		s.add(new Spike(spike,2560,305,40,40));
 		s.add(new Spike(spike,2800,305,40,40));
 		s.add(new Spike(spike,2950,305,40,40));
 		s.add(new Spike(spike,3160,305,40,40));
