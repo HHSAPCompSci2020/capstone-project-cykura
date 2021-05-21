@@ -1,3 +1,4 @@
+
 import processing.core.PImage;
 
 /**
@@ -22,8 +23,8 @@ public class Platform extends MovingImage {
 	**/
 	public Platform(PImage img, int x, int y, int w, int h, int fx, int fy, double vx, double vy) {
 		super(img, x, y, w, h);
-		this.fx=fx;
-		this.fy=fy;
+		this.fx=fx+1;
+		this.fy=fy+1;
 		this.vx=vx;
 		this.vy=vy;
 		sx=x-1;
@@ -38,7 +39,11 @@ public class Platform extends MovingImage {
 		super.moveByAmount(vx, vy);
 	}
 	private void atEnd() {
-		if(super.x>=fx&&super.y>=fy||super.x<=sx&&super.y<=sy) {//only bounces back at end. need to bounce at beginning as well
+		if(super.x>=fx||super.x<=sx) {
+			vx=-vx;
+			vy=-vy;
+		}
+		if(super.y>=fy||super.y<=sy) {
 			vx=-vx;
 			vy=-vy;
 		}

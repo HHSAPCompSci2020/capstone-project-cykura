@@ -460,7 +460,7 @@ public class GameScreen extends Screen {
 		s.add(new Spike(spike,2510,305,40,40));
 		s.add(new Spike(spike,2560,305,40,40));
 		s.add(new Spike(spike,2800,305,40,40));
-		s.add(new Spike(spike,2950,305,40,40));
+		s.add(new Spike(spike,2910,305,40,40));
 		s.add(new Spike(spike,3160,305,40,40));
 		s.add(new Spike(spike,3300,265,40,40));
 		return s;
