@@ -43,7 +43,7 @@ public class Platform extends MovingImage {
 			vx=-vx;
 			vy=-vy;
 		}
-		if(super.y>=fy||super.y<=sy) {
+		else if(super.y>=fy||super.y<=sy) {
 			vx=-vx;
 			vy=-vy;
 		}
