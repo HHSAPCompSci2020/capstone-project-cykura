@@ -9,9 +9,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class MusicPlayer{
     private Clip clip;
     private AudioInputStream audioInputStream;
-    private static  String filePath;
-	public MusicPlayer() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-		filePath="music\\StartScreenMusic.wav";
+    private static String filePath;
+	public MusicPlayer(String file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		filePath=file;
 	    // create AudioInputStream object
 	    audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 	        
@@ -22,6 +22,7 @@ public class MusicPlayer{
 	    clip.open(audioInputStream);
 	         
 	    clip.loop(Clip.LOOP_CONTINUOUSLY);
+	    clip.stop();
 	}
 	public void play() {
         clip.start();
@@ -30,7 +31,4 @@ public class MusicPlayer{
     {
         clip.stop();
     }
-	public void changeMusic(String file) {
-		filePath=file;
-	}
 }

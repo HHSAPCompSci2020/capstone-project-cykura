@@ -38,14 +38,19 @@ public class Main {
 		canvas.requestFocus();
 		try
         {
-            MusicPlayer audioPlayer = new MusicPlayer();
-            audioPlayer.play();
-            while(true) {
-            	if(drawing.gameScreenActive()) {
-            		audioPlayer.changeMusic("music\\NormalTheme.wav");
-            	}
+            MusicPlayer startMusic = new MusicPlayer("music\\StartScreenMusic.wav");
+            MusicPlayer normalMusic = new MusicPlayer("music\\NormalTheme.wav");
+            MusicPlayer enemyMusic = new MusicPlayer("music\\EnemyMusic.wav");
+            startMusic.play();
+            while(!drawing.gameScreenActive()) {
             	
             }
+            startMusic.pause();
+            normalMusic.play();
+            while(true) {
+            	
+            }
+            
         } 
           
         catch (Exception ex) 
