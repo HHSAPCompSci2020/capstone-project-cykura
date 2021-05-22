@@ -177,6 +177,10 @@ public class GameScreen extends Screen {
 		surface.fill(205, 133, 63);
 		surface.rect(view_x + 630, view_y, 170, 40);		// Brown Rectangle
 		
+		for (Checkpoint c: checkpoints) {
+			c.draw(surface);
+		}
+		
 		if (hero.getHearts() > 0) {
 			changeHeroImage(hero);
 			hero.draw(surface);
@@ -254,9 +258,7 @@ public class GameScreen extends Screen {
 			e.draw(surface);
 		}
 		
-		for (Checkpoint c: checkpoints) {
-			c.draw(surface);
-		}
+
 		
 //		
 		if(!flipped) {
@@ -435,7 +437,7 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Checkpoint> generateCheckpoints() {
 		ArrayList<Checkpoint> c = new ArrayList<Checkpoint>();
-		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 280, 50));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 400, 270));
 		return c;
 	}
 	
