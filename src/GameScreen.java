@@ -13,7 +13,6 @@ public class GameScreen extends Screen {
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage heart;
-	public static PImage movingPlatform;
 	
 	public static PImage fireToken;
 	public static PImage fireTokenUsed;
@@ -32,7 +31,7 @@ public class GameScreen extends Screen {
 //	public static Token fistToken1;
 	
 	public static PImage spike;
-	
+	public static PImage movingPlatform;
 
 	
 //	private PImage bg;
@@ -124,6 +123,7 @@ public class GameScreen extends Screen {
 		fistTokenUsed = surface.loadImage("sprites\\tokens\\FistTokenSpriteUsed.png");
 		
 		spike = surface.loadImage("sprites\\SpikeSprite.png");
+		movingPlatform = surface.loadImage("sprites\\PlatformSprite.png");
 		spikes = generateSpikes();
 		
 		movingPlatform = surface.loadImage("sprites\\PlatformSprite.png");
@@ -405,7 +405,7 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(3600, 235,75,50));
 		//Parkour3
 		//Moving Platforms
-//		p.add(new Rectangle(4300,345,800,50)); //temp
+		//p.add(new Rectangle(4300,345,800,50)); //temp
 		//Grass Enemy
 		p.add(new Rectangle(5300,345,250,50));
 		p.add(new Rectangle(5650,345,250,50));		
@@ -415,7 +415,7 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(5725, 235,75,50));
 		p.add(new Rectangle(5400, 235,75,50));
 		//Parkour4
-//		p.add(new Rectangle(6100,345,800,50));	// temp
+		p.add(new Rectangle(6100,345,800,50));	// temp
 		//Final Boss
 		p.add(new Rectangle(7100,345,800,50));	
 		p.add(new Rectangle(7450,245,100,100));
@@ -443,7 +443,10 @@ public class GameScreen extends Screen {
 //		System.out.println(view_x);
 //		System.out.println(view_y);
 		t.add(new Token(surface.loadImage("sprites\\tokens\\FistTokenSprite.png"), (int) (300), (int) 10));
-		t.add(new Token(heart,3100,250));
+		t.add(new Token(heart,1700,305));
+		t.add(new Token(heart,3500,305));
+		t.add(new Token(heart,5300,305));
+		t.add(new Token(heart,7100,305));
 		return t;
 	}
 	
@@ -468,11 +471,9 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<MovingPlatform> generateMovingPlatforms(){
 		ArrayList<MovingPlatform> m=new ArrayList<MovingPlatform>();
-//		m.add(new MovingPlatform(movingPlatform,200,345,100,50,400,345,2,0));
-		m.add(new MovingPlatform(movingPlatform, 4100,345,200,50, 4600,345,3,0)); //temp
+		m.add(new MovingPlatform(movingPlatform, 4200,345,200,50, 4400,345,3,0)); 
 		m.add(new MovingPlatform(movingPlatform, 4600,345,200,50, 5100,345,-3,0)); //temp
 		m.add(new MovingPlatform(movingPlatform, 5900, 345, 200, 50, 6900, 345, 3, 0));	// temp
-
 		return m;
 	}
 	/**
