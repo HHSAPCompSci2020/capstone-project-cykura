@@ -458,8 +458,9 @@ public class GameScreen extends Screen {
 	private ArrayList<MovingPlatform> generateMovingPlatforms(){
 		ArrayList<MovingPlatform> m=new ArrayList<MovingPlatform>();
 //		m.add(new MovingPlatform(movingPlatform,200,345,100,50,400,345,2,0));
-		m.add(new MovingPlatform(movingPlatform, 4100,345,200,50, 5100,345,2,0)); //temp
-		m.add(new MovingPlatform(movingPlatform, 5900, 345, 200, 50, 6900, 345, 2, 0));	// temp
+		m.add(new MovingPlatform(movingPlatform, 4100,345,200,50, 4600,345,3,0)); //temp
+		m.add(new MovingPlatform(movingPlatform, 4600,345,200,50, 5100,345,-3,0)); //temp
+		m.add(new MovingPlatform(movingPlatform, 5900, 345, 200, 50, 6900, 345, 3, 0));	// temp
 
 		return m;
 	}
