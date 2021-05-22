@@ -31,6 +31,8 @@ public class GameScreen extends Screen {
 	
 	public static PImage spike;
 	public static PImage movingPlatform;
+	
+	public static PImage checkPoint;
 
 	
 //	private PImage bg;
