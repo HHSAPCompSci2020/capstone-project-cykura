@@ -314,15 +314,6 @@ public class GameScreen extends Screen {
 					}
 				}
 			}
-			
-//			System.out.println();
-//			for (Enemy e: enemies) {
-//				if (e!= null) {
-//					System.out.println(e);
-//					hero.punch(e);
-//				}
-//			}
-//			surface.removeKey(KeyEvent.VK_SPACE);
 		}
 		
 		if (hero.getHearts() > 0) {
@@ -495,19 +486,7 @@ public class GameScreen extends Screen {
 			view_y-=h_b-hero.y-hero.height;
 		}
 		
-//		ArrayList<Heart> h = new ArrayList<Heart>();
-//		for (int i = 0; i < hero.getHearts(); i++) {
-//			if (i == 0) {
-//				h.add(new Heart(GameScreen.heart, (int) (view_x + 50), (int) (view_y + 50)));
-//			} else {
-//				//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
-//				h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y));
-//			}
-//		}
-//		
-//		for (Heart he : h) {
-//			he.draw(surface);
-//		}
+
 		if(flipped) {
 			surface.translate(view_x,-view_y);
 		}
@@ -515,18 +494,7 @@ public class GameScreen extends Screen {
 			surface.translate(-view_x,-view_y);
 		}
 	}
-	
-//	private ArrayList<Heart> generateHearts() {
-//		ArrayList<Heart> hearts = new ArrayList<Heart>();
-//		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), DRAWING_WIDTH/2-Heart.HEART_WIDTH/2 - 200, 10));
-//		hearts.add(new Heart(surface.loadImage("sprites\\FullHeart.png"), (int) (hearts.get(0).x + 35), (int) (hearts.get(0).y)));
-//		
-//		return hearts;
-//	}
-	
-//	private void displayHearts(Hero h) {
-//		
-//	}
+
 	
 
 }

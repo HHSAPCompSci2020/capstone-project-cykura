@@ -626,48 +626,6 @@ public class Hero extends MovingImage {
 		}
 		
 		
-		
-		// CHECK IF THE ENEMIES ARE GOING TO GET HURT
-//		if (this.fireballs != null && canThrowFireball) { // If the Hero has thrown some fireballs
-//			for (int i = 0; i < fireballs.size(); i++) {
-//				Fireball f = fireballs.get(i);
-//				if (f != null) {
-//					f.act();
-//					if (f.checkCollisionShape(platforms)) {
-//						fireballs.set(i, null);
-//					}
-//					
-//					if (enemies!= null) {
-//						for (Enemy e: enemies) {
-//							if (e!= null) {
-//								if(f.checkCollisionEnemy(e)) {
-//									fireballs.set(i, null);
-//									e.loseHealth(10);
-//								}
-//							}
-//						}
-//					}
-//					
-//				}
-//			}
-//		}
-		
-//		if (wave != null) {	// if hero does a wave, deal damage to enemy
-//			wave.act();
-//			if (enemies != null) {
-//				for (Enemy e: enemies) {
-//					if (e != null) {
-//						if (wave.checkCollisionEnemy(e)) {
-//							e.loseHealth(20);
-//						}
-//					}
-//				}
-//			}
-//			if (wave.canRemove()) {
-//				wave = null;
-//			}
-//		}
-		
 
 			
 		
@@ -691,8 +649,7 @@ public class Hero extends MovingImage {
 						canDash = true;
 //						tokens.set(i, null);
 					}
-				}
-				else if(tokens.get(i).getImage().equals(GameScreen.heart)&&tokens.get(i).intersects(this)) {
+				} else if(tokens.get(i).getImage().equals(GameScreen.heart) && tokens.get(i).intersects(this)) {
 					hearts++;
 					tokens.set(i, null);
 				}
