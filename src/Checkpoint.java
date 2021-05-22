@@ -26,8 +26,9 @@ public class Checkpoint extends Rectangle2D.Double {
 	
 	public void act(Hero h) {
 		if (this.intersects(h) && image != activeImage) {
-			System.out.println("h");
+//			System.out.println("h");
 			image = activeImage;
+			h.setCheckpoint(this.x, this.y);
 		}
 	}
 	

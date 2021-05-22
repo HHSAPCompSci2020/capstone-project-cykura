@@ -16,7 +16,11 @@ public class Hero extends MovingImage {
 
 	public static final int HERO_WIDTH = 40;
 	public static final int HERO_HEIGHT = 60;
-
+	
+	private double checkpointX;
+	private double checkpointY;
+	
+	
 	private double vx, vy;
 	private double friction;
 	private double gravity;
@@ -42,7 +46,6 @@ public class Hero extends MovingImage {
 	private int fireballCoolDown;
 	private int punchCoolDown;
 	private int waterWaveCoolDown;
-//	private int spikeCD;
 	private boolean hitBySpike;
 
 	/**
@@ -57,6 +60,8 @@ public class Hero extends MovingImage {
 		super(img, x, y, HERO_WIDTH, HERO_HEIGHT);
 		vx = 0;
 		vy = 0;
+		checkpointX = x;
+		checkpointY = y;
 		onASurface = false;
 		canThrowFireball = false;
 		canWaterWave = false;
@@ -783,6 +788,28 @@ public class Hero extends MovingImage {
 			}
 		}
 	}
-
+	
+	public void setCheckpoint(double cx, double cy) {
+		checkpointX = cx;
+		checkpointY = cy;
+	}
+	
+	public void setVelocityX(double vx1) {
+		vx = vx1;
+	}
+	
+	public void setVelocityY(double vy1) {
+		vy = vy1;
+	}
+	
+	
+	public double getCheckpointX() {
+		return checkpointX;
+	}
+	
+	
+	public double getCheckpointY() {
+		return checkpointY;
+	}
 
 }

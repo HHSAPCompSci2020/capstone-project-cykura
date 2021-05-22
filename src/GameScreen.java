@@ -375,9 +375,13 @@ public class GameScreen extends Screen {
 			hero.act(platforms, enemies, tokens, spikes,movingPlatforms);
 		}
 		else {
-			surface.textFont(f);
-			surface.fill(255, 0, 0);
-			surface.text("YOU LOSE", view_x+400, view_y+250);
+			hero.moveToLocation(hero.getCheckpointX(), hero.getCheckpointY());
+			hero.gainHearts(3);
+			hero.setVelocityX(0);
+			hero.setVelocityY(0);
+//			surface.textFont(f);
+//			surface.fill(255, 0, 0);
+//			surface.text("YOU LOSE", view_x+400, view_y+250);
 		}
 		
 		surface.textFont(f);
