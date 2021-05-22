@@ -32,7 +32,7 @@ public class GameScreen extends Screen {
 	public static PImage spike;
 	public static PImage movingPlatform;
 	
-	public static PImage checkPoint;
+//	public static PImage checkPoint;
 
 	
 //	private PImage bg;
@@ -54,6 +54,7 @@ public class GameScreen extends Screen {
 	public static ArrayList<Shape> platforms;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
+	private ArrayList<Checkpoint> checkpoints;
 	private ArrayList<Spike> spikes;
 	private ArrayList<MovingPlatform> movingPlatforms;
 	private long startTime;
@@ -130,6 +131,7 @@ public class GameScreen extends Screen {
 		movingPlatform = surface.loadImage("sprites\\PlatformSprite.png");
 		movingPlatforms=generateMovingPlatforms();
 		tokens = generateTokens();
+		checkpoints = generateCheckpoints();
 
 		
 		
@@ -174,6 +176,10 @@ public class GameScreen extends Screen {
 		
 		surface.fill(205, 133, 63);
 		surface.rect(view_x + 630, view_y, 170, 40);		// Brown Rectangle
+		
+		for (Checkpoint c: checkpoints) {
+			c.draw(surface);
+		}
 		
 		if (hero.getHearts() > 0) {
 			changeHeroImage(hero);
@@ -251,6 +257,8 @@ public class GameScreen extends Screen {
 			if(e!=null)
 			e.draw(surface);
 		}
+		
+
 		
 //		
 		if(!flipped) {
@@ -425,6 +433,12 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(7900,-300,1200,5000));
 		
 		return p;
+	}
+	
+	private ArrayList<Checkpoint> generateCheckpoints() {
+		ArrayList<Checkpoint> c = new ArrayList<Checkpoint>();
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 400, 270));
+		return c;
 	}
 	
 	private ArrayList<Enemy> generateEnemies() {
