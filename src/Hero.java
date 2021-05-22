@@ -627,7 +627,13 @@ public class Hero extends MovingImage {
 
 		if (Math.abs(vx) < .5)
 			vx = 0;
-
+		
+		
+		if ((int) checkpointX == 7102) {
+			if (x2 < checkpointX) {
+				x2 = checkpointX;
+			}
+		}
 		moveToLocation(x2, y2);
 
 		if (enemies != null) {		// check if the hero is going to get hurt
