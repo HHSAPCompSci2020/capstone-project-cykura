@@ -267,6 +267,7 @@ public class Hero extends MovingImage {
 	 */
 	public void charge() {
 		if (canDash) {
+			System.out.println("Charging");
 			if (chargeTime < 180)	// Max Charge Time is 3 seconds
 				chargeTime++;
 
@@ -285,24 +286,25 @@ public class Hero extends MovingImage {
 			
 //			System.out.println(canDash);
 			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
-				chargeTime = 0;
+				System.out.println("Charge Time is 180");
 				dashing = true;
 				moveAmount = 100;
 			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
-				chargeTime = 0;
+				System.out.println("Charge Time >= 120");
 				dashing = true;
 				moveAmount = 75;
 			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
-				chargeTime = 0;
+				System.out.println("Charge Time >= 60");
 				dashing = true;
 				moveAmount = 50;
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
-				chargeTime = 0;
+				System.out.println("Charge Time > 0");
 				dashing = true;
 				moveAmount = 25;
 			}
 			
 			if (chargeTime != 0) {
+				System.out.println("Charge Time is not 0");
 				Rectangle2D.Double stretchX = null;
 				if (facingDirection == 0) {	// u are facing to the right
 					stretchX = new Rectangle2D.Double(this.x + this.width, this.y, this.x + moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
@@ -311,6 +313,7 @@ public class Hero extends MovingImage {
 				}
 				
 				if (facingDirection == 0) {	// u are facing to the right
+					System.out.println("Facing right");
 					int stopX = 0;
 					for (Shape s : platforms) {
 						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
@@ -322,12 +325,15 @@ public class Hero extends MovingImage {
 						}
 					}
 					if (stopX != 0) {	// something blocks hero
+						chargeTime = 0;
 						this.moveByAmount(stopX - this.getX(), 0);
 					} else {	// nothing blocks hero
+						chargeTime = 0;
 						this.moveByAmount(moveAmount, 0);
 					}
 					
 				} else if (facingDirection == 180) {	// u are facing to the left
+					System.out.println("Facing left");
 					int stopX = 0;
 					for (Shape s : platforms) {
 						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
@@ -341,9 +347,10 @@ public class Hero extends MovingImage {
 						}
 					}
 					if (stopX != 0) {	// something blocks hero
-						
+						chargeTime = 0;
 						this.moveByAmount((-1)*(stopX - this.getX()), 0);
 					} else {	// nothing blocks hero
+						chargeTime = 0;
 						this.moveByAmount((-1)*moveAmount, 0);
 					}
 						
