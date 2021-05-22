@@ -134,6 +134,16 @@ public class GameScreen extends Screen {
 		
 	}
 	
+	public void changeHeroImage(Hero h) {
+		if (h.isInvincible()) {	// Hero is invincibile
+			h.setImage(surface.loadImage("sprites\\StandingHeroSpriteInvincible.png"));
+		} else {
+			h.setImage(surface.loadImage("sprites\\StandingHeroSprite.png"));
+		}
+		 
+	}
+		
+	
 	/**
 	 * Draws everything and makes changes in the game
 	 */
@@ -165,6 +175,7 @@ public class GameScreen extends Screen {
 		surface.rect(view_x + 630, view_y, 170, 40);		// Brown Rectangle
 		
 		if (hero.getHearts() > 0) {
+			changeHeroImage(hero);
 			hero.draw(surface);
 			ArrayList<Heart> h = new ArrayList<Heart>();
 			for (int i = 0; i < hero.getHearts(); i++) {

@@ -22,7 +22,9 @@ public class Hero extends MovingImage {
 	private double gravity;
 
 	private int facingDirection;
+	
 	private int invincibilityTime;
+	private boolean isInvincible;
 
 	private ArrayList<Fireball> fireballs;
 	private WaterWave wave;
@@ -69,7 +71,7 @@ public class Hero extends MovingImage {
 		facingDirection = 0; // right direction
 		dashing = false;
 
-
+		isInvincible = false;
 		fireballs = new ArrayList<Fireball>();
 
 	}
@@ -80,7 +82,7 @@ public class Hero extends MovingImage {
 	 **/
 	public void jump() {
 		if (onASurface) {
-				vy -= 11;
+			vy -= 11;
 		}
 	}
 
@@ -227,6 +229,10 @@ public class Hero extends MovingImage {
 
 	}
 	
+	public boolean isInvincible() {
+		return isInvincible;
+	}
+	
 	public int getPunchCoolDown() {
 		return punchCoolDown;
 	}
@@ -288,14 +294,17 @@ public class Hero extends MovingImage {
 			if (chargeTime == 120) {	// equal to 2 sec (Max charge amount)
 //				System.out.println("Charge Time is 180");
 				dashing = true;
+				isInvincible = true;
 				moveAmount = 150;
 			} else if (chargeTime >= 60) {	// greater than equal to 1 sec
 //				System.out.println("Charge Time >= 120");
 				dashing = true;
+				isInvincible = true;
 				moveAmount = 100;
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
 //				System.out.println("Charge Time > 0");
 				dashing = true;
+				isInvincible = true;
 				moveAmount = 50;
 			}
 			
@@ -390,6 +399,14 @@ public class Hero extends MovingImage {
 	public int getHearts() {
 		return hearts;
 	}
+	
+	public int getInvincibilityTime() {
+		return invincibilityTime;
+	}
+	
+	public void setImage(PImage img) {
+		this.image = img;
+	}
 
 	/**
 	 * Draws the Hero and displays its number of hearts above the Hero.
@@ -397,14 +414,13 @@ public class Hero extends MovingImage {
 	 * @param g The PApplet to draw the Hero, its thrown fireballs, and water wave
 	 **/
 	public void draw(PApplet g) {
+
 		super.draw(g); 	// draws hero
 		for (Fireball f : fireballs) {	// draws fireballs
 			if (f != null) {
 				f.draw(g);
 			}
 		}
-		
-		
 
 		
 		if (wave != null) {
@@ -459,6 +475,8 @@ public class Hero extends MovingImage {
 		
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
+		} else {
+			isInvincible = false;
 		}
 		
 //		System.out.println(punchCoolDown);
@@ -470,6 +488,10 @@ public class Hero extends MovingImage {
 
 		if (onASurface) {
 			dashing = false;
+			if (invincibilityTime == 0) {
+				isInvincible = false;
+			}
+//			isInvincible = false;
 		}
 		
 		
@@ -716,11 +738,12 @@ public class Hero extends MovingImage {
 	 * @param enemy The enemy which can attack the Hero and cause damage.
 	 **/
 	public void checkEnemyCollision(Enemy e1) {
-		if (invincibilityTime <= 0) {
+		if (!isInvincible) {
 			if (this.intersects(e1)) {
 				hearts--;
 				jump();
 				invincibilityTime = 120;
+				isInvincible = true;
 			}
 		}
 	}
