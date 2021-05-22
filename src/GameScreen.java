@@ -444,7 +444,7 @@ public class GameScreen extends Screen {
 //		System.out.println(view_x);
 //		System.out.println(view_y);
 		t.add(new Token(surface.loadImage("sprites\\tokens\\FistTokenSprite.png"), (int) (300), (int) 10));
-		
+		t.add(new Token(heart,3100,250));
 		return t;
 	}
 	
