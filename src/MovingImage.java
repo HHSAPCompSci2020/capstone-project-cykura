@@ -79,5 +79,9 @@ public class MovingImage extends Rectangle2D.Double {
 	}
 	
 	
+	public void setImage(PImage img) {
+		image = img;
+	}
+	
 }
 
