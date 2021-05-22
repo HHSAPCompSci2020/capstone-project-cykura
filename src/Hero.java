@@ -439,9 +439,6 @@ public class Hero extends MovingImage {
 			waterWaveCoolDown--;
 		}
 		
-//		if (spikeCD > 0) {
-//			spikeCD--;
-//		}
 		
 		if (invincibilityTime > 0) {
 			invincibilityTime--;
@@ -458,10 +455,6 @@ public class Hero extends MovingImage {
 			dashing = false;
 		}
 		
-//		if (hitBySpike && !onASurface) {
-//			hitBySpike = false;
-//			hearts--;
-//		}
 		
 
 		// ***********Y AXIS***********
@@ -585,27 +578,13 @@ public class Hero extends MovingImage {
 				if (hitBySpike == false) {
 //					System.out.println("hit by spike is now true");
 					hitBySpike = true;
-					
 				}
 			}
 			
 		}
 		
-		/*if (hitBySpike) {
-			if(spikeCD<=0) {
-				spikeCD = 30;
-				hearts--;
-				if (dashing) {
-					dashing = false;
-				}
-				vy=-15;
-			}
-			hitBySpike = false;
-//			jump();
-			
-		}*/
-		if (hitBySpike) {
 
+		if (hitBySpike) {
 			hearts--;
 			if (dashing) {
 				dashing = false;
