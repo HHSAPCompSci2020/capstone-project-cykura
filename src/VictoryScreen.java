@@ -27,11 +27,20 @@ public class VictoryScreen extends Screen {
 		//surface.rect(10, 10, 780, 500);	// x = 10, y = 10, w = 780, h = 500
 		surface.fill(0);
 		surface.textSize(40);
-		String str = "YOU WIN\nTime: "+ (int)(GameScreen.currTime/1000)+" s";
+		int time = (int)(GameScreen.currTime/1000);
+		String str = "YOU WIN\nTime: "+ time +" s";
 		float w = surface.textWidth(str);
 		surface.text(str, 400 - w/2, 65);
-		
-		
+		if(time<70) {
+			str = "Good Work Your Grade: A+";
+		}
+		else if(time<100) {
+			str = "Well Done Your Grade: A";
+		}
+		else {
+			str = "Good Job Your Grade: B";
+		}
+		surface.text(str, 200, 200);
 		surface.textSize(30);
 		surface.popStyle();
 
