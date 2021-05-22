@@ -322,6 +322,12 @@ public class GameScreen extends Screen {
 			hero.gainHearts(1);
 		}
 		
+		if (surface.isPressed(KeyEvent.VK_Q)) {
+			System.out.println("x " + hero.getX());
+			System.out.println("y " + hero.getY());
+			System.out.println();
+		}
+		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (int i = 0; i < enemies.size(); i++) {
 				if (enemies.get(i) != null) {
@@ -438,6 +444,11 @@ public class GameScreen extends Screen {
 	private ArrayList<Checkpoint> generateCheckpoints() {
 		ArrayList<Checkpoint> c = new ArrayList<Checkpoint>();
 		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 400, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 1704, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 3505, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 5304, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 7102, 270));
+
 		return c;
 	}
 	
