@@ -309,23 +309,23 @@ public class Hero extends MovingImage {
 			}
 			
 			if (chargeTime != 0) {
-//				System.out.println("Charge Time is not 0");
-//				System.out.println("MoveAmount: " + moveAmount);
-//				System.out.println("Inital X: " + this.x);
-//				System.out.println("Inital Y: " + this.x);
-//				System.out.println("Facing Direction: " + facingDirection);
+				System.out.println("Charge Time is not 0");
+				System.out.println("MoveAmount: " + moveAmount);
+				System.out.println("Inital X: " + this.x);
+				System.out.println("Inital Y: " + this.x);
+				System.out.println("Facing Direction: " + facingDirection);
 				double movementEndX = 0;
 				double movementInitialX = 0;
 				if (facingDirection == 0) {	// u are facing to the right
 					movementInitialX = (this.x + this.getWidth());
 					movementEndX = (this.x + this.getWidth() + moveAmount);
-//					System.out.println("Movement Initial X: " + movementEndX);
-//					System.out.println("Initial Movement End X: " + movementEndX);
+					System.out.println("Movement Initial X: " + movementEndX);
+					System.out.println("Initial Movement End X: " + movementEndX);
 				} else if (facingDirection == 180) {	// u are facing to the left
 					movementInitialX = (this.x);
 					movementEndX = (this.x - moveAmount);
-//					System.out.println("Movement Initial X: " + movementEndX);
-//					System.out.println("Initial Movement End X: " + movementEndX);
+					System.out.println("Movement Initial X: " + movementEndX);
+					System.out.println("Initial Movement End X: " + movementEndX);
 				}
 				
 				if (facingDirection == 0) {	// u are facing to the right
@@ -335,7 +335,7 @@ public class Hero extends MovingImage {
 						double platformBottomY = s.getBounds().getY() + s.getBounds().getHeight();
 //						System.out.println("PlatformLeftX " + platformLeftX);
 						if (platformLeftX < movementEndX && platformLeftX >= movementInitialX && platformBottomY > this.y) {
-//							System.out.println("Platform Left X " + platformLeftX);
+							System.out.println("Platform Left X " + platformLeftX);
 							movementEndX = platformLeftX;	
 						}			
 					}
@@ -345,7 +345,7 @@ public class Hero extends MovingImage {
 						double platformBottomY = m.getBounds().getY() + m.getBounds().getHeight();
 //						System.out.println("PlatformLeftX " + platformLeftX);
 						if (platformLeftX < movementEndX && platformLeftX >= movementInitialX && platformBottomY > this.y) {
-//							System.out.println("Platform Left X " + platformLeftX);
+							System.out.println("MovingPlatform Left X " + platformLeftX);
 							movementEndX = platformLeftX;	
 						}
 					}
@@ -363,7 +363,7 @@ public class Hero extends MovingImage {
 						double platformRightX = (s.getBounds().getX() + s.getBounds().getWidth());
 						double platformBottomY = s.getBounds().getY() + s.getBounds().getHeight();
 						if(platformRightX <= movementInitialX && platformRightX > movementEndX && platformBottomY > this.y) {	
-//							System.out.println("PlatformRightX " + platformRightX);
+							System.out.println("PlatformRightX " + platformRightX);
 							movementEndX = platformRightX;
 						}			
 					}
@@ -372,7 +372,7 @@ public class Hero extends MovingImage {
 						double platformRightX = (m.getBounds().getX() + m.getBounds().getWidth());
 						double platformBottomY = m.getBounds().getY() + m.getBounds().getHeight();
 						if(platformRightX <= movementInitialX && platformRightX > movementEndX && platformBottomY > this.y) {	
-//							System.out.println("PlatformRightX " + platformRightX);
+							System.out.println("MovingPlatformRightX " + platformRightX);
 							movementEndX = platformRightX;
 						}			
 					}
