@@ -11,7 +11,7 @@ public class MusicPlayer{
     private AudioInputStream audioInputStream;
     private static  String filePath;
 	public MusicPlayer() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-		filePath="music\\NormalTheme.wav";
+		filePath="music\\StartScreenMusic.wav";
 	    // create AudioInputStream object
 	    audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 	        
@@ -30,4 +30,7 @@ public class MusicPlayer{
     {
         clip.stop();
     }
+	public void changeMusic(String file) {
+		filePath=file;
+	}
 }
