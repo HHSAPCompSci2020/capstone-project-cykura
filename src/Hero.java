@@ -279,7 +279,7 @@ public class Hero extends MovingImage {
 	 * and how long it is charged.
 	 * 
 	 **/
-	public void dash(ArrayList<Shape> platforms, ArrayList<MovingPlatform> movingPlatforms) {
+	public void dash(ArrayList<Shape> platforms, ArrayList<MovingPlatform> movingPlatforms, ArrayList<Enemy> enemies) {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
 			int moveAmount = 0;
