@@ -692,6 +692,10 @@ public class Hero extends MovingImage {
 //						tokens.set(i, null);
 					}
 				}
+				else if(tokens.get(i).getImage().equals(GameScreen.heart)&&tokens.get(i).intersects(this)) {
+					hearts++;
+					tokens.set(i, null);
+				}
 			}
 
 		}
