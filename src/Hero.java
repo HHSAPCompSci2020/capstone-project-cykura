@@ -103,15 +103,29 @@ public class Hero extends MovingImage {
 	 */
 	public void throwFireball() {
 		if (canThrowFireball && fireballCoolDown <=0) {
-			if (facingDirection == 0) { // Facing to the right
-				Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
-				fireballs.add(f);
-				fireballCoolDown = 30;
-			} else { // Facing to the left
-				Fireball f = new Fireball(GameScreen.fireball, (int) (x - 10), (int) (y + 20), 20, 20, -5, 0);
-				fireballs.add(f);
-				fireballCoolDown = 30;
+			if (!GameScreen.flipped) {
+				if (facingDirection == 0) { // Facing to the right
+					Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
+					fireballs.add(f);
+					fireballCoolDown = 30;
+				} else { // Facing to the left
+					Fireball f = new Fireball(GameScreen.fireball, (int) (x - 10), (int) (y + 20), 20, 20, -5, 0);
+					fireballs.add(f);
+					fireballCoolDown = 30;
+				}
+			} else {
+				if (facingDirection == 0) { // Facing to the right
+					Fireball f = new Fireball(GameScreen.fireball, (int) (x - 10), (int) (y + 20), 20, 20, -5, 0);
+					fireballs.add(f);
+					fireballCoolDown = 30;
+				} else { // Facing to the left
+					Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
+					fireballs.add(f);
+					fireballCoolDown = 30;
+				}
+
 			}
+
 		}
 	}
 	
@@ -564,7 +578,7 @@ public class Hero extends MovingImage {
 		// System.out.println(vx);
 		Rectangle2D.Double strechX = new Rectangle2D.Double(Math.min(x, x2), y2, width + Math.abs(vx), height);
 
-		if (vx > 0) {
+		if (vx > 0) {	// moving right
 			Shape rightSurface = null;
 			for (Shape s : platforms) {
 				if (s.intersects(strechX)) {
