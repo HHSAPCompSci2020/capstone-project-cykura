@@ -24,7 +24,7 @@ public class GrassEnemy extends Enemy {
 		super(img, x, y);
 	}
 	
-	public void act(Hero hero, ArrayList<Shape> obstacles, ArrayList<Token> tokens) {
+	public void act(Hero hero, ArrayList<Shape> platforms, ArrayList<Token> tokens) {
 		if(health > 0) {
 			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(spawnPoint.x - hero.x) < 500 && Math.abs(spawnPoint.y - hero.y) < 300) {	// If u are close to spawn
 
@@ -66,6 +66,11 @@ public class GrassEnemy extends Enemy {
 				    			 this.loseHealth(10); 	// Enemy loses 10 hp
 				    			 hero.getFireballs().set(i, null);
 				    			 if(health<=0) {
+				    				 for (Shape s: platforms) {
+				    					 if (s.intersects(this)) {
+				    						 
+				    					 }
+				    				 }
 				    				 tokens.add(new Token(GameScreen.grassToken,(int)x,(int)y));
 				    			 }
 			    			 }
