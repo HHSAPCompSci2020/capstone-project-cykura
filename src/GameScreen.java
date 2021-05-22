@@ -13,6 +13,7 @@ public class GameScreen extends Screen {
 	public static final int DRAWING_HEIGHT = 500;
 	public static PImage fireball;
 	public static PImage heart;
+	public static PImage movingPlatform;
 	
 	public static PImage fireToken;
 	public static PImage fireTokenUsed;
@@ -54,7 +55,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Token> tokens;
 	private ArrayList<Spike> spikes;
-	private ArrayList<Platform> movingPlatforms;
+	private ArrayList<MovingPlatform> movingPlatforms;
 	private long startTime;
 	public static long currTime;
 	private PFont f;
@@ -124,6 +125,8 @@ public class GameScreen extends Screen {
 		
 		spike = surface.loadImage("sprites\\SpikeSprite.png");
 		spikes = generateSpikes();
+		
+		movingPlatform = surface.loadImage("sprites\\PlatformSprite.png");
 		movingPlatforms=generateMovingPlatforms();
 		tokens = generateTokens();
 
@@ -233,7 +236,7 @@ public class GameScreen extends Screen {
 		for (Spike s: spikes) {
 			s.draw(surface);
 		}
-		for (Platform m:movingPlatforms) {
+		for (MovingPlatform m:movingPlatforms) {
 			m.draw(surface);
 		}
 
@@ -340,7 +343,7 @@ public class GameScreen extends Screen {
 				}
 			}
 			for(int i=0;i<movingPlatforms.size();i++) {
-				Platform m=movingPlatforms.get(i);
+				MovingPlatform m=movingPlatforms.get(i);
 				if (m!=null) {
 					m.act();
 				}
@@ -458,9 +461,9 @@ public class GameScreen extends Screen {
 		
 	}
 	
-	private ArrayList<Platform> generateMovingPlatforms(){
-		ArrayList<Platform> m=new ArrayList<Platform>();
-		m.add(new Platform(spike,200,345,100,50,400,345,5,0));
+	private ArrayList<MovingPlatform> generateMovingPlatforms(){
+		ArrayList<MovingPlatform> m=new ArrayList<MovingPlatform>();
+		m.add(new MovingPlatform(movingPlatform,200,345,100,50,400,345,5,0));
 		return m;
 	}
 	/**

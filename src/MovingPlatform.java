@@ -7,7 +7,7 @@ import processing.core.PImage;
  * @author alex_zheng
  * @version 5.6.21
  */
-public class Platform extends MovingImage {
+public class MovingPlatform extends MovingImage {
 	private double vx, vy;
 	private int fx, fy,sx,sy;
 	
@@ -21,7 +21,7 @@ public class Platform extends MovingImage {
 	 * @param w The width of the Platform
 	 * @param h The height of the Platform
 	**/
-	public Platform(PImage img, int x, int y, int w, int h, int fx, int fy, double vx, double vy) {
+	public MovingPlatform(PImage img, int x, int y, int w, int h, int fx, int fy, double vx, double vy) {
 		super(img, x, y, w, h);
 		this.fx=fx+1;
 		this.fy=fy+1;
