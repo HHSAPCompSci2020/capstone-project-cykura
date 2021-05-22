@@ -460,6 +460,9 @@ public class Hero extends MovingImage {
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens, ArrayList<Spike> spikes, ArrayList<MovingPlatform> movingPlatforms	) {
 //		System.out.println("x :" + x);
 //		System.out.println("y: " + y);
+//		if (dashing == true) {
+//			System.out.println("isInvincble " + isInvincible);
+//		}
 		
 		if (fireballCoolDown > 0) {
 			fireballCoolDown--;
@@ -473,9 +476,9 @@ public class Hero extends MovingImage {
 		}
 		
 		
-		if (invincibilityTime > 0) {
+		if (invincibilityTime > 0) {	// if u are still invincible
 			invincibilityTime--;
-		} else {
+		} else if (invincibilityTime <= 0 && dashing == false){	// no time left for invincibility
 			isInvincible = false;
 		}
 		
@@ -488,7 +491,7 @@ public class Hero extends MovingImage {
 
 		if (onASurface) {
 			dashing = false;
-			if (invincibilityTime == 0) {
+			if (invincibilityTime == 0) {	// ur not invincibile
 				isInvincible = false;
 			}
 //			isInvincible = false;
