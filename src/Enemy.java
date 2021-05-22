@@ -82,6 +82,9 @@ public class Enemy extends MovingImage{
 			    		 if (f.checkCollisionEnemy(this)) {	// If the hero's fireball hits an enemy
 			    			 this.loseHealth(10); 	// Enemy loses 10 hp
 			    			 hero.getFireballs().set(i, null);
+			    			 if(health<=0) {
+			    				 tokens.add(new Token(GameScreen.heart,(int)x,(int)y));
+			    			 }
 		    			 }
 
 			    	 }
@@ -92,7 +95,9 @@ public class Enemy extends MovingImage{
 		    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
 		    		 hero.getWaterWave().hit = true;
 		    		 this.loseHealth(20);
-		    		 
+		    		 if(health<=0) {
+	    				 tokens.add(new Token(GameScreen.heart,(int)x,(int)y));
+	    			 }
 		    	 }
 		     }
 		     

@@ -78,6 +78,9 @@ public class FireEnemy extends Enemy {
 		    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
 		    		 hero.getWaterWave().hit = true;
 		    		 this.loseHealth(20);
+		    		 if(health<=0) {
+		    			 tokens.add(new Token(GameScreen.fireToken, (int) x, (int) y));
+	    			 }
 		    	 }
 		     }
 		     
