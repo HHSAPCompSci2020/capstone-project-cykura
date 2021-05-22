@@ -268,7 +268,7 @@ public class Hero extends MovingImage {
 	public void charge() {
 		if (canDash) {
 //			System.out.println("Charging");
-			if (chargeTime < 180)	// Max Charge Time is 3 seconds
+			if (chargeTime < 120)	// Max Charge Time is 2 seconds
 				chargeTime++;
 
 		}
@@ -285,18 +285,14 @@ public class Hero extends MovingImage {
 			int moveAmount = 0;
 			
 //			System.out.println(canDash);
-			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
+			if (chargeTime == 120) {	// equal to 2 sec (Max charge amount)
 //				System.out.println("Charge Time is 180");
 				dashing = true;
-				moveAmount = 125;
-			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
+				moveAmount = 150;
+			} else if (chargeTime >= 60) {	// greater than equal to 1 sec
 //				System.out.println("Charge Time >= 120");
 				dashing = true;
 				moveAmount = 100;
-			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
-//				System.out.println("Charge Time >= 60");
-				dashing = true;
-				moveAmount = 75;
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
 //				System.out.println("Charge Time > 0");
 				dashing = true;
@@ -419,21 +415,18 @@ public class Hero extends MovingImage {
 			g.fill(50);
 			g.rect((int)x-10, (int)y-20, 60, 5, 3);	// draws the rectangle
 			
-			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
+			if (chargeTime == 120) {	// equal to 2 sec (Max charge amount)
 				// green color fill
 				g.fill(0, 255, 0);
-			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
+			} else if (chargeTime >= 60) {	// greater than equal to 1 sec
 				// yellow color fill
 				g.fill(255, 215, 0);
-			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
-				// orange color fill
-				g.fill(255, 165, 0);
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
 				//red color fill
 				g.fill(255, 0, 0);
 			}
 
-			g.rect((int)x-10, (int)y-20, (int)(chargeTime/3.0), 5,3);
+			g.rect((int)x-10, (int)y-20, (int)(chargeTime/2.0), 5,3);
 			
 
 		}
