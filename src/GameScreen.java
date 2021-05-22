@@ -339,6 +339,10 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		for (Checkpoint c: checkpoints) {
+			c.act(hero);
+		}
+		
 		if (hero.getHearts() > 0) {
 			currTime = System.currentTimeMillis()-startTime;
 			for (int i = 0; i < enemies.size(); i++) {
@@ -443,11 +447,11 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Checkpoint> generateCheckpoints() {
 		ArrayList<Checkpoint> c = new ArrayList<Checkpoint>();
-		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 400, 270));
-		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 1704, 270));
-		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 3505, 270));
-		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 5304, 270));
-		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), 7102, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), surface.loadImage("sprites\\CheckpointSpriteActivated.png"), 400, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), surface.loadImage("sprites\\CheckpointSpriteActivated.png"), 1704, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), surface.loadImage("sprites\\CheckpointSpriteActivated.png"), 3505, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), surface.loadImage("sprites\\CheckpointSpriteActivated.png"), 5304, 270));
+		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), surface.loadImage("sprites\\CheckpointSpriteActivated.png"), 7102, 270));
 
 		return c;
 	}
