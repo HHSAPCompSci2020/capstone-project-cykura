@@ -17,6 +17,7 @@ import processing.core.PApplet;
 public class Main {
 	
 	public static void main(String args[])  {
+		
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
@@ -35,7 +36,21 @@ public class Main {
 //						+ "Arrow Keys to Move." + "\n" + "If you can't move the player, click the window" +"\n" +"Good Luck!");
 		
 		canvas.requestFocus();
-		
+		try
+        {
+            MusicPlayer audioPlayer = new MusicPlayer();
+            audioPlayer.play();
+            while(true) {
+            	
+            }
+        } 
+          
+        catch (Exception ex) 
+        {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+          
+        }
 	}
 
 }
