@@ -305,6 +305,16 @@ public class Hero extends MovingImage {
 			if (facingDirection == 0) {	// u are facing to the right
 				Rectangle2D.Double strechX = new Rectangle2D.Double(this.x + this.width, this.y, this.x + moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
 			} else if (facingDirection == 180) {	// u are facing to the left
+				Rectangle2D.Double strechX = new Rectangle2D.Double(this.x, this.y, this.x - moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
+			}
+			
+			if (facingDirection == 0) {	// u are facing to the right
+				
+				
+				
+			} else if (facingDirection == 180) {	// u are facing to the left
+				
+				
 				
 			}
 			
