@@ -160,4 +160,8 @@ public class Enemy extends MovingImage{
 		g.rect((int)x-10, (int)y-20, (int)(health*0.6), 5,3);
 	}
 	
+	public boolean heroInRange(Hero hero) {
+		return Math.abs(x-spawnPoint.x)<500&&Math.abs(y-spawnPoint.y)<300&&Math.abs(spawnPoint.x-hero.x)<500&&Math.abs(spawnPoint.y-hero.y)<300;
+	}
+	
 }
