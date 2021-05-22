@@ -6,8 +6,8 @@ import processing.core.PImage;
 public class Checkpoint extends Rectangle2D.Double {
 
 	private PImage image;
-	public static final int HEART_WIDTH = 30;
-	public static final int HEART_HEIGHT = 30;
+	public static final int CHECKPOINT_WIDTH = 30;
+	public static final int CHECKPOINT_HEIGHT = 30;
 	
 	/**
 	 * Creates a new instance of a Heart object having its left
@@ -18,7 +18,7 @@ public class Checkpoint extends Rectangle2D.Double {
 	 * @param y The Y value of the Heart's top left corner.
 	**/
 	public Checkpoint(PImage img, int x, int y) {
-		super(x,y, HEART_WIDTH, HEART_HEIGHT);
+		super(x,y, CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT);
 		image = img;
 	}
 	
@@ -41,7 +41,7 @@ public class Checkpoint extends Rectangle2D.Double {
 	 * @param g The PApplet on which the Heart is drawn.
 	**/
 	public void draw(PApplet g) {
-		g.image(image,(int)x,(int)y, HEART_WIDTH, HEART_HEIGHT);
+		g.image(image,(int)x,(int)y, CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT);
 	}
 	
 }
