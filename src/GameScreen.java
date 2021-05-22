@@ -185,15 +185,42 @@ public class GameScreen extends Screen {
 			changeHeroImage(hero);
 			hero.draw(surface);
 			ArrayList<Heart> h = new ArrayList<Heart>();
-			for (int i = 0; i < hero.getHearts(); i++) {
-				if (i == 0) {
-					h.add(new Heart(GameScreen.heart, (int) (view_x + 20), (int) (view_y + 20)));
-				} else {
-					//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
-					h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y));
+			if (!flipped) {
+//				System.out.println("!flipped");
+//				System.out.println("View X " + view_x);
+//				System.out.println("View Y " + view_y);
+//				System.out.println();
+				for (int i = 0; i < hero.getHearts(); i++) {
+					if (i == 0) {
+						h.add(new Heart(GameScreen.heart, (int) (view_x + 20), (int) (view_y + 20)));
+//						System.out.println("H x " + h.get(0).getX());
+//						System.out.println("H y " + h.get(0).getY());
+					} else {
+						//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+						h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y));
+					}
+				}
+			} else {
+//				System.out.println("flipped");
+//				System.out.println("View X " + view_x);
+//				System.out.println("View Y " + view_y);
+//				h.add(new Heart(GameScreen.heart, (int) (view_x) + 700, (int) (view_y + 400)));
+//				System.out.println();
+//				surface.translate(-800,-500);
+//				surface.rotate(surface.radians(-180));
+				for (int i = 0; i < hero.getHearts(); i++) {
+					if (i == 0) {
+						h.add(new Heart(GameScreen.heart, (int) (view_x + 20), (int) (view_y + 20)));
+//						System.out.println("H x " + h.get(0).getX());
+//						System.out.println("H y " + h.get(0).getY());
+					} else {
+						//h.add(new Heart(GameScreen.heart, 10, (int) (h.get(0).y + 20), 30, 30));
+						h.add(new Heart(GameScreen.heart, (int) (h.get(0).x+40*i), (int) h.get(0).y));
+					}
 				}
 			}
 			
+
 			for (Heart he : h) {
 				he.draw(surface);
 			}
@@ -462,12 +489,12 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
-		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
-		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1976, 60));	// Fire Enemy
-		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
-		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
-		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
-		//c.add(new Boss(surface.loadImage("sprites\\StandingFireEnemySprite.png"),280, 100));
+//		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
+//		c.add(new FireEnemy(surface.loadImage("sprites\\StandingFireEnemySprite.png"), 1976, 60));	// Fire Enemy
+//		c.add(new WaterEnemy(surface.loadImage("sprites\\StandingWaterEnemySprite.png"), 3778, 60));	// Water Enemy
+//		c.add(new GrassEnemy(surface.loadImage("sprites\\StandingGrassEnemySprite.png"), 5578, 60));	// Grass Enemy
+//		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),7484, 60));	// Boss
+		c.add(new Boss(surface.loadImage("sprites\\StandingBossSprite.png"),300, 60));	// Boss
 		return c;
 	}
 	
