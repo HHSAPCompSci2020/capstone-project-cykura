@@ -50,25 +50,28 @@ public class Main {
             normalMusic.play();
             while(true) {
             	Screen cGameScreen = drawing.getActiveScreen();
-            	if(cGameScreen instanceof GameScreen) {
+            	if(cGameScreen instanceof GameScreen) {	// if the active screen is game screen
             		ArrayList<Enemy> enemies=((GameScreen) cGameScreen).getEnemies();
             		Hero hero=((GameScreen) cGameScreen).getHero();
-            		for(int i=0;i<enemies.size();i++) {
-            			if(enemies.get(i)!=null &&enemies.get(i).heroInRange(hero)) {
-            				normalMusic.pause();
-            				enemyMusic.play();
-            				break;
-            			}
-            			else {
-            				enemyMusic.pause();
-            				normalMusic.play();
+            		boolean enemyMusicShouldPlay = false;
+            		for(int i=0; i < enemies.size(); i++) {
+            			if(enemies.get(i)!=null && enemies.get(i).heroInRange(hero)) {
+//            				System.out.println("e play");
+            				enemyMusicShouldPlay = true;
             			}
             		}
-            	}
-            	if(!drawing.gameScreenActive()) {
+            		
+            		if (enemyMusicShouldPlay) {
+            			normalMusic.pause();
+            			enemyMusic.play();
+            			enemyMusicShouldPlay = false;
+            		} else {
+            			enemyMusic.pause();
+            			normalMusic.play();
+            		}
+            	} else {	// if active screen is not game screen
             		enemyMusic.pause();
-            		normalMusic.pause();
-            		endMusic.play();
+            		normalMusic.play();
             		break;
             	}
             }
