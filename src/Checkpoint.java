@@ -7,7 +7,7 @@ public class Checkpoint extends Rectangle2D.Double {
 
 	private PImage image;
 	public static final int CHECKPOINT_WIDTH = 30;
-	public static final int CHECKPOINT_HEIGHT = 30;
+	public static final int CHECKPOINT_HEIGHT = 75;
 	
 	/**
 	 * Creates a new instance of a Heart object having its left
