@@ -373,6 +373,15 @@ public class Hero extends MovingImage {
 //					System.out.println();
 					chargeTime = 0;
 					if (movementEndX != movementInitialX) {
+						Rectangle r = new Rectangle((int) movementInitialX, (int) this.y, (int) (movementEndX - movementInitialX), (int) this.height);
+						for (Enemy e: enemies) {
+							if (e != null) {
+								if (r.intersects(e)) {
+									e.loseHealth((int)(moveAmount/2.0));
+									this.gainHearts(1);
+								}
+							}
+						}
 						this.moveByAmount((movementEndX - movementInitialX), 0);
 					}
 					
@@ -400,6 +409,17 @@ public class Hero extends MovingImage {
 //					System.out.println();
 					chargeTime = 0;
 					if (movementEndX != movementInitialX) {
+						Rectangle r = new Rectangle((int) movementEndX, (int) this.y, (int) (movementInitialX - movementEndX), (int) this.height);
+						for (Enemy e: enemies) {
+							if (e != null) {
+								if (r.intersects(e)) {
+									e.loseHealth((int)(moveAmount/2.0));
+									this.gainHearts(1);
+								}
+							}
+
+						}
+
 						this.moveByAmount((movementEndX - this.x), 0);
 					}		
 				}
