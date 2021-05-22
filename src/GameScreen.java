@@ -41,7 +41,7 @@ public class GameScreen extends Screen {
 	public static float Left_Margin = 100;
 	public static float Vertical_Margin = 40;
 	public static float Horizontal_Margin = 100;
-	public static boolean invertControls;
+//	public static boolean invertControls;
 	public static boolean flipped;
 	public float view_x;
 	public float view_y;
@@ -64,7 +64,7 @@ public class GameScreen extends Screen {
 	 */
 	public GameScreen(DrawingSurface surface) {
 		super(800,500);
-		this.surface = surface;
+		GameScreen.surface = surface;
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
@@ -132,12 +132,6 @@ public class GameScreen extends Screen {
 
 		
 		
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 	
 	/**
@@ -247,7 +241,7 @@ public class GameScreen extends Screen {
 		}
 		
 //		
-		if(!invertControls) {
+		if(!flipped) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {
 	//			System.out.println("l");
 				hero.walk(-1);
@@ -272,7 +266,7 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		if (!invertControls) {
+		if (!flipped) {
 			if (surface.isPressed(KeyEvent.VK_UP)) {
 //				System.out.println("up");
 				hero.jump();

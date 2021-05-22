@@ -62,11 +62,9 @@ public class Boss extends Enemy {
 			    float angle = (float)Math.atan2(diffY, diffX);
 			    //Inverting Screen
 				if((int)((cnt/300.0)%2)==1&&health<=125) {
-					invertControls();
 					GameScreen.flipped = true;
 				}
 				else {
-					GameScreen.invertControls = false;
 					GameScreen.flipped = false;
 				}
 				if(rotation==0) {
@@ -157,9 +155,6 @@ public class Boss extends Enemy {
 		
 	}
 
-	private void invertControls() {
-		GameScreen.invertControls = true;
-	}
 	
 	/**
 	 * Draw the boss
