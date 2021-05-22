@@ -476,6 +476,15 @@ public class Hero extends MovingImage {
 					vy = 0;
 				}
 			}
+			
+			for (MovingPlatform m: movingPlatforms) {
+				if (m.intersects(strechY)) {
+					onASurface = true;
+					standingSurface = m;
+					vy = 0;
+				}
+			}
+			
 			if (standingSurface != null) {
 				Rectangle r = standingSurface.getBounds();
 				y2 = r.getY() - height;
@@ -488,6 +497,14 @@ public class Hero extends MovingImage {
 					vy = 0;
 				}
 			}
+			
+			for (MovingPlatform m: movingPlatforms) {
+				if (m.intersects(strechY)) {
+					headSurface = m;
+					vy = 0;
+				}
+			}
+			
 			if (headSurface != null) {
 				Rectangle r = headSurface.getBounds();
 				y2 = r.getY() + r.getHeight();
@@ -513,6 +530,14 @@ public class Hero extends MovingImage {
 					vx = 0;
 				}
 			}
+			
+			for (MovingPlatform m: movingPlatforms) {
+				if (m.intersects(strechX)) {
+					rightSurface = m;
+					vx = 0;
+				}
+			}
+			
 			if (rightSurface != null) {
 				Rectangle r = rightSurface.getBounds();
 				x2 = r.getX() - width;
@@ -525,6 +550,14 @@ public class Hero extends MovingImage {
 					vx = 0;
 				}
 			}
+			
+			for (MovingPlatform m: movingPlatforms) {
+				if (m.intersects(strechX)) {
+					leftSurface = m;
+					vx = 0;
+				}
+			}
+			
 			if (leftSurface != null) {
 				Rectangle r = leftSurface.getBounds();
 				x2 = r.getX() + r.getWidth();
