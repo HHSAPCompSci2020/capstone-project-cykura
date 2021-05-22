@@ -279,7 +279,7 @@ public class Hero extends MovingImage {
 	 * and how long it is charged.
 	 * 
 	 **/
-	public void dash(ArrayList<Shape> platforms) {
+	public void dash(ArrayList<Shape> platforms, ArrayList<MovingPlatform> movingPlatforms) {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
 			int moveAmount = 0;
@@ -335,6 +335,16 @@ public class Hero extends MovingImage {
 						}			
 					}
 					
+					for (MovingPlatform m: movingPlatforms) {
+						double platformLeftX = (m.getBounds().getX());
+						double platformBottomY = m.getBounds().getY() + m.getBounds().getHeight();
+//						System.out.println("PlatformLeftX " + platformLeftX);
+						if (platformLeftX < movementEndX && platformLeftX >= movementInitialX && platformBottomY > this.y) {
+//							System.out.println("Platform Left X " + platformLeftX);
+							movementEndX = platformLeftX;	
+						}
+					}
+					
 //					System.out.println("Final Movement End X: " + movementEndX);
 //					System.out.println();
 					chargeTime = 0;
@@ -347,6 +357,15 @@ public class Hero extends MovingImage {
 					for (Shape s : platforms) {
 						double platformRightX = (s.getBounds().getX() + s.getBounds().getWidth());
 						double platformBottomY = s.getBounds().getY() + s.getBounds().getHeight();
+						if(platformRightX <= movementInitialX && platformRightX > movementEndX && platformBottomY > this.y) {	
+//							System.out.println("PlatformRightX " + platformRightX);
+							movementEndX = platformRightX;
+						}			
+					}
+					
+					for (MovingPlatform m : movingPlatforms) {
+						double platformRightX = (m.getBounds().getX() + m.getBounds().getWidth());
+						double platformBottomY = m.getBounds().getY() + m.getBounds().getHeight();
 						if(platformRightX <= movementInitialX && platformRightX > movementEndX && platformBottomY > this.y) {	
 //							System.out.println("PlatformRightX " + platformRightX);
 							movementEndX = platformRightX;

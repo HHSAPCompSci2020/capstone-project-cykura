@@ -285,7 +285,7 @@ public class GameScreen extends Screen {
 //				hero.dash();
 //			}
 		} else {
-			hero.dash(platforms);
+			hero.dash(platforms, movingPlatforms);
 		}
 		
 		if(surface.isPressed(KeyEvent.VK_A)) {
