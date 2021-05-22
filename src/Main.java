@@ -41,6 +41,9 @@ public class Main {
             MusicPlayer audioPlayer = new MusicPlayer();
             audioPlayer.play();
             while(true) {
+            	if(drawing.gameScreenActive()) {
+            		audioPlayer.changeMusic("music\\NormalTheme.wav");
+            	}
             	
             }
         } 
