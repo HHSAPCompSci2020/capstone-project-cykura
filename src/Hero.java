@@ -309,36 +309,36 @@ public class Hero extends MovingImage {
 			}
 			
 
-			if (vx > 0) {
-				Shape rightSurface = null;
-				for (Shape s : platforms) {
-					if (s.intersects(strechX)) {
-						rightSurface = s;
-						vx = 0;
-					}
-				}
-				if (rightSurface != null) {
-					Rectangle r = rightSurface.getBounds();
-					x2 = r.getX() - width;
-				}
-			} else if (vx < 0) {
-				Shape leftSurface = null;
-				for (Shape s : platforms) {
-					if (s.intersects(strechX)) {
-						leftSurface = s;
-						vx = 0;
-					}
-				}
-				if (leftSurface != null) {
-					Rectangle r = leftSurface.getBounds();
-					x2 = r.getX() + r.getWidth();
-				}
-			}
-
-			if (Math.abs(vx) < .5)
-				vx = 0;
-
-			moveToLocation(x2, y2);
+//			if (vx > 0) {
+//				Shape rightSurface = null;
+//				for (Shape s : platforms) {
+//					if (s.intersects(strechX)) {
+//						rightSurface = s;
+//						vx = 0;
+//					}
+//				}
+//				if (rightSurface != null) {
+//					Rectangle r = rightSurface.getBounds();
+//					x2 = r.getX() - width;
+//				}
+//			} else if (vx < 0) {
+//				Shape leftSurface = null;
+//				for (Shape s : platforms) {
+//					if (s.intersects(strechX)) {
+//						leftSurface = s;
+//						vx = 0;
+//					}
+//				}
+//				if (leftSurface != null) {
+//					Rectangle r = leftSurface.getBounds();
+//					x2 = r.getX() + r.getWidth();
+//				}
+//			}
+//
+//			if (Math.abs(vx) < .5)
+//				vx = 0;
+//
+//			moveToLocation(x2, y2);
 			
 		}
 
