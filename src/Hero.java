@@ -281,40 +281,65 @@ public class Hero extends MovingImage {
 	public void dash() {
 		// 1sec - 60, 2 sec - 120, 3 sec - 180
 		if (canDash == true) {
+			int moveAmount = 0;
+			
 //			System.out.println(canDash);
 			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
 				chargeTime = 0;
 				dashing = true;
-				if (canDash && facingDirection == 0) { // Facing to the right
-					moveByAmount(100, 0);
-				} else if (canDash && facingDirection == 180) { // Facing to the left
-					moveByAmount(-100, 0);
-				}
+				moveAmount = 100;
 			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
 				chargeTime = 0;
 				dashing = true;
-				if (canDash && facingDirection == 0) { // Facing to the right
-					moveByAmount(75, 0);
-				} else if (canDash && facingDirection == 180) { // Facing to the left
-					moveByAmount(-75, 0);
-				}
+				moveAmount = 75;
 			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
 				chargeTime = 0;
 				dashing = true;
-				if (canDash && facingDirection == 0) { // Facing to the right
-					moveByAmount(50, 0);
-				} else if (canDash && facingDirection == 180) { // Facing to the left
-					moveByAmount(-50, 0);
-				}
+				moveAmount = 50;
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
 				chargeTime = 0;
 				dashing = true;
-				if (canDash && facingDirection == 0) { // Facing to the right
-					moveByAmount(25, 0);
-				} else if (canDash && facingDirection == 180) { // Facing to the left
-					moveByAmount(-25, 0);
+				moveAmount = 25;
+			}
+			
+			if (facingDirection == 0) {	// u are facing to the right
+				Rectangle2D.Double strechX = new Rectangle2D.Double(this.x + this.width, this.y, this.x + moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
+			} else if (facingDirection == 180) {	// u are facing to the left
+				
+			}
+			
+
+			if (vx > 0) {
+				Shape rightSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechX)) {
+						rightSurface = s;
+						vx = 0;
+					}
+				}
+				if (rightSurface != null) {
+					Rectangle r = rightSurface.getBounds();
+					x2 = r.getX() - width;
+				}
+			} else if (vx < 0) {
+				Shape leftSurface = null;
+				for (Shape s : platforms) {
+					if (s.intersects(strechX)) {
+						leftSurface = s;
+						vx = 0;
+					}
+				}
+				if (leftSurface != null) {
+					Rectangle r = leftSurface.getBounds();
+					x2 = r.getX() + r.getWidth();
 				}
 			}
+
+			if (Math.abs(vx) < .5)
+				vx = 0;
+
+			moveToLocation(x2, y2);
+			
 		}
 
 
