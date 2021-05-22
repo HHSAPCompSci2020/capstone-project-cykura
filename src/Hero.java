@@ -302,51 +302,54 @@ public class Hero extends MovingImage {
 				moveAmount = 25;
 			}
 			
-			Rectangle2D.Double stretchX = null;
-			if (facingDirection == 0) {	// u are facing to the right
-				stretchX = new Rectangle2D.Double(this.x + this.width, this.y, this.x + moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
-			} else if (facingDirection == 180) {	// u are facing to the left
-				stretchX = new Rectangle2D.Double(this.x, this.y, this.x - moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
-			}
-			
-			if (facingDirection == 0) {	// u are facing to the right
-				int stopX = 0;
-				for (Shape s : platforms) {
-					if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
-						if (stopX != 0) {	// if there is already a stop X
-							stopX = Math.min(stopX, (int) (s.getBounds().getX()));
-						} else {	// if there is not already a stop X
-							stopX = (int) (s.getBounds().getX());
-						}
-					}
-				}
-				if (stopX != 0) {	// something blocks hero
-					this.moveByAmount(stopX - this.getX(), 0);
-				} else {	// nothing blocks hero
-					this.moveByAmount(moveAmount, 0);
+			if (chargeTime != 0) {
+				Rectangle2D.Double stretchX = null;
+				if (facingDirection == 0) {	// u are facing to the right
+					stretchX = new Rectangle2D.Double(this.x + this.width, this.y, this.x + moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
+				} else if (facingDirection == 180) {	// u are facing to the left
+					stretchX = new Rectangle2D.Double(this.x, this.y, this.x - moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
 				}
 				
-			} else if (facingDirection == 180) {	// u are facing to the left
-				int stopX = 0;
-				for (Shape s : platforms) {
-					if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
-						if (stopX != 0) {	// if there is already a stop X
-							int newStopX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
-							stopX = Math.max(stopX, newStopX);
-												
-						} else {	// if there is not already a stop X
-							stopX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
+				if (facingDirection == 0) {	// u are facing to the right
+					int stopX = 0;
+					for (Shape s : platforms) {
+						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
+							if (stopX != 0) {	// if there is already a stop X
+								stopX = Math.min(stopX, (int) (s.getBounds().getX()));
+							} else {	// if there is not already a stop X
+								stopX = (int) (s.getBounds().getX());
+							}
 						}
 					}
-				}
-				if (stopX != 0) {	// something blocks hero
+					if (stopX != 0) {	// something blocks hero
+						this.moveByAmount(stopX - this.getX(), 0);
+					} else {	// nothing blocks hero
+						this.moveByAmount(moveAmount, 0);
+					}
 					
-					this.moveByAmount((-1)*(stopX - this.getX()), 0);
-				} else {	// nothing blocks hero
-					this.moveByAmount((-1)*moveAmount, 0);
+				} else if (facingDirection == 180) {	// u are facing to the left
+					int stopX = 0;
+					for (Shape s : platforms) {
+						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
+							if (stopX != 0) {	// if there is already a stop X
+								int newStopX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
+								stopX = Math.max(stopX, newStopX);
+													
+							} else {	// if there is not already a stop X
+								stopX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
+							}
+						}
+					}
+					if (stopX != 0) {	// something blocks hero
+						
+						this.moveByAmount((-1)*(stopX - this.getX()), 0);
+					} else {	// nothing blocks hero
+						this.moveByAmount((-1)*moveAmount, 0);
+					}
+						
 				}
-					
 			}
+			
 //			
 
 		
