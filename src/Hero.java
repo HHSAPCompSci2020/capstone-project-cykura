@@ -311,11 +311,14 @@ public class Hero extends MovingImage {
 				System.out.println("Facing Direction: " + facingDirection);
 //				Rectangle2D.Double stretchX = null;
 				int movementEndX = 0;
+				int movementInitialX = 0;
 				if (facingDirection == 0) {	// u are facing to the right
-					movementEndX = (int) (this.x + moveAmount);
+					movementInitialX = (int) (this.x + this.getWidth());
+					movementEndX = (int) (this.x + this.getWidth() + moveAmount);
 					System.out.println("Initial Movement End X: " + movementEndX);
 //					stretchX = new Rectangle2D.Double(this.x + this.width, this.y, movementEndX, this.height);	// represents the hero's block of movement (x, y, width height)
 				} else if (facingDirection == 180) {	// u are facing to the left
+					movementInitialX = (int) (this.x);
 					movementEndX = (int) (this.x - moveAmount);
 					System.out.println("Initial Movement End X: " + movementEndX);
 //					stretchX = new Rectangle2D.Double(this.x, this.y, movementEndX , this.height);	// represents the hero's block of movement (x, y, width height)
@@ -326,24 +329,22 @@ public class Hero extends MovingImage {
 					for (Shape s : platforms) {
 						int platformLeftX = (int) (s.getBounds().getX());
 //						System.out.println("PlatformLeftX " + platformLeftX);
-						if (platformLeftX < movementEndX && platformLeftX > (this.x + this.width)) {
-							movementEndX = platformLeftX;
+						if (platformLeftX < movementEndX && platformLeftX > movementInitialX) {
+							movementEndX = platformLeftX;	
 						}			
 					}
 					
 					System.out.println("Final Movement End X: " + movementEndX);
 					System.out.println();
 					chargeTime = 0;
-					this.moveByAmount((movementEndX - this.x), 0);
+					this.moveByAmount((movementEndX - movementInitialX), 0);
 					
 				} else if (facingDirection == 180) {	// u are facing to the left
 					System.out.println("Facing left");
 					for (Shape s : platforms) {
 						int platformRightX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
 //						System.out.println("PlatformRightX " + platformRightX);
-						if(platformRightX < this.x && (s.getBounds().getX()) > movementEndX) {
-							
-//						if (platformRightX > movementEndX && (platformRightX + platformRightX) {
+						if(platformRightX < movementInitialX && platformRightX > movementEndX) {							
 							movementEndX = platformRightX;
 						}			
 					}
