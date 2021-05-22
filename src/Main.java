@@ -53,7 +53,7 @@ public class Main {
             		ArrayList<Enemy> enemies=((GameScreen) cGameScreen).getEnemies();
             		Hero hero=((GameScreen) cGameScreen).getHero();
             		for(int i=0;i<enemies.size();i++) {
-            			if(enemies.get(i).heroInRange(hero)) {
+            			if(enemies.get(i)!=null &&enemies.get(i).heroInRange(hero)) {
             				normalMusic.pause();
             				enemyMusic.play();
             				break;
