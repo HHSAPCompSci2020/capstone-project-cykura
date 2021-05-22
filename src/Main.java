@@ -42,6 +42,7 @@ public class Main {
             MusicPlayer startMusic = new MusicPlayer("music\\StartScreenMusic.wav");
             MusicPlayer normalMusic = new MusicPlayer("music\\NormalTheme.wav");
             MusicPlayer enemyMusic = new MusicPlayer("music\\EnemyMusic.wav");
+            MusicPlayer endMusic = new MusicPlayer("music\\EndScreenMusic.wav");
             while(!drawing.gameScreenActive()) {
             	startMusic.play();
             }
@@ -63,6 +64,12 @@ public class Main {
             				normalMusic.play();
             			}
             		}
+            	}
+            	if(!drawing.gameScreenActive()) {
+            		enemyMusic.pause();
+            		normalMusic.pause();
+            		endMusic.play();
+            		break;
             	}
             }
             
