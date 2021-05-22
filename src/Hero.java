@@ -267,7 +267,7 @@ public class Hero extends MovingImage {
 	 */
 	public void charge() {
 		if (canDash) {
-			System.out.println("Charging");
+//			System.out.println("Charging");
 			if (chargeTime < 180)	// Max Charge Time is 3 seconds
 				chargeTime++;
 
@@ -286,51 +286,77 @@ public class Hero extends MovingImage {
 			
 //			System.out.println(canDash);
 			if (chargeTime == 180) {	// equal to 3 sec (Max charge amount)
-				System.out.println("Charge Time is 180");
+//				System.out.println("Charge Time is 180");
 				dashing = true;
 				moveAmount = 100;
 			} else if (chargeTime >= 120) {	// greater than equal to 2 sec
-				System.out.println("Charge Time >= 120");
+//				System.out.println("Charge Time >= 120");
 				dashing = true;
 				moveAmount = 75;
 			} else if (chargeTime >= 60) {	// greater than equal to 1 sec 
-				System.out.println("Charge Time >= 60");
+//				System.out.println("Charge Time >= 60");
 				dashing = true;
 				moveAmount = 50;
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
-				System.out.println("Charge Time > 0");
+//				System.out.println("Charge Time > 0");
 				dashing = true;
 				moveAmount = 25;
 			}
 			
 			if (chargeTime != 0) {
 				System.out.println("Charge Time is not 0");
+				System.out.println("MoveAmount: " + moveAmount);
+				System.out.println("Inital X: " + this.x);
+				System.out.println("Inital Y: " + this.x);
+				System.out.println("Facing Direction: " + facingDirection);
 				Rectangle2D.Double stretchX = null;
+				int movementEndX = 0;
 				if (facingDirection == 0) {	// u are facing to the right
-					stretchX = new Rectangle2D.Double(this.x + this.width, this.y, this.x + moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
+					movementEndX = (int) (this.x + moveAmount);
+					System.out.println("Movement End X: " + movementEndX);
+					stretchX = new Rectangle2D.Double(this.x + this.width, this.y, movementEndX, this.height);	// represents the hero's block of movement (x, y, width height)
 				} else if (facingDirection == 180) {	// u are facing to the left
-					stretchX = new Rectangle2D.Double(this.x, this.y, this.x - moveAmount , this.height);	// represents the hero's block of movement (x, y, width height)
+					movementEndX = (int) (this.x - moveAmount);
+					System.out.println("Movement End X: " + movementEndX);
+					stretchX = new Rectangle2D.Double(this.x, this.y, movementEndX , this.height);	// represents the hero's block of movement (x, y, width height)
 				}
 				
 				if (facingDirection == 0) {	// u are facing to the right
 					System.out.println("Facing right");
 					int stopX = 0;
 					for (Shape s : platforms) {
-						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
-							if (stopX != 0) {	// if there is already a stop X
-								stopX = Math.min(stopX, (int) (s.getBounds().getX()));
-							} else {	// if there is not already a stop X
-								stopX = (int) (s.getBounds().getX());
-							}
-						}
+						int platformLeftX = (int) (s.getBounds().getX());
+						if (platformLeftX < movementEndX) {
+							movementEndX = platformLeftX;
+						}						
+						
+//						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
+//							if (stopX != 0) {	// if there is already a stop X
+//								System.out.println("Already a stop x");
+//								System.out.println("Old Stop X: " + s.getBounds().getX());
+//								System.out.println("New Stop X: " + stopX);
+//								stopX = Math.min(stopX, (int) (s.getBounds().getX()));
+//								System.out.println("Stop X: " + stopX);
+//							} else {	// if there is not already a stop X
+//								System.out.println("No Stop X yet");
+//								stopX = (int) (s.getBounds().getX());
+//								System.out.println("Stop X: " + stopX);
+//							}
+//						}
 					}
-					if (stopX != 0) {	// something blocks hero
-						chargeTime = 0;
-						this.moveByAmount(stopX - this.getX(), 0);
-					} else {	// nothing blocks hero
-						chargeTime = 0;
-						this.moveByAmount(moveAmount, 0);
-					}
+					
+					chargeTime = 0;
+					
+					this.moveByAmount((movementEndX - this.x), stopX);
+//					if (stopX != 0) {	// something blocks hero
+//						chargeTime = 0;
+//						System.out.println("Move to the right this amount: " + (stopX - this.getX()));
+//						this.moveByAmount(stopX - this.getX(), 0);
+//					} else {	// nothing blocks hero
+//						chargeTime = 0;
+//						System.out.println("Move to the right this amount: " + moveAmount);
+//						this.moveByAmount(moveAmount, 0);
+//					}
 					
 				} else if (facingDirection == 180) {	// u are facing to the left
 					System.out.println("Facing left");
@@ -338,19 +364,26 @@ public class Hero extends MovingImage {
 					for (Shape s : platforms) {
 						if (s.intersects(stretchX)) {	// if a platform is in the way of ur dash
 							if (stopX != 0) {	// if there is already a stop X
+								System.out.println("Already a stop x");
+								System.out.println("Old Stop X: " + s.getBounds().getX() + s.getBounds().getWidth());
+								System.out.println("New Stop X: " + stopX);
 								int newStopX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
 								stopX = Math.max(stopX, newStopX);
 													
 							} else {	// if there is not already a stop X
+								System.out.println("No Stop X yet");
 								stopX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
+								System.out.println("Stop X: " + stopX);
 							}
 						}
 					}
 					if (stopX != 0) {	// something blocks hero
 						chargeTime = 0;
+						System.out.println("Move to the left this amount: " + (stopX - this.getX()));
 						this.moveByAmount((-1)*(stopX - this.getX()), 0);
 					} else {	// nothing blocks hero
 						chargeTime = 0;
+						System.out.println("Move to the left this amount: " + moveAmount);
 						this.moveByAmount((-1)*moveAmount, 0);
 					}
 						
