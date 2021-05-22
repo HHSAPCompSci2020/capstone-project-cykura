@@ -131,5 +131,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	public boolean gameScreenActive() {
 		return activeScreen instanceof GameScreen;
 	}
-
+	public Screen getActiveScreen() {
+		return activeScreen;
+	}
 }

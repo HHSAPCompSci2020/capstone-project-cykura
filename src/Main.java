@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -47,7 +48,22 @@ public class Main {
             startMusic.pause();
             normalMusic.play();
             while(true) {
-            	
+            	Screen cGameScreen = drawing.getActiveScreen();
+            	if(cGameScreen instanceof GameScreen) {
+            		ArrayList<Enemy> enemies=((GameScreen) cGameScreen).getEnemies();
+            		Hero hero=((GameScreen) cGameScreen).getHero();
+            		for(int i=0;i<enemies.size();i++) {
+            			if(enemies.get(i).heroInRange(hero)) {
+            				normalMusic.pause();
+            				enemyMusic.play();
+            				break;
+            			}
+            			else {
+            				enemyMusic.pause();
+            				normalMusic.play();
+            			}
+            		}
+            	}
             }
             
         } 

@@ -523,7 +523,12 @@ public class GameScreen extends Screen {
 		}
 	}
 
-	
+	public ArrayList<Enemy> getEnemies() {
+		return enemies;
+	}
+	public Hero getHero() {
+		return hero;
+	}
 
 }
 
