@@ -305,52 +305,57 @@ public class Hero extends MovingImage {
 			
 			if (chargeTime != 0) {
 //				System.out.println("Charge Time is not 0");
-//				System.out.println("MoveAmount: " + moveAmount);
-//				System.out.println("Inital X: " + this.x);
-//				System.out.println("Inital Y: " + this.x);
-//				System.out.println("Facing Direction: " + facingDirection);
+				System.out.println("MoveAmount: " + moveAmount);
+				System.out.println("Inital X: " + this.x);
+				System.out.println("Inital Y: " + this.x);
+				System.out.println("Facing Direction: " + facingDirection);
 //				Rectangle2D.Double stretchX = null;
-				int movementEndX = 0;
-				int movementInitialX = 0;
+				double movementEndX = 0;
+				double movementInitialX = 0;
 				if (facingDirection == 0) {	// u are facing to the right
-					movementInitialX = (int) (this.x + this.getWidth());
-					movementEndX = (int) (this.x + this.getWidth() + moveAmount);
-//					System.out.println("Initial Movement End X: " + movementEndX);
+					movementInitialX = (this.x + this.getWidth());
+					movementEndX = (this.x + this.getWidth() + moveAmount);
+					System.out.println("Movement Initial X: " + movementEndX);
+					System.out.println("Initial Movement End X: " + movementEndX);
 //					stretchX = new Rectangle2D.Double(this.x + this.width, this.y, movementEndX, this.height);	// represents the hero's block of movement (x, y, width height)
 				} else if (facingDirection == 180) {	// u are facing to the left
-					movementInitialX = (int) (this.x);
-					movementEndX = (int) (this.x - moveAmount);
-//					System.out.println("Initial Movement End X: " + movementEndX);
+					movementInitialX = (this.x);
+					movementEndX = (this.x - moveAmount);
+					System.out.println("Movement Initial X: " + movementEndX);
+					System.out.println("Initial Movement End X: " + movementEndX);
 //					stretchX = new Rectangle2D.Double(this.x, this.y, movementEndX , this.height);	// represents the hero's block of movement (x, y, width height)
 				}
 				
 				if (facingDirection == 0) {	// u are facing to the right
 //					System.out.println("Facing right");
 					for (Shape s : platforms) {
-						int platformLeftX = (int) (s.getBounds().getX());
+						double platformLeftX = (s.getBounds().getX());
+						double platformBottomY = s.getBounds().getY() + s.getBounds().getHeight();
 //						System.out.println("PlatformLeftX " + platformLeftX);
-						if (platformLeftX < movementEndX && platformLeftX > movementInitialX) {
+						if (platformLeftX < movementEndX && platformLeftX > movementInitialX && platformBottomY > this.y) {
+							System.out.println("Platform Left X " + platformLeftX);
 							movementEndX = platformLeftX;	
 						}			
 					}
 					
-//					System.out.println("Final Movement End X: " + movementEndX);
-//					System.out.println();
+					System.out.println("Final Movement End X: " + movementEndX);
+					System.out.println();
 					chargeTime = 0;
 					this.moveByAmount((movementEndX - movementInitialX), 0);
 					
 				} else if (facingDirection == 180) {	// u are facing to the left
 //					System.out.println("Facing left");
 					for (Shape s : platforms) {
-						int platformRightX = (int) (s.getBounds().getX() + s.getBounds().getWidth());
-//						System.out.println("PlatformRightX " + platformRightX);
-						if(platformRightX < movementInitialX && platformRightX > movementEndX) {							
+						double platformRightX = (s.getBounds().getX() + s.getBounds().getWidth());
+						double platformBottomY = s.getBounds().getY() + s.getBounds().getHeight();
+						if(platformRightX < movementInitialX && platformRightX > movementEndX && platformBottomY > this.y) {	
+							System.out.println("PlatformRightX " + platformRightX);
 							movementEndX = platformRightX;
 						}			
 					}
 					
-//					System.out.println("Final Movement End X: " + movementEndX);
-//					System.out.println();
+					System.out.println("Final Movement End X: " + movementEndX);
+					System.out.println();
 					chargeTime = 0;
 					this.moveByAmount((movementEndX - this.x), 0);
 						
