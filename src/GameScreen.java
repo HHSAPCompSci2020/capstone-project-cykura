@@ -3,7 +3,6 @@ import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.awt.event.KeyEvent;
-
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -32,6 +31,8 @@ public class GameScreen extends Screen {
 	
 	public static PImage spike;
 	public static PImage movingPlatform;
+	
+	public static PImage checkPoint;
 
 	
 //	private PImage bg;
