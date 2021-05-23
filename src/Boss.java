@@ -114,6 +114,9 @@ public class Boss extends Enemy {
 				    			 this.loseHealth(10); 	// Enemy loses 10 hp
 				    			 hero.getFireballs().set(i, null);
 			    			 }
+				    		 if(health<=0) {
+				    			 GameScreen.surface.switchScreen(ScreenSwitcher.SCREEN4);
+			    			 }
 
 				    	 }
 				     }
@@ -123,7 +126,9 @@ public class Boss extends Enemy {
 			    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
 			    		 hero.getWaterWave().hit = true;
 			    		 this.loseHealth(35);
-			    		 
+			    		 if(health<=0) {
+			    			 GameScreen.surface.switchScreen(ScreenSwitcher.SCREEN4);
+		    			 }
 			    	 }
 			     }
 			}
