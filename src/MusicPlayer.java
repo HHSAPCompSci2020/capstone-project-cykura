@@ -10,6 +10,8 @@ public class MusicPlayer{
     private Clip clip;
     private AudioInputStream audioInputStream;
     private static String filePath;
+    private boolean isPlaying;
+    
 	public MusicPlayer(String file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		filePath=file;
 	    // create AudioInputStream object
@@ -23,12 +25,36 @@ public class MusicPlayer{
 	         
 	    clip.loop(Clip.LOOP_CONTINUOUSLY);
 	    clip.stop();
+	    isPlaying = false;
 	}
+	
 	public void play() {
         clip.start();
+        isPlaying = true;
     }
+	
 	public void pause()
     {
         clip.stop();
+        isPlaying = false;
     }
+	
+	public boolean isPlaying() {
+		return isPlaying;
+	}
+	
+//	public void setFilePath(String file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+//		filePath=file;
+//	    // create AudioInputStream object
+//	    audioInputStream = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
+//	        
+//	    // create clip reference
+//	    clip = AudioSystem.getClip();
+//	       
+//	    // open audioInputStream to the clip
+//	    clip.open(audioInputStream);
+//	         
+//	    clip.loop(Clip.LOOP_CONTINUOUSLY);		
+//	}
+	
 }

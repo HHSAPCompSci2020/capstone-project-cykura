@@ -43,36 +43,43 @@ public class Main {
             MusicPlayer normalMusic = new MusicPlayer("music\\NormalTheme.wav");
             MusicPlayer enemyMusic = new MusicPlayer("music\\EnemyMusic.wav");
             MusicPlayer endMusic = new MusicPlayer("music\\EndScreenMusic.wav");
-            while(!drawing.gameScreenActive()) {
-            	startMusic.play();
-            }
-            startMusic.pause();
-            normalMusic.play();
+            
+
             while(true) {
             	Screen cGameScreen = drawing.getActiveScreen();
             	if(cGameScreen instanceof GameScreen) {	// if the active screen is game screen
+            		if (startMusic.isPlaying())
+            			startMusic.pause();
             		ArrayList<Enemy> enemies=((GameScreen) cGameScreen).getEnemies();
             		Hero hero=((GameScreen) cGameScreen).getHero();
             		boolean enemyMusicShouldPlay = false;
             		for(int i=0; i < enemies.size(); i++) {
             			if(enemies.get(i)!=null && enemies.get(i).heroInRange(hero)) {
-//            				System.out.println("e play");
             				enemyMusicShouldPlay = true;
             			}
             		}
             		
-            		if (enemyMusicShouldPlay) {
-            			normalMusic.pause();
-            			enemyMusic.play();
-            			enemyMusicShouldPlay = false;
-            		} else {
-            			enemyMusic.pause();
-            			normalMusic.play();
-            		}
+        			if (enemyMusicShouldPlay) {
+        				if (normalMusic.isPlaying())
+        					normalMusic.pause();
+        				
+        				enemyMusic.play();
+        			} else {
+        				if (enemyMusic.isPlaying())
+        					enemyMusic.pause();
+        				
+        				normalMusic.play();
+        			}
+
+
             	} else {	// if active screen is not game screen
-            		enemyMusic.pause();
-            		normalMusic.play();
-            		break;
+            		if (normalMusic.isPlaying())
+            			normalMusic.pause();
+            		
+            		if (enemyMusic.isPlaying())
+            			enemyMusic.pause();
+            		
+            		startMusic.play();
             	}
             }
             
