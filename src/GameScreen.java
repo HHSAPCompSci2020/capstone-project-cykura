@@ -359,7 +359,7 @@ public class GameScreen extends Screen {
 			for (int i = 0; i < enemies.size(); i++) {
 				if (enemies.get(i) != null) {
 //					System.out.println(enemies.get(i));
-					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 100) {
+					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 50) {
 						hero.punch(enemies.get(i));
 					}
 				}
