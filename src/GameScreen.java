@@ -503,7 +503,7 @@ public class GameScreen extends Screen {
 //		System.out.println(view_x);
 //		System.out.println(view_y);
 		t.add(new Token(surface.loadImage("sprites\\tokens\\FistTokenSprite.png"), (int) (300), (int) 10));
-		t.add(new Token(heart,1960,75));
+		t.add(new Token(heart,1700,305));
 		t.add(new Token(heart,3500,305));
 		t.add(new Token(heart,5300,305));
 		t.add(new Token(heart,7100,305));
