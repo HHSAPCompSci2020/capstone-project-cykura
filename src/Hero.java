@@ -310,21 +310,21 @@ public class Hero extends MovingImage {
 			int moveAmount = 0;
 			
 //			System.out.println(canDash);
-			if (chargeTime == 120) {	// equal to 2 sec (Max charge amount)
+			if (chargeTime == 60) {	// equal to 2 sec (Max charge amount)
 //				System.out.println("Charge Time is 180");
 				dashing = true;
 				isInvincible = true;
-				moveAmount = 150;
-			} else if (chargeTime >= 60) {	// greater than equal to 1 sec
+				moveAmount = 200;
+			} else if (chargeTime >= 30) {	// greater than equal to 1 sec
 //				System.out.println("Charge Time >= 120");
 				dashing = true;
 				isInvincible = true;
-				moveAmount = 100;
+				moveAmount = 150;
 			} else if (chargeTime > 0) {	// greater than 0 secs but less than 1 sec
 //				System.out.println("Charge Time > 0");
 				dashing = true;
 				isInvincible = true;
-				moveAmount = 50;
+				moveAmount = 100;
 			}
 			
 			if (chargeTime != 0) {
