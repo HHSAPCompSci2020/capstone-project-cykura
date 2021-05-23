@@ -140,8 +140,8 @@ public class Hero extends MovingImage {
 	public void doWaterWave() {
 		if (canWaterWave) {
 			if (waterWaveCoolDown <= 0) {
-				waterWaveCoolDown = 60;
-				wave = new WaterWave((int) x +20, (int) y +30, (double) 50, (double)120, (double)4);
+				waterWaveCoolDown = 90;
+				wave = new WaterWave((int) x +20, (int) y +30, (double) 50, (double)200, (double)4);
 			}
 		}
 	}

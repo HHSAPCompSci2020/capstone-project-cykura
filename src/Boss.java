@@ -122,7 +122,7 @@ public class Boss extends Enemy {
 			     if (hero.getWaterWave() != null) {	// hero has done a water wave
 			    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
 			    		 hero.getWaterWave().hit = true;
-			    		 this.loseHealth(20);
+			    		 this.loseHealth(35);
 			    		 
 			    	 }
 			     }
