@@ -561,7 +561,7 @@ public class GameScreen extends Screen {
 		
 
 		if(flipped) {
-			surface.translate(-view_x,view_y);
+			surface.translate(view_x,-view_y);
 		}
 		else {
 			surface.translate(-view_x,-view_y);
