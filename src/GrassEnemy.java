@@ -84,7 +84,7 @@ public class GrassEnemy extends Enemy {
 			    		 hero.getWaterWave().hit = true;
 			    		 this.loseHealth(35);
 			    		 if(health<=0) {
-		    				 tokens.add(new Token(GameScreen.grassToken,(int)x,(int)y));
+		    				 tokens.add(new Token(GameScreen.grassToken,(int)spawnPoint.x,(int)spawnPoint.y));
 		    			 }
 			    	 }
 			     }
