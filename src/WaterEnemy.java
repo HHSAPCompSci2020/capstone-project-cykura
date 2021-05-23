@@ -68,7 +68,7 @@ public class WaterEnemy extends Enemy {
 				    			 this.loseHealth(10); 	// Enemy loses 10 hp
 				    			 h.getFireballs().set(i, null);
 				    			 if(health<=0) {
-				    				 tokens.add(new Token(GameScreen.waterToken,(int)x,(int)y));
+				    				 tokens.add(new Token(GameScreen.waterToken,(int)spawnPoint.x,(int)spawnPoint.y));
 				    			 }
 			    			 }
 

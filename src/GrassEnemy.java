@@ -71,7 +71,7 @@ public class GrassEnemy extends Enemy {
 				    						 
 				    					 }
 				    				 }
-				    				 tokens.add(new Token(GameScreen.grassToken,(int)x,(int)y));
+				    				 tokens.add(new Token(GameScreen.grassToken,(int)spawnPoint.x,(int)spawnPoint.y));
 				    			 }
 			    			 }
 
@@ -96,7 +96,7 @@ public class GrassEnemy extends Enemy {
 			}
 			
 		} else {	// health < 0 so should die
-			tokens.add(new Token(GameScreen.grassToken,(int)x,(int)y));
+			tokens.add(new Token(GameScreen.grassToken,(int)spawnPoint.x,(int)spawnPoint.y));
 //			if(GameScreen.grassToken1==null)
 //				GameScreen.grassToken1 = new Token(GameScreen.grassToken,(int)x,(int)y);
 			
