@@ -85,7 +85,7 @@ public class FireEnemy extends Enemy {
 		     }
 		     
 		} else { // If health < 0, or dead
-			tokens.add(new Token(GameScreen.fireToken, (int) x, (int) y));
+			tokens.add(new Token(GameScreen.fireToken, (int) spawnPoint.x, (int) spawnPoint.y));
 //			if (GameScreen.fireToken1 == null)
 //				GameScreen.fireToken1 = new Token(GameScreen.fireToken, (int) x, (int) y);
 

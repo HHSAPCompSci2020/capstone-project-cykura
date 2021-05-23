@@ -81,7 +81,7 @@ public class WaterEnemy extends Enemy {
 			    		 h.getWaterWave().hit = true;
 			    		 this.loseHealth(20);
 			    		 if(health<=0) {
-		    				 tokens.add(new Token(GameScreen.waterToken,(int)x,(int)y));
+		    				 tokens.add(new Token(GameScreen.waterToken,(int)spawnPoint.x,(int)spawnPoint.y));
 		    			 }
 			    		 
 			    	 }
