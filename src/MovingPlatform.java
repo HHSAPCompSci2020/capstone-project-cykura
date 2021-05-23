@@ -68,5 +68,10 @@ public class MovingPlatform extends MovingImage {
 		}
 		return;
 	}
-	
+	public double getVX() {
+		return vx;
+	}
+	public double getVY() {
+		return vy;
+	}
 }

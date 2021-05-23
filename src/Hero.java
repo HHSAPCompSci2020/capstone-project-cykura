@@ -561,8 +561,10 @@ public class Hero extends MovingImage {
 			for (MovingPlatform m: movingPlatforms) {
 				if (m.intersects(strechY)) {
 					onASurface = true;
+					x+=m.getVX();
 					standingSurface = m;
 					vy = 0;
+					y+=m.getVY();
 				}
 			}
 			

@@ -37,6 +37,7 @@ public class Main {
 //						+ "Arrow Keys to Move." + "\n" + "If you can't move the player, click the window" +"\n" +"Good Luck!");
 		
 		canvas.requestFocus();
+		/*
 		try
         {
             MusicPlayer startMusic = new MusicPlayer("music\\StartScreenMusic.wav");
@@ -44,7 +45,7 @@ public class Main {
             MusicPlayer enemyMusic = new MusicPlayer("music\\EnemyMusic.wav");
             MusicPlayer endMusic = new MusicPlayer("music\\EndScreenMusic.wav");
             
-
+            
             while(true) {
             	Screen cGameScreen = drawing.getActiveScreen();
             	if(cGameScreen instanceof GameScreen) {	// if the active screen is game screen
@@ -90,7 +91,7 @@ public class Main {
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
           
-        }
+        }*/
 	}
 
 }

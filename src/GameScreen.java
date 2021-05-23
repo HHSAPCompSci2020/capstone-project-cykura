@@ -464,9 +464,10 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(5725, 235,75,50));
 		p.add(new Rectangle(5400, 235,75,50));
 		//Parkour4
-		p.add(new Rectangle(6000,345,500,50));
+		p.add(new Rectangle(6000,345,450,50));
 		//Final Boss
-		p.add(new Rectangle(7100,345,800,50));	
+		p.add(new Rectangle(7000,345,900,50));	
+		p.add(new Rectangle(7050,-300,50,585));
 		p.add(new Rectangle(7450,245,100,100));
 		p.add(new Rectangle(7150,145,200,50));
 		p.add(new Rectangle(7650,140,200,50));
@@ -524,6 +525,15 @@ public class GameScreen extends Screen {
 		s.add(new Spike(spike,2910,305,40,40));
 		s.add(new Spike(spike,3160,305,40,40));
 		s.add(new Spike(spike,3300,265,40,40));
+		s.add(new Spike(spike,6070,305,40,40));
+		s.add(new Spike(spike,6110,305,40,40));
+		s.add(new Spike(spike,6150,305,40,40));
+		s.add(new Spike(spike,6270,305,40,40));
+		s.add(new Spike(spike,6310,305,40,40));
+		s.add(new Spike(spike,6350,305,40,40));
+		s.add(new Spike(spike,6560,305,40,40));
+		s.add(new Spike(spike,6700,275,70,70));
+		s.add(new Spike(spike,6870,305,40,40));
 		return s;
 		
 	}
@@ -533,6 +543,7 @@ public class GameScreen extends Screen {
 		m.add(new MovingPlatform(movingPlatform, 4250,345,200,50, 4350,345,3,0)); 
 		m.add(new MovingPlatform(movingPlatform, 4800,345,100,50, 4700,345,-3,0));
 		m.add(new MovingPlatform(movingPlatform,4950,345,150,50,5050,345,3,0));
+		m.add(new MovingPlatform(movingPlatform,6450,345,200,50,6710,345,3,0));
 		return m;
 	}
 	/**
