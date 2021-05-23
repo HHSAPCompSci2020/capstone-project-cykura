@@ -69,8 +69,6 @@ public class GameScreen extends Screen {
 		x = 30;
 		y = 30;
 		platforms = generatePlatforms();
-		startTime = System.currentTimeMillis();
-		currTime = startTime;
 		
 //		tokens = new ArrayList<Token>();
 //		flipped =true;
@@ -151,6 +149,10 @@ public class GameScreen extends Screen {
 	 * Draws everything and makes changes in the game
 	 */
 	public void draw() {
+		if(currTime==0) {
+			startTime = System.currentTimeMillis();
+			currTime = startTime;
+		}
 //		System.out.println("vx " + view_x + " vy " + view_y);
 //		bg.resize(DRAWING_WIDTH, DRAWING_HEIGHT);
 //		surface.background(bg);
