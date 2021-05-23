@@ -455,7 +455,6 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(3600, 235,75,50));
 		//Parkour3
 		//Moving Platforms
-		//p.add(new Rectangle(4300,345,800,50)); //temp
 		//Grass Enemy
 		p.add(new Rectangle(5300,345,250,50));
 		p.add(new Rectangle(5650,345,250,50));		
@@ -465,7 +464,7 @@ public class GameScreen extends Screen {
 		p.add(new Rectangle(5725, 235,75,50));
 		p.add(new Rectangle(5400, 235,75,50));
 		//Parkour4
-		p.add(new Rectangle(6100,345,800,50));	// temp
+		p.add(new Rectangle(6000,345,500,50));
 		//Final Boss
 		p.add(new Rectangle(7100,345,800,50));	
 		p.add(new Rectangle(7450,245,100,100));
@@ -531,9 +530,9 @@ public class GameScreen extends Screen {
 	
 	private ArrayList<MovingPlatform> generateMovingPlatforms(){
 		ArrayList<MovingPlatform> m=new ArrayList<MovingPlatform>();
-		m.add(new MovingPlatform(movingPlatform, 4200,345,200,50, 4400,345,3,0)); 
-		m.add(new MovingPlatform(movingPlatform, 4600,345,200,50, 5100,345,-3,0)); //temp
-		m.add(new MovingPlatform(movingPlatform, 5900, 345, 200, 50, 6900, 345, 3, 0));	// temp
+		m.add(new MovingPlatform(movingPlatform, 4250,345,200,50, 4350,345,3,0)); 
+		m.add(new MovingPlatform(movingPlatform, 4800,345,100,50, 4700,345,-3,0));
+		m.add(new MovingPlatform(movingPlatform,4950,345,150,50,5050,345,3,0));
 		return m;
 	}
 	/**

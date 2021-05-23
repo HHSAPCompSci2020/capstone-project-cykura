@@ -10,7 +10,7 @@ import processing.core.PImage;
 public class MovingPlatform extends MovingImage {
 	private double vx, vy;
 	private int fx, fy,sx,sy;
-	
+	private boolean isNeg;
 	/**
 	 * Creates a new instance of a Platform object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
@@ -29,6 +29,13 @@ public class MovingPlatform extends MovingImage {
 		this.vy=vy;
 		sx=x-1;
 		sy=y-1;
+		if (vx<0||vy<0) {
+			isNeg=true;
+			this.fx=fx-1;
+			this.fy=fy-1;
+			sx=x+1;
+			sy=y+1;
+		}
 	}
 	
 	/**
@@ -39,13 +46,25 @@ public class MovingPlatform extends MovingImage {
 		super.moveByAmount(vx, vy);
 	}
 	private void atEnd() {
-		if(super.x>=fx||super.x<=sx) {
-			vx=-vx;
-			vy=-vy;
+		if(!isNeg) {
+			if(super.x>=fx||super.x<=sx) {
+				vx=-vx;
+				vy=-vy;
+			}
+			else if(super.y>=fy||super.y<=sy) {
+				vx=-vx;
+				vy=-vy;
+			}
 		}
-		else if(super.y>=fy||super.y<=sy) {
-			vx=-vx;
-			vy=-vy;
+		else if(isNeg) {
+			if(super.x<=fx||super.x>=sx) {
+				vx=-vx;
+				vy=-vy;
+			}
+			else if(super.y<=fy||super.y>=sy) {
+				vx=-vx;
+				vy=-vy;
+			}
 		}
 		return;
 	}
