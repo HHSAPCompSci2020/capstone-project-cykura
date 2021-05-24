@@ -1,13 +1,13 @@
 ﻿Cykura
 Authors: Alex Zheng, Animan Patil, Vicram Vijayakumar
-Revision: 5.12.21
+Revision: 5.23.21
 
 
 Introduction: 
 It is the year 2873. Your village has been invaded by an advanced alien race and all of the villagers were kidnapped by Doctor Bowgetaroth. You were also severely injured in the invasion. However you were taken in by a mysterious man and transformed into a cyborg. Meanwhile, the villain is planning to return to his home planet. Now, you, as the player, must defeat the villain and rescue the villagers while facing his minions.
 
 
-In this 2D platformer game, the player must defeat various enemies while traversing the game to finally clear the villain. This game is intended for middle and high school students, but it can be played by anyone to get rid of boredom and have fun. Initially the player can only punch to cause damage to enemies. But after defeating each enemy, the player gains a new ability which can be used. These various abilities include fireball, water wave, and leaf dash. However, defeating enemies is not all there is to the game. You must navigate through the level while avoiding spikes and holes in the ground to not get hurt with the help of platforms. Will you be able to vanquish Doctor Bowgetaroth and save your fellow villagers?
+In this 2D platformer game, the player must defeat various enemies while traversing the game to finally clear the villain. This game is intended for middle and high school students, but it can be played by anyone to get rid of boredom and have fun. Initially the player can only punch to cause damage to enemies. But after defeating each enemy, the player gains a new ability which can be used. These various abilities include fireball, water wave, and leaf dash. However, defeating enemies is not all there is to the game. You must navigate through the level while avoiding spikes and holes in the ground to not get hurt with the help of stationary and moving platforms. Will you be able to vanquish Doctor Bowgetaroth and save your fellow villagers?
 
 
 
@@ -19,8 +19,8 @@ Click on Start game to start the game
 Click on Quit to quit
 
 
-Game Over Screen:
-Press the Exit button to go back to the Starting Screen
+Victory Screen:
+Shows the finish time and grade
 
 
 Keyboard Keys Layout:
@@ -38,25 +38,30 @@ D - Use Leaf Dash (Hold to charge - Will dash when the key is released)
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
 * There should be 3 abilities that the enemies and players can have or collect. 
-   * If a player/enemy gets hit with an ability, they lose health
    * Fireball shoots a fireball left and right of the player
       * 10 HP damage to enemies
       * 1 Heart damage to player
    * WaterWave shoots a shock wave extending outward from the Hero
-      * 20 HP damage to enemies
+      * 25 HP damage to enemies
       * 2 Heart damage to player
    * Leaf dash allows the player to dash left and right and deal damage to enemies passed
-      * Base Damage: 5 HP damage to enemies
-      * Base Damage: 1/2 Heart to player
-      * Does not fall while dashing
-      * Hold the ability button, D, to charge the dash
+      * Base Damage: 50 HP damage to enemies
+      * Max Damage: 100 HP damage to enemies
+      * 1 Heart damage to player
+      * Does not fall while dashing (Moves horizontally)
+      * Hold the D key to charge the dash
          * Longer the charge, longer the dash (distance covered), greater the damage
          * Max Damage: 20 HP damage to enemies
          * Max Damage: 2 Hearts to player
-         * Cannot charge for more than 5 seconds
-         * When player is in air and charges, player will move horizontally to the right and will not fall while dashing (depending on how long the charge was held)
+         * Cannot charge for more than 2 seconds
          * Can fall while charging (while the button is held and the player is in the air)
-* The enemies should be able to spawn and function correctly. The enemy should be able to use  abilities and they should be able to drop rewards/powers when defeated.
+         * Can jump while charging
+         * Cannot walk while charging
+         * Cannot walk after dashing in the air until reaching a surface
+* The enemies should be able to spawn and function correctly. The enemy should be able to use  abilities and they should be able to drop rewards/powers when defeated. If the enemy collides with the Hero, the hero takes 1 heart damage.
+   * Enemy
+      * Drops Hearts once defeated
+      * HP: 100
    * FireEnemy
       * Uses Fireball ability
       * Drops Fireball ability once defeated
@@ -71,11 +76,12 @@ Must-have Features:
       * HP: 100
    * Boss
       * Uses all abilities
-      * HP: 175
+      * HP: 200
 * The hero should be able to move correctly and use abilities. After defeating minibosses the hero should be able to easily navigate between powers and use them properly. The player should also be able to regain health through the collection of hearts throughout the level by doing some parkour.
+   * Punch should cause 30 hp damage to enemies
    * The hero should have five hearts to start
    * The amount of hearts the player currently has will be listed in the top left corner of the screen
-   * If the hero loses all their health, they will go back to their checkpoint (last defeated enemy) with three hearts
+   * If the hero loses all their health, they will go back to their latest checkpoint with three hearts
 * The singular level should have some artwork and the hero and enemies should be able to interact with the world properly.
    * The world should include platforms
    * The world should include holes in the ground
@@ -104,7 +110,7 @@ Want-to-have Features:
    * Legs/Pants for leaf dash
    * Boots for double jump 
 * Special attacks for the Boss
-   * Ability to use attacks in diagonal directions
+   * Ability to use special attacks
    * Ability to use two attacks at the same time (e.g. Water Wave + Fireball)
 
 
@@ -124,23 +130,29 @@ Stretch Features:
 
 Class List:
 * Boss: A Enemy subclass which is able to use all of the special abilities and do certain effects like inverting controls and flipping the screen
+* Checkpoint: A checkpoint which the hero can activate to respawn to.
 * Circle: A double precision Circle which can be drawn.
 * DrawingSurface: The surface on which the Active Screen is drawn
 * Enemy: An Enemy which can move and deal damage to the Hero
+* Fireball: A fireball which is a projectile that can be thrown.
 * FireEnemy: A subclass of Enemy which can throw fireballs
 * FirstScreen: A Screen with options which the user can interact with such as “Cykura” or “Instructions”
-* GameScreen: A Screen which represents the game and has all of the Enemies and Platforms
+* GameScreen: A Screen which represents the game and has all of the Enemies, Platforms, Checkpoints, Spikes and Hero.
 * GrassEnemy: A subclass of Enemy which can leaf dash
 * Heart: A Heart which the Hero can collect to gain health
 * Hero: The playable character which can move and do the special abilities
 * InstructionsScreen: A screen which displays the instructions and the keyboard layout
 * Main: The Main class which runs the program and has the DrawingSurface and Window
 * MovingImage: An Image which can move 
-* Platform: A movable platform on which the Hero can stand and may contain spikes
+* MovingPlatform: A movable platform which the Hero can interact with
+* MusicPlayer: A music player which can play, pause and loop clips
+* Screen: A Screen superclass.
+* ScreenSwitcher: An interface for screen switching.
 * Spike: A Spike which can cause damage to the Hero
 * Token: A token which the Hero can collect
+* VictoryScreen: The victory screen drawn when the Boss is defeated.
 * WaterEnemy: A subclass of Enemy which can do a Water Wave
-* WaterWave: A wave which extends outward from the Hero dealing damage to Enemies.
+* WaterWave: A water wave that extends outward dealing damage.
 
 
 
@@ -149,22 +161,26 @@ Class List:
 
 Credits:
 * Work Split:
-Animan: FireEnemy, GameScreen, Enemy, Boss, Circle <intersects() method>, Token
-Vicram: GrassEnemy, Hero, Spike, Circle <Base Code>, Heart, InstructionScreen.
-Alex: WaterWave, WaterEnemy, Main, Projectile, Fireball, Platform.
-All: WindEnemy (if coded)
+Animan: Boss, Circle <intersects() method>, Enemy, FireEnemy, GameScreen, Token, VictoryScreen
+Vicram: Checkpoint, Circle <Base code>, GrassEnemy, Heart, Hero, InstructionScreen, Spike
+Alex: Fireball, Main, MovingPlatform, WaterEnemy, WaterWave
 
 
 
 
 * Outside Credit:
-GameScreen Base Code <Modified by Animan>: Mr. Shelby (AnimationDemo)
-FirstScreen Base Code <Modified by Vicram>: Mr. Shelby (ProcessingScreenSwitching Demo)
-Hero Base Code <Modified by Vicram>: Mr. Shelby (AnimationDemo)
-MovingImage: Mr. Shelby (AnimationDemo)
-Screen: Mr. Shelby (ProcessingScreenSwitching Demo)
-ScreenSwitcher: Mr. Shelby (ProcessingScreenSwitching Demo)
-DrawingSurface: Mr. Shelby (ProcessingScreenSwitching Demo)
+AnimationDemo:
+        MovingImage
+        Hero <Base Code>
+ProcessingScreenSwitchingDemo: 
+        DrawingSurface
+        FirstScreen <Modified by Vicram>
+        Screen
+        ScreenSwitcher
+GeeksForGeeks:
+        MusicPlayer (https://www.geeksforgeeks.org/play-audio-file-using-java/)
+
+
 
 
 * Outside Resources:
@@ -203,7 +219,7 @@ Boss Enemy Sprite: https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Cha
 
 
 Fireball Sprite Credit:
-https://webstockreview.net/images/fireball-clipart-sprite.png
+https://webstockreview.net/images/fireball-clipart-8-bit-1.png
 
 
 Fireball Token Sprite Credit:
@@ -214,19 +230,18 @@ Leaf Token Sprite Credit:
 https://www.pinclipart.com/picdir/middle/68-683649_leaf-sprite-png-leaf-vector-simple-clipart.png
 
 
+Waterfall Token Sprite Credit:
+https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.shutterstock.com%2Fimage-vector%2Fvectoranimationoffallingwaterdroplets-sprite-sheet-water-droplets-260nw-1459946627.jpg&f=1&nofb=1
+https://image.shutterstock.com/image-vector/vectoranimationoffallingwaterdroplets-sprite-sheet-water-droplets-260nw-1459946627.jpg
 
 
-Waterball Token Sprite Credit:
-https://www.shutterstock.com/search/water+sprite
+Fist Token Sprite Credit:
+http://pixeldungeon.wikia.com/wiki/File:Burning_fist_infobox.png
 
 
 Platform Sprite Credit:
 https://opengameart.org/content/platformer-art-pixel-edition
 Kenny.nl
-
-
-Game Background:
-https://craftpix.net/freebies/free-horizontal-2d-game-backgrounds/
 
 
 Spike Sprite Credit:
@@ -237,3 +252,7 @@ Author: FunWithPixels
 Heart Sprite Credit:
 https://opengameart.org/content/heart-pixel-art
 Credit DanSevenStar.xyz, DontMind8.blogspot.com
+
+
+Checkpoint Sprite Credit:
+https://scirra.com/images/newstore/products/5289/splash.png
