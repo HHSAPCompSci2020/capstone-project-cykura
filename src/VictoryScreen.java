@@ -37,10 +37,10 @@ public class VictoryScreen extends Screen {
 		String str = "YOU WIN\nTime: "+ time +" s";
 		float w = surface.textWidth(str);
 		surface.text(str, 400 - w/2, 65);
-		if(time<70) {
+		if(time<100) {
 			str = "Good Work Your Grade: A+";
 		}
-		else if(time<100) {
+		else if(time<150) {
 			str = "Well Done Your Grade: A";
 		}
 		else {
