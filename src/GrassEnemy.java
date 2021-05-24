@@ -7,7 +7,7 @@ import processing.core.PImage;
  * The GrassEnemy class represents an Enemy with the Leaf Dash move which the Player can defeat.
  * 
  * @author vicram_vijayakumar
- * @version 5.12.21
+ * @version 5.23.21
  */
 public class GrassEnemy extends Enemy {
 	private int dashCoolDownTimeRemaining;
@@ -24,6 +24,14 @@ public class GrassEnemy extends Enemy {
 		super(img, x, y);
 	}
 	
+	/**
+	 * Moves based on where the Hero is. If the Hero is close to it, it dashes and deals damage to the Hero.
+	 * Once it dies, it drops a leaf token.
+	 * 
+	 * @param hero The playable Hero
+	 * @param platforms A list of platforms
+	 * @param tokens A list of tokens
+	 */
 	public void act(Hero hero, ArrayList<Shape> platforms, ArrayList<Token> tokens) {
 		if(health > 0) {
 			if (Math.abs(x - spawnPoint.x) < 500 && Math.abs(y - spawnPoint.y) < 300 && Math.abs(spawnPoint.x - hero.x) < 500 && Math.abs(spawnPoint.y - hero.y) < 300) {	// If u are close to spawn

@@ -7,6 +7,13 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
 
+/**
+ * The GameScreen represents the game screen and has all of the Enemies, Platforms, Checkpoints, Spikes and Hero.
+ * 
+ * @author animan_patil
+ * @version 5.23.21
+ *
+ */
 public class GameScreen extends Screen {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 500;
