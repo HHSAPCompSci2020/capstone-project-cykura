@@ -5,6 +5,7 @@ import processing.core.PImage;
 
 /**
  * The MovingImage class represents an image which moves.
+ * Code Credit: Animation Demo
  * 
  * @author Mr. Shelby
  * @version 5.6.21
@@ -78,7 +79,10 @@ public class MovingImage extends Rectangle2D.Double {
 		g.image(image,(int)x,(int)y,(int)width,(int)height);
 	}
 	
-	
+	/**
+	 * Sets the image of the moving image.
+	 * @param img The image to set the moving image to.
+	 */
 	public void setImage(PImage img) {
 		image = img;
 	}
