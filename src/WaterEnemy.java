@@ -108,6 +108,10 @@ public class WaterEnemy extends Enemy {
 		if(waterwave!=null) waterwave.draw(g);
 	}
 	
+	/**
+	 * Gets the waterwave
+	 * @return waterwave
+	 */
 	public WaterWave getWaterWave() {
 		return waterwave;
 	}
