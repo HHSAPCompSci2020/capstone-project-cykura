@@ -8,7 +8,7 @@ import processing.core.PImage;
  * The Spike class represents a Spike which can cause damage to the Hero if they walk into it.
  * 
  * @author vicram_vijayakumar
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class Spike extends Rectangle2D.Double {
 
