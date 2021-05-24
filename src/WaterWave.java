@@ -9,7 +9,7 @@ import processing.core.PImage;
  * The Waterwave class represents a water wave which is one of the abilities that the Hero can collect.
  * 
  * @author Alex Zheng
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class WaterWave extends Circle {
 	private double fd,vd;
@@ -33,11 +33,16 @@ public class WaterWave extends Circle {
 	}
 	
 	/**
-	 * Changes state of waterwave
+	 * Expands waterwave outward
 	 */
 	public void act() {
 		super.extent+=vd;
 	}
+	
+	/**
+	 * 
+	 * @return true if the Water wave reaches its max diameter or hit something
+	 */
 	public boolean canRemove() {
 		if(super.extent>=fd) return true;
 		if (hit) {
