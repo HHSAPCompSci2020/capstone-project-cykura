@@ -32,9 +32,6 @@ public class Main {
 
 		window.setVisible(true);
 		
-//		JOptionPane.showMessageDialog(window,
-//				"Space: Punch (Get Close to enemy to hit)" + "\n" + "D to Dash" + "\n"
-//						+ "Arrow Keys to Move." + "\n" + "If you can't move the player, click the window" +"\n" +"Good Luck!");
 		
 		canvas.requestFocus();
 		
@@ -73,7 +70,19 @@ public class Main {
         			}
 
 
-            	} else {	// if active screen is not game screen
+            	} else if (cGameScreen instanceof VictoryScreen){	// if active screen is not game screen
+            		if (normalMusic.isPlaying())
+            			normalMusic.pause();
+            		
+            		if (enemyMusic.isPlaying())
+            			enemyMusic.pause();
+            		
+            		if (startMusic.isPlaying()) 
+            			startMusic.pause();
+            		
+            		endMusic.play();
+            		
+            	} else {
             		if (normalMusic.isPlaying())
             			normalMusic.pause();
             		
