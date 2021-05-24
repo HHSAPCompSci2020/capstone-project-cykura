@@ -1,4 +1,5 @@
 import java.io.File;
+
 import java.io.IOException;
   
 import javax.sound.sampled.AudioInputStream;
@@ -6,12 +7,27 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+/**
+ * The MusicPlayer class represents a music player
+ * @author geeks_for_geeks
+ * @version 5.23.21
+ *
+ */
 public class MusicPlayer{
     private Clip clip;
     private AudioInputStream audioInputStream;
     private static String filePath;
     private boolean isPlaying;
     
+    /**
+     * Creates a Music Player
+     * 
+     * @param file The music file
+     * @throws UnsupportedAudioFileException
+     * @throws IOException
+     * @throws LineUnavailableException
+     */
 	public MusicPlayer(String file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		filePath=file;
 	    // create AudioInputStream object
@@ -28,17 +44,27 @@ public class MusicPlayer{
 	    isPlaying = false;
 	}
 	
+	/**
+	 * Plays the music
+	 */
 	public void play() {
         clip.start();
         isPlaying = true;
     }
 	
+	/**
+	 * Pauses the music
+	 */
 	public void pause()
     {
         clip.stop();
         isPlaying = false;
     }
 	
+	/**
+	 * 
+	 * @return true if the music is being played
+	 */
 	public boolean isPlaying() {
 		return isPlaying;
 	}
