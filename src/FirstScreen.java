@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 /**
  * The FirstScreen class represents an Option Menu.
  * @author Mr. Shelby
+ * @version 5.23.21
  *
  */
 public class FirstScreen extends Screen {
@@ -16,7 +17,12 @@ public class FirstScreen extends Screen {
 	private Rectangle gameButton;
 	private Rectangle instructionsButton;
 	private Rectangle exitButton;
-
+	
+	/**
+	 * Creates a firstScreen with buttons.
+	 * 
+	 * @param surface The drawing Surface on which to draw the screen.
+	 */
 	public FirstScreen(DrawingSurface surface) {
 		super(800,600);
 		this.surface = surface;
@@ -26,7 +32,10 @@ public class FirstScreen extends Screen {
 		exitButton = new Rectangle(800/2-100,600/2+100,200,100);
 	}
 
-
+	
+	/**
+	 * Draws the screen with buttons
+	 */
 	public void draw() {
 
 		surface.pushStyle();
@@ -66,7 +75,9 @@ public class FirstScreen extends Screen {
 
 
 
-	
+	/**
+	 * Switches the screen depending on where the mouse was pressed.
+	 */
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (gameButton.contains(p))
