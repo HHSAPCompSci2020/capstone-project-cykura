@@ -13,10 +13,14 @@ import processing.core.PApplet;
 /**
  * Main class that runs the program
  * @author alex_zheng
- *
+ * @version 5.23.21
  */
 public class Main {
 	
+	/**
+	 * The main method which shows the window and plays music.
+	 * @param args A user input array of Strings
+	 */
 	public static void main(String args[])  {
 		
 		DrawingSurface drawing = new DrawingSurface();
