@@ -90,7 +90,7 @@ public class GrassEnemy extends Enemy {
 			     if (hero.getWaterWave() != null) {	// hero has done a water wave
 			    	 if (hero.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
 			    		 hero.getWaterWave().hit = true;
-			    		 this.loseHealth(35);
+			    		 this.loseHealth(25);
 			    		 if(health<=0) {
 		    				 tokens.add(new Token(GameScreen.grassToken,(int)spawnPoint.x,(int)spawnPoint.y));
 		    			 }
