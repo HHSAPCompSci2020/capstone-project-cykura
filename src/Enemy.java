@@ -9,7 +9,7 @@ import processing.core.PImage;
  * The Enemy class represents the enemy which can move and cause damage to the Hero.
  * 
  * @author animan_patil
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class Enemy extends MovingImage{
 	
@@ -151,6 +151,10 @@ public class Enemy extends MovingImage{
 		return health<=0;
 	}
 	
+	/**
+	 * Draws the healthbar
+	 * @param g the surface to draw on.
+	 */
 	protected void healthBar(PApplet g) {
 		g.fill(50);
 		g.rect((int)x-10, (int)y-20, 60, 5,3);
