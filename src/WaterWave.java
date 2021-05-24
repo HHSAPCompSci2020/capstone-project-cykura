@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Waterwave class represents a water wave which is one of the abilities that the Hero can collect.
+ * The Waterwave class represents a water wave that extends outward dealing damage.
  * 
  * @author Alex Zheng
  * @version 5.23.21

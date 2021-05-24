@@ -2,7 +2,7 @@
 import processing.core.PImage;
 
 /**
- * The MovingPlatform class represents a movable platform on which the Hero can stand.
+ * The MovingPlatform class represents a movable platform which the Hero can interact with.
  * 
  * @author alex_zheng
  * @version 5.23.21

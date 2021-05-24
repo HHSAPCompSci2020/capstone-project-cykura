@@ -9,7 +9,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- * The MusicPlayer class represents a music player
+ * The MusicPlayer class represents a music player which can play, pause, and loop clips.
  * @author geeks_for_geeks
  * @version 5.23.21
  *

@@ -11,7 +11,7 @@ import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 
 /**
- * Main class that runs the program
+ * Main class that runs the program and has the drawing surface and window.
  * @author alex_zheng
  * @version 5.23.21
  */

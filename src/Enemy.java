@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Enemy class represents the enemy which can move and cause damage to the Hero.
+ * The Enemy class represents an enemy which can move and deal damage to the Hero.
  * 
  * @author animan_patil
  * @version 5.23.21

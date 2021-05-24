@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import processing.core.PImage;
 
 /**
- * The Fireball class represents a fire ball which is one of the projectiles that the Hero can collect.
+ * The Fireball class represents a fire ball which is a projectile that can be thrown.
  * 
  * @author alex_zheng
  * @version 5.23.21

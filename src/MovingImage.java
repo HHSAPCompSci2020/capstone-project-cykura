@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The MovingImage class represents an image which moves.
+ * The MovingImage class represents an image which can move.
  * Code Credit: Animation Demo
  * 
  * @author Mr. Shelby
