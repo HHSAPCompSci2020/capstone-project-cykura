@@ -89,7 +89,9 @@ public class GameScreen extends Screen {
 	 * Creates a new Hero
 	 */
 	private void spawnHero() {
-		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+//		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
+		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), 1970, 50);
+//		hero.canThrowFireball();
 //		hero.setDash(true);
 	}
 	
@@ -317,7 +319,7 @@ public class GameScreen extends Screen {
 
 		
 //		
-		if(!flipped) {
+//		if(!flipped) {
 			if (surface.isPressed(KeyEvent.VK_LEFT)) {
 	//			System.out.println("l");
 				hero.walk(-1);
@@ -329,18 +331,18 @@ public class GameScreen extends Screen {
 				hero.walk(1);
 				hero.setFacingDirection(0);
 			}
-		}
-		else {
-			if (surface.isPressed(KeyEvent.VK_LEFT)) {
-				hero.walk(1);
-				hero.setFacingDirection(180);
-			}
-				
-			if (surface.isPressed(KeyEvent.VK_RIGHT)) {
-				hero.walk(-1);
-				hero.setFacingDirection(0);
-			}
-		}
+//		}
+//		else {
+//			if (surface.isPressed(KeyEvent.VK_LEFT)) {
+//				hero.walk(1);
+//				hero.setFacingDirection(180);
+//			}
+//				
+//			if (surface.isPressed(KeyEvent.VK_RIGHT)) {
+//				hero.walk(-1);
+//				hero.setFacingDirection(0);
+//			}
+//		}
 		
 		if (!flipped) {
 			if (surface.isPressed(KeyEvent.VK_UP)) {

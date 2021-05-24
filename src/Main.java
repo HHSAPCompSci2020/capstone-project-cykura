@@ -50,14 +50,15 @@ public class Main {
             while(true) {
             	Screen cGameScreen = drawing.getActiveScreen();
             	if(cGameScreen instanceof GameScreen) {	// if the active screen is game screen
-            		if (startMusic.isPlaying())
-            			startMusic.pause();
+//            		if (startMusic.isPlaying())
+//            			startMusic.pause();
             		ArrayList<Enemy> enemies=((GameScreen) cGameScreen).getEnemies();
             		Hero hero=((GameScreen) cGameScreen).getHero();
             		boolean enemyMusicShouldPlay = false;
             		for(int i=0; i < enemies.size(); i++) {
             			if(enemies.get(i)!=null && enemies.get(i).heroInRange(hero)) {
             				enemyMusicShouldPlay = true;
+//            				System.out.println(enemyMusicShouldPlay);
             			}
             		}
             		
@@ -65,16 +66,28 @@ public class Main {
         				if (normalMusic.isPlaying())
         					normalMusic.pause();
         				
+                		if (startMusic.isPlaying())
+                			startMusic.pause();
+        				
+                		if(endMusic.isPlaying())
+                			endMusic.pause();
+        				
         				enemyMusic.play();
         			} else {
         				if (enemyMusic.isPlaying())
         					enemyMusic.pause();
         				
+                		if (startMusic.isPlaying())
+                			startMusic.pause();
+        				
+                		if(endMusic.isPlaying())
+                			endMusic.pause();
+        				
         				normalMusic.play();
         			}
 
 
-            	} else if (cGameScreen instanceof VictoryScreen){	// if active screen is not game screen
+            	} else if (cGameScreen instanceof VictoryScreen){	// if active screen is victory screen
             		if (normalMusic.isPlaying())
             			normalMusic.pause();
             		
@@ -87,11 +100,15 @@ public class Main {
             		endMusic.play();
             		
             	} else {
+//            		System.out.println("else");
             		if (normalMusic.isPlaying())
             			normalMusic.pause();
             		
             		if (enemyMusic.isPlaying())
             			enemyMusic.pause();
+            		
+            		if(endMusic.isPlaying())
+            			endMusic.pause();
             		
             		startMusic.play();
             	}

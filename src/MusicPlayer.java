@@ -40,8 +40,8 @@ public class MusicPlayer{
 	    clip.open(audioInputStream);
 	         
 	    clip.loop(Clip.LOOP_CONTINUOUSLY);
-	    clip.stop();
-	    isPlaying = false;
+//	    clip.stop();
+	    isPlaying = true;
 	}
 	
 	/**
