@@ -13,7 +13,7 @@ import processing.core.PApplet;
  * as well as drawing a representation of the circle to a Processing PApplet.
  *  
  * @author vicram_vijayakumar
- * @version 11/1
+ * @version 5.23.21
  */
 public class Circle {
 	protected double extent;
@@ -186,6 +186,12 @@ public class Circle {
 		return this.y;
 	}
 	
+	/**
+	 * Checks if a Rectangle2D object intersects with the Circle.
+	 * 
+	 * @param img The Rectangle2D object to be checked.
+	 * @return true if the Rectangle2D object intersects with the Circle. Otherwise, it returns false.
+	 */
 	protected boolean intersects(Rectangle2D img) {
 		double radius = extent/2;
 		Point p = new Point((int)x,(int)y);	// Center of Circle Point
