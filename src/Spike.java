@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Spike class represents a Spike which can cause damage to the Hero and Enemies if they walk into it.
+ * The Spike class represents a Spike which can cause damage to the Hero if they walk into it.
  * 
  * @author vicram_vijayakumar
  * @version 5.6.21
@@ -39,31 +39,7 @@ public class Spike extends Rectangle2D.Double {
 	public void draw(PApplet g) {
 		g.image(img,(int)x,(int)y,(int)width,(int)height);
 	}
-	
-	public void act(ArrayList<Enemy> enemies, Hero h) {
-//		System.out.println(invincibilityTime);
-//		if (invincibilityTime <= 0) {
-//			if (h.intersects(this)) {
-//				h.jump();
-//				invincibilityTime = 60;
-//				h.loseHearts(1);
-//
-//			}
-//		} else {
-//			invincibilityTime--;
-//		}
-	}
-	
-//	public boolean checkCollision(Enemy e, Hero h) {
-//		if (this.intersects(e)||this.intersects(h)) {
-//			return true;
-//		}
-//		return false;
-//	}
-//	
-//	public boolean checkHeroCollsion(Hero h) {
-//		return false;
-//	}
+
 	
 	/**
 	 * Sets the minimum and maximum x and y coordinates the Spike can have according to the window size.

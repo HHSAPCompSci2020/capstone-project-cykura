@@ -407,12 +407,12 @@ public class GameScreen extends Screen {
 				}
 				
 			}
-			for (int i = 0; i < spikes.size(); i++) {
-				Spike s = spikes.get(i);
-				if (s != null) {
-					s.act(enemies, hero);
-				}
-			}
+//			for (int i = 0; i < spikes.size(); i++) {
+//				Spike s = spikes.get(i);
+//				if (s != null) {
+//					s.act(enemies, hero);
+//				}
+//			}
 			for(int i=0;i<movingPlatforms.size();i++) {
 				MovingPlatform m=movingPlatforms.get(i);
 				if (m!=null) {
