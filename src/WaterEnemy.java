@@ -79,7 +79,7 @@ public class WaterEnemy extends Enemy {
 			     if (h.getWaterWave() != null) {	// hero has done a water wave
 			    	 if (h.getWaterWave().checkCollisionEnemy(this)) {	// if the hero's water wave hits the enemy
 			    		 h.getWaterWave().hit = true;
-			    		 this.loseHealth(20);
+			    		 this.loseHealth(35);
 			    		 if(health<=0) {
 		    				 tokens.add(new Token(GameScreen.waterToken,(int)spawnPoint.x,(int)spawnPoint.y));
 		    			 }

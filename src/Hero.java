@@ -838,7 +838,7 @@ public class Hero extends MovingImage {
 
 	/**
 	 * Checks whether the Hero gets hit by a Fireball. If so, the Hero loses
-	 * damage and gains some time in which the Hero is invincible.
+	 * health.
 	 * 
 	 * @param p The list of Fireballs to check with
 	 **/

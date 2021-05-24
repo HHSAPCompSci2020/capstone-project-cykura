@@ -3,6 +3,7 @@ import java.awt.Rectangle;
 
 /**
  * The InstructionScreen class represents the Screen which displays the instructions and the keyboard layout.
+ * 
  * @author vicram_vijayakumar
  * @version 5.23.21
  *

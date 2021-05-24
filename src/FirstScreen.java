@@ -6,7 +6,9 @@ import java.awt.Rectangle;
 
 /**
  * The FirstScreen class represents an Option Menu.
- * @author Mr. Shelby
+ * Base Code Credit: Mr. Shelby / ProcessingScreenSwitchingDemo
+
+ * @author vicram_vijayakumar
  * @version 5.23.21
  *
  */
