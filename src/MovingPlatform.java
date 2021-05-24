@@ -2,24 +2,29 @@
 import processing.core.PImage;
 
 /**
- * The Platform class represents a movable platform on which the Hero and enemies can stand. The Platform may contain Spikes.
+ * The MovingPlatform class represents a movable platform on which the Hero can stand.
  * 
  * @author alex_zheng
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class MovingPlatform extends MovingImage {
 	private double vx, vy;
 	private int fx, fy,sx,sy;
 	private boolean isNeg;
+	
 	/**
-	 * Creates a new instance of a Platform object having its left
+	 * Creates a new instance of a MovingPlatform object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
 	 * 
-	 * @param img The PImage which the Platform will look like in the game (sprite).
-	 * @param x The X value of the Platform's top left corner.
-	 * @param y The Y value of the Platform's top left corner.
-	 * @param w The width of the Platform
-	 * @param h The height of the Platform
+	 * @param img The PImage which the MovingPlatform will look like in the game (sprite).
+	 * @param x The X value of the MovingPlatform's top left corner.
+	 * @param y The Y value of the MovingPlatform's top left corner.
+	 * @param w The width of the MovingPlatform
+	 * @param h The height of the MovingPlatform
+	 * @param fx The final X value of the MovingPlatform
+	 * @param fy The final Y value of the MovingPlatform
+	 * @param vx The velocity of the MovingPlatform in the x direction
+	 * @param vy The velocity of the MovingPlatform in the y direction
 	**/
 	public MovingPlatform(PImage img, int x, int y, int w, int h, int fx, int fy, double vx, double vy) {
 		super(img, x, y, w, h);
@@ -39,12 +44,16 @@ public class MovingPlatform extends MovingImage {
 	}
 	
 	/**
-	 * Changes state of platform
+	 * Moves the platform.
 	 */
 	public void act() {
 		atEnd();
 		super.moveByAmount(vx, vy);
 	}
+	
+	/**
+	 * If the platform is at its end, it starts to move in the opposite direction
+	 */
 	private void atEnd() {
 		if(!isNeg) {
 			if(super.x>=fx||super.x<=sx) {
@@ -68,6 +77,7 @@ public class MovingPlatform extends MovingImage {
 		}
 		return;
 	}
+	
 	/**
 	 * Gets vx
 	 * @return vx
