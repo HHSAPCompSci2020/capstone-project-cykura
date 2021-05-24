@@ -8,7 +8,7 @@ import processing.core.PImage;
  * The Fireball class represents a fire ball which is one of the projectiles that the Hero can collect.
  * 
  * @author alex_zheng
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class Fireball extends MovingImage {
 	private double vy, vx;
@@ -32,7 +32,7 @@ public class Fireball extends MovingImage {
 	}
 	
 	/**
-	 * Changes state of fireball
+	 * Moves the Fireball according to its velocity.
 	 */
 	public void act() {
 		super.moveByAmount(vx,vy);

@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 /**
- * 
+ * The FirstScreen class represents an Option Menu.
  * @author Mr. Shelby
  *
  */
