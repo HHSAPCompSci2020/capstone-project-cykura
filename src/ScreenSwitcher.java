@@ -1,8 +1,10 @@
 
 /**
+ * A Screen Switcher interface
+ * Outside Code Credit: ProcessingScreenSwitchingDemo
  * 
  * @author Mr. Shelby
- *
+ * @version 5.23.21
  */
 public interface ScreenSwitcher {
 	public static final int SCREEN1 = 0;
