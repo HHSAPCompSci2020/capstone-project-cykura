@@ -183,15 +183,17 @@ public class Boss extends Enemy {
 			
 	}
 	
-	/*
+	/**
 	 * Returns the waterwave
+	 * @return waterwave
 	 */
 	public WaterWave getWaterWave() {
 		return w;
 	}
 	
-	/*
+	/**
 	 * Returns the fireballs
+	 * @return fireballs
 	 */
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
