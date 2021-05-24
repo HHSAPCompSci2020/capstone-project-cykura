@@ -61,7 +61,9 @@ public class GameScreen extends Screen {
 	public static long currTime;
 	private PFont f;
 	/**
-	 * Default Constructor
+	 * Creates the GameScreen
+	 * 
+	 * @param surface The DrawingSurface to draw the screen on.
 	 */
 	public GameScreen(DrawingSurface surface) {
 		super(800,500);
@@ -84,20 +86,33 @@ public class GameScreen extends Screen {
 //		hero.setDash(true);
 	}
 	
-	
+	/**
+	 * 
+	 * @return the Tokens in the Screen
+	 */
 	public ArrayList<Token> getTokens() {
 		return tokens;
 	}
 	
+	/**
+	 * 
+	 * @return the X value of the viewable screen
+	 */
 	public float getViewX() {
 		return view_x;
 	}
 	
+	/**
+	 * 
+	 * @return the Y value of the viewable screen
+	 */
 	public float getViewY() {
 		return view_y;
 	}
 
-	
+	/**
+	 * Generates the Hero, enemies, tokens, platforms, and checkpoints
+	 */
 	public void setup() {
 //		bg = surface.loadImage("sprites/gameScreenBackground.png");
 //		System.out.println(bg.width);
@@ -135,6 +150,11 @@ public class GameScreen extends Screen {
 		
 	}
 	
+	/**
+	 * Changes the Hero's image. If the hero is invincible, it will revert back to the original.
+	 * If it is not invincible, it will change the image to invincible.
+	 * @param h The Hero which can be played.
+	 */
 	public void changeHeroImage(Hero h) {
 		if (h.isInvincible()) {	// Hero is invincibile
 			h.setImage(surface.loadImage("sprites\\StandingHeroSpriteInvincible.png"));
@@ -420,6 +440,10 @@ public class GameScreen extends Screen {
 		
 	}
 	
+	/**
+	 * Generates the platforms in the game screen
+	 * @return an ArrayList of Shapes representing platforms
+	 */
 	private ArrayList<Shape> generatePlatforms(){
 		ArrayList<Shape> p = new ArrayList<Shape>();
 		p.add(new Rectangle(0,495,60000,500));	//bottom 
@@ -478,6 +502,11 @@ public class GameScreen extends Screen {
 		return p;
 	}
 	
+	
+	/**
+	 * Generates the checkpoints in the game screen
+	 * @return an ArrayList of checkpoints
+	 */
 	private ArrayList<Checkpoint> generateCheckpoints() {
 		ArrayList<Checkpoint> c = new ArrayList<Checkpoint>();
 		c.add(new Checkpoint(surface.loadImage("sprites\\CheckpointSprite.png"), surface.loadImage("sprites\\CheckpointSpriteActivated.png"), 400, 270));
@@ -489,6 +518,10 @@ public class GameScreen extends Screen {
 		return c;
 	}
 	
+	/**
+	 * Generates the enemies in the game screen
+	 * @return an ArrayList of checkpoints
+	 */
 	private ArrayList<Enemy> generateEnemies() {
 		ArrayList<Enemy> c = new ArrayList<Enemy>();
 		c.add(new Enemy(surface.loadImage("sprites\\StandingEnemySprite.png"), 280, 50));
@@ -499,6 +532,10 @@ public class GameScreen extends Screen {
 		return c;
 	}
 	
+	/**
+	 * Generates the tokens in the game screen
+	 * @return an ArrayList of tokens
+	 */
 	private ArrayList<Token> generateTokens() {
 		ArrayList<Token> t = new ArrayList<Token>();
 //		System.out.println(fistToken);
@@ -512,6 +549,10 @@ public class GameScreen extends Screen {
 		return t;
 	}
 	
+	/**
+	 * Generates the spikes in the game screen
+	 * @return an ArrayList of spikes
+	 */
 	private ArrayList<Spike> generateSpikes() {
 		ArrayList<Spike> s = new ArrayList<Spike>();
 //		int x = 90;
@@ -540,6 +581,10 @@ public class GameScreen extends Screen {
 		
 	}
 	
+	/**
+	 * Generates the moving platforms in the game screen
+	 * @return an ArrayList of moving platforms
+	 */
 	private ArrayList<MovingPlatform> generateMovingPlatforms(){
 		ArrayList<MovingPlatform> m=new ArrayList<MovingPlatform>();
 		m.add(new MovingPlatform(movingPlatform, 4250,345,200,50, 4350,345,3,0)); 
@@ -548,6 +593,7 @@ public class GameScreen extends Screen {
 		m.add(new MovingPlatform(movingPlatform,6450,345,200,50,6710,345,3,0));
 		return m;
 	}
+	
 	/**
 	 * Shifts the screen based on players location
 	 */
@@ -579,10 +625,19 @@ public class GameScreen extends Screen {
 			surface.translate(-view_x,-view_y);
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @return the Enemies in the game screen
+	 */
 	public ArrayList<Enemy> getEnemies() {
 		return enemies;
 	}
+	
+	/**
+	 * 
+	 * @return the Hero in the game screen
+	 */
 	public Hero getHero() {
 		return hero;
 	}
