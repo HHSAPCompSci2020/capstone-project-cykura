@@ -374,21 +374,12 @@ public class GameScreen extends Screen {
 //			surface.removeKey(KeyEvent.VK_A);
 		}
 		
-		if (surface.isPressed(KeyEvent.VK_H)) {
-			hero.gainHearts(1);
-		}
-		
-		if (surface.isPressed(KeyEvent.VK_Q)) {
-			System.out.println("x " + hero.getX());
-			System.out.println("y " + hero.getY());
-			System.out.println();
-		}
 		
 		if(surface.isPressed(KeyEvent.VK_SPACE)) {
 			for (int i = 0; i < enemies.size(); i++) {
 				if (enemies.get(i) != null) {
 //					System.out.println(enemies.get(i));
-					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 50) {
+					if (Math.abs(hero.getCenterX() - enemies.get(i).getCenterX()) < 75  && Math.abs(hero.getCenterY() - enemies.get(i).getCenterY()) < 75) {
 						hero.punch(enemies.get(i));
 					}
 				}

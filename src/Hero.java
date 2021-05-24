@@ -7,10 +7,10 @@ import processing.core.PImage;
 
 /**
  * The Hero class represents the playable main character which can move and use
- * special projectiles. Base code credit: Mr. Shelby
+ * special abilities. Base code credit: Mr. Shelby from AnimationDemo.
  * 
  * @author vicram_vijayakumar
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class Hero extends MovingImage {
 
@@ -99,12 +99,16 @@ public class Hero extends MovingImage {
 		return fireballs;
 	}
 	
+	/**
+	 * 
+	 * @return The water wave the Hero has made
+	 */
 	public WaterWave getWaterWave() {
 		return wave;
 	}
 
 	/**
-	 * Hero throws a fireball
+	 * Hero throws a fireball depending on the direction its facing.
 	 */
 	public void throwFireball() {
 		if (canThrowFireball && fireballCoolDown <=0) {
@@ -193,6 +197,10 @@ public class Hero extends MovingImage {
 		canDash = state;
 	}
 	
+	/**
+	 * 
+	 * @return true if the Hero can throw a fireball
+	 */
 	public boolean canThrowFireball() {
 		return canThrowFireball;
 	}
@@ -206,6 +214,10 @@ public class Hero extends MovingImage {
 		canThrowFireball = state;
 	}
 	
+	/**
+	 * 
+	 * @return true if the Hero can create a water wave
+	 */
 	public boolean canWaterWave() {
 		return canWaterWave;
 	}
@@ -234,7 +246,8 @@ public class Hero extends MovingImage {
 	 * 
 	 * @param e1 The enemy which the Hero deals damage to.
 	 * @pre The distance from the center of the Hero's x coordinate to the center of
-	 *      the Enemy's x coordinate must be less than 75 to cause damage.
+	 *      the Enemy's x coordinate and the distance from the center of the Hero's y coordinate to the center of
+	 *      the Enemy's y coordinate must be less than 75 to cause damage.
 	 **/
 	public void punch(Enemy e1) {
 			if (punchCoolDown <= 0) {	// if can punch
@@ -248,24 +261,40 @@ public class Hero extends MovingImage {
 
 	}
 	
+	/**
+	 * 
+	 * @return true if the Hero is invincible
+	 */
 	public boolean isInvincible() {
 		return isInvincible;
 	}
 	
+	/**
+	 * 
+	 * @return the cooldown time remaining for punching
+	 */
 	public int getPunchCoolDown() {
 		return punchCoolDown;
 	}
 	
+	/**
+	 * 
+	 * @return the cooldown time remaining for throwing a fireball
+	 */
 	public int getFireballCoolDown() {
 		return fireballCoolDown;
 	}
 	
+	/**
+	 * 
+	 * @return the cooldown time remaining for creating a water wave
+	 */
 	public int getWaterWaveCoolDown() {
 		return waterWaveCoolDown;
 	}
 
 	/**
-	 * Makes the Hero walk depending on the inputed direction.
+	 * Makes the Hero walk depending on the inputed direction if it is not charging or dashing.
 	 * 
 	 * @param direction The direction and magnitude which the Hero will move in.
 	 **/
@@ -439,10 +468,19 @@ public class Hero extends MovingImage {
 		return hearts;
 	}
 	
+	/**
+	 * Gets the amount of time the Hero is invincible
+	 * 
+	 **/
 	public int getInvincibilityTime() {
 		return invincibilityTime;
 	}
 	
+	/**
+	 * Sets the image of the Hero.
+	 * 
+	 * @img The PImage to change the Hero's current image to
+	 **/
 	public void setImage(PImage img) {
 		this.image = img;
 	}
@@ -817,25 +855,44 @@ public class Hero extends MovingImage {
 		}
 	}
 	
+	/**
+	 * Sets the hero's checkpoint location
+	 * @param cx The x coordinate of the checkpoint
+	 * @param cy The y coordinate of the checkpoint
+	 */
 	public void setCheckpoint(double cx, double cy) {
 		checkpointX = cx;
 		checkpointY = cy;
 	}
 	
+	/**
+	 * 
+	 * @param vx1 The velocity in the x direction to set the Hero's velocity in the x direction to.
+	 */
 	public void setVelocityX(double vx1) {
 		vx = vx1;
 	}
 	
+	/**
+	 * 
+	 * @param vy1 The velocity in the y direction to set the Hero's velocity in the y direction to.
+	 */
 	public void setVelocityY(double vy1) {
 		vy = vy1;
 	}
 	
-	
+	/**
+	 * 
+	 * @return the x coordinate of the Hero's checkpoint.
+	 */
 	public double getCheckpointX() {
 		return checkpointX;
 	}
 	
-	
+	/**
+	 * 
+	 * @return the y coordinate of the Hero's checkpoint.
+	 */
 	public double getCheckpointY() {
 		return checkpointY;
 	}

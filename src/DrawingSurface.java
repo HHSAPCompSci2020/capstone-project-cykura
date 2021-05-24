@@ -7,6 +7,7 @@ import processing.core.PApplet;
 
 /**
  * The DrawingSurface class represents the surface on which the Active Screen is drawn.
+ * Outside Credit: AnimationDemo
 
  * 
  * @author Mr. Shelby
