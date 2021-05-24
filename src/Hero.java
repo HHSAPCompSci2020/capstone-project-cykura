@@ -184,6 +184,10 @@ public class Hero extends MovingImage {
 		return onASurface;
 	}
 	
+	/**
+	 * 
+	 * @return true if Hero can dash
+	 */
 	public boolean canDash() {
 		return canDash;
 	}
@@ -473,6 +477,7 @@ public class Hero extends MovingImage {
 	
 	/**
 	 * Gets the amount of time the Hero is still invincible
+	 * @return the amount of time the Hero is still invincible
 	 **/
 	public int getInvincibilityTime() {
 		return invincibilityTime;
