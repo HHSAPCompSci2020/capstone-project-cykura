@@ -10,7 +10,10 @@ public class VictoryScreen extends Screen {
 //	public InstructionScreen(int width, int height) {
 //		super(width, height);
 //	}
-	
+	/**
+	 * Creates a new VictoryScreen
+	 * @param surface drawingsurface
+	 */
 	public VictoryScreen(DrawingSurface surface) {
 		super(800,600);
 		this.surface = surface;
@@ -20,6 +23,9 @@ public class VictoryScreen extends Screen {
 //		firstScreenButton = new Rectangle(800/2-100,600/2+225,200,50);	// x, y, w, h
 	}
 	
+	/**
+	 * Draws the victory screen with a grade based on the time taken
+	 */
 	public void draw() {
 		surface.pushStyle();
 		
