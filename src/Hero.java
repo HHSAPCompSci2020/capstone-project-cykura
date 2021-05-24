@@ -112,7 +112,7 @@ public class Hero extends MovingImage {
 	 */
 	public void throwFireball() {
 		if (canThrowFireball && fireballCoolDown <=0) {
-			if (!GameScreen.flipped) {
+//			if (!GameScreen.flipped) {
 				if (facingDirection == 0) { // Facing to the right
 					Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
 					fireballs.add(f);
@@ -122,18 +122,18 @@ public class Hero extends MovingImage {
 					fireballs.add(f);
 					fireballCoolDown = 30;
 				}
-			} else {
-				if (facingDirection == 0) { // Facing to the right
-					Fireball f = new Fireball(GameScreen.fireball, (int) (x - 10), (int) (y + 20), 20, 20, -5, 0);
-					fireballs.add(f);
-					fireballCoolDown = 30;
-				} else { // Facing to the left
-					Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
-					fireballs.add(f);
-					fireballCoolDown = 30;
-				}
-
-			}
+//			} else {
+//				if (facingDirection == 0) { // Facing to the right
+//					Fireball f = new Fireball(GameScreen.fireball, (int) (x - 10), (int) (y + 20), 20, 20, -5, 0);
+//					fireballs.add(f);
+//					fireballCoolDown = 30;
+//				} else { // Facing to the left
+//					Fireball f = new Fireball(GameScreen.fireball, (int) (x + 30), (int) (y + 20), 20, 20, 5, 0);
+//					fireballs.add(f);
+//					fireballCoolDown = 30;
+//				}
+//
+//			}
 
 		}
 	}
