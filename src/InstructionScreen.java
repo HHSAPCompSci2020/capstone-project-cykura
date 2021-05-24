@@ -2,8 +2,9 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 /**
- * 
+ * The InstructionScreen class represents the Screen which displays the instructions and the keyboard layout.
  * @author vicram_vijayakumar
+ * @version 5.23.21
  *
  */
 public class InstructionScreen extends Screen {
@@ -16,6 +17,10 @@ public class InstructionScreen extends Screen {
 //		super(width, height);
 //	}
 	
+	/**
+	 * Creates the instruction screen with button.
+	 * @param surface The Drawing Surface to draw the Instruction Screen on
+	 */
 	public InstructionScreen(DrawingSurface surface) {
 		super(800,600);
 		this.surface = surface;
@@ -25,6 +30,9 @@ public class InstructionScreen extends Screen {
 		firstScreenButton = new Rectangle(800/2-100,600/2+225,200,50);	// x, y, w, h
 	}
 	
+	/**
+	 * Draws the Instruction Screen with a button for heading back to the options menu.
+	 */
 	public void draw() {
 		surface.pushStyle();
 		
@@ -56,6 +64,9 @@ public class InstructionScreen extends Screen {
 
 	}
 	
+	/**
+	 * Switches the screen depending on where the mouse is pressed.
+	 */
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (firstScreenButton.contains(p))
