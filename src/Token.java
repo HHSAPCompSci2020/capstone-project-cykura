@@ -48,15 +48,27 @@ public class Token extends Rectangle2D.Double{
 		g.image(image,(int)x,(int)y, TOKEN_WIDTH, TOKEN_HEIGHT);
 	}
 	
-	
+	/**
+	 * Sets image
+	 * @param img new image
+	 */
 	public void setImage(PImage img) {
 		image = img;
 	}
 	
+	/**
+	 * Returns current image
+	 * @return current image
+	 */
 	public PImage getImage() {
 		return image;
 	}
 	
+	/**
+	 * Move to location
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 */
 	public void moveTo(int x, int y) {
 		this.x = x;
 		this.y = y;
