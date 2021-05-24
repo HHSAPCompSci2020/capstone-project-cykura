@@ -6,7 +6,8 @@ import processing.core.PImage;
 /**
  * The Boss class represents the final enemy which the Hero can defeat with all of the same abilities as the Hero.
  * 
- * @version 5.6.21
+ * @author animan_patil
+ * @version 5.23.21
  */
 public class Boss extends Enemy {
 	private int cnt;
@@ -17,6 +18,7 @@ public class Boss extends Enemy {
 	private int rotation;
 	private int fireballCnt;
 	private int waterCnt;
+	
 	/**
 	 * Creates a new instance of a Boss object having its left
 	 * corner at the inputed (x, y) coordinates.
@@ -32,7 +34,10 @@ public class Boss extends Enemy {
 	}
 	
 	/**
-	 * Changes state of boss
+	 * Makes the Boss act by shooting fireballs, dashing, 
+	 * and making a water wave to deal damage to hero.
+	 * Flips screen if below half health.
+	 * 
 	 * @param hero The player
 	 */
 	public void act(Hero hero) {

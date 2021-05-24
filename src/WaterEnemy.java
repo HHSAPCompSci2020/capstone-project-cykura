@@ -94,7 +94,7 @@ public class WaterEnemy extends Enemy {
 			
 		     
 		} else {
-			tokens.add(new Token(GameScreen.waterToken,(int)x,(int)y));
+			tokens.add(new Token(GameScreen.waterToken,(int)spawnPoint.x,(int)spawnPoint.y));
 //			if(GameScreen.waterToken1==null) GameScreen.waterToken1 = new Token(GameScreen.waterToken,(int)x,(int)y);
 			
 		}

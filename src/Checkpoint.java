@@ -3,6 +3,12 @@ import java.awt.geom.Rectangle2D;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * The Checkpoint class represents a checkpoint which the hero can activate to respawn to.
+ *  
+ * @author vicram_vijayakumar
+ * @version 5.23.21
+ */
 public class Checkpoint extends Rectangle2D.Double {
 
 	private PImage image;
@@ -11,12 +17,13 @@ public class Checkpoint extends Rectangle2D.Double {
 	public static final int CHECKPOINT_HEIGHT = 75;
 	
 	/**
-	 * Creates a new instance of a Heart object having its left
+	 * Creates a new instance of a Checkpoint object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
 	 * 
-	 * @param img The PImage which the Heart will look like in the game (sprite).
-	 * @param x The X value of the Heart's top left corner.
-	 * @param y The Y value of the Heart's top left corner.
+	 * @param img The PImage which the deactivated Checkpoint will look like in the game (sprite).
+	 * @param activeImg The PImage which the activated Checkpoint will look like in the game (sprite).
+	 * @param x The X value of the Checkpoint's top left corner.
+	 * @param y The Y value of the Checkpoint's top left corner.
 	**/
 	public Checkpoint(PImage img, PImage activeImg, int x, int y) {
 		super(x,y, CHECKPOINT_WIDTH, CHECKPOINT_HEIGHT);
@@ -24,6 +31,12 @@ public class Checkpoint extends Rectangle2D.Double {
 		activeImage = activeImg;
 	}
 	
+	/**
+	 * Changes its image if the Hero activates it
+	 * and sets the Hero's respawn location.
+	 * 
+	 * @param h The Hero which can be played.
+	 */
 	public void act(Hero h) {
 		if (this.intersects(h) && image != activeImage) {
 //			System.out.println("h");
@@ -47,7 +60,7 @@ public class Checkpoint extends Rectangle2D.Double {
 	}
 	
 	/**
-	 * Draws the Heart.
+	 * Draws the Checkpoint.
 	 * 
 	 * @param g The PApplet on which the Checkpoint is drawn.
 	**/
