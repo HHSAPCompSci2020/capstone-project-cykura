@@ -473,7 +473,6 @@ public class Hero extends MovingImage {
 	
 	/**
 	 * Gets the amount of time the Hero is still invincible
-	 * @param the amount of time the hero is still invincible
 	 **/
 	public int getInvincibilityTime() {
 		return invincibilityTime;
