@@ -1,6 +1,13 @@
 import java.awt.Point;
 import java.awt.Rectangle;
 
+/**
+ * The VictoryScreen represents the victory screen drawn when the Boss is defeated.
+ * 
+ * @author animan_patil
+ * @version 5.23.21
+ *
+ */
 public class VictoryScreen extends Screen {
 
 	private DrawingSurface surface;
@@ -12,7 +19,7 @@ public class VictoryScreen extends Screen {
 //	}
 	/**
 	 * Creates a new VictoryScreen
-	 * @param surface drawingsurface
+	 * @param surface drawingsurface to draw the Screen on
 	 */
 	public VictoryScreen(DrawingSurface surface) {
 		super(800,600);
@@ -52,7 +59,6 @@ public class VictoryScreen extends Screen {
 
 	}
 	
-	public void mousePressed() {		
-	}
+
 
 }

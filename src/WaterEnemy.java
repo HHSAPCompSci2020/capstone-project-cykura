@@ -5,10 +5,10 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The WaterEnemy class represents an Enemy with the Waterfall projectile which the Player can defeat.
+ * The WaterEnemy class represents an Enemy which can create a Waterfall which the Player can defeat.
  * 
  * @author alex_zheng
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class WaterEnemy extends Enemy {
 	private WaterWave waterwave;
@@ -26,7 +26,7 @@ public class WaterEnemy extends Enemy {
 	}
 	
 	/**
-	 * Changes state of waterenemy
+	 * Waterenemy follows the the Hero until it is in range to do a water wave
 	 * @param h Hero
 	 * @param platforms all platforms in game
 	 */
