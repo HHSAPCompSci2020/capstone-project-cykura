@@ -9,7 +9,7 @@ import processing.core.PApplet;
  * the Player can defeat.
  * 
  * @author animan_patil
- * @version 5.6.21
+ * @version 5.23.21
  */
 public class FireEnemy extends Enemy {
 	private ArrayList<Fireball> fireballs;
@@ -97,7 +97,7 @@ public class FireEnemy extends Enemy {
 	/**
 	 * Return the fireballs shot by this enemy
 	 * 
-	 * @return
+	 * @return fireballs shot by FireEnemy
 	 */
 	public ArrayList<Fireball> getFireballs() {
 		return fireballs;
