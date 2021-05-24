@@ -46,14 +46,14 @@ public class Circle {
 	 * @param y Y value of the Circle's center point.
 	 * @param extent The diameter of the Circle.
 	**/
-	public Circle(double x, double y, double radius) {
+	public Circle(double x, double y, double extent) {
 		strokeColor = Color.BLUE;
 		fillColor = Color.BLUE;
 		filled = true;
 		strokeWidth = 1;
 		this.x = x;
 		this.y = y;		
-		this.extent = radius;
+		this.extent = extent;
 	}
 
 	/**

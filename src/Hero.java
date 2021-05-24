@@ -308,7 +308,7 @@ public class Hero extends MovingImage {
 	/**
 	 * Deals damage to the Hero by losing an inputed number of hearts.
 	 * 
-	 * @param hearts The amount of hearts the hero loses
+	 * @param heartsToLose The amount of hearts the hero loses
 	 * @pre hearts must be less than six
 	 */
 	public void loseHearts(int heartsToLose) {
@@ -331,6 +331,9 @@ public class Hero extends MovingImage {
 	/**
 	 * Makes the Hero dash depending on the direction which the Hero is facing
 	 * and how long it is charged.
+	 * @param platforms the platforms
+	 * @param movingPlatforms the moving platforms
+	 * @param enemies the enemies
 	 * 
 	 **/
 	public void dash(ArrayList<Shape> platforms, ArrayList<MovingPlatform> movingPlatforms, ArrayList<Enemy> enemies) {
@@ -462,15 +465,15 @@ public class Hero extends MovingImage {
 
 	/**
 	 * Gets the amount of hearts the Hero currently has.
-	 * 
+	 * @return the number of hearts
 	 **/
 	public int getHearts() {
 		return hearts;
 	}
 	
 	/**
-	 * Gets the amount of time the Hero is invincible
-	 * 
+	 * Gets the amount of time the Hero is still invincible
+	 * @param the amount of time the hero is still invincible
 	 **/
 	public int getInvincibilityTime() {
 		return invincibilityTime;
@@ -479,7 +482,7 @@ public class Hero extends MovingImage {
 	/**
 	 * Sets the image of the Hero.
 	 * 
-	 * @img The PImage to change the Hero's current image to
+	 * @param img The PImage to change the Hero's current image to
 	 **/
 	public void setImage(PImage img) {
 		this.image = img;
@@ -531,8 +534,10 @@ public class Hero extends MovingImage {
 	 * hurt if attacked by enemy.
 	 * 
 	 * @param platforms The platforms which the hero can stand on and interact with.
-	 * @param enemy The enemy which can attack the Hero and cause damage.
-	 * @param enemyFireballs The fireballs which the Enemy has thrown.
+	 * @param enemies The enemy which can attack the Hero and cause damage.
+	 * @param tokens The tokens.
+	 * @param spikes Spikes which deal damage
+	 * @param movingPlatforms moving platforms.
 	 **/
 	public void act(ArrayList<Shape> platforms, ArrayList<Enemy> enemies, ArrayList<Token> tokens, ArrayList<Spike> spikes, ArrayList<MovingPlatform> movingPlatforms	) {
 //		System.out.println("x :" + x);
@@ -823,7 +828,7 @@ public class Hero extends MovingImage {
 	 * Makes the Hero lose a heart and jump up if it collides with an enemy.
 	 * The Hero also gains some invinciblity for some time after it collides with an enemy.
 	 * 
-	 * @param enemy The enemy which can attack the Hero and cause damage.
+	 * @param e1 The enemy which can attack the Hero and cause damage.
 	 **/
 	public void checkEnemyCollision(Enemy e1) {
 		if (!isInvincible) {

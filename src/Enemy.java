@@ -39,6 +39,7 @@ public class Enemy extends MovingImage{
 	 * Changes state of enemy according to position in game
 	 * @param hero the player
 	 * @param obstacles the platforms
+	 * @param tokens the tokens which can be collected by Hero
 	 */
 	public void act(Hero hero, ArrayList<Shape> obstacles, ArrayList<Token> tokens) {
 		if(health>0) {

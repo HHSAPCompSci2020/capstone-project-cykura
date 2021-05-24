@@ -18,7 +18,6 @@ public class WaterWave extends Circle {
 	 * Creates a new instance of a Waterfall object having its left
 	 * corner at the inputed (x, y) coordinates with a specified width and height.
 	 * 
-	 * @param img The PImage which the Waterfall will look like in the game (sprite).
 	 * @param x The X value of the Waterwave's center.
 	 * @param y The Y value of the Waterwave's center.
 	 * @param d The diameter of the Waterwave
