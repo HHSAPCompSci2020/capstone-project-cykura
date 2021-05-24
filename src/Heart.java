@@ -3,6 +3,11 @@ import java.awt.geom.Rectangle2D;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * The Heart class represents a heart which the Hero can collect to gain health
+ * @author vicram_vijayakumar
+ * @version 5.23.21
+ */
 public class Heart extends Rectangle2D.Double {
 
 	private PImage image;
