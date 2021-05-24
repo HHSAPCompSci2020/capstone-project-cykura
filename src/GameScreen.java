@@ -90,7 +90,6 @@ public class GameScreen extends Screen {
 	 */
 	private void spawnHero() {
 		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), DRAWING_WIDTH/2-Hero.HERO_WIDTH/2, 50);
-//		hero = new Hero(surface.loadImage("sprites\\StandingHeroSprite.png"), 1970, 50);
 //		hero.canThrowFireball();
 //		hero.setDash(true);
 	}
