@@ -256,3 +256,8 @@ Credit DanSevenStar.xyz, DontMind8.blogspot.com
 
 Checkpoint Sprite Credit:
 https://scirra.com/images/newstore/products/5289/splash.png
+
+
+Music Credit: 
+https://soundimage.org/looping-music/
+Author: Eric Matyas
